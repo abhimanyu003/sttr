@@ -1,3 +1,3 @@
-![sttr](./media/banner.svg)
+![sttr](./media/banner.png)
 
 # sttr
