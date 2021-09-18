@@ -5,11 +5,12 @@ import (
 	"code/processors"
 	"flag"
 	"fmt"
+	"os"
+	"strings"
+
 	"github.com/charmbracelet/bubbles/list"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
-	"os"
-	"strings"
 )
 
 var items = []list.Item{
@@ -47,7 +48,7 @@ var items = []list.Item{
 	item{title: "Sort Lines", desc: "Sort Lines Alphabetically", processor: processors.SortLines},
 }
 
-var appStyle = lipgloss.NewStyle().Margin(1, 1).Width(80)
+var appStyle = lipgloss.NewStyle().Width(80)
 var borderStyle = lipgloss.AdaptiveColor{Light: "#874BFD", Dark: "#7D56F4"}
 var specialStyle = lipgloss.AdaptiveColor{Light: "#43BF6D", Dark: "#73F59F"}
 
@@ -80,6 +81,7 @@ func main() {
 		welcome := strings.Builder{}
 
 		title := lipgloss.NewStyle().
+			Padding(0, 0, 0, 0).
 			Width(80).
 			BorderStyle(lipgloss.DoubleBorder()).
 			BorderTop(true).
@@ -113,7 +115,7 @@ func (m model) Init() tea.Cmd {
 func (m model) View() string {
 	if m.output != "" {
 		return lipgloss.NewStyle().
-			Padding(1).
+			Padding(1, 0, 1, 0).
 			BorderTop(true).
 			BorderStyle(lipgloss.DoubleBorder()).
 			BorderForeground(borderStyle).
@@ -121,7 +123,7 @@ func (m model) View() string {
 			Render(m.output)
 	}
 
-	return appStyle.Render(m.list.View())
+	return appStyle.Margin(1, 1).Render(m.list.View())
 }
 
 func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
