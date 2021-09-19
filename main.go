@@ -95,7 +95,7 @@ func main() {
 			BorderTop(true).
 			BorderBottom(true).
 			BorderForeground(borderStyle).
-			Render("Provide string to transform" + divider + info("[ Enter 2 empty lines to process ] "+version))
+			Render("Provide string to transform" + divider + info("[ Enter 2 empty lines to process ] v"+version))
 
 		welcome.WriteString(title)
 
