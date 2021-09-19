@@ -13,6 +13,9 @@ import (
 	"github.com/charmbracelet/lipgloss"
 )
 
+// version specify version of application using ldflags
+var version string
+
 var items = []list.Item{
 	item{title: "Base64 Encoding", desc: "Encode your text to Base64", processor: processors.Base64Encode},
 	item{title: "Base64 Decode", desc: "Encode your text from Base64", processor: processors.Base64Decode},
@@ -71,7 +74,13 @@ type model struct {
 func main() {
 	var input string
 	flag.StringVar(&input, "i", "", "string to process")
+	versionFlag := flag.Bool("v", false, "display version of application")
 	flag.Parse()
+
+	if *versionFlag == true {
+		fmt.Println("version: ", version)
+		return
+	}
 
 	if input == "" {
 		divider := lipgloss.NewStyle().Padding(0, 1).Foreground(borderStyle).SetString("•").String()
@@ -86,7 +95,7 @@ func main() {
 			BorderTop(true).
 			BorderBottom(true).
 			BorderForeground(borderStyle).
-			Render("Provide string to transform" + divider + info("[ Enter 2 empty lines to process ]"))
+			Render("Provide string to transform" + divider + info("[ Enter 2 empty lines to process ] "+version))
 
 		welcome.WriteString(title)
 
