@@ -39,8 +39,8 @@ archives:
       arm: arm
       arm64: arm64
       darwin: macOS
-      linux: Linux
-      windows: Windows
+      linux: linux
+      windows: windows
 
 brews:
   - tap:
