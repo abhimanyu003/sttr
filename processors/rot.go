@@ -11,9 +11,9 @@ func rot13(r rune) rune {
 		// Rotate lowercase letters 13 places.
 		if r >= 'm' {
 			return r - 13
-		} else {
-			return r + 13
 		}
+
+		return r + 13
 	} else if r >= 'A' && r <= 'Z' {
 		// Rotate uppercase letters 13 places.
 		if r >= 'M' {
