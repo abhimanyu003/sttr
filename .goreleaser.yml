@@ -13,7 +13,7 @@ builds:
   - main: ./main.go
     binary: sttr
     goos: ['linux', 'darwin', 'windows']
-    goarch: ['386', 'amd64', 'arm', 'arm64']
+    goarch: ['386', 'amd64']
     env:
       - CGO_ENABLED=0
 
@@ -36,13 +36,11 @@ archives:
     replacements:
       amd64: 64bit
       386: 32bit
-      arm: ARM
-      arm64: ARM64
+      arm: arm
+      arm64: arm64
       darwin: macOS
       linux: Linux
       windows: Windows
-    files:
-      - README.md
 
 brews:
   - tap:
