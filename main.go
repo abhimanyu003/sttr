@@ -70,8 +70,7 @@ type model struct {
 
 func main() {
 	var input string
-	i := flag.String("i", "", "input string for processing")
-	input = *i
+	flag.StringVar(&input, "i", "", "string to process")
 	flag.Parse()
 
 	if input == "" {
