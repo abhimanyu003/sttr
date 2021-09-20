@@ -20,9 +20,9 @@ func rot13(r rune) rune {
 		// Rotate uppercase letters 13 places.
 		if r >= 'M' {
 			return r - 13
-		} else {
-			return r + 13
 		}
+
+		return r + 13
 	}
 	// Do nothing.
 	return r
