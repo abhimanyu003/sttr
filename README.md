@@ -81,6 +81,7 @@ sttr -i "your string"
 * StringToCamel
 * StringReverse
 * CountNumberCharacters
+* CountWords
 * MD5Encode
 * SHA1Encode
 * SHA256Encode

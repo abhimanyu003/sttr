@@ -315,3 +315,36 @@ func TestStringReverse(t *testing.T) {
 		})
 	}
 }
+
+func TestCountWords(t *testing.T) {
+	type args struct {
+		input string
+	}
+	tests := []struct {
+		name string
+		args args
+		want string
+	}{
+		{
+			name: "count number of words in string",
+			args: args{input: "hello world"},
+			want: "2",
+		}, {
+			name: "count number of words in string contains spaces",
+			args: args{input: " This  is string having spaces?"},
+			want: "5",
+		},
+		{
+			name: "count number of words in comma separated string",
+			args: args{input: "word1, word2, word3"},
+			want: "3",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := CountWords(tt.args.input); got != tt.want {
+				t.Errorf("CountWords() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}

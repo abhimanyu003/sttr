@@ -63,6 +63,12 @@ func CountNumberCharacters(input string) string {
 	return fmt.Sprintf("%d", len(input))
 }
 
+// CountWords count number of words in string.
+// Example: "hello world" = 2
+func CountWords(input string) string {
+	return fmt.Sprintf("%d", len(strings.Fields(input)))
+}
+
 // SortLines sort given list, it's not a natural sort.
 func SortLines(input string) string {
 	sorted := strings.Split(input, "\n")
