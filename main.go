@@ -7,7 +7,7 @@ import (
 	"github.com/abhimanyu003/sttr/processors"
 	"os"
 	"strings"
-
+  
 	"github.com/charmbracelet/bubbles/list"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
