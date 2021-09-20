@@ -6,7 +6,8 @@ import (
 	"fmt"
 	"os"
 	"strings"
-	"sttr/processors"
+
+	"github.com/abhimanyu003/sttr/processors"
 
 	"github.com/charmbracelet/bubbles/list"
 	tea "github.com/charmbracelet/bubbletea"
