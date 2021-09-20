@@ -69,6 +69,16 @@ func CountWords(input string) string {
 	return fmt.Sprintf("%d", len(strings.Fields(input)))
 }
 
+// CountLines count number of words in string.
+// Example: "line 1\n line 2" = 2
+func CountLines(input string) string {
+	lines := strings.Count(input, "\n")
+	if len(input) > 0 && !strings.HasSuffix(input, "\n") {
+		lines++
+	}
+	return fmt.Sprintf("%d", lines)
+}
+
 // SortLines sort given list, it's not a natural sort.
 func SortLines(input string) string {
 	sorted := strings.Split(input, "\n")

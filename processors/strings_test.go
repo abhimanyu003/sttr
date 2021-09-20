@@ -348,3 +348,42 @@ func TestCountWords(t *testing.T) {
 		})
 	}
 }
+
+func TestCountLines(t *testing.T) {
+	type args struct {
+		input string
+	}
+	tests := []struct {
+		name string
+		args args
+		want string
+	}{
+		{
+			name: "Count one line",
+			args: args{input: "one line"},
+			want: "1",
+		},
+		{
+			name: "Count two line",
+			args: args{input: "1st line\n 2nd line"},
+			want: "2",
+		},
+		{
+			name: "Count empty line",
+			args: args{input: "\n\n\n"},
+			want: "3",
+		},
+		{
+			name: "Count empty + text line",
+			args: args{input: "\n\n2nd line\n"},
+			want: "3",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := CountLines(tt.args.input); got != tt.want {
+				t.Errorf("CountLines() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}

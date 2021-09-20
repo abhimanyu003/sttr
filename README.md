@@ -82,6 +82,7 @@ sttr -i "your string"
 * StringReverse
 * CountNumberCharacters
 * CountWords
+* CountLines
 * MD5Encode
 * SHA1Encode
 * SHA256Encode

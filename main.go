@@ -38,6 +38,8 @@ var items = []list.Item{
 		processor: processors.CountNumberCharacters},
 	item{title: "Count Number Of Words", desc: "Count the number of words in  your text",
 		processor: processors.CountWords},
+	item{title: "Count Number Of Lines", desc: "Count the number of lines in  your text",
+		processor: processors.CountLines},
 
 	item{title: "MD5 Encode", desc: "Encode your text to MD5", processor: processors.MD5Encode},
 	item{title: "SHA1 Encode", desc: "Encode your text to SHA1", processor: processors.SHA1Encode},
