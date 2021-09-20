@@ -1,4 +1,4 @@
-module sttr
+module github.com/abhimanyu003/sttr
 
 go 1.17
 
