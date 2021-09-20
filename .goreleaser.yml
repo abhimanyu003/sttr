@@ -1,7 +1,17 @@
 project_name: 'sttr'
 
+# before are hooks that will be run before any builds are done, so good to put install scripts and stuff that your builds need here
+before:
+  hooks:
+    # Remove unused packaged from the build process
+    - go mod tidy
+    # You may remove this if you don't use go modules - Downloads all modules specified in go.mod
+    - go mod download
+
+
 builds:
-  - main: ''
+  - main: ./main.go
+    binary: sttr
     goos: ['linux', 'darwin', 'windows']
     goarch: ['386', 'amd64']
     env:
@@ -11,3 +21,24 @@ changelog:
   sort: 'asc'
   filters:
     exclude: ['^docs:', 'demo', '^test:', 'Merge pull request', 'Merge branch']
+
+brews:
+  - tap:
+      owner: abhimanyu003
+      name: homebrew-sttr
+  - name: sttr
+    homepage: "https://github.com/abhimanyu003/sttr"
+    description: "A cross-platform, cli app to perform various string operations."
+    license: "MIT"
+    skip_upload: auto
+    commit_author:
+      name: abhimanyu003
+      email: abhimanyusharma003@gmail.com
+    folder: Formula
+    install: |-
+      bin.install "sttr"
+      bash_completion.install "completions/sttr.bash" => "sttr"
+      zsh_completion.install "completions/sttr.zsh" => "_sttr"
+      fish_completion.install "completions/sttr.fish"
+    test: |
+      system "#{bin}/sttr -v"
