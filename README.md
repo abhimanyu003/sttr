@@ -12,14 +12,14 @@ sttr
 sttr -i "your string"
 ```
 
-# Demo
+# :movie_camera: Demo
 
 ![sttr demo](./media/demo.gif)
 
 
-# Installation
+# :battery: Installation
 
-## Quick install
+#### Quick install
 
 You can run the below `curl` to install it somewhere in your PATH for easy use.
 Ideally it will be installed at `./bin` folder
@@ -28,7 +28,7 @@ Ideally it will be installed at `./bin` folder
 curl -sfL https://raw.githubusercontent.com/abhimanyu003/sttr/main/install.sh | sh
 ```
 
-## Homebrew
+#### Homebrew
 
 If you are on macOS and using Homebrew, you can install `sttr` with the following:
 
@@ -37,17 +37,17 @@ brew tap abhimanyu003/sttr
 brew install sttr
 ```
 
-## Go 
+#### Go 
 
 ```go
 go install github.com/abhimanyu003/sttr@latest
 ```
 
-## Manually
+#### Manually
 
 Download the pre-compiled binaries from the [Release!](https://github.com/abhimanyu003/sttr/releases) page and copy them to the desired location.
 
-# Guide
+# :books: Guide
 
 * After installation simply run `sttr` command.
 
@@ -65,34 +65,36 @@ sttr -i "your string"
 * Can also press UP-Down arrows select various operations.
 
 
-# Supported Operations
+# :boom: Supported Operations
 
-* Base64Encode
-* Base64Decode
-* URLEncode
-* URLDecode
-* ROT13Encode
-* StringToTitle
-* StringToLower
-* StringToUpper
-* StringToSnakeCase
-* StringToKebab
-* StringToSlug
-* StringToCamel
-* StringReverse
-* CountNumberCharacters
-* CountWords
-* CountLines
-* MD5Encode
-* SHA1Encode
-* SHA256Encode
-* SHA512Encode
-* FormatJSON
-* JSONToYAML
-* YAMLToJSON
-* HexToRGB
-* SortLines
-* and adding more....
+
+- [x] Base64 Encode
+- [x] Base64 Decode
+- [x] URL Encode
+- [x] URL Decode
+- [x] ROT13 Encode
+- [x] String To Title
+- [x] String To lower
+- [x] String To UPPER
+- [x] String To snake_case
+- [x] String To Kebab
+- [x] String To Slug
+- [x] String To Camel
+- [x] String Reverse
+- [x] Count Number Characters
+- [x] Count Words
+- [x] Count Lines
+- [x] MD5 Encode
+- [x] SHA1 Encode
+- [x] SHA256 Encode
+- [x] SHA512 Encode
+- [x] Format JSON
+- [x] JSON To YAML
+- [x] YAML To JSON
+- [x] Hex To RGB
+- [x] Sort Lines
+- [x] **and adding more....**
+
 
 # License
 
