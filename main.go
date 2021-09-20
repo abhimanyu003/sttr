@@ -2,11 +2,11 @@ package main
 
 import (
 	"bufio"
-	"code/processors"
 	"flag"
 	"fmt"
 	"os"
 	"strings"
+	"sttr/processors"
 
 	"github.com/charmbracelet/bubbles/list"
 	tea "github.com/charmbracelet/bubbletea"
