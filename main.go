@@ -18,7 +18,7 @@ var version string
 
 var items = []list.Item{
 	item{title: "Base64 Encoding", desc: "Encode your text to Base64", processor: processors.Base64Encode},
-	item{title: "Base64 Decode", desc: "Encode your text from Base64", processor: processors.Base64Decode},
+	item{title: "Base64 Decode", desc: "Decode your Base64 text", processor: processors.Base64Decode},
 
 	item{title: "URL Encode", desc: "Encode URL entities", processor: processors.URLEncode},
 	item{title: "URL Decode", desc: "Decode URL entities", processor: processors.URLDecode},
@@ -34,25 +34,25 @@ var items = []list.Item{
 	item{title: "To Camel Case", desc: "Convert your text to CamelCase", processor: processors.StringToCamel},
 	item{title: "Reverse String", desc: "Reverse String ( gnirtS esreveR )", processor: processors.StringReverse},
 
-	item{title: "Count Number Of Characters", desc: "Find Length of your text including spaces",
+	item{title: "Count Number of Characters", desc: "Find the length of your text (including spaces)",
 		processor: processors.CountNumberCharacters},
-	item{title: "Count Number Of Words", desc: "Count the number of words in  your text",
+	item{title: "Count Number of Words", desc: "Count the number of words in your text",
 		processor: processors.CountWords},
-	item{title: "Count Number Of Lines", desc: "Count the number of lines in  your text",
+	item{title: "Count Number of Lines", desc: "Count the number of lines in your text",
 		processor: processors.CountLines},
 
-	item{title: "MD5 Encode", desc: "Encode your text to MD5", processor: processors.MD5Encode},
-	item{title: "SHA1 Encode", desc: "Encode your text to SHA1", processor: processors.SHA1Encode},
-	item{title: "SHA256 Encode", desc: "Encode your text to SHA1", processor: processors.SHA256Encode},
-	item{title: "SHA512 Encode", desc: "Encode your text to SHA1", processor: processors.SHA512Encode},
+	item{title: "MD5 Sum", desc: "Get the MD5 checksum of your text", processor: processors.MD5Encode},
+	item{title: "SHA1 Sum", desc: "Get the SHA1 checksum of your text", processor: processors.SHA1Encode},
+	item{title: "SHA256 Sum", desc: "Get the SHA256 checksum of your text", processor: processors.SHA256Encode},
+	item{title: "SHA512 Sum", desc: "Get the SHA512 checksum of your text", processor: processors.SHA512Encode},
 
-	item{title: "Format JSON", desc: "Encode your text to SHA1", processor: processors.FormatJSON},
+	item{title: "Format JSON", desc: "Format your text as JSON", processor: processors.FormatJSON},
 	item{title: "JSON To YAML", desc: "Convert JSON to YAML text", processor: processors.JSONToYAML},
 	item{title: "YAML To JSON", desc: "Convert YAML to JSON text", processor: processors.YAMLToJSON},
 
-	item{title: "Hex To RGB", desc: "Convert #Hex Code To RGB", processor: processors.HexToRGB},
+	item{title: "Hex To RGB", desc: "Convert a #Hex code to RGB", processor: processors.HexToRGB},
 
-	item{title: "Sort Lines", desc: "Sort Lines Alphabetically", processor: processors.SortLines},
+	item{title: "Sort Lines", desc: "Sort lines alphabetically", processor: processors.SortLines},
 }
 
 var appStyle = lipgloss.NewStyle().Width(80)
