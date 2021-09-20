@@ -1,4 +1,4 @@
-module code
+module sttr
 
 go 1.17
 

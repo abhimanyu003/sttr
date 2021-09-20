@@ -4,7 +4,7 @@
 
 `sttr` is command line software that allows you to quickly run various transformation operations on the string.
 
-```sh
+```go
 // With input prompt
 sttr
 
@@ -19,17 +19,45 @@ sttr -i "your string"
 
 # Installation
 
-WIP
+## Quick install
+
+You can run the below `curl` to install it somewhere in your PATH for easy use.
+Ideally it will be installed at `./bin` folder
+
+```go
+curl -sfL https://raw.githubusercontent.com/abhimanyu003/sttr/main/install.sh | sh
+```
+
+## Homebrew
+
+If you are on macOS and using Homebrew, you can install `sttr` with the following:
+
+```go
+brew tap abhimanyu003/sttr
+brew install sttr
+```
+
+## Go 
+
+```go
+go install github.com/abhimanyu003/sttr@latest
+```
+
+## Manually
+
+Download the pre-compiled binaries from the [Release!](https://github.com/abhimanyu003/sttr/releases) page and copy them to the desired location.
 
 # Guide
 
 * After installation simply run `sttr` command.
-```
-// With input prompt
-sttr
-( Press two enter to open operation menu )
 
-// Direct string input
+```go
+// With input prompt
+
+sttr 
+// ( Press two enter to open operation menu )
+
+// You can also provide string directly without any prompt.
 sttr -i "your string"
 ```
 
