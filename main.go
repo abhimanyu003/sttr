@@ -116,10 +116,12 @@ func main() {
 	}
 }
 
+// Init ...
 func (m model) Init() tea.Cmd {
 	return nil
 }
 
+// View view builder
 func (m model) View() string {
 	if m.output != "" {
 		return lipgloss.NewStyle().
@@ -134,6 +136,7 @@ func (m model) View() string {
 	return appStyle.Margin(1, 1).Render(m.list.View())
 }
 
+// Update handle all the input events and cases.
 func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	var data string
 
