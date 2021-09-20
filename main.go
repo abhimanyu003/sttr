@@ -4,9 +4,9 @@ import (
 	"bufio"
 	"flag"
 	"fmt"
+	"github.com/abhimanyu003/sttr/processors"
 	"os"
 	"strings"
-	"sttr/processors"
 
 	"github.com/charmbracelet/bubbles/list"
 	tea "github.com/charmbracelet/bubbletea"
