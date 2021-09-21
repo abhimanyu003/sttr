@@ -7,7 +7,7 @@ import (
 	"github.com/abhimanyu003/sttr/processors"
 	"os"
 	"strings"
-  
+
 	"github.com/charmbracelet/bubbles/list"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
@@ -51,6 +51,8 @@ var items = []list.Item{
 	item{title: "YAML To JSON", desc: "Convert YAML to JSON text", processor: processors.YAMLToJSON},
 
 	item{title: "Hex To RGB", desc: "Convert a #Hex code to RGB", processor: processors.HexToRGB},
+	item{title: "Hexadecimal To String", desc: "Convert Hexadecimal to String", processor: processors.HexToString},
+	item{title: "String To Hexadecimal", desc: "Convert your text to Hexadecimal", processor: processors.StringToHex},
 
 	item{title: "Sort Lines", desc: "Sort lines alphabetically", processor: processors.SortLines},
 }

@@ -92,6 +92,8 @@ sttr -i "your string"
 - [x] JSON To YAML
 - [x] YAML To JSON
 - [x] Hex To RGB
+- [x] Hexadecimal To String
+- [x] String to Hexadecimal
 - [x] Sort Lines
 - [x] **and adding more....**
 
