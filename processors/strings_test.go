@@ -18,11 +18,16 @@ func TestCountNumberCharacters(t *testing.T) {
 		}, {
 			name: "Emoji",
 			args: args{input: "😃😇🙃🙂😉😌😙😗🇮🇳"},
-			want: "40",
+			want: "10",
 		}, {
 			name: "Multi line string",
 			args: args{input: "123345\nabcd\n456\n123\nabc\n567\n7890"},
 			want: "32",
+		},
+		{
+			name: "Double-byte characters",
+			args: args{input: "你好"},
+			want: "2",
 		},
 	}
 	for _, tt := range tests {

@@ -60,7 +60,7 @@ func StringToSlug(input string) string {
 
 // CountNumberCharacters count number of Characters including spaces.
 func CountNumberCharacters(input string) string {
-	return fmt.Sprintf("%d", len(input))
+	return fmt.Sprintf("%d", len([]rune(input)))
 }
 
 // CountWords count number of words in string.
