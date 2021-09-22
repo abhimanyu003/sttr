@@ -5,8 +5,6 @@ before:
   hooks:
     # Remove unused packaged from the build process
     - go mod tidy
-    # You may remove this if you don't use go modules - Downloads all modules specified in go.mod
-    - go mod download
 
 
 builds:
@@ -26,7 +24,7 @@ brews:
   - tap:
       owner: abhimanyu003
       name: homebrew-sttr
-  - name: sttr
+    name: sttr
     homepage: "https://github.com/abhimanyu003/sttr"
     description: "A cross-platform, cli app to perform various string operations."
     license: "MIT"
