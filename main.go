@@ -4,9 +4,10 @@ import (
 	"bufio"
 	"flag"
 	"fmt"
-	"github.com/abhimanyu003/sttr/processors"
 	"os"
 	"strings"
+
+	"github.com/abhimanyu003/sttr/processors"
 
 	"github.com/charmbracelet/bubbles/list"
 	tea "github.com/charmbracelet/bubbletea"
@@ -81,10 +82,21 @@ func main() {
 	var input string
 	flag.StringVar(&input, "i", "", "string to process")
 	versionFlag := flag.Bool("v", false, "display version of application")
+	helpFlag := flag.Bool("h", false, "display possible string transformation")
 	flag.Parse()
 
 	if *versionFlag == true {
 		fmt.Println("version: ", version)
+		return
+	}
+
+	//display possibilities
+	if *helpFlag == true {
+		fmt.Printf("%d transformations available\n", len(items))
+		for _, listItem := range items {
+			item := listItem.(item)
+			fmt.Printf("%s - %s \n", item.title, item.desc)			
+		}
 		return
 	}
 
