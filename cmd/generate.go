@@ -96,12 +96,12 @@ import (
 var {{ $camel }}_flag_{{ .Short }} {{ .Type.String | Lower }}
 {{ end }}
 func init() {
-{{- range .Flags }}
-	{{- if .Type.IsString }}
-	{{ $camel }}Cmd.Flags().{{ .Type }}VarP(&{{ $camel }}_flag_{{ .Short }}, "{{ .Name }}",  "{{ .Short }}", "{{ .Value }}", "{{ .Desc }}")
-	{{- else }}	
-	{{ $camel }}Cmd.Flags().{{ .Type }}VarP(&{{ $camel }}_flag_{{ .Short }}, "{{ .Name }}",  "{{ .Short }}", {{ .Value }}, "{{ .Desc }}")
-	{{- end }}	
+{{- range .Flags -}}
+{{- if .Type.IsString }}
+	{{ $camel }}Cmd.Flags().{{ .Type }}VarP(&{{ $camel }}_flag_{{ .Short }}, "{{ .Name }}", "{{ .Short }}", "{{ .Value }}", "{{ .Desc }}")
+{{- else }}	
+	{{ $camel }}Cmd.Flags().{{ .Type }}VarP(&{{ $camel }}_flag_{{ .Short }}, "{{ .Name }}", "{{ .Short }}", {{ .Value }}, "{{ .Desc }}")
+{{- end }}	
 {{- end }}
 	rootCmd.AddCommand({{ .Camel }}Cmd)
 }
@@ -133,7 +133,7 @@ var {{ .Camel }}Cmd = &cobra.Command{
 		if err != nil {
 			return err
 		}
-		
+
 		_, err = fmt.Fprint(os.Stdout, out)
 		return err
 	},
