@@ -1,6 +1,8 @@
 package cmd
 
 import (
+	"io/ioutil"
+
 	"github.com/abhimanyu003/sttr/ui"
 	"github.com/spf13/cobra"
 )
@@ -14,8 +16,22 @@ var interactiveCmd = &cobra.Command{
 	Short: "Use sttr in interactive mode",
 	Long: `Launches a nice terminal UI where you
 can explore the available processors interactively`,
-	Run: func(cmd *cobra.Command, args []string) {
-		x := ui.Ui{}
+	RunE: func(cmd *cobra.Command, args []string) error {
+		var err error
+		in := ""
+
+		if len(args) == 0 {
+			all, err := ioutil.ReadAll(cmd.InOrStdin())
+			if err != nil {
+				return err
+			}
+			in = string(all)
+		} else {
+			in = args[0]
+		}
+
+		x := ui.New(in)
 		x.Render()
+		return err
 	},
 }

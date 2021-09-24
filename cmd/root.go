@@ -14,11 +14,7 @@ var rootCmd = &cobra.Command{
 transformation operations on the input text.
 
 Complete documentation is available at https://github.com/abhimanyu003/sttr`,
-	Args: func(cmd *cobra.Command, args []string) error {
-		return nil
-	},
 	Run: func(cmd *cobra.Command, args []string) {
-		// Do Stuff Here
 	},
 }
 

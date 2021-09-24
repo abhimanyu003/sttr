@@ -24,6 +24,12 @@ type Ui struct {
 	output string
 }
 
+func New(input string) Ui {
+	return Ui{
+		input: input,
+	}
+}
+
 func (u Ui) Render() {
 	if u.input == "" {
 		divider := lipgloss.NewStyle().Padding(0, 1).Foreground(borderStyle).SetString("•").String()
