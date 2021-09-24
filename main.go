@@ -2,15 +2,12 @@ package main
 
 import (
 	"github.com/abhimanyu003/sttr/cmd"
-
-	"github.com/abhimanyu003/sttr/processors"
-
-	"github.com/charmbracelet/bubbles/list"
 )
 
 // version specify version of application using ldflags
 var version = "dev"
 
+/*
 var items = []list.Item{
 	item{title: "Base64 Encoding", args: []string{"b64-enc", "b64-encode", "base64-encode"}, desc: "Encode your text to Base64", processor: processors.Base64Encode},
 	item{title: "Base64 Decode", args: []string{"b64-dec", "b64-decode", "base64-decode"}, desc: "Decode your Base64 text", processor: processors.Base64Decode},
@@ -62,6 +59,8 @@ type item struct {
 	desc      string
 	processor func(string) string
 }
+
+*/
 
 func main() {
 	cmd.Version = version

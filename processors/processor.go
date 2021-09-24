@@ -8,6 +8,16 @@ import (
 
 var List = []list.Item{
 	Lower{},
+	Upper{},
+	Title{},
+	Snake{},
+	Kebab{},
+	Slug{},
+	Camel{},
+	Reverse{},
+	CountCharacters{},
+	CountWords{},
+	CountLines{},
 	Example{},
 }
 
@@ -32,16 +42,20 @@ type Option struct {
 // After implementing add the struct to List
 type Example struct{}
 
+func (p Example) Name() string {
+	return "name"
+}
+
+func (p Example) Transform(input string, _ ...Option) string {
+	return fmt.Sprintf("Example: %s", input)
+}
+
 func (p Example) Title() string {
 	return "Example"
 }
 
 func (p Example) Description() string {
 	return "Prefix your input with 'Example: '"
-}
-
-func (p Example) Transform(input string, _ ...Option) string {
-	return fmt.Sprintf("Example: %s", input)
 }
 
 func (p Example) FilterValue() string {
