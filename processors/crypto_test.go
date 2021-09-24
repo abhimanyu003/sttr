@@ -2,14 +2,16 @@ package processors
 
 import "testing"
 
-func TestMD5Encode(t *testing.T) {
+func TestMD5Encode_Transform(t *testing.T) {
 	type args struct {
 		data string
+		in1  []Flag
 	}
 	tests := []struct {
-		name string
-		args args
-		want string
+		name    string
+		args    args
+		want    string
+		wantErr bool
 	}{
 		{
 			name: "String",
@@ -27,21 +29,29 @@ func TestMD5Encode(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := MD5Encode(tt.args.data); got != tt.want {
-				t.Errorf("MD5Encode() = %v, want %v", got, tt.want)
+			p := MD5Encode{}
+			got, err := p.Transform(tt.args.data, tt.args.in1...)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("Transform() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			if got != tt.want {
+				t.Errorf("Transform() got = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestSHA1Encode(t *testing.T) {
+func TestSHA1Encode_Transform(t *testing.T) {
 	type args struct {
 		data string
+		in1  []Flag
 	}
 	tests := []struct {
-		name string
-		args args
-		want string
+		name    string
+		args    args
+		want    string
+		wantErr bool
 	}{
 		{
 			name: "String",
@@ -59,21 +69,29 @@ func TestSHA1Encode(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := SHA1Encode(tt.args.data); got != tt.want {
-				t.Errorf("SHA1Encode() = %v, want %v", got, tt.want)
+			p := SHA1Encode{}
+			got, err := p.Transform(tt.args.data, tt.args.in1...)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("Transform() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			if got != tt.want {
+				t.Errorf("Transform() got = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestSHA256Encode(t *testing.T) {
+func TestSHA256Encode_Transform(t *testing.T) {
 	type args struct {
 		data string
+		in1  []Flag
 	}
 	tests := []struct {
-		name string
-		args args
-		want string
+		name    string
+		args    args
+		want    string
+		wantErr bool
 	}{
 		{
 			name: "String",
@@ -91,21 +109,29 @@ func TestSHA256Encode(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := SHA256Encode(tt.args.data); got != tt.want {
-				t.Errorf("SHA256Encode() = %v, want %v", got, tt.want)
+			p := SHA256Encode{}
+			got, err := p.Transform(tt.args.data, tt.args.in1...)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("Transform() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			if got != tt.want {
+				t.Errorf("Transform() got = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestSHA512Encode(t *testing.T) {
+func TestSHA512Encode_Transform(t *testing.T) {
 	type args struct {
 		data string
+		in1  []Flag
 	}
 	tests := []struct {
-		name string
-		args args
-		want string
+		name    string
+		args    args
+		want    string
+		wantErr bool
 	}{
 		{
 			name: "String",
@@ -123,8 +149,14 @@ func TestSHA512Encode(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := SHA512Encode(tt.args.data); got != tt.want {
-				t.Errorf("SHA512Encode() = %v, want %v", got, tt.want)
+			p := SHA512Encode{}
+			got, err := p.Transform(tt.args.data, tt.args.in1...)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("Transform() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			if got != tt.want {
+				t.Errorf("Transform() got = %v, want %v", got, tt.want)
 			}
 		})
 	}
