@@ -3,7 +3,10 @@ package utils
 import (
 	"bufio"
 	"os"
+	"regexp"
 	"strings"
+
+	"github.com/iancoleman/strcase"
 )
 
 // ReadMultilineInput read multiple lines from stdin,
@@ -27,4 +30,14 @@ func ReadMultilineInput() string {
 	}
 	// Use collected inputs
 	return strings.Join(str[:len(str)-1], "\n")
+}
+
+func ToKebabCase(input string) string {
+	input = regexp.MustCompile(`\s+`).ReplaceAllString(input, " ")
+	return strcase.ToKebab(input)
+}
+
+func ToLowerCamelCase(input string) string {
+	input = regexp.MustCompile(`\s+`).ReplaceAllString(input, " ")
+	return strcase.ToLowerCamel(input)
 }

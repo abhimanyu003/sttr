@@ -62,6 +62,8 @@ type item struct {
 
 */
 
+//go:generate go run cmd/generate.go
+
 func main() {
 	cmd.Version = version
 	cmd.Execute()

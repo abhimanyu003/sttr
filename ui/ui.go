@@ -69,14 +69,17 @@ func (u Ui) View() string {
 }
 
 func (u Ui) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
-	var data string
-
 	switch msg := msg.(type) {
 	case tea.KeyMsg:
 		if keypress := msg.String(); keypress == "enter" {
+			var data string
+			var err error
 			i, ok := u.list.SelectedItem().(processors.Processor)
 			if ok {
-				data = i.Transform(u.input)
+				data, err = i.Transform(u.input)
+				if err != nil {
+					data = fmt.Sprintf("error: %s", err.Error())
+				}
 			}
 			u.output = data
 			return u, tea.Quit

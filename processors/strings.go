@@ -6,6 +6,8 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/abhimanyu003/sttr/utils"
+
 	"github.com/iancoleman/strcase"
 )
 
@@ -17,8 +19,12 @@ func (p Lower) Name() string {
 	return "lower"
 }
 
-func (p Lower) Transform(input string, _ ...Option) string {
-	return strings.ToLower(input)
+func (p Lower) Transform(input string, _ ...Flag) (string, error) {
+	return strings.ToLower(input), nil
+}
+
+func (p Lower) Flags() []Flag {
+	return nil
 }
 
 func (p Lower) Title() string {
@@ -41,8 +47,12 @@ func (p Upper) Name() string {
 	return "upper"
 }
 
-func (p Upper) Transform(input string, _ ...Option) string {
-	return strings.ToUpper(input)
+func (p Upper) Transform(input string, _ ...Flag) (string, error) {
+	return strings.ToUpper(input), nil
+}
+
+func (p Upper) Flags() []Flag {
+	return nil
 }
 
 func (p Upper) Title() string {
@@ -65,8 +75,12 @@ func (p Title) Name() string {
 	return "title"
 }
 
-func (p Title) Transform(input string, _ ...Option) string {
-	return strings.Title(input)
+func (p Title) Transform(input string, _ ...Flag) (string, error) {
+	return strings.Title(input), nil
+}
+
+func (p Title) Flags() []Flag {
+	return nil
 }
 
 func (p Title) Title() string {
@@ -89,9 +103,13 @@ func (p Snake) Name() string {
 	return "snake"
 }
 
-func (p Snake) Transform(input string, _ ...Option) string {
+func (p Snake) Transform(input string, _ ...Flag) (string, error) {
 	input = regexp.MustCompile(`\s+`).ReplaceAllString(input, " ")
-	return strcase.ToSnake(input)
+	return strcase.ToSnake(input), nil
+}
+
+func (p Snake) Flags() []Flag {
+	return nil
 }
 
 func (p Snake) Title() string {
@@ -114,9 +132,12 @@ func (p Kebab) Name() string {
 	return "kebap"
 }
 
-func (p Kebab) Transform(input string, _ ...Option) string {
-	input = regexp.MustCompile(`\s+`).ReplaceAllString(input, " ")
-	return strcase.ToKebab(input)
+func (p Kebab) Transform(input string, _ ...Flag) (string, error) {
+	return utils.ToKebabCase(input), nil
+}
+
+func (p Kebab) Flags() []Flag {
+	return nil
 }
 
 func (p Kebab) Title() string {
@@ -139,9 +160,13 @@ func (p Camel) Name() string {
 	return "camel"
 }
 
-func (p Camel) Transform(input string, _ ...Option) string {
+func (p Camel) Transform(input string, _ ...Flag) (string, error) {
 	input = regexp.MustCompile(`\s+`).ReplaceAllString(input, " ")
-	return strcase.ToCamel(input)
+	return strcase.ToCamel(input), nil
+}
+
+func (p Camel) Flags() []Flag {
+	return nil
 }
 
 func (p Camel) Title() string {
@@ -164,9 +189,13 @@ func (p Slug) Name() string {
 	return "slug"
 }
 
-func (p Slug) Transform(input string, _ ...Option) string {
+func (p Slug) Transform(input string, _ ...Flag) (string, error) {
 	re := regexp.MustCompile("[^a-z0-9]+")
-	return strings.Trim(re.ReplaceAllString(strings.ToLower(input), "-"), "-")
+	return strings.Trim(re.ReplaceAllString(strings.ToLower(input), "-"), "-"), nil
+}
+
+func (p Slug) Flags() []Flag {
+	return nil
 }
 
 func (p Slug) Title() string {
@@ -188,8 +217,12 @@ func (p CountCharacters) Name() string {
 	return "count-chars"
 }
 
-func (p CountCharacters) Transform(input string, _ ...Option) string {
-	return fmt.Sprintf("%d", len(input))
+func (p CountCharacters) Transform(input string, _ ...Flag) (string, error) {
+	return fmt.Sprintf("%d", len(input)), nil
+}
+
+func (p CountCharacters) Flags() []Flag {
+	return nil
 }
 
 func (p CountCharacters) Title() string {
@@ -212,8 +245,12 @@ func (p CountWords) Name() string {
 	return "count-words"
 }
 
-func (p CountWords) Transform(input string, _ ...Option) string {
-	return fmt.Sprintf("%d", len(strings.Fields(input)))
+func (p CountWords) Transform(input string, _ ...Flag) (string, error) {
+	return fmt.Sprintf("%d", len(strings.Fields(input))), nil
+}
+
+func (p CountWords) Flags() []Flag {
+	return nil
 }
 
 func (p CountWords) Title() string {
@@ -236,12 +273,16 @@ func (p CountLines) Name() string {
 	return "count-lines"
 }
 
-func (p CountLines) Transform(input string, _ ...Option) string {
+func (p CountLines) Transform(input string, _ ...Flag) (string, error) {
 	lines := strings.Count(input, "\n")
 	if len(input) > 0 && !strings.HasSuffix(input, "\n") {
 		lines++
 	}
-	return fmt.Sprintf("%d", lines)
+	return fmt.Sprintf("%d", lines), nil
+}
+
+func (p CountLines) Flags() []Flag {
+	return nil
 }
 
 func (p CountLines) Title() string {
@@ -264,10 +305,14 @@ func (p SortLines) Name() string {
 	return "sort-lines"
 }
 
-func (p SortLines) Transform(input string, _ ...Option) string {
+func (p SortLines) Transform(input string, _ ...Flag) (string, error) {
 	sorted := strings.Split(input, "\n")
 	sort.Strings(sorted)
-	return strings.Join(sorted, "\n")
+	return strings.Join(sorted, "\n"), nil
+}
+
+func (p SortLines) Flags() []Flag {
+	return nil
 }
 
 func (p SortLines) Title() string {
@@ -290,11 +335,16 @@ func (p Reverse) Name() string {
 	return "reverse"
 }
 
-func (p Reverse) Transform(input string, _ ...Option) (result string) {
+func (p Reverse) Transform(input string, _ ...Flag) (string, error) {
+	result := ""
 	for _, v := range input {
 		result = string(v) + result
 	}
-	return result
+	return result, nil
+}
+
+func (p Reverse) Flags() []Flag {
+	return nil
 }
 
 func (p Reverse) Title() string {
