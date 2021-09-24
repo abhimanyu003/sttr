@@ -18,12 +18,13 @@ var List = []list.Item{
 	CountCharacters{},
 	CountWords{},
 	CountLines{},
-	Example{},
+	// Example{},
 }
 
 type Processor interface {
 
-	// Name is the name of a processor used as the CLI command, must be one lowercase word
+	// Name is the name of a processor used as the CLI command, must be one lowercase word,
+	// hyphens are allowed
 	Name() string
 
 	// Transform is the text transformation function, implemented by the processor

@@ -10,8 +10,10 @@ import (
 var rootCmd = &cobra.Command{
 	Use:   "sttr",
 	Short: "sttr is a fast and flexible string/text converter",
-	Long: ` 
-                Complete documentation is available at https://github.com/abhimanyu003/sttr`,
+	Long: `sttr is a command line tool that allows you to quickly apply various 
+transformation operations on the input text.
+
+Complete documentation is available at https://github.com/abhimanyu003/sttr`,
 	Run: func(cmd *cobra.Command, args []string) {
 		// Do Stuff Here
 	},

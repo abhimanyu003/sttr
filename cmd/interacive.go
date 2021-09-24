@@ -13,7 +13,7 @@ var interactiveCmd = &cobra.Command{
 	Use:   "interactive",
 	Short: "Use sttr in interactive mode",
 	Long: `Launches a nice terminal UI where you
-can explore the available processors`,
+can explore the available processors interactively`,
 	Run: func(cmd *cobra.Command, args []string) {
 		x := ui.Ui{}
 		x.Render()
