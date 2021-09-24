@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 	"text/template"
 	"time"
 
@@ -55,13 +56,17 @@ func main() {
 }
 
 func generate(d data) {
-	file, err := os.Create("./cmd/" + d.Name + "_processor.go")
+	file, err := os.Create("./cmd/processor_" + d.Name + ".go")
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer file.Close()
 
-	tmpl, err := template.New("test").Parse(t)
+	funcMap := template.FuncMap{
+		"Lower": strings.ToLower,
+	}
+
+	tmpl, err := template.New("test").Funcs(funcMap).Parse(t)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -88,12 +93,15 @@ import (
 
 {{ $camel := .Camel -}}
 {{ range .Flags -}}
-var {{ $camel }}_flag_{{ .Short }} int 
-{{- end }}
-
+var {{ $camel }}_flag_{{ .Short }} {{ .Type.String | Lower }}
+{{ end }}
 func init() {
 {{- range .Flags }}
-	{{ $camel }}Cmd.Flags().IntVarP(&{{ $camel }}_flag_{{ .Short }}, "{{ .Name }}",  "{{ .Short }}", {{ .Value }}, "{{ .Desc }}")
+	{{- if .Type.IsString }}
+	{{ $camel }}Cmd.Flags().{{ .Type }}VarP(&{{ $camel }}_flag_{{ .Short }}, "{{ .Name }}",  "{{ .Short }}", "{{ .Value }}", "{{ .Desc }}")
+	{{- else }}	
+	{{ $camel }}Cmd.Flags().{{ .Type }}VarP(&{{ $camel }}_flag_{{ .Short }}, "{{ .Name }}",  "{{ .Short }}", {{ .Value }}, "{{ .Desc }}")
+	{{- end }}	
 {{- end }}
 	rootCmd.AddCommand({{ .Camel }}Cmd)
 }
@@ -118,7 +126,7 @@ var {{ .Camel }}Cmd = &cobra.Command{
 		p := {{ .SName }}{}
 		flags := make([]processors.Flag, 0)
 		{{- range .Flags }}
-		flags = append(flags, processors.Flag{Short: "{{.Short}}", Value: {{ .Value }}})
+		flags = append(flags, processors.Flag{Short: "{{.Short}}", Value: {{ $camel }}_flag_{{ .Short }}})
 		{{- end }}
 
 		out, err = p.Transform(in, flags...)
@@ -130,6 +138,4 @@ var {{ .Camel }}Cmd = &cobra.Command{
 		return err
 	},
 }
-
-
 `
