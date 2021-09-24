@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/abhimanyu003/sttr/ui"
+
 	"github.com/spf13/cobra"
 )
 
@@ -14,7 +16,12 @@ var rootCmd = &cobra.Command{
 transformation operations on the input text.
 
 Complete documentation is available at https://github.com/abhimanyu003/sttr`,
-	Run: func(cmd *cobra.Command, args []string) {
+	RunE: func(cmd *cobra.Command, args []string) error {
+		if len(args) == 0 {
+			x := ui.New("")
+			x.Render()
+		}
+		return nil
 	},
 }
 
