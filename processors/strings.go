@@ -19,6 +19,10 @@ func (p Lower) Name() string {
 	return "lower"
 }
 
+func (p Lower) Alias() []string {
+	return nil
+}
+
 func (p Lower) Transform(input string, _ ...Flag) (string, error) {
 	return strings.ToLower(input), nil
 }
@@ -45,6 +49,10 @@ type Upper struct{}
 
 func (p Upper) Name() string {
 	return "upper"
+}
+
+func (p Upper) Alias() []string {
+	return nil
 }
 
 func (p Upper) Transform(input string, _ ...Flag) (string, error) {
@@ -75,6 +83,10 @@ func (p Title) Name() string {
 	return "title"
 }
 
+func (p Title) Alias() []string {
+	return nil
+}
+
 func (p Title) Transform(input string, _ ...Flag) (string, error) {
 	return strings.Title(input), nil
 }
@@ -101,6 +113,10 @@ type Snake struct{}
 
 func (p Snake) Name() string {
 	return "snake"
+}
+
+func (p Snake) Alias() []string {
+	return nil
 }
 
 func (p Snake) Transform(input string, _ ...Flag) (string, error) {
@@ -132,6 +148,10 @@ func (p Kebab) Name() string {
 	return "kebap"
 }
 
+func (p Kebab) Alias() []string {
+	return nil
+}
+
 func (p Kebab) Transform(input string, _ ...Flag) (string, error) {
 	return utils.ToKebabCase(input), nil
 }
@@ -158,6 +178,10 @@ type Camel struct{}
 
 func (p Camel) Name() string {
 	return "camel"
+}
+
+func (p Camel) Alias() []string {
+	return nil
 }
 
 func (p Camel) Transform(input string, _ ...Flag) (string, error) {
@@ -189,6 +213,10 @@ func (p Slug) Name() string {
 	return "slug"
 }
 
+func (p Slug) Alias() []string {
+	return nil
+}
+
 func (p Slug) Transform(input string, _ ...Flag) (string, error) {
 	re := regexp.MustCompile("[^a-z0-9]+")
 	return strings.Trim(re.ReplaceAllString(strings.ToLower(input), "-"), "-"), nil
@@ -215,6 +243,10 @@ type CountCharacters struct{}
 
 func (p CountCharacters) Name() string {
 	return "count-chars"
+}
+
+func (p CountCharacters) Alias() []string {
+	return nil
 }
 
 func (p CountCharacters) Transform(input string, _ ...Flag) (string, error) {
@@ -245,6 +277,10 @@ func (p CountWords) Name() string {
 	return "count-words"
 }
 
+func (p CountWords) Alias() []string {
+	return nil
+}
+
 func (p CountWords) Transform(input string, _ ...Flag) (string, error) {
 	return fmt.Sprintf("%d", len(strings.Fields(input))), nil
 }
@@ -271,6 +307,10 @@ type CountLines struct{}
 
 func (p CountLines) Name() string {
 	return "count-lines"
+}
+
+func (p CountLines) Alias() []string {
+	return nil
 }
 
 func (p CountLines) Transform(input string, _ ...Flag) (string, error) {
@@ -305,6 +345,10 @@ func (p SortLines) Name() string {
 	return "sort-lines"
 }
 
+func (p SortLines) Alias() []string {
+	return nil
+}
+
 func (p SortLines) Transform(input string, _ ...Flag) (string, error) {
 	sorted := strings.Split(input, "\n")
 	sort.Strings(sorted)
@@ -333,6 +377,10 @@ type Reverse struct{}
 
 func (p Reverse) Name() string {
 	return "reverse"
+}
+
+func (p Reverse) Alias() []string {
+	return nil
 }
 
 func (p Reverse) Transform(input string, _ ...Flag) (string, error) {

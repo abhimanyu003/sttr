@@ -9,6 +9,8 @@ import (
 )
 
 var List = []list.Item{
+	Base64Encode{},
+	Base64Decode{},
 	Zeropad{},
 	Lower{},
 	Upper{},
@@ -28,6 +30,9 @@ type Processor interface {
 	// Name is the name of a processor used as the CLI command, must be one lowercase word,
 	// hyphens are allowed
 	Name() string
+
+	// Alias is an optional array of alias names for the processor
+	Alias() []string
 
 	// Transform is the text transformation function, implemented by the processor
 	Transform(input string, opts ...Flag) (string, error)
@@ -79,6 +84,10 @@ type Zeropad struct{}
 
 func (p Zeropad) Name() string {
 	return "zeropad"
+}
+
+func (p Zeropad) Alias() []string {
+	return nil
 }
 
 func (p Zeropad) Transform(input string, f ...Flag) (string, error) {
