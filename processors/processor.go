@@ -38,8 +38,17 @@ type Processor interface {
 
 type FlagType string
 
+func (f FlagType) String() string {
+	return string(f)
+}
+
+func (f FlagType) IsString() bool {
+	return f == FlagString
+}
+
 const (
 	FlagInt    = FlagType("Int")
+	FlagUint   = FlagType("Uint")
 	FlagBool   = FlagType("Bool")
 	FlagString = FlagType("String")
 )
@@ -53,7 +62,7 @@ type Flag struct {
 
 	// Desc - required, a short description of the flag
 	Desc string
-	// Type - required the type of the flag, supported are: string, int, uint, bool
+	// Type - required the type of the flag
 	Type FlagType
 
 	// Value - optional default value of the flag
@@ -74,21 +83,32 @@ func (p Zeropad) Name() string {
 
 func (p Zeropad) Transform(input string, f ...Flag) (string, error) {
 	input = strings.TrimSpace(input)
-	_, err := strconv.ParseFloat(input, 64)
+	neg := ""
+	i, err := strconv.ParseFloat(input, 64)
 	if err != nil {
 		return "", fmt.Errorf("number expected: '%s'", input)
 	}
+	if i < 0 {
+		neg = "-"
+		input = input[1:]
+	}
 
 	n := 1
+	pre := ""
 	for _, flag := range f {
 		if flag.Short == "n" {
 			x, ok := flag.Value.(int)
 			if ok {
 				n = x
 			}
+		} else if flag.Short == "p" {
+			x, ok := flag.Value.(string)
+			if ok {
+				pre = x
+			}
 		}
 	}
-	return fmt.Sprintf("%s%s", strings.Repeat("0", n), input), nil
+	return fmt.Sprintf("%s%s%s%s", pre, neg, strings.Repeat("0", n), input), nil
 }
 
 func (p Zeropad) Flags() []Flag {
@@ -99,6 +119,13 @@ func (p Zeropad) Flags() []Flag {
 			Desc:  "Number of zeros to be padded",
 			Value: 5,
 			Type:  FlagInt,
+		},
+		{
+			Name:  "prefix",
+			Short: "p",
+			Desc:  "The number get prefixed with this",
+			Value: "",
+			Type:  FlagString,
 		},
 	}
 }
