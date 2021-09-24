@@ -23,6 +23,17 @@ var List = []list.Item{
 	CountCharacters{},
 	CountWords{},
 	CountLines{},
+	MD5Encode{},
+	SHA1Encode{},
+	SHA256Encode{},
+	SHA512Encode{},
+	FormatJSON{},
+	JSONToYAML{},
+	YAMLToJSON{},
+	HexToRGB{},
+	ROT13Encode{},
+	URLEncode{},
+	URLDecode{},
 }
 
 type Processor interface {

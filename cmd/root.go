@@ -22,10 +22,7 @@ Complete documentation is available at https://github.com/abhimanyu003/sttr`,
 	},
 }
 
-var processor string
-
 func init() {
-	rootCmd.Flags().StringVarP(&processor, "processor", "p", "", "processor to use")
 }
 
 func Execute() {
