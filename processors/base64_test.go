@@ -14,7 +14,7 @@ func TestBase64Encode_Command(t *testing.T) {
 		name        string
 		title       string
 	}{
-		alias:       []string{"b64-enc", "base64-encode"},
+		alias:       []string{"b64-enc", "b64-encode"},
 		description: "Encode your text to Base64",
 		filterValue: "Base64 Encoding",
 		flags:       nil,
