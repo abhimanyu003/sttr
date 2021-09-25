@@ -1,6 +1,46 @@
 package processors
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
+
+func TestRGB_Command(t *testing.T) {
+	test := struct {
+		alias       []string
+		description string
+		filterValue string
+		flags       []Flag
+		name        string
+		title       string
+	}{
+		//alias:       []string{},
+		description: "Convert a #hex-color code to RGB",
+		filterValue: "Hex To RGB",
+		flags:       nil,
+		name:        "hex-rgb",
+		title:       "Hex To RGB",
+	}
+	p := HexToRGB{}
+	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
+		t.Errorf("Alias() = %v, want %v", got, test.alias)
+	}
+	if got := p.Description(); got != test.description {
+		t.Errorf("Description() = %v, want %v", got, test.description)
+	}
+	if got := p.FilterValue(); got != test.filterValue {
+		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+	}
+	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
+		t.Errorf("Flags() = %v, want %v", got, test.flags)
+	}
+	if got := p.Name(); got != test.name {
+		t.Errorf("Name() = %v, want %v", got, test.name)
+	}
+	if got := p.Title(); got != test.title {
+		t.Errorf("Title() = %v, want %v", got, test.title)
+	}
+}
 
 func TestHexToRGB_Transform(t *testing.T) {
 	type args struct {
