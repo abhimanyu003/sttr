@@ -429,27 +429,35 @@ func TestCountLines_Transform(t *testing.T) {
 
 func TestStringToCamel(t *testing.T) {
 	type args struct {
-		input string
+		data string
+		in1  []Flag
 	}
 	tests := []struct {
-		name string
-		args args
-		want string
+		name    string
+		args    args
+		want    string
+		wantErr bool
 	}{
 		{
 			name: "String",
-			args: args{input: "the quick brown fox jumps over a lazy dog"},
+			args: args{data: "the quick brown fox jumps over a lazy dog"},
 			want: "TheQuickBrownFoxJumpsOverALazyDog",
 		}, {
 			name: "String Uppercase",
-			args: args{input: "THE QUICK BROWN FOX JUMPS OVER A LAZY DOG"},
+			args: args{data: "THE QUICK BROWN FOX JUMPS OVER A LAZY DOG"},
 			want: "THEQUICKBROWNFOXJUMPSOVERALAZYDOG",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := StringToCamel(tt.args.input); got != tt.want {
-				t.Errorf("StringToCamel() = %v, want %v", got, tt.want)
+			p := Camel{}
+			got, err := p.Transform(tt.args.data, tt.args.in1...)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("Transform() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			if got != tt.want {
+				t.Errorf("Transform() got = %v, want %v", got, tt.want)
 			}
 		})
 	}

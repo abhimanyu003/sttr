@@ -250,7 +250,7 @@ func (p CountCharacters) Alias() []string {
 }
 
 func (p CountCharacters) Transform(input string, _ ...Flag) (string, error) {
-	return fmt.Sprintf("%d", len(input)), nil
+	return fmt.Sprintf("%d", len([]rune(input))), nil
 }
 
 func (p CountCharacters) Flags() []Flag {

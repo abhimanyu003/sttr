@@ -7,7 +7,7 @@ import (
 )
 
 // HexToRGB convert hex color code to R, G, B codes
-// here we are using input library helper.
+// here we are using data library helper.
 type HexToRGB struct{}
 
 func (p HexToRGB) Name() string {
