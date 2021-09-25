@@ -1,6 +1,46 @@
 package processors
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
+
+func TestMD5Encode_Command(t *testing.T) {
+	test := struct {
+		alias       []string
+		description string
+		filterValue string
+		flags       []Flag
+		name        string
+		title       string
+	}{
+		alias:       []string{"md5"},
+		description: "Get the MD5 checksum of your text",
+		filterValue: "MD5 Sum",
+		flags:       nil,
+		name:        "md5-sum",
+		title:       "MD5 Sum",
+	}
+	p := MD5Encode{}
+	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
+		t.Errorf("Alias() = %v, want %v", got, test.alias)
+	}
+	if got := p.Description(); got != test.description {
+		t.Errorf("Description() = %v, want %v", got, test.description)
+	}
+	if got := p.FilterValue(); got != test.filterValue {
+		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+	}
+	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
+		t.Errorf("Flags() = %v, want %v", got, test.flags)
+	}
+	if got := p.Name(); got != test.name {
+		t.Errorf("Name() = %v, want %v", got, test.name)
+	}
+	if got := p.Title(); got != test.title {
+		t.Errorf("Title() = %v, want %v", got, test.title)
+	}
+}
 
 func TestMD5Encode_Transform(t *testing.T) {
 	type args struct {
@@ -39,6 +79,43 @@ func TestMD5Encode_Transform(t *testing.T) {
 				t.Errorf("Transform() got = %v, want %v", got, tt.want)
 			}
 		})
+	}
+}
+
+func TestSHA1Encode_Command(t *testing.T) {
+	test := struct {
+		alias       []string
+		description string
+		filterValue string
+		flags       []Flag
+		name        string
+		title       string
+	}{
+		alias:       []string{"sha1"},
+		description: "Get the SHA1 checksum of your text",
+		filterValue: "SHA1 Sum",
+		flags:       nil,
+		name:        "sha1-sum",
+		title:       "SHA1 Sum",
+	}
+	p := SHA1Encode{}
+	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
+		t.Errorf("Alias() = %v, want %v", got, test.alias)
+	}
+	if got := p.Description(); got != test.description {
+		t.Errorf("Description() = %v, want %v", got, test.description)
+	}
+	if got := p.FilterValue(); got != test.filterValue {
+		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+	}
+	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
+		t.Errorf("Flags() = %v, want %v", got, test.flags)
+	}
+	if got := p.Name(); got != test.name {
+		t.Errorf("Name() = %v, want %v", got, test.name)
+	}
+	if got := p.Title(); got != test.title {
+		t.Errorf("Title() = %v, want %v", got, test.title)
 	}
 }
 
@@ -82,6 +159,43 @@ func TestSHA1Encode_Transform(t *testing.T) {
 	}
 }
 
+func TestSHA256Encode_Command(t *testing.T) {
+	test := struct {
+		alias       []string
+		description string
+		filterValue string
+		flags       []Flag
+		name        string
+		title       string
+	}{
+		alias:       []string{"sha256"},
+		description: "Get the SHA256 checksum of your text",
+		filterValue: "SHA256 Sum",
+		flags:       nil,
+		name:        "sha256-sum",
+		title:       "SHA256 Sum",
+	}
+	p := SHA256Encode{}
+	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
+		t.Errorf("Alias() = %v, want %v", got, test.alias)
+	}
+	if got := p.Description(); got != test.description {
+		t.Errorf("Description() = %v, want %v", got, test.description)
+	}
+	if got := p.FilterValue(); got != test.filterValue {
+		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+	}
+	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
+		t.Errorf("Flags() = %v, want %v", got, test.flags)
+	}
+	if got := p.Name(); got != test.name {
+		t.Errorf("Name() = %v, want %v", got, test.name)
+	}
+	if got := p.Title(); got != test.title {
+		t.Errorf("Title() = %v, want %v", got, test.title)
+	}
+}
+
 func TestSHA256Encode_Transform(t *testing.T) {
 	type args struct {
 		data string
@@ -119,6 +233,43 @@ func TestSHA256Encode_Transform(t *testing.T) {
 				t.Errorf("Transform() got = %v, want %v", got, tt.want)
 			}
 		})
+	}
+}
+
+func TestSHA512Encode_Command(t *testing.T) {
+	test := struct {
+		alias       []string
+		description string
+		filterValue string
+		flags       []Flag
+		name        string
+		title       string
+	}{
+		alias:       []string{"sha512"},
+		description: "Get the SHA512 checksum of your text",
+		filterValue: "SHA512 Sum",
+		flags:       nil,
+		name:        "sha512-sum",
+		title:       "SHA512 Sum",
+	}
+	p := SHA512Encode{}
+	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
+		t.Errorf("Alias() = %v, want %v", got, test.alias)
+	}
+	if got := p.Description(); got != test.description {
+		t.Errorf("Description() = %v, want %v", got, test.description)
+	}
+	if got := p.FilterValue(); got != test.filterValue {
+		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+	}
+	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
+		t.Errorf("Flags() = %v, want %v", got, test.flags)
+	}
+	if got := p.Name(); got != test.name {
+		t.Errorf("Name() = %v, want %v", got, test.name)
+	}
+	if got := p.Title(); got != test.title {
+		t.Errorf("Title() = %v, want %v", got, test.title)
 	}
 }
 
