@@ -41,7 +41,7 @@ func (p HTMLDecode) Name() string {
 }
 
 func (p HTMLDecode) Alias() []string {
-	return []string{"html-dec", "html-unescapeS"}
+	return []string{"html-dec", "html-unescape"}
 }
 
 func (p HTMLDecode) Transform(input string, _ ...Flag) (string, error) {
