@@ -11,15 +11,14 @@ import (
 	"github.com/spf13/cobra"
 )
 
-
 func init() {
 	rootCmd.AddCommand(countWordsCmd)
 }
 
 var countWordsCmd = &cobra.Command{
-	Use:   "count-words",
-	Short: "Count the number of words in your text",
-	Aliases: []string {},
+	Use:     "count-words",
+	Short:   "Count the number of words in your text",
+	Aliases: []string{},
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
 		in, out := "", ""

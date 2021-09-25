@@ -11,15 +11,14 @@ import (
 	"github.com/spf13/cobra"
 )
 
-
 func init() {
 	rootCmd.AddCommand(kebapCmd)
 }
 
 var kebapCmd = &cobra.Command{
-	Use:   "kebap",
-	Short: "Transform your text to kebap-case",
-	Aliases: []string {},
+	Use:     "kebap",
+	Short:   "Transform your text to kebap-case",
+	Aliases: []string{},
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
 		in, out := "", ""

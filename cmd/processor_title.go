@@ -11,15 +11,14 @@ import (
 	"github.com/spf13/cobra"
 )
 
-
 func init() {
 	rootCmd.AddCommand(titleCmd)
 }
 
 var titleCmd = &cobra.Command{
-	Use:   "title",
-	Short: "Transform your text to Title Case",
-	Aliases: []string {},
+	Use:     "title",
+	Short:   "Transform your text to Title Case",
+	Aliases: []string{},
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
 		in, out := "", ""

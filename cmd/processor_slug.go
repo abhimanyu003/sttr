@@ -11,15 +11,14 @@ import (
 	"github.com/spf13/cobra"
 )
 
-
 func init() {
 	rootCmd.AddCommand(slugCmd)
 }
 
 var slugCmd = &cobra.Command{
-	Use:   "slug",
-	Short: "Transform your text to slug-case",
-	Aliases: []string {},
+	Use:     "slug",
+	Short:   "Transform your text to slug-case",
+	Aliases: []string{},
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
 		in, out := "", ""

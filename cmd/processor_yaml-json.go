@@ -19,9 +19,9 @@ func init() {
 }
 
 var yamlJsonCmd = &cobra.Command{
-	Use:   "yaml-json",
-	Short: "Convert YAML to JSON text",
-	Aliases: []string {"yml-json"},
+	Use:     "yaml-json",
+	Short:   "Convert YAML to JSON text",
+	Aliases: []string{"yml-json"},
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
 		in, out := "", ""

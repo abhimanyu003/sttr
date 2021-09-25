@@ -11,15 +11,14 @@ import (
 	"github.com/spf13/cobra"
 )
 
-
 func init() {
 	rootCmd.AddCommand(urlDecodeCmd)
 }
 
 var urlDecodeCmd = &cobra.Command{
-	Use:   "url-decode",
-	Short: "Decode URL entities",
-	Aliases: []string {"url-dec"},
+	Use:     "url-decode",
+	Short:   "Decode URL entities",
+	Aliases: []string{"url-dec"},
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
 		in, out := "", ""

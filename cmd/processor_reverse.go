@@ -11,15 +11,14 @@ import (
 	"github.com/spf13/cobra"
 )
 
-
 func init() {
 	rootCmd.AddCommand(reverseCmd)
 }
 
 var reverseCmd = &cobra.Command{
-	Use:   "reverse",
-	Short: "Reverse Text ( txeT esreveR )",
-	Aliases: []string {},
+	Use:     "reverse",
+	Short:   "Reverse Text ( txeT esreveR )",
+	Aliases: []string{},
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
 		in, out := "", ""

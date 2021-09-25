@@ -11,15 +11,14 @@ import (
 	"github.com/spf13/cobra"
 )
 
-
 func init() {
 	rootCmd.AddCommand(md5SumCmd)
 }
 
 var md5SumCmd = &cobra.Command{
-	Use:   "md5-sum",
-	Short: "Get the MD5 hash of your text",
-	Aliases: []string {"md5"},
+	Use:     "md5-sum",
+	Short:   "Get the MD5 hash of your text",
+	Aliases: []string{"md5"},
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
 		in, out := "", ""

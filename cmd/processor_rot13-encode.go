@@ -11,15 +11,14 @@ import (
 	"github.com/spf13/cobra"
 )
 
-
 func init() {
 	rootCmd.AddCommand(rot13EncodeCmd)
 }
 
 var rot13EncodeCmd = &cobra.Command{
-	Use:   "rot13-encode",
-	Short: "Encode your text to ROT13",
-	Aliases: []string {"rot13", "rot13-enc"},
+	Use:     "rot13-encode",
+	Short:   "Encode your text to ROT13",
+	Aliases: []string{"rot13", "rot13-enc"},
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
 		in, out := "", ""

@@ -11,8 +11,10 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var zeropad_flag_n int
-var zeropad_flag_p string
+var (		
+	zeropad_flag_n int		
+	zeropad_flag_p string
+)
 
 func init() {	
 	zeropadCmd.Flags().IntVarP(&zeropad_flag_n, "number-of-zeros", "n", 5, "Number of zeros to be padded")
@@ -21,9 +23,9 @@ func init() {
 }
 
 var zeropadCmd = &cobra.Command{
-	Use:   "zeropad",
-	Short: "Pad a number with zeros",
-	Aliases: []string {},
+	Use:     "zeropad",
+	Short:   "Pad a number with zeros",
+	Aliases: []string{},
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
 		in, out := "", ""

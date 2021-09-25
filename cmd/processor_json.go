@@ -19,9 +19,9 @@ func init() {
 }
 
 var jsonCmd = &cobra.Command{
-	Use:   "json",
-	Short: "Format your text as JSON",
-	Aliases: []string {},
+	Use:     "json",
+	Short:   "Format your text as JSON",
+	Aliases: []string{},
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
 		in, out := "", ""

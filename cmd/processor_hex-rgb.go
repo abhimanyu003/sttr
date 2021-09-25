@@ -11,15 +11,14 @@ import (
 	"github.com/spf13/cobra"
 )
 
-
 func init() {
 	rootCmd.AddCommand(hexRgbCmd)
 }
 
 var hexRgbCmd = &cobra.Command{
-	Use:   "hex-rgb",
-	Short: "Convert a #hex-color code to RGB",
-	Aliases: []string {},
+	Use:     "hex-rgb",
+	Short:   "Convert a #hex-color code to RGB",
+	Aliases: []string{},
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
 		in, out := "", ""

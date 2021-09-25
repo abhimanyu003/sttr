@@ -11,15 +11,14 @@ import (
 	"github.com/spf13/cobra"
 )
 
-
 func init() {
 	rootCmd.AddCommand(sha512SumCmd)
 }
 
 var sha512SumCmd = &cobra.Command{
-	Use:   "sha512-sum",
-	Short: "Get the SHA512 checksum of your text",
-	Aliases: []string {"sha256"},
+	Use:     "sha512-sum",
+	Short:   "Get the SHA512 checksum of your text",
+	Aliases: []string{"sha256"},
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
 		in, out := "", ""

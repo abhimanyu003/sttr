@@ -11,15 +11,14 @@ import (
 	"github.com/spf13/cobra"
 )
 
-
 func init() {
 	rootCmd.AddCommand(camelCmd)
 }
 
 var camelCmd = &cobra.Command{
-	Use:   "camel",
-	Short: "Transform your text to CamelCase",
-	Aliases: []string {},
+	Use:     "camel",
+	Short:   "Transform your text to CamelCase",
+	Aliases: []string{},
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
 		in, out := "", ""

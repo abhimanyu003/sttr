@@ -11,15 +11,14 @@ import (
 	"github.com/spf13/cobra"
 )
 
-
 func init() {
 	rootCmd.AddCommand(base64EncodeCmd)
 }
 
 var base64EncodeCmd = &cobra.Command{
-	Use:   "base64-encode",
-	Short: "Encode your text to Base64",
-	Aliases: []string {"b64-enc", "base64-encode"},
+	Use:     "base64-encode",
+	Short:   "Encode your text to Base64",
+	Aliases: []string{"b64-enc", "base64-encode"},
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
 		in, out := "", ""

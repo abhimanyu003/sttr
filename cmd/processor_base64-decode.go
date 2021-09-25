@@ -11,15 +11,14 @@ import (
 	"github.com/spf13/cobra"
 )
 
-
 func init() {
 	rootCmd.AddCommand(base64DecodeCmd)
 }
 
 var base64DecodeCmd = &cobra.Command{
-	Use:   "base64-decode",
-	Short: "Decode your base64 text",
-	Aliases: []string {"b64-dec", "b64-decode"},
+	Use:     "base64-decode",
+	Short:   "Decode your base64 text",
+	Aliases: []string{"b64-dec", "b64-decode"},
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
 		in, out := "", ""

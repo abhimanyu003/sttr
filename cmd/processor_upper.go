@@ -11,15 +11,14 @@ import (
 	"github.com/spf13/cobra"
 )
 
-
 func init() {
 	rootCmd.AddCommand(upperCmd)
 }
 
 var upperCmd = &cobra.Command{
-	Use:   "upper",
-	Short: "Transform your text to UPPER CASE",
-	Aliases: []string {},
+	Use:     "upper",
+	Short:   "Transform your text to UPPER CASE",
+	Aliases: []string{},
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
 		in, out := "", ""

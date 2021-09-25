@@ -1,15 +1,16 @@
-//go:build (ignore)
+//go:build ignore
 
 package main
 
 import (
 	"fmt"
-	"github.com/abhimanyu003/sttr/utils"
-	list2 "github.com/charmbracelet/bubbles/list"
 	"log"
 	"os"
 	"strings"
 	"text/template"
+
+	"github.com/abhimanyu003/sttr/utils"
+	list2 "github.com/charmbracelet/bubbles/list"
 
 	"github.com/abhimanyu003/sttr/processors"
 )
@@ -102,14 +103,23 @@ import (
 	"github.com/abhimanyu003/sttr/processors"
 	"github.com/spf13/cobra"
 )
+{{- $camel := .Camel -}}
 
-{{ $camel := .Camel -}}
-{{ range .Flags -}}
-var {{ $camel }}_flag_{{ .Short }} {{ .Type.String | Lower }}
+{{ with .Flags }}
+{{- $len := len . -}}
+{{- if eq $len 1 }}{{ range . }}
+
+var {{ $camel }}_flag_{{ .Short }} {{ .Type.String | Lower }}{{ end }}{{ end }}
+{{- if gt $len 1 }}
+
+var (
+{{- range . }}		
+	{{ $camel }}_flag_{{ .Short }} {{ .Type.String | Lower }}{{ end }}
+){{ end -}}
 {{ end }}
+
 func init() {
-{{- range .Flags -}}
-{{- if .Type.IsString }}
+{{- range .Flags }}{{ if .Type.IsString }}
 	{{ $camel }}Cmd.Flags().{{ .Type }}VarP(&{{ $camel }}_flag_{{ .Short }}, "{{ .Name }}", "{{ .Short }}", "{{ .Value }}", "{{ .Desc }}")
 {{- else }}	
 	{{ $camel }}Cmd.Flags().{{ .Type }}VarP(&{{ $camel }}_flag_{{ .Short }}, "{{ .Name }}", "{{ .Short }}", {{ .Value }}, "{{ .Desc }}")
@@ -119,9 +129,9 @@ func init() {
 }
 
 var {{ .Camel }}Cmd = &cobra.Command{
-	Use:   "{{ .Name }}",
-	Short: "{{ .Desc }}",
-	Aliases: []string { {{- .Alias | ListAlias -}} },
+	Use:     "{{ .Name }}",
+	Short:   "{{ .Desc }}",
+	Aliases: []string{ {{- .Alias | ListAlias -}} },
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
 		in, out := "", ""

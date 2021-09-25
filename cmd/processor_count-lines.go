@@ -11,15 +11,14 @@ import (
 	"github.com/spf13/cobra"
 )
 
-
 func init() {
 	rootCmd.AddCommand(countLinesCmd)
 }
 
 var countLinesCmd = &cobra.Command{
-	Use:   "count-lines",
-	Short: "Count the number of lines in your text",
-	Aliases: []string {},
+	Use:     "count-lines",
+	Short:   "Count the number of lines in your text",
+	Aliases: []string{},
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
 		in, out := "", ""

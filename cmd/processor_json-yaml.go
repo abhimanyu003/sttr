@@ -11,15 +11,14 @@ import (
 	"github.com/spf13/cobra"
 )
 
-
 func init() {
 	rootCmd.AddCommand(jsonYamlCmd)
 }
 
 var jsonYamlCmd = &cobra.Command{
-	Use:   "json-yaml",
-	Short: "Convert JSON to YAML text",
-	Aliases: []string {"json-yml"},
+	Use:     "json-yaml",
+	Short:   "Convert JSON to YAML text",
+	Aliases: []string{"json-yml"},
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
 		in, out := "", ""
