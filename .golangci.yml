@@ -8,7 +8,6 @@ linters:
     - deadcode
     - depguard
     - dogsled
-    - dupl
     - errcheck
     - exportloopref
     - exhaustive
@@ -40,6 +39,7 @@ linters:
     - nilerr
 
   # don't enable:
+  # - dupl
   # - asciicheck
   # - scopelint
   # - gochecknoglobals

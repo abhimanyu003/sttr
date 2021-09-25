@@ -29,15 +29,15 @@ func (p FormatJSON) Transform(input string, f ...Flag) (string, error) {
 			}
 		}
 	}
-	var newJson []byte
+	var newJSON []byte
 	var err error
 	if indent {
-		newJson, err = json.MarshalIndent(objmap, "", "  ")
+		newJSON, err = json.MarshalIndent(objmap, "", "  ")
 	} else {
-		newJson, err = json.Marshal(objmap)
+		newJSON, err = json.Marshal(objmap)
 	}
 
-	return string(newJson), err
+	return string(newJSON), err
 }
 
 func (p FormatJSON) Flags() []Flag {
