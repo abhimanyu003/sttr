@@ -2,14 +2,16 @@ package processors
 
 import "testing"
 
-func TestCountNumberCharacters(t *testing.T) {
+func TestCountCharacters_Transform(t *testing.T) {
 	type args struct {
 		input string
+		opts  []Flag
 	}
 	tests := []struct {
-		name string
-		args args
-		want string
+		name    string
+		args    args
+		want    string
+		wantErr bool
 	}{
 		{
 			name: "String",
@@ -32,21 +34,24 @@ func TestCountNumberCharacters(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := CountNumberCharacters(tt.args.input); got != tt.want {
-				t.Errorf("CountNumberCharacters() = %v, want %v", got, tt.want)
+			p := CountCharacters{}
+			if got, _ := p.Transform(tt.args.input, tt.args.opts...); got != tt.want {
+				t.Errorf("CountCharacters() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestSortLines(t *testing.T) {
+func TestSortLines_Transform(t *testing.T) {
 	type args struct {
 		input string
+		opts  []Flag
 	}
 	tests := []struct {
-		name string
-		args args
-		want string
+		name    string
+		args    args
+		want    string
+		wantErr bool
 	}{
 		{
 			name: "String",
@@ -61,21 +66,24 @@ func TestSortLines(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := SortLines(tt.args.input); got != tt.want {
+			p := SortLines{}
+			if got, _ := p.Transform(tt.args.input, tt.args.opts...); got != tt.want {
 				t.Errorf("SortLines() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestStringToLower(t *testing.T) {
+func TestLower_Transform(t *testing.T) {
 	type args struct {
 		input string
+		opts  []Flag
 	}
 	tests := []struct {
-		name string
-		args args
-		want string
+		name    string
+		args    args
+		want    string
+		wantErr bool
 	}{
 		{
 			name: "String",
@@ -93,21 +101,24 @@ func TestStringToLower(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := StringToLower(tt.args.input); got != tt.want {
+			p := Lower{}
+			if got, _ := p.Transform(tt.args.input, tt.args.opts...); got != tt.want {
 				t.Errorf("StringToLower() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestStringToTitle(t *testing.T) {
+func TestTitle_Transform(t *testing.T) {
 	type args struct {
 		input string
+		opts  []Flag
 	}
 	tests := []struct {
-		name string
-		args args
-		want string
+		name    string
+		args    args
+		want    string
+		wantErr bool
 	}{
 		{
 			name: "String",
@@ -121,21 +132,24 @@ func TestStringToTitle(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := StringToTitle(tt.args.input); got != tt.want {
+			p := Title{}
+			if got, _ := p.Transform(tt.args.input, tt.args.opts...); got != tt.want {
 				t.Errorf("StringToTitle() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestStringToUpper(t *testing.T) {
+func TestUpper_Transform(t *testing.T) {
 	type args struct {
 		input string
+		opts  []Flag
 	}
 	tests := []struct {
-		name string
-		args args
-		want string
+		name    string
+		args    args
+		want    string
+		wantErr bool
 	}{
 		{
 			name: "String",
@@ -153,21 +167,24 @@ func TestStringToUpper(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := StringToUpper(tt.args.input); got != tt.want {
+			p := Upper{}
+			if got, _ := p.Transform(tt.args.input, tt.args.opts...); got != tt.want {
 				t.Errorf("StringToUpper() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestStringToSnakeCase(t *testing.T) {
+func TestSnakeCase_Transform(t *testing.T) {
 	type args struct {
 		input string
+		opts  []Flag
 	}
 	tests := []struct {
-		name string
-		args args
-		want string
+		name    string
+		args    args
+		want    string
+		wantErr bool
 	}{
 		{
 			name: "String",
@@ -192,21 +209,24 @@ func TestStringToSnakeCase(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := StringToSnakeCase(tt.args.input); got != tt.want {
+			p := Snake{}
+			if got, _ := p.Transform(tt.args.input, tt.args.opts...); got != tt.want {
 				t.Errorf("StringToSnakeCase() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestStringToKebab(t *testing.T) {
+func TestKebab_Transform(t *testing.T) {
 	type args struct {
 		input string
+		opts  []Flag
 	}
 	tests := []struct {
-		name string
-		args args
-		want string
+		name    string
+		args    args
+		want    string
+		wantErr bool
 	}{
 		{
 			name: "String",
@@ -231,21 +251,24 @@ func TestStringToKebab(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := StringToKebab(tt.args.input); got != tt.want {
+			p := Kebab{}
+			if got, _ := p.Transform(tt.args.input, tt.args.opts...); got != tt.want {
 				t.Errorf("StringToKebab() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestStringToSlug(t *testing.T) {
+func TestSlug_Transform(t *testing.T) {
 	type args struct {
 		input string
+		opts  []Flag
 	}
 	tests := []struct {
-		name string
-		args args
-		want string
+		name    string
+		args    args
+		want    string
+		wantErr bool
 	}{
 		{
 			name: "hello world",
@@ -270,21 +293,24 @@ func TestStringToSlug(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := StringToSlug(tt.args.input); got != tt.want {
+			p := Slug{}
+			if got, _ := p.Transform(tt.args.input, tt.args.opts...); got != tt.want {
 				t.Errorf("StringToSlug() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestStringReverse(t *testing.T) {
+func TestStringReverse_Transform(t *testing.T) {
 	type args struct {
 		input string
+		opts  []Flag
 	}
 	tests := []struct {
-		name string
-		args args
-		want string
+		name    string
+		args    args
+		want    string
+		wantErr bool
 	}{
 		{
 			name: "hello world",
@@ -314,27 +340,31 @@ func TestStringReverse(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if gotResult := StringReverse(tt.args.input); gotResult != tt.want {
-				t.Errorf("StringReverse() = %v, want %v", gotResult, tt.want)
+			p := Reverse{}
+			if got, _ := p.Transform(tt.args.input, tt.args.opts...); got != tt.want {
+				t.Errorf("Reverse() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestCountWords(t *testing.T) {
+func TestCountWords_Transform(t *testing.T) {
 	type args struct {
 		input string
+		opts  []Flag
 	}
 	tests := []struct {
-		name string
-		args args
-		want string
+		name    string
+		args    args
+		want    string
+		wantErr bool
 	}{
 		{
 			name: "count number of words in string",
 			args: args{input: "hello world"},
 			want: "2",
-		}, {
+		},
+		{
 			name: "count number of words in string contains spaces",
 			args: args{input: " This  is string having spaces?"},
 			want: "5",
@@ -347,21 +377,24 @@ func TestCountWords(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := CountWords(tt.args.input); got != tt.want {
+			p := CountWords{}
+			if got, _ := p.Transform(tt.args.input, tt.args.opts...); got != tt.want {
 				t.Errorf("CountWords() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestCountLines(t *testing.T) {
+func TestCountLines_Transform(t *testing.T) {
 	type args struct {
 		input string
+		opts  []Flag
 	}
 	tests := []struct {
-		name string
-		args args
-		want string
+		name    string
+		args    args
+		want    string
+		wantErr bool
 	}{
 		{
 			name: "Count one line",
@@ -386,7 +419,8 @@ func TestCountLines(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := CountLines(tt.args.input); got != tt.want {
+			p := CountLines{}
+			if got, _ := p.Transform(tt.args.input, tt.args.opts...); got != tt.want {
 				t.Errorf("CountLines() = %v, want %v", got, tt.want)
 			}
 		})

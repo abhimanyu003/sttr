@@ -2,96 +2,407 @@ package processors
 
 import (
 	"fmt"
-	"github.com/iancoleman/strcase"
 	"regexp"
 	"sort"
 	"strings"
+
+	"github.com/abhimanyu003/sttr/utils"
+
+	"github.com/iancoleman/strcase"
 )
 
-// StringToTitle convert sting to title case.
-// Example: "this is string" to "This is String".
-func StringToTitle(input string) string {
-	return strings.Title(input)
-}
-
-// StringToLower convert sting to lower case.
+// Lower converts a string to lower case.
 // Example: "THIS IS STRING" to "this is string".
-func StringToLower(input string) string {
-	return strings.ToLower(input)
+type Lower struct{}
+
+func (p Lower) Name() string {
+	return "lower"
 }
 
-// StringToUpper convert sting to lower case.
+func (p Lower) Alias() []string {
+	return nil
+}
+
+func (p Lower) Transform(input string, _ ...Flag) (string, error) {
+	return strings.ToLower(input), nil
+}
+
+func (p Lower) Flags() []Flag {
+	return nil
+}
+
+func (p Lower) Title() string {
+	return "To Lower case"
+}
+
+func (p Lower) Description() string {
+	return "Transform your text to lower case"
+}
+
+func (p Lower) FilterValue() string {
+	return p.Title()
+}
+
+// Upper convert string to upper case.
 // Example: "this is string" to "THIS IS STRING".
-func StringToUpper(input string) string {
-	return strings.ToUpper(input)
+type Upper struct{}
+
+func (p Upper) Name() string {
+	return "upper"
 }
 
-// StringToSnakeCase convert sting to snake_case.
+func (p Upper) Alias() []string {
+	return nil
+}
+
+func (p Upper) Transform(input string, _ ...Flag) (string, error) {
+	return strings.ToUpper(input), nil
+}
+
+func (p Upper) Flags() []Flag {
+	return nil
+}
+
+func (p Upper) Title() string {
+	return "To Upper case"
+}
+
+func (p Upper) Description() string {
+	return "Transform your text to UPPER CASE"
+}
+
+func (p Upper) FilterValue() string {
+	return p.Title()
+}
+
+// Title convert string to title case.
+// Example: "this is string" to "This Is String".
+type Title struct{}
+
+func (p Title) Name() string {
+	return "title"
+}
+
+func (p Title) Alias() []string {
+	return nil
+}
+
+func (p Title) Transform(input string, _ ...Flag) (string, error) {
+	return strings.Title(input), nil
+}
+
+func (p Title) Flags() []Flag {
+	return nil
+}
+
+func (p Title) Title() string {
+	return "To Title Case"
+}
+
+func (p Title) Description() string {
+	return "Transform your text to Title Case"
+}
+
+func (p Title) FilterValue() string {
+	return p.Title()
+}
+
+// Snake convert string to snake_case.
 // Example: "this is string" to "this_is_string".
-func StringToSnakeCase(input string) string {
-	input = regexp.MustCompile(`\s+`).ReplaceAllString(input, " ")
+type Snake struct{}
 
-	return strcase.ToSnake(input)
+func (p Snake) Name() string {
+	return "snake"
 }
 
-// StringToKebab convert sting to kebab-case.
+func (p Snake) Alias() []string {
+	return nil
+}
+
+func (p Snake) Transform(input string, _ ...Flag) (string, error) {
+	input = regexp.MustCompile(`\s+`).ReplaceAllString(input, " ")
+	return strcase.ToSnake(input), nil
+}
+
+func (p Snake) Flags() []Flag {
+	return nil
+}
+
+func (p Snake) Title() string {
+	return "To Snake case"
+}
+
+func (p Snake) Description() string {
+	return "Transform your text to snake_case"
+}
+
+func (p Snake) FilterValue() string {
+	return p.Title()
+}
+
+// Kebab convert string to kebab-case.
 // Example: "this is string" to "this-is-string".
-func StringToKebab(input string) string {
-	input = regexp.MustCompile(`\s+`).ReplaceAllString(input, " ")
+type Kebab struct{}
 
-	return strcase.ToKebab(input)
+func (p Kebab) Name() string {
+	return "kebap"
 }
 
-// StringToCamel convert sting to CamelCase.
+func (p Kebab) Alias() []string {
+	return nil
+}
+
+func (p Kebab) Transform(input string, _ ...Flag) (string, error) {
+	return utils.ToKebabCase(input), nil
+}
+
+func (p Kebab) Flags() []Flag {
+	return nil
+}
+
+func (p Kebab) Title() string {
+	return "To Kebab case"
+}
+
+func (p Kebab) Description() string {
+	return "Transform your text to kebap-case"
+}
+
+func (p Kebab) FilterValue() string {
+	return p.Title()
+}
+
+// Camel convert string to CamelCase.
 // Example: "this is string" to "ThisIsString".
-func StringToCamel(input string) string {
+type Camel struct{}
+
+func (p Camel) Name() string {
+	return "camel"
+}
+
+func (p Camel) Alias() []string {
+	return nil
+}
+
+func (p Camel) Transform(input string, _ ...Flag) (string, error) {
 	input = regexp.MustCompile(`\s+`).ReplaceAllString(input, " ")
-
-	return strcase.ToCamel(input)
+	return strcase.ToCamel(input), nil
 }
 
-// StringToSlug convert sting to StringToSlug. It's similar to Kebab case but URL Friendly.
+func (p Camel) Flags() []Flag {
+	return nil
+}
+
+func (p Camel) Title() string {
+	return "To Camel case"
+}
+
+func (p Camel) Description() string {
+	return "Transform your text to CamelCase"
+}
+
+func (p Camel) FilterValue() string {
+	return p.Title()
+}
+
+// Slug convert string to StringToSlug. It's similar to Kebab case but URL Friendly.
 // Example: "this is string" to "this-is-string".
-func StringToSlug(input string) string {
-	re := regexp.MustCompile("[^a-z0-9]+")
+type Slug struct{}
 
-	return strings.Trim(re.ReplaceAllString(strings.ToLower(input), "-"), "-")
+func (p Slug) Name() string {
+	return "slug"
 }
 
-// CountNumberCharacters count number of Characters including spaces.
-func CountNumberCharacters(input string) string {
-	return fmt.Sprintf("%d", len([]rune(input)))
+func (p Slug) Alias() []string {
+	return nil
+}
+
+func (p Slug) Transform(input string, _ ...Flag) (string, error) {
+	re := regexp.MustCompile("[^a-z0-9]+")
+	return strings.Trim(re.ReplaceAllString(strings.ToLower(input), "-"), "-"), nil
+}
+
+func (p Slug) Flags() []Flag {
+	return nil
+}
+
+func (p Slug) Title() string {
+	return "To Slug case"
+}
+
+func (p Slug) Description() string {
+	return "Transform your text to slug-case"
+}
+
+func (p Slug) FilterValue() string {
+	return p.Title()
+}
+
+// CountCharacters count number of Characters including spaces.
+type CountCharacters struct{}
+
+func (p CountCharacters) Name() string {
+	return "count-chars"
+}
+
+func (p CountCharacters) Alias() []string {
+	return nil
+}
+
+func (p CountCharacters) Transform(input string, _ ...Flag) (string, error) {
+	return fmt.Sprintf("%d", len(input)), nil
+}
+
+func (p CountCharacters) Flags() []Flag {
+	return nil
+}
+
+func (p CountCharacters) Title() string {
+	return "Count Number of Characters"
+}
+
+func (p CountCharacters) Description() string {
+	return "Find the length of your text (including spaces)"
+}
+
+func (p CountCharacters) FilterValue() string {
+	return p.Title()
 }
 
 // CountWords count number of words in string.
 // Example: "hello world" = 2
-func CountWords(input string) string {
-	return fmt.Sprintf("%d", len(strings.Fields(input)))
+type CountWords struct{}
+
+func (p CountWords) Name() string {
+	return "count-words"
+}
+
+func (p CountWords) Alias() []string {
+	return nil
+}
+
+func (p CountWords) Transform(input string, _ ...Flag) (string, error) {
+	return fmt.Sprintf("%d", len(strings.Fields(input))), nil
+}
+
+func (p CountWords) Flags() []Flag {
+	return nil
+}
+
+func (p CountWords) Title() string {
+	return "Count Number of Words"
+}
+
+func (p CountWords) Description() string {
+	return "Count the number of words in your text"
+}
+
+func (p CountWords) FilterValue() string {
+	return p.Title()
 }
 
 // CountLines count number of words in string.
 // Example: "line 1\n line 2" = 2
-func CountLines(input string) string {
+type CountLines struct{}
+
+func (p CountLines) Name() string {
+	return "count-lines"
+}
+
+func (p CountLines) Alias() []string {
+	return nil
+}
+
+func (p CountLines) Transform(input string, _ ...Flag) (string, error) {
 	lines := strings.Count(input, "\n")
 	if len(input) > 0 && !strings.HasSuffix(input, "\n") {
 		lines++
 	}
-	return fmt.Sprintf("%d", lines)
+	return fmt.Sprintf("%d", lines), nil
 }
 
-// SortLines sort given list, it's not a natural sort.
-func SortLines(input string) string {
+func (p CountLines) Flags() []Flag {
+	return nil
+}
+
+func (p CountLines) Title() string {
+	return "Count Number of Lines"
+}
+
+func (p CountLines) Description() string {
+	return "Count the number of lines in your text"
+}
+
+func (p CountLines) FilterValue() string {
+	return p.Title()
+}
+
+// SortLines sort given lines, it's not a natural sort.
+// Example: 2\n 1\n -> 1\n 2\n
+type SortLines struct{}
+
+func (p SortLines) Name() string {
+	return "sort-lines"
+}
+
+func (p SortLines) Alias() []string {
+	return nil
+}
+
+func (p SortLines) Transform(input string, _ ...Flag) (string, error) {
 	sorted := strings.Split(input, "\n")
 	sort.Strings(sorted)
-
-	return strings.Join(sorted, "\n")
+	return strings.Join(sorted, "\n"), nil
 }
 
-// StringReverse revers a given string
+func (p SortLines) Flags() []Flag {
+	return nil
+}
+
+func (p SortLines) Title() string {
+	return "SortLines"
+}
+
+func (p SortLines) Description() string {
+	return "Sort lines alphabetically"
+}
+
+func (p SortLines) FilterValue() string {
+	return p.Title()
+}
+
+// Reverse reverse a given string
 // Example: "test" to "tset"
-func StringReverse(input string) (result string) {
+type Reverse struct{}
+
+func (p Reverse) Name() string {
+	return "reverse"
+}
+
+func (p Reverse) Alias() []string {
+	return nil
+}
+
+func (p Reverse) Transform(input string, _ ...Flag) (string, error) {
+	result := ""
 	for _, v := range input {
 		result = string(v) + result
 	}
-	return result
+	return result, nil
+}
+
+func (p Reverse) Flags() []Flag {
+	return nil
+}
+
+func (p Reverse) Title() string {
+	return "Reverse text"
+}
+
+func (p Reverse) Description() string {
+	return "Reverse Text ( txeT esreveR )"
+}
+
+func (p Reverse) FilterValue() string {
+	return p.Title()
 }

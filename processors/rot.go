@@ -3,8 +3,34 @@ package processors
 import "strings"
 
 // ROT13Encode convert string to ROT13 encoding.
-func ROT13Encode(input string) string {
-	return strings.Map(rot13, input)
+type ROT13Encode struct{}
+
+func (p ROT13Encode) Name() string {
+	return "rot13-encode"
+}
+
+func (p ROT13Encode) Alias() []string {
+	return []string{"rot13", "rot13-enc"}
+}
+
+func (p ROT13Encode) Transform(input string, _ ...Flag) (string, error) {
+	return strings.Map(rot13, input), nil
+}
+
+func (p ROT13Encode) Flags() []Flag {
+	return nil
+}
+
+func (p ROT13Encode) Title() string {
+	return "ROT13 Encode"
+}
+
+func (p ROT13Encode) Description() string {
+	return "Encode your text to ROT13"
+}
+
+func (p ROT13Encode) FilterValue() string {
+	return p.Title()
 }
 
 // rot13 private helper function for converting rune into rot13.

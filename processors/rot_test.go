@@ -2,14 +2,16 @@ package processors
 
 import "testing"
 
-func TestROT13Encode(t *testing.T) {
+func TestROT13Encode_Transform(t *testing.T) {
 	type args struct {
 		input string
+		in1   []Flag
 	}
 	tests := []struct {
-		name string
-		args args
-		want string
+		name    string
+		args    args
+		want    string
+		wantErr bool
 	}{
 		{
 			name: "String",
@@ -31,8 +33,14 @@ func TestROT13Encode(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := ROT13Encode(tt.args.input); got != tt.want {
-				t.Errorf("ROT13Encode() = %v, want %v", got, tt.want)
+			p := ROT13Encode{}
+			got, err := p.Transform(tt.args.input, tt.args.in1...)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("Transform() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			if got != tt.want {
+				t.Errorf("Transform() got = %v, want %v", got, tt.want)
 			}
 		})
 	}
