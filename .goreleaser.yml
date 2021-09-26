@@ -5,6 +5,7 @@ before:
   hooks:
     # Remove unused packaged from the build process
     - go mod tidy
+    - go generate
 
 
 builds:

@@ -12,12 +12,12 @@ import (
 )
 
 func init() {
-	rootCmd.AddCommand(kebapCmd)
+	rootCmd.AddCommand(kebabCmd)
 }
 
-var kebapCmd = &cobra.Command{
-	Use:     "kebap",
-	Short:   "Transform your text to kebap-case",
+var kebabCmd = &cobra.Command{
+	Use:     "kebab",
+	Short:   "Transform your text to kebab-case",
 	Aliases: []string{},
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
