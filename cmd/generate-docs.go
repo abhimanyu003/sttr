@@ -18,6 +18,7 @@ var docsCmd = &cobra.Command{
 	Short:  "Generate markdown docs for sttr",
 	Hidden: true,
 	Long:   `Generate markdown docs for all the commands of sttr`,
+	Args:   cobra.ExactArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		linkHandler := func(name string) string {
 			return fmt.Sprintf(`{{< relref "%s" >}}`, name)
@@ -26,7 +27,9 @@ var docsCmd = &cobra.Command{
 		filePrepender := func(filename string) string {
 			name := filepath.Base(filename)
 			base := strings.TrimSuffix(name, filepath.Ext(name))
-			return fmt.Sprintf("---\ntitle: %s\n---\n", strings.Replace(base, "_", " ", -1))
+			title := strings.ReplaceAll(base, "_", " ")
+
+			return fmt.Sprintf("---\ntitle: %s\n---\n", title)
 		}
 
 		dir := args[0]
