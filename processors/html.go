@@ -53,7 +53,7 @@ func (p HTMLDecode) Flags() []Flag {
 }
 
 func (p HTMLDecode) Title() string {
-	return "HTML Encode"
+	return "HTML Decode"
 }
 
 func (p HTMLDecode) Description() string {

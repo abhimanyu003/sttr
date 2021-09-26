@@ -1,6 +1,46 @@
 package processors
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
+
+func TestHTMLEncode_Command(t *testing.T) {
+	test := struct {
+		alias       []string
+		description string
+		filterValue string
+		flags       []Flag
+		name        string
+		title       string
+	}{
+		alias:       []string{"html-enc", "html-escape"},
+		description: "Escape your HTML",
+		filterValue: "HTML Encode",
+		flags:       nil,
+		name:        "html-encode",
+		title:       "HTML Encode",
+	}
+	p := HTMLEncode{}
+	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
+		t.Errorf("Alias() = %v, want %v", got, test.alias)
+	}
+	if got := p.Description(); got != test.description {
+		t.Errorf("Description() = %v, want %v", got, test.description)
+	}
+	if got := p.FilterValue(); got != test.filterValue {
+		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+	}
+	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
+		t.Errorf("Flags() = %v, want %v", got, test.flags)
+	}
+	if got := p.Name(); got != test.name {
+		t.Errorf("Name() = %v, want %v", got, test.name)
+	}
+	if got := p.Title(); got != test.title {
+		t.Errorf("Title() = %v, want %v", got, test.title)
+	}
+}
 
 func TestHTMLEncode_Transform(t *testing.T) {
 	type args struct {
@@ -56,6 +96,43 @@ func TestHTMLEncode_Transform(t *testing.T) {
 				t.Errorf("Transform() got = %v, want %v", got, tt.want)
 			}
 		})
+	}
+}
+
+func TestHTMLDecode_Command(t *testing.T) {
+	test := struct {
+		alias       []string
+		description string
+		filterValue string
+		flags       []Flag
+		name        string
+		title       string
+	}{
+		alias:       []string{"html-dec", "html-unescape"},
+		description: "Unescape your HTML",
+		filterValue: "HTML Decode",
+		flags:       nil,
+		name:        "html-decode",
+		title:       "HTML Decode",
+	}
+	p := HTMLDecode{}
+	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
+		t.Errorf("Alias() = %v, want %v", got, test.alias)
+	}
+	if got := p.Description(); got != test.description {
+		t.Errorf("Description() = %v, want %v", got, test.description)
+	}
+	if got := p.FilterValue(); got != test.filterValue {
+		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+	}
+	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
+		t.Errorf("Flags() = %v, want %v", got, test.flags)
+	}
+	if got := p.Name(); got != test.name {
+		t.Errorf("Name() = %v, want %v", got, test.name)
+	}
+	if got := p.Title(); got != test.title {
+		t.Errorf("Title() = %v, want %v", got, test.title)
 	}
 }
 

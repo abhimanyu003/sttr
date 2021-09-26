@@ -1,6 +1,46 @@
 package processors
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
+
+func TestBase32Encode_Command(t *testing.T) {
+	test := struct {
+		alias       []string
+		description string
+		filterValue string
+		flags       []Flag
+		name        string
+		title       string
+	}{
+		alias:       []string{"b32-enc", "b32-encode"},
+		description: "Encode your text to Base32",
+		filterValue: "Base32 Encoding",
+		flags:       nil,
+		name:        "base32-encode",
+		title:       "Base32 Encoding",
+	}
+	p := Base32Encoding{}
+	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
+		t.Errorf("Alias() = %v, want %v", got, test.alias)
+	}
+	if got := p.Description(); got != test.description {
+		t.Errorf("Description() = %v, want %v", got, test.description)
+	}
+	if got := p.FilterValue(); got != test.filterValue {
+		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+	}
+	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
+		t.Errorf("Flags() = %v, want %v", got, test.flags)
+	}
+	if got := p.Name(); got != test.name {
+		t.Errorf("Name() = %v, want %v", got, test.name)
+	}
+	if got := p.Title(); got != test.title {
+		t.Errorf("Title() = %v, want %v", got, test.title)
+	}
+}
 
 func TestBase32Encode_Transform(t *testing.T) {
 	type args struct {
@@ -39,6 +79,43 @@ func TestBase32Encode_Transform(t *testing.T) {
 				t.Errorf("Transform() got = %v, want %v", got, tt.want)
 			}
 		})
+	}
+}
+
+func TestBase32Decode_Command(t *testing.T) {
+	test := struct {
+		alias       []string
+		description string
+		filterValue string
+		flags       []Flag
+		name        string
+		title       string
+	}{
+		alias:       []string{"b32-dec", "b32-decode"},
+		description: "Decode your base64 text",
+		filterValue: "Base64 Decode",
+		flags:       nil,
+		name:        "base32-decode",
+		title:       "Base32 Decode",
+	}
+	p := Base32Decode{}
+	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
+		t.Errorf("Alias() = %v, want %v", got, test.alias)
+	}
+	if got := p.Description(); got != test.description {
+		t.Errorf("Description() = %v, want %v", got, test.description)
+	}
+	if got := p.FilterValue(); got != test.filterValue {
+		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+	}
+	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
+		t.Errorf("Flags() = %v, want %v", got, test.flags)
+	}
+	if got := p.Name(); got != test.name {
+		t.Errorf("Name() = %v, want %v", got, test.name)
+	}
+	if got := p.Title(); got != test.title {
+		t.Errorf("Title() = %v, want %v", got, test.title)
 	}
 }
 
