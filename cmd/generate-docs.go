@@ -15,9 +15,9 @@ func init() {
 
 var docsCmd = &cobra.Command{
 	Use:    "generate-docs",
-	Short:  "Print the version of sttr",
+	Short:  "Generate markdown docs for sttr",
 	Hidden: true,
-	Long:   `All software has a version (semantic at best). This is sttr's'`,
+	Long:   `Generate markdown docs for all the commands of sttr`,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		linkHandler := func(name string) string {
 			return fmt.Sprintf(`{{< relref "%s" >}}`, name)

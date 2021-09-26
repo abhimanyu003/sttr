@@ -18,7 +18,7 @@ builds:
 changelog:
   sort: 'asc'
   filters:
-    exclude: ['^docs:', 'demo', '^test:', 'Merge pull request', 'Merge branch']
+    exclude: ['^docs:', 'demo', '^hugo:', 'Merge pull request', 'Merge branch']
 
 brews:
   - tap:
