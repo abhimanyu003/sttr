@@ -92,8 +92,8 @@ func TestBase32Decode_Command(t *testing.T) {
 		title       string
 	}{
 		alias:       []string{"b32-dec", "b32-decode"},
-		description: "Decode your base64 text",
-		filterValue: "Base64 Decode",
+		description: "Decode your base32 text",
+		filterValue: "Base32 Decode",
 		flags:       nil,
 		name:        "base32-decode",
 		title:       "Base32 Decode",
