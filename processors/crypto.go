@@ -36,7 +36,7 @@ func (p MD5Encode) Title() string {
 }
 
 func (p MD5Encode) Description() string {
-	return "Get the MD5 hash of your text"
+	return "Get the MD5 checksum of your text"
 }
 
 func (p MD5Encode) FilterValue() string {
@@ -71,7 +71,7 @@ func (p SHA1Encode) Title() string {
 }
 
 func (p SHA1Encode) Description() string {
-	return "Get the SHA1 hash of your text"
+	return "Get the SHA1 checksum of your text"
 }
 
 func (p SHA1Encode) FilterValue() string {
@@ -106,7 +106,7 @@ func (p SHA256Encode) Title() string {
 }
 
 func (p SHA256Encode) Description() string {
-	return "Get the SHA256 hash of your text"
+	return "Get the SHA256 checksum of your text"
 }
 
 func (p SHA256Encode) FilterValue() string {
@@ -121,7 +121,7 @@ func (p SHA512Encode) Name() string {
 }
 
 func (p SHA512Encode) Alias() []string {
-	return []string{"sha256"}
+	return []string{"sha512"}
 }
 
 func (p SHA512Encode) Transform(data string, _ ...Flag) (string, error) {

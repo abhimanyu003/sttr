@@ -12,7 +12,7 @@ func (p Base64Encode) Name() string {
 }
 
 func (p Base64Encode) Alias() []string {
-	return []string{"b64-enc", "base64-encode"}
+	return []string{"b64-enc", "b64-encode"}
 }
 
 func (p Base64Encode) Transform(data string, _ ...Flag) (string, error) {

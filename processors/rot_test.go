@@ -1,6 +1,9 @@
 package processors
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
 
 func TestROT13Encode_Transform(t *testing.T) {
 	type args struct {
@@ -43,5 +46,42 @@ func TestROT13Encode_Transform(t *testing.T) {
 				t.Errorf("Transform() got = %v, want %v", got, tt.want)
 			}
 		})
+	}
+}
+
+func TestROT13Encode_Command(t *testing.T) {
+	test := struct {
+		alias       []string
+		description string
+		filterValue string
+		flags       []Flag
+		name        string
+		title       string
+	}{
+		alias:       []string{"rot13", "rot13-enc"},
+		description: "Encode your text to ROT13",
+		filterValue: "ROT13 Encode",
+		flags:       nil,
+		name:        "rot13-encode",
+		title:       "ROT13 Encode",
+	}
+	p := ROT13Encode{}
+	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
+		t.Errorf("Alias() = %v, want %v", got, test.alias)
+	}
+	if got := p.Description(); got != test.description {
+		t.Errorf("Description() = %v, want %v", got, test.description)
+	}
+	if got := p.FilterValue(); got != test.filterValue {
+		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+	}
+	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
+		t.Errorf("Flags() = %v, want %v", got, test.flags)
+	}
+	if got := p.Name(); got != test.name {
+		t.Errorf("Name() = %v, want %v", got, test.name)
+	}
+	if got := p.Title(); got != test.title {
+		t.Errorf("Title() = %v, want %v", got, test.title)
 	}
 }

@@ -18,19 +18,19 @@ var (
 	specialStyle = lipgloss.AdaptiveColor{Light: "#43BF6D", Dark: "#73F59F"}
 )
 
-type Ui struct {
+type UI struct {
 	list   list.Model
 	input  string
 	output string
 }
 
-func New(input string) Ui {
-	return Ui{
+func New(input string) UI {
+	return UI{
 		input: input,
 	}
 }
 
-func (u Ui) Render() {
+func (u UI) Render() {
 	if u.input == "" {
 		divider := lipgloss.NewStyle().Padding(0, 1).Foreground(borderStyle).SetString("•").String()
 		info := lipgloss.NewStyle().Foreground(specialStyle).Render
@@ -56,11 +56,11 @@ func (u Ui) Render() {
 	}
 }
 
-func (u Ui) Init() tea.Cmd {
+func (u UI) Init() tea.Cmd {
 	return nil
 }
 
-func (u Ui) View() string {
+func (u UI) View() string {
 	if u.output != "" {
 		return lipgloss.NewStyle().
 			Padding(1, 0, 1, 0).
@@ -74,7 +74,7 @@ func (u Ui) View() string {
 	return appStyle.Margin(1, 1).Render(u.list.View())
 }
 
-func (u Ui) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
+func (u UI) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
 	case tea.KeyMsg:
 		if keypress := msg.String(); keypress == "enter" {
