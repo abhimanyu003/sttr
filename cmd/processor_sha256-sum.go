@@ -17,7 +17,7 @@ func init() {
 
 var sha256SumCmd = &cobra.Command{
 	Use:     "sha256-sum",
-	Short:   "Get the SHA256 hash of your text",
+	Short:   "Get the SHA256 checksum of your text",
 	Aliases: []string{"sha256"},
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error

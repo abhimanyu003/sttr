@@ -145,7 +145,7 @@ func (p Snake) FilterValue() string {
 type Kebab struct{}
 
 func (p Kebab) Name() string {
-	return "kebap"
+	return "kebab"
 }
 
 func (p Kebab) Alias() []string {
@@ -165,7 +165,7 @@ func (p Kebab) Title() string {
 }
 
 func (p Kebab) Description() string {
-	return "Transform your text to kebap-case"
+	return "Transform your text to kebab-case"
 }
 
 func (p Kebab) FilterValue() string {

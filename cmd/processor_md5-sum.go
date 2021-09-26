@@ -17,7 +17,7 @@ func init() {
 
 var md5SumCmd = &cobra.Command{
 	Use:     "md5-sum",
-	Short:   "Get the MD5 hash of your text",
+	Short:   "Get the MD5 checksum of your text",
 	Aliases: []string{"md5"},
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error

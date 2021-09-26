@@ -1,6 +1,9 @@
 package processors
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
 
 func TestCountCharacters_Transform(t *testing.T) {
 	type args struct {
@@ -214,6 +217,43 @@ func TestSnakeCase_Transform(t *testing.T) {
 				t.Errorf("StringToSnakeCase() = %v, want %v", got, tt.want)
 			}
 		})
+	}
+}
+
+func TestKebab_Command(t *testing.T) {
+	test := struct {
+		alias       []string
+		description string
+		filterValue string
+		flags       []Flag
+		name        string
+		title       string
+	}{
+		//alias:       []string{"b64-enc", "b64-encode"},
+		description: "Transform your text to kebab-case",
+		filterValue: "To Kebab case",
+		flags:       nil,
+		name:        "kebab",
+		title:       "To Kebab case",
+	}
+	p := Kebab{}
+	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
+		t.Errorf("Alias() = %v, want %v", got, test.alias)
+	}
+	if got := p.Description(); got != test.description {
+		t.Errorf("Description() = %v, want %v", got, test.description)
+	}
+	if got := p.FilterValue(); got != test.filterValue {
+		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+	}
+	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
+		t.Errorf("Flags() = %v, want %v", got, test.flags)
+	}
+	if got := p.Name(); got != test.name {
+		t.Errorf("Name() = %v, want %v", got, test.name)
+	}
+	if got := p.Title(); got != test.title {
+		t.Errorf("Title() = %v, want %v", got, test.title)
 	}
 }
 
