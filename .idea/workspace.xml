@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="adc34a08-a01d-4d44-8bb0-0c926d2eef91" name="Default Changelist" comment="Add: processing files">
+      <change afterPath="$PROJECT_DIR$/cmd/generate-docs.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hugo/.gitmodules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hugo/themes/book" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" path="/usr/local/Cellar/go/1.16.4/libexec" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/hugo" />
+  </component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
+  </component>
+  <component name="ProjectId" id="1ydelSesDanPNP1l5hMAncq3l66" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="GO_FMT" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/cmd" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/cmd" />
+      <recent name="$PROJECT_DIR$/processors" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Go Test.go test github.com/abhimanyu003/sttr/processors">
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="sttr" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <go_parameters value="-i" />
+      <kind value="DIRECTORY" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build sttr-pr/sttr" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
+      <module name="sttr" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <go_parameters value="-i" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$/../sttr-pr/sttr" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestBase32Decode_Transform in github.com/abhimanyu003/sttr/processors" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="sttr" />
+      <working_directory value="$PROJECT_DIR$/processors" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/abhimanyu003/sttr/processors" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestBase32Decode_Transform$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestBase32Encode_Transform in github.com/abhimanyu003/sttr/processors" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="sttr" />
+      <working_directory value="$PROJECT_DIR$/processors" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/abhimanyu003/sttr/processors" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestBase32Encode_Transform$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestHTMLDecode_Transform in github.com/abhimanyu003/sttr/processors" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="sttr" />
+      <working_directory value="$PROJECT_DIR$/processors" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/abhimanyu003/sttr/processors" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestHTMLDecode_Transform$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestHTMLEncode_Transform in github.com/abhimanyu003/sttr/processors" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="sttr" />
+      <working_directory value="$PROJECT_DIR$/processors" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/abhimanyu003/sttr/processors" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestHTMLEncode_Transform$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go test github.com/abhimanyu003/sttr/processors" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="sttr" />
+      <working_directory value="$PROJECT_DIR$/processors" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/abhimanyu003/sttr/processors" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Go Build.go build sttr-pr/sttr" />
+      <item itemvalue="Go Test.TestHTMLEncode_Transform in github.com/abhimanyu003/sttr/processors" />
+      <item itemvalue="Go Test.TestHTMLDecode_Transform in github.com/abhimanyu003/sttr/processors" />
+      <item itemvalue="Go Test.TestBase32Encode_Transform in github.com/abhimanyu003/sttr/processors" />
+      <item itemvalue="Go Test.TestBase32Decode_Transform in github.com/abhimanyu003/sttr/processors" />
+      <item itemvalue="Go Test.go test github.com/abhimanyu003/sttr/processors" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Test.go test github.com/abhimanyu003/sttr/processors" />
+        <item itemvalue="Go Test.TestBase32Decode_Transform in github.com/abhimanyu003/sttr/processors" />
+        <item itemvalue="Go Test.TestBase32Encode_Transform in github.com/abhimanyu003/sttr/processors" />
+        <item itemvalue="Go Test.TestHTMLDecode_Transform in github.com/abhimanyu003/sttr/processors" />
+        <item itemvalue="Go Test.TestHTMLEncode_Transform in github.com/abhimanyu003/sttr/processors" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="adding support for cobra, merge from rverst" />
+    <MESSAGE value="Fix: Test case and string length" />
+    <MESSAGE value="Update: github workflow to run on all branches." />
+    <MESSAGE value="Add: test cases for base command and alias" />
+    <MESSAGE value="Add: Hex - RGB command test" />
+    <MESSAGE value="CS fixes." />
+    <MESSAGE value="Add: New processor HTML encode and decode.&#10;Tweak: Sorting of processor list" />
+    <MESSAGE value="Add: New processor base32" />
+    <MESSAGE value="Add: processing files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add: processing files" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>true</integration-enabled>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="652" y="375" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1632597639781">
+      <screen x="0" y="23" width="1792" height="1028" />
+    </state>
+    <state x="652" y="375" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1792.1028@0.23.1792.1028" timestamp="1632597639781" />
+    <state x="633" y="337" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1632603455791">
+      <screen x="0" y="23" width="1792" height="1028" />
+    </state>
+    <state x="633" y="337" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1792.1028@0.23.1792.1028" timestamp="1632603455791" />
+    <state x="683" y="249" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1632597617976">
+      <screen x="0" y="23" width="1792" height="1028" />
+    </state>
+    <state x="683" y="249" key="#com.intellij.ide.macro.MacrosDialog/0.23.1792.1028@0.23.1792.1028" timestamp="1632597617976" />
+    <state x="664" y="378" width="463" height="485" key="#com.intellij.tools.ToolEditorDialog" timestamp="1632597301314">
+      <screen x="0" y="23" width="1792" height="1028" />
+    </state>
+    <state x="664" y="378" width="463" height="485" key="#com.intellij.tools.ToolEditorDialog/0.23.1792.1028@0.23.1792.1028" timestamp="1632597301314" />
+    <state width="1750" height="304" key="GridCell.Tab.0.bottom" timestamp="1632605864267">
+      <screen x="0" y="23" width="1792" height="1028" />
+    </state>
+    <state width="1750" height="304" key="GridCell.Tab.0.bottom/0.23.1792.1028@0.23.1792.1028" timestamp="1632605864267" />
+    <state width="1750" height="304" key="GridCell.Tab.0.center" timestamp="1632605864267">
+      <screen x="0" y="23" width="1792" height="1028" />
+    </state>
+    <state width="1750" height="304" key="GridCell.Tab.0.center/0.23.1792.1028@0.23.1792.1028" timestamp="1632605864267" />
+    <state width="1750" height="304" key="GridCell.Tab.0.left" timestamp="1632605864266">
+      <screen x="0" y="23" width="1792" height="1028" />
+    </state>
+    <state width="1750" height="304" key="GridCell.Tab.0.left/0.23.1792.1028@0.23.1792.1028" timestamp="1632605864266" />
+    <state width="1750" height="304" key="GridCell.Tab.0.right" timestamp="1632605864267">
+      <screen x="0" y="23" width="1792" height="1028" />
+    </state>
+    <state width="1750" height="304" key="GridCell.Tab.0.right/0.23.1792.1028@0.23.1792.1028" timestamp="1632605864267" />
+    <state width="1750" height="340" key="GridCell.Tab.1.bottom" timestamp="1632598797416">
+      <screen x="0" y="23" width="1792" height="1028" />
+    </state>
+    <state width="1750" height="340" key="GridCell.Tab.1.bottom/0.23.1792.1028@0.23.1792.1028" timestamp="1632598797416" />
+    <state width="1750" height="340" key="GridCell.Tab.1.center" timestamp="1632598797416">
+      <screen x="0" y="23" width="1792" height="1028" />
+    </state>
+    <state width="1750" height="340" key="GridCell.Tab.1.center/0.23.1792.1028@0.23.1792.1028" timestamp="1632598797416" />
+    <state width="1750" height="340" key="GridCell.Tab.1.left" timestamp="1632598797415">
+      <screen x="0" y="23" width="1792" height="1028" />
+    </state>
+    <state width="1750" height="340" key="GridCell.Tab.1.left/0.23.1792.1028@0.23.1792.1028" timestamp="1632598797415" />
+    <state width="1750" height="340" key="GridCell.Tab.1.right" timestamp="1632598797416">
+      <screen x="0" y="23" width="1792" height="1028" />
+    </state>
+    <state width="1750" height="340" key="GridCell.Tab.1.right/0.23.1792.1028@0.23.1792.1028" timestamp="1632598797416" />
+    <state x="179" y="115" key="MergeDialog" timestamp="1632586085689">
+      <screen x="0" y="23" width="1792" height="1028" />
+    </state>
+    <state x="179" y="115" key="MergeDialog/0.23.1792.1028@0.23.1792.1028" timestamp="1632586085689" />
+    <state x="528" y="298" key="MultipleFileMergeDialog" timestamp="1632586088351">
+      <screen x="0" y="23" width="1792" height="1028" />
+    </state>
+    <state x="528" y="298" key="MultipleFileMergeDialog/0.23.1792.1028@0.23.1792.1028" timestamp="1632586088351" />
+    <state x="496" y="258" key="Vcs.Push.Dialog.v2" timestamp="1632606047487">
+      <screen x="0" y="23" width="1792" height="1028" />
+    </state>
+    <state x="496" y="258" key="Vcs.Push.Dialog.v2/0.23.1792.1028@0.23.1792.1028" timestamp="1632606047487" />
+    <state x="12" y="35" width="1768" height="1004" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1632611026762">
+      <screen x="0" y="23" width="1792" height="1028" />
+    </state>
+    <state x="12" y="35" width="1768" height="1004" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1792.1028@0.23.1792.1028" timestamp="1632611026762" />
+    <state x="790" y="198" key="com.intellij.tools.ToolSelectDialog.dimensionServiceKey" timestamp="1632597301981">
+      <screen x="0" y="23" width="1792" height="1028" />
+    </state>
+    <state x="790" y="198" key="com.intellij.tools.ToolSelectDialog.dimensionServiceKey/0.23.1792.1028@0.23.1792.1028" timestamp="1632597301981" />
+    <state x="598" y="276" width="596" height="550" key="find.popup" timestamp="1632611291227">
+      <screen x="0" y="23" width="1792" height="1028" />
+    </state>
+    <state x="598" y="276" width="596" height="550" key="find.popup/0.23.1792.1028@0.23.1792.1028" timestamp="1632611291227" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/sttr$go_test_github_com_abhimanyu003_sttr_processors.out" NAME="go test github.com/abhimanyu003/sttr/processors Coverage Results" MODIFIED="1632605861982" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sttr$TestROT13Encode_Name_in_github_com_abhimanyu003_sttr_processors.out" NAME="TestROT13Encode_Name in github.com/abhimanyu003/sttr/processors Coverage Results" MODIFIED="1632591996567" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sttr$TestROT13Encode_Command_in_github_com_abhimanyu003_sttr_processors.out" NAME="TestROT13Encode_Command in github.com/abhimanyu003/sttr/processors Coverage Results" MODIFIED="1632592248243" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>
