@@ -2,9 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Install on sttr</title>
-    <link>https://abhimanyu003.github.com/sttr/install/</link>
+    <link>https://abhimanyu003.github.io/sttr/install/</link>
     <description>Recent content in Install on sttr</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://abhimanyu003.github.com/sttr/install/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="https://abhimanyu003.github.io/sttr/install/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

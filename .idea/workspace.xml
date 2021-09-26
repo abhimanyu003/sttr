@@ -19,13 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="adc34a08-a01d-4d44-8bb0-0c926d2eef91" name="Default Changelist" comment="Add: processing files">
-      <change afterPath="$PROJECT_DIR$/cmd/generate-docs.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hugo/.gitmodules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hugo/themes/book" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-    </list>
+    <list default="true" id="adc34a08-a01d-4d44-8bb0-0c926d2eef91" name="Default Changelist" comment="Add: processing files" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,7 +34,7 @@
   </component>
   <component name="GOROOT" path="/usr/local/Cellar/go/1.16.4/libexec" />
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/hugo" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GoLibraries">
     <option name="indexEntireGoPath" value="false" />
@@ -60,9 +54,12 @@
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/cmd" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/cmd" />
       <recent name="$PROJECT_DIR$/processors" />
@@ -181,7 +178,8 @@
     <MESSAGE value="Add: New processor HTML encode and decode.&#10;Tweak: Sorting of processor list" />
     <MESSAGE value="Add: New processor base32" />
     <MESSAGE value="Add: processing files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add: processing files" />
+    <MESSAGE value="Adding sttr docs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding sttr docs" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -243,10 +241,10 @@
       <screen x="0" y="23" width="1792" height="1028" />
     </state>
     <state x="528" y="298" key="MultipleFileMergeDialog/0.23.1792.1028@0.23.1792.1028" timestamp="1632586088351" />
-    <state x="496" y="258" key="Vcs.Push.Dialog.v2" timestamp="1632606047487">
+    <state x="496" y="258" key="Vcs.Push.Dialog.v2" timestamp="1632615812364">
       <screen x="0" y="23" width="1792" height="1028" />
     </state>
-    <state x="496" y="258" key="Vcs.Push.Dialog.v2/0.23.1792.1028@0.23.1792.1028" timestamp="1632606047487" />
+    <state x="496" y="258" key="Vcs.Push.Dialog.v2/0.23.1792.1028@0.23.1792.1028" timestamp="1632615812364" />
     <state x="12" y="35" width="1768" height="1004" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1632611026762">
       <screen x="0" y="23" width="1792" height="1028" />
     </state>
@@ -255,10 +253,10 @@
       <screen x="0" y="23" width="1792" height="1028" />
     </state>
     <state x="790" y="198" key="com.intellij.tools.ToolSelectDialog.dimensionServiceKey/0.23.1792.1028@0.23.1792.1028" timestamp="1632597301981" />
-    <state x="598" y="276" width="596" height="550" key="find.popup" timestamp="1632611291227">
+    <state x="598" y="276" width="596" height="550" key="find.popup" timestamp="1632615745761">
       <screen x="0" y="23" width="1792" height="1028" />
     </state>
-    <state x="598" y="276" width="596" height="550" key="find.popup/0.23.1792.1028@0.23.1792.1028" timestamp="1632611291227" />
+    <state x="598" y="276" width="596" height="550" key="find.popup/0.23.1792.1028@0.23.1792.1028" timestamp="1632615745761" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/sttr$go_test_github_com_abhimanyu003_sttr_processors.out" NAME="go test github.com/abhimanyu003/sttr/processors Coverage Results" MODIFIED="1632605861982" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

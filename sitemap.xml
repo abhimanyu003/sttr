@@ -2,84 +2,84 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://abhimanyu003.github.com/sttr/install/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/install/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_base32-decode/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_base32-decode/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_base32-encode/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_base32-encode/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_base64-decode/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_base64-decode/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_base64-encode/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_base64-encode/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_camel/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_camel/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_completion/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_completion/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_completion_bash/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_completion_bash/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_completion_fish/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_completion_fish/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_completion_powershell/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_completion_powershell/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_completion_zsh/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_completion_zsh/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_count-chars/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_count-chars/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_count-lines/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_count-lines/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_count-words/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_count-words/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_hex-rgb/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_hex-rgb/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_html-decode/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_html-decode/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_html-encode/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_html-encode/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_interactive/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_interactive/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_json/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_json/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_json-yaml/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_json-yaml/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_kebap/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_kebap/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_lower/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_lower/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_md5-sum/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_md5-sum/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_reverse/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_reverse/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_rot13-encode/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_rot13-encode/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_sha1-sum/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_sha1-sum/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_sha256-sum/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_sha256-sum/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_sha512-sum/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_sha512-sum/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_slug/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_slug/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_snake/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_snake/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_title/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_title/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_upper/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_upper/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_url-decode/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_url-decode/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_url-encode/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_url-encode/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_version/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_version/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_yaml-json/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_yaml-json/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.com/sttr/cli/sttr_zeropad/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_zeropad/</loc>
   </url>
 </urlset>
