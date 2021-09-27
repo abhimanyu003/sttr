@@ -2,7 +2,6 @@ package processors
 
 import (
 	"encoding/json"
-
 	"github.com/ghodss/yaml"
 )
 
@@ -19,7 +18,10 @@ func (p FormatJSON) Alias() []string {
 
 func (p FormatJSON) Transform(input string, f ...Flag) (string, error) {
 	var objmap map[string]*json.RawMessage
-	_ = json.Unmarshal([]byte(input), &objmap)
+	err := json.Unmarshal([]byte(input), &objmap)
+	if err != nil {
+		return "", err
+	}
 
 	var indent bool
 	for _, flag := range f {
@@ -30,7 +32,6 @@ func (p FormatJSON) Transform(input string, f ...Flag) (string, error) {
 		}
 	}
 	var newJSON []byte
-	var err error
 	if indent {
 		newJSON, err = json.MarshalIndent(objmap, "", "  ")
 	} else {
@@ -70,7 +71,10 @@ func (p JSONToYAML) Alias() []string {
 }
 
 func (p JSONToYAML) Transform(input string, _ ...Flag) (string, error) {
-	y, _ := yaml.JSONToYAML([]byte(input))
+	y, err := yaml.JSONToYAML([]byte(input))
+	if err != nil {
+		return "", err
+	}
 	return string(y), nil
 }
 
@@ -102,7 +106,10 @@ func (p YAMLToJSON) Alias() []string {
 }
 
 func (p YAMLToJSON) Transform(input string, f ...Flag) (string, error) {
-	y, _ := yaml.YAMLToJSON([]byte(input))
+	y, err := yaml.YAMLToJSON([]byte(input))
+	if err != nil {
+		return "", err
+	}
 	j := FormatJSON{}
 	return j.Transform(string(y), f...)
 }
