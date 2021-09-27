@@ -97,6 +97,17 @@ sttr -i "your string"
 - [x] Sort Lines
 - [x] **and adding more....**
 
+# Contribution
+
+This project welcomes your PR and issues.
+For example, refactoring, adding features, correcting English, etc.
+If you need any help, you can contact me on [Twitter](https://twitter.com/abhimanyu003).
+
+Thanks to all the people who already contributed!
+
+<a href="https://github.com/abhimanyu003/sttr/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=abhimanyu003/sttr" />
+</a>
 
 # License
 
