@@ -19,12 +19,10 @@ var rot13EncodeCmd = &cobra.Command{
 	Use:     "rot13-encode",
 	Short:   "Encode your text to ROT13",
 	Aliases: []string{"rot13", "rot13-enc"},
-	Args:    cobra.MaximumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
 		in, out := "", ""
 
-		flags := make([]processors.Flag, 0)
 		if len(args) == 0 {
 			all, err := ioutil.ReadAll(cmd.InOrStdin())
 			if err != nil {
@@ -32,22 +30,11 @@ var rot13EncodeCmd = &cobra.Command{
 			}
 			in = string(all)
 		} else {
-			if fi, err := os.Stat(args[0]); err == nil && !fi.IsDir() {
-				d, err := ioutil.ReadFile(args[0])
-				if err != nil {
-					return err
-				}
-				in = string(d)
-				flags = append(flags, processors.Flag{
-					Name:  processors.FlagFile,
-					Value: true,
-				})
-			} else {
-				in = args[0]
-			}
+			in = args[0]
 		}
 
 		p := processors.ROT13Encode{}
+		flags := make([]processors.Flag, 0)
 
 		out, err = p.Transform(in, flags...)
 		if err != nil {

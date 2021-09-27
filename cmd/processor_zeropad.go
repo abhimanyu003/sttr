@@ -26,12 +26,10 @@ var zeropadCmd = &cobra.Command{
 	Use:     "zeropad",
 	Short:   "Pad a number with zeros",
 	Aliases: []string{},
-	Args:    cobra.MaximumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
 		in, out := "", ""
 
-		flags := make([]processors.Flag, 0)
 		if len(args) == 0 {
 			all, err := ioutil.ReadAll(cmd.InOrStdin())
 			if err != nil {
@@ -39,22 +37,11 @@ var zeropadCmd = &cobra.Command{
 			}
 			in = string(all)
 		} else {
-			if fi, err := os.Stat(args[0]); err == nil && !fi.IsDir() {
-				d, err := ioutil.ReadFile(args[0])
-				if err != nil {
-					return err
-				}
-				in = string(d)
-				flags = append(flags, processors.Flag{
-					Name:  processors.FlagFile,
-					Value: true,
-				})
-			} else {
-				in = args[0]
-			}
+			in = args[0]
 		}
 
 		p := processors.Zeropad{}
+		flags := make([]processors.Flag, 0)
 		flags = append(flags, processors.Flag{Short: "n", Value: zeropad_flag_n})
 		flags = append(flags, processors.Flag{Short: "p", Value: zeropad_flag_p})
 

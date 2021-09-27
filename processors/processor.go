@@ -57,7 +57,6 @@ type Processor interface {
 }
 
 type FlagType string
-const FlagFile = "file"
 
 func (f FlagType) String() string {
 	return string(f)
@@ -88,18 +87,6 @@ type Flag struct {
 
 	// Value - optional default value of the flag
 	Value interface{}
-}
-
-func fromFile(flags []Flag) bool {
-	for _, flag := range flags {
-		if flag.Short == FlagFile {
-			if b, ok := flag.Value.(bool); ok {
-				return b
-			}
-			return false
-		}
-	}
-	return false
 }
 
 // Zeropad is an Example processor to show how to add text processors,

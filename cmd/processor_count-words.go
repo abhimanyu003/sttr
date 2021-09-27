@@ -19,12 +19,10 @@ var countWordsCmd = &cobra.Command{
 	Use:     "count-words",
 	Short:   "Count the number of words in your text",
 	Aliases: []string{},
-	Args:    cobra.MaximumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
 		in, out := "", ""
 
-		flags := make([]processors.Flag, 0)
 		if len(args) == 0 {
 			all, err := ioutil.ReadAll(cmd.InOrStdin())
 			if err != nil {
@@ -32,22 +30,11 @@ var countWordsCmd = &cobra.Command{
 			}
 			in = string(all)
 		} else {
-			if fi, err := os.Stat(args[0]); err == nil && !fi.IsDir() {
-				d, err := ioutil.ReadFile(args[0])
-				if err != nil {
-					return err
-				}
-				in = string(d)
-				flags = append(flags, processors.Flag{
-					Name:  processors.FlagFile,
-					Value: true,
-				})
-			} else {
-				in = args[0]
-			}
+			in = args[0]
 		}
 
 		p := processors.CountWords{}
+		flags := make([]processors.Flag, 0)
 
 		out, err = p.Transform(in, flags...)
 		if err != nil {
