@@ -19,10 +19,12 @@ var md5SumCmd = &cobra.Command{
 	Use:     "md5-sum",
 	Short:   "Get the MD5 checksum of your text",
 	Aliases: []string{"md5"},
+	Args:    cobra.MaximumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
 		in, out := "", ""
 
+		flags := make([]processors.Flag, 0)
 		if len(args) == 0 {
 			all, err := ioutil.ReadAll(cmd.InOrStdin())
 			if err != nil {
@@ -30,11 +32,22 @@ var md5SumCmd = &cobra.Command{
 			}
 			in = string(all)
 		} else {
-			in = args[0]
+			if fi, err := os.Stat(args[0]); err == nil && !fi.IsDir() {
+				d, err := ioutil.ReadFile(args[0])
+				if err != nil {
+					return err
+				}
+				in = string(d)
+				flags = append(flags, processors.Flag{
+					Name:  processors.FlagFile,
+					Value: true,
+				})
+			} else {
+				in = args[0]
+			}
 		}
 
 		p := processors.MD5Encode{}
-		flags := make([]processors.Flag, 0)
 
 		out, err = p.Transform(in, flags...)
 		if err != nil {
