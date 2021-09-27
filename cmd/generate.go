@@ -132,10 +132,12 @@ var {{ .Camel }}Cmd = &cobra.Command{
 	Use:     "{{ .Name }}",
 	Short:   "{{ .Desc }}",
 	Aliases: []string{ {{- .Alias | ListAlias -}} },
+	Args:    cobra.MaximumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
 		in, out := "", ""
 
+		flags := make([]processors.Flag, 0)
 		if len(args) == 0 {
 			all, err := ioutil.ReadAll(cmd.InOrStdin())
 			if err != nil {
@@ -143,11 +145,22 @@ var {{ .Camel }}Cmd = &cobra.Command{
 			}
 			in = string(all)
 		} else {
-			in = args[0]
+			if fi, err := os.Stat(args[0]); err == nil && !fi.IsDir() {
+				d, err := ioutil.ReadFile(args[0])
+				if err != nil {
+					return err
+				}
+				in = string(d)
+				flags = append(flags, processors.Flag{
+					Name:  processors.FlagFile,
+					Value: true,
+				})
+			} else {
+				in = args[0]
+			}
 		}
 
 		p := {{ .SName }}{}
-		flags := make([]processors.Flag, 0)
 		{{- range .Flags }}
 		flags = append(flags, processors.Flag{Short: "{{.Short}}", Value: {{ $camel }}_flag_{{ .Short }}})
 		{{- end }}
