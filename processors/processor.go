@@ -18,6 +18,7 @@ var List = []list.Item{
 	CountLines{},
 	CountWords{},
 	FormatJSON{},
+	HexEncode{},
 	HexToRGB{},
 	HTMLEncode{},
 	HTMLDecode{},
@@ -57,6 +58,7 @@ type Processor interface {
 }
 
 type FlagType string
+
 const FlagFile = "file"
 
 func (f FlagType) String() string {
