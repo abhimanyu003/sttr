@@ -10,6 +10,7 @@ require (
 	github.com/iancoleman/strcase v0.2.0
 	github.com/lucasb-eyer/go-colorful v1.2.0
 	github.com/spf13/cobra v1.2.1
+	golang.org/x/crypto v0.0.0-20210921155107-089bfa567519
 )
 
 require (

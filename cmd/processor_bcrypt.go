@@ -11,21 +11,17 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var (
-	zeropad_flag_n uint
-	zeropad_flag_p string
-)
+var bcrypt_flag_r uint
 
 func init() {
-	zeropadCmd.Flags().UintVarP(&zeropad_flag_n, "number-of-zeros", "n", 5, "Number of zeros to be padded")
-	zeropadCmd.Flags().StringVarP(&zeropad_flag_p, "prefix", "p", "", "The number get prefixed with this")
-	rootCmd.AddCommand(zeropadCmd)
+	bcryptCmd.Flags().UintVarP(&bcrypt_flag_r, "number-of-rounds", "r", 10, "Number of rounds")
+	rootCmd.AddCommand(bcryptCmd)
 }
 
-var zeropadCmd = &cobra.Command{
-	Use:     "zeropad",
-	Short:   "Pad a number with zeros",
-	Aliases: []string{},
+var bcryptCmd = &cobra.Command{
+	Use:     "bcrypt",
+	Short:   "Get the Bcrypt hash of your text",
+	Aliases: []string{"bcrypt-hash"},
 	Args:    cobra.MaximumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
@@ -54,9 +50,8 @@ var zeropadCmd = &cobra.Command{
 			}
 		}
 
-		p := processors.Zeropad{}
-		flags = append(flags, processors.Flag{Short: "n", Value: zeropad_flag_n})
-		flags = append(flags, processors.Flag{Short: "p", Value: zeropad_flag_p})
+		p := processors.Bcrypt{}
+		flags = append(flags, processors.Flag{Short: "r", Value: bcrypt_flag_r})
 
 		out, err = p.Transform(in, flags...)
 		if err != nil {

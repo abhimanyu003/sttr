@@ -1,6 +1,7 @@
 package processors
 
 import (
+	"golang.org/x/crypto/bcrypt"
 	"reflect"
 	"testing"
 )
@@ -21,7 +22,7 @@ func TestMD5Encode_Command(t *testing.T) {
 		name:        "md5-sum",
 		title:       "MD5 Sum",
 	}
-	p := MD5Encode{}
+	p := MD5{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
 		t.Errorf("Alias() = %v, want %v", got, test.alias)
 	}
@@ -71,13 +72,13 @@ func TestMD5Encode_Transform(t *testing.T) {
 			want: "b10a8db164e0754105b7a99be72e3fe5",
 		}, {
 			name: "With linebreak (from file)",
-			args: args{data: "Hello World\n", in1: []Flag{ {Short: FlagFile, Value: true} }},
+			args: args{data: "Hello World\n", in1: []Flag{{Short: FlagFile, Value: true}}},
 			want: "e59ff97941044f85df5297e1c302d260",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			p := MD5Encode{}
+			p := MD5{}
 			got, err := p.Transform(tt.args.data, tt.args.in1...)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Transform() error = %v, wantErr %v", err, tt.wantErr)
@@ -106,7 +107,7 @@ func TestSHA1Encode_Command(t *testing.T) {
 		name:        "sha1-sum",
 		title:       "SHA1 Sum",
 	}
-	p := SHA1Encode{}
+	p := SHA1{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
 		t.Errorf("Alias() = %v, want %v", got, test.alias)
 	}
@@ -156,13 +157,13 @@ func TestSHA1Encode_Transform(t *testing.T) {
 			want: "0a4d55a8d778e5022fab701977c5d840bbc486d0",
 		}, {
 			name: "With linebreak (from file)",
-			args: args{data: "Hello World\n", in1: []Flag{ {Short: FlagFile, Value: true} }},
+			args: args{data: "Hello World\n", in1: []Flag{{Short: FlagFile, Value: true}}},
 			want: "648a6a6ffffdaa0badb23b8baf90b6168dd16b3a",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			p := SHA1Encode{}
+			p := SHA1{}
 			got, err := p.Transform(tt.args.data, tt.args.in1...)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Transform() error = %v, wantErr %v", err, tt.wantErr)
@@ -191,7 +192,7 @@ func TestSHA256Encode_Command(t *testing.T) {
 		name:        "sha256-sum",
 		title:       "SHA256 Sum",
 	}
-	p := SHA256Encode{}
+	p := SHA256{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
 		t.Errorf("Alias() = %v, want %v", got, test.alias)
 	}
@@ -241,13 +242,13 @@ func TestSHA256Encode_Transform(t *testing.T) {
 			want: "a591a6d40bf420404a011733cfb7b190d62c65bf0bcda32b57b277d9ad9f146e",
 		}, {
 			name: "With linebreak (from file)",
-			args: args{data: "Hello World\n", in1: []Flag{ {Short: FlagFile, Value: true} }},
+			args: args{data: "Hello World\n", in1: []Flag{{Short: FlagFile, Value: true}}},
 			want: "d2a84f4b8b650937ec8f73cd8be2c74add5a911ba64df27458ed8229da804a26",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			p := SHA256Encode{}
+			p := SHA256{}
 			got, err := p.Transform(tt.args.data, tt.args.in1...)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Transform() error = %v, wantErr %v", err, tt.wantErr)
@@ -276,7 +277,7 @@ func TestSHA512Encode_Command(t *testing.T) {
 		name:        "sha512-sum",
 		title:       "SHA512 Sum",
 	}
-	p := SHA512Encode{}
+	p := SHA512{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
 		t.Errorf("Alias() = %v, want %v", got, test.alias)
 	}
@@ -326,13 +327,13 @@ func TestSHA512Encode_Transform(t *testing.T) {
 			want: "2c74fd17edafd80e8447b0d46741ee243b7eb74dd2149a0ab1b9246fb30382f27e853d8585719e0e67cbda0daa8f51671064615d645ae27acb15bfb1447f459b",
 		}, {
 			name: "With linebreak (from file)",
-			args: args{data: "Hello World\n", in1: []Flag{ {Short: FlagFile, Value: true} }},
+			args: args{data: "Hello World\n", in1: []Flag{{Short: FlagFile, Value: true}}},
 			want: "e1c112ff908febc3b98b1693a6cd3564eaf8e5e6ca629d084d9f0eba99247cacdd72e369ff8941397c2807409ff66be64be908da17ad7b8a49a2a26c0e8086aa",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			p := SHA512Encode{}
+			p := SHA512{}
 			got, err := p.Transform(tt.args.data, tt.args.in1...)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Transform() error = %v, wantErr %v", err, tt.wantErr)
@@ -340,6 +341,87 @@ func TestSHA512Encode_Transform(t *testing.T) {
 			}
 			if got != tt.want {
 				t.Errorf("Transform() got = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestBcrypt_Command(t *testing.T) {
+	test := struct {
+		alias       []string
+		description string
+		filterValue string
+		flags       []Flag
+		name        string
+		title       string
+	}{
+		alias:       []string{"bcrypt-hash"},
+		description: "Get the Bcrypt hash of your text",
+		filterValue: "Bcrypt Hash",
+		flags: []Flag{
+			{
+				Name:  "number-of-rounds",
+				Short: "r",
+				Desc:  "Number of rounds",
+				Value: 10,
+				Type:  FlagUInt,
+			},
+		},
+		name:  "bcrypt",
+		title: "Bcrypt Hash",
+	}
+	p := Bcrypt{}
+	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
+		t.Errorf("Alias() = %v, want %v", got, test.alias)
+	}
+	if got := p.Description(); got != test.description {
+		t.Errorf("Description() = %v, want %v", got, test.description)
+	}
+	if got := p.FilterValue(); got != test.filterValue {
+		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+	}
+	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
+		t.Errorf("Flags() = %v, want %v", got, test.flags)
+	}
+	if got := p.Name(); got != test.name {
+		t.Errorf("Name() = %v, want %v", got, test.name)
+	}
+	if got := p.Title(); got != test.title {
+		t.Errorf("Title() = %v, want %v", got, test.title)
+	}
+}
+
+func TestBcrypt_Transform(t *testing.T) {
+	type args struct {
+		data string
+		in1  []Flag
+	}
+	tests := []struct {
+		name    string
+		args    args
+		wantErr bool
+		rounds  uint
+	}{
+		{
+			name: "String",
+			args: args{data: "the quick brown fox jumps over a lazy dog"},
+		},
+		{
+			name: "String",
+			args: args{data: "the quick brown fox jumps over a lazy dog", in1: []Flag{{Value: 12}}},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			p := Bcrypt{}
+			got, err := p.Transform(tt.args.data, tt.args.in1...)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("Transform() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			err = bcrypt.CompareHashAndPassword([]byte(got), []byte(tt.args.data))
+			if err != nil {
+				t.Errorf("Bcrypt validation failed")
 			}
 		})
 	}

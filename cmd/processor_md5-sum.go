@@ -47,7 +47,7 @@ var md5SumCmd = &cobra.Command{
 			}
 		}
 
-		p := processors.MD5Encode{}
+		p := processors.MD5{}
 
 		out, err = p.Transform(in, flags...)
 		if err != nil {

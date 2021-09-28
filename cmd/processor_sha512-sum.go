@@ -47,7 +47,7 @@ var sha512SumCmd = &cobra.Command{
 			}
 		}
 
-		p := processors.SHA512Encode{}
+		p := processors.SHA512{}
 
 		out, err = p.Transform(in, flags...)
 		if err != nil {

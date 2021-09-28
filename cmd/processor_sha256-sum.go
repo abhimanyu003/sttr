@@ -47,7 +47,7 @@ var sha256SumCmd = &cobra.Command{
 			}
 		}
 
-		p := processors.SHA256Encode{}
+		p := processors.SHA256{}
 
 		out, err = p.Transform(in, flags...)
 		if err != nil {

@@ -13,6 +13,7 @@ var List = []list.Item{
 	Base32Decode{},
 	Base64Decode{},
 	Base64Encode{},
+	Bcrypt{},
 	Camel{},
 	CountCharacters{},
 	CountLines{},
@@ -25,12 +26,12 @@ var List = []list.Item{
 	JSONToYAML{},
 	Kebab{},
 	Lower{},
-	MD5Encode{},
+	MD5{},
 	Reverse{},
 	ROT13Encode{},
-	SHA1Encode{},
-	SHA256Encode{},
-	SHA512Encode{},
+	SHA1{},
+	SHA256{},
+	SHA512{},
 	Slug{},
 	Snake{},
 	Title{},
@@ -70,6 +71,7 @@ func (f FlagType) IsString() bool {
 }
 
 const (
+	FlagUInt   = FlagType("Uint")
 	FlagInt    = FlagType("Int")
 	FlagUint   = FlagType("Uint")
 	FlagBool   = FlagType("Bool")
@@ -157,7 +159,7 @@ func (p Zeropad) Flags() []Flag {
 			Short: "n",
 			Desc:  "Number of zeros to be padded",
 			Value: 5,
-			Type:  FlagInt,
+			Type:  FlagUInt,
 		},
 		{
 			Name:  "prefix",
