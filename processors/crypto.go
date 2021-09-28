@@ -174,17 +174,17 @@ func (p Bcrypt) Alias() []string {
 }
 
 func (p Bcrypt) Transform(data string, f ...Flag) (string, error) {
-	var rounds int
+	var rounds uint
 	for _, flag := range f {
 		if flag.Short == "r" {
-			r, ok := flag.Value.(int)
+			r, ok := flag.Value.(uint)
 			if ok {
 				rounds = r
 			}
 		}
 	}
 
-	bytes, err := bcrypt.GenerateFromPassword([]byte(data), rounds)
+	bytes, err := bcrypt.GenerateFromPassword([]byte(data), int(rounds))
 
 	return string(bytes), err
 }
