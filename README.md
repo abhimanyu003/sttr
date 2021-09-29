@@ -88,7 +88,7 @@ cat words.txt | sttr count-chars > count.txt
 * Taking input from other command.
 
 ```go
-curl -v http://www.example.com | sttr json-yaml
+curl https://jsonplaceholder.typicode.com/users | sttr json-yaml
 ```
 
 * Chaining the different processor.
