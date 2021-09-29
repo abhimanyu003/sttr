@@ -11,6 +11,7 @@ require (
 	github.com/lucasb-eyer/go-colorful v1.2.0
 	github.com/mcnijman/go-emailaddress v1.1.0
 	github.com/spf13/cobra v1.2.1
+	github.com/yuin/goldmark v1.3.5
 	golang.org/x/crypto v0.0.0-20210921155107-089bfa567519
 )
 

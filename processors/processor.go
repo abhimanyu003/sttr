@@ -27,6 +27,7 @@ var List = []list.Item{
 	JSONToYAML{},
 	Kebab{},
 	Lower{},
+	Markdown{},
 	MD5{},
 	Reverse{},
 	ROT13Encode{},
