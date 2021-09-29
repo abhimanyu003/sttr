@@ -18,6 +18,7 @@ var List = []list.Item{
 	CountCharacters{},
 	CountLines{},
 	CountWords{},
+	ExtractEmails{},
 	FormatJSON{},
 	HexEncode{},
 	HexToRGB{},

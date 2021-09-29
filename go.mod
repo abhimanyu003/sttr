@@ -9,6 +9,7 @@ require (
 	github.com/ghodss/yaml v1.0.0
 	github.com/iancoleman/strcase v0.2.0
 	github.com/lucasb-eyer/go-colorful v1.2.0
+	github.com/mcnijman/go-emailaddress v1.1.0
 	github.com/spf13/cobra v1.2.1
 	golang.org/x/crypto v0.0.0-20210921155107-089bfa567519
 )
@@ -29,6 +30,7 @@ require (
 	github.com/sahilm/fuzzy v0.1.0 // indirect
 	github.com/shurcooL/sanitized_anchor_name v1.0.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
+	golang.org/x/net v0.0.0-20210405180319-a5a99cb37ef4 // indirect
 	golang.org/x/sys v0.0.0-20210923061019-b8560ed6a9b7 // indirect
 	golang.org/x/term v0.0.0-20210615171337-6886f2dfbf5b // indirect
 	gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15 // indirect
