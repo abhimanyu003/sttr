@@ -15,6 +15,7 @@ sttr -i "your string"
 # :movie_camera: Demo
 
 ![sttr demo](./media/demo.gif)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fabhimanyu003%2Fsttr.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fabhimanyu003%2Fsttr?ref=badge_shield)
 
 
 # :battery: Installation
@@ -101,3 +102,6 @@ sttr -i "your string"
 # License
 
 [MIT](./LICENSE)
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fabhimanyu003%2Fsttr.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fabhimanyu003%2Fsttr?ref=badge_large)
