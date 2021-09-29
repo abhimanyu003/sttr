@@ -9,7 +9,13 @@
 sttr
 
 // Direct string input
-sttr -i "your string"
+echo "Hello World" | sttr md5
+
+// File input
+cat file.txt | sttr base64-encode
+
+// Writing output to a file
+cat file.yml | sttr yaml-json > file-output.json
 ```
 
 # :movie_camera: Demo
@@ -52,17 +58,44 @@ Download the pre-compiled binaries from the [Release!](https://github.com/abhima
 * After installation simply run `sttr` command.
 
 ```go
-// With input prompt
-
+// For interactive menu
 sttr 
-// ( Press two enter to open operation menu )
-
-// You can also provide string directly without any prompt.
-sttr -i "your string"
+// Provide your input
+// Press two enter to open operation menu
+// Press `/` to filter various operations.
+// Can also press UP-Down arrows select various operations.
 ```
 
-* Press `/` to filter various operations.
-* Can also press UP-Down arrows select various operations.
+* Working with help.
+
+```go
+sttr -h
+sttr zeropad -h
+```
+
+* Working with files input.
+
+```go
+cat file-input.jpg | sttr base64-encode
+```
+
+* Writing output to file.
+
+```go
+cat words.txt | sttr count-chars > count.txt
+```
+
+* Taking input from other command.
+
+```go
+curl -v http://www.example.com | sttr json-yaml
+```
+
+* Chaining the different processor.
+
+```go
+echo "Hello World" | sttr base64-encode | sttr md5
+```
 
 
 # :boom: Supported Operations
