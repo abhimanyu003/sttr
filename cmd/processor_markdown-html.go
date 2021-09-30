@@ -32,19 +32,7 @@ var markdownHtmlCmd = &cobra.Command{
 			}
 			in = string(all)
 		} else {
-			if fi, err := os.Stat(args[0]); err == nil && !fi.IsDir() {
-				d, err := ioutil.ReadFile(args[0])
-				if err != nil {
-					return err
-				}
-				in = string(d)
-				flags = append(flags, processors.Flag{
-					Name:  processors.FlagFile,
-					Value: true,
-				})
-			} else {
-				in = args[0]
-			}
+			in = args[0]
 		}
 
 		p := processors.Markdown{}

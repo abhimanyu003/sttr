@@ -7,7 +7,6 @@ import (
 	"crypto/sha512"
 	"encoding/hex"
 	"fmt"
-	"github.com/abhimanyu003/sttr/utils"
 	"golang.org/x/crypto/bcrypt"
 )
 
@@ -24,9 +23,6 @@ func (p MD5) Alias() []string {
 
 func (p MD5) Transform(data string, f ...Flag) (string, error) {
 	hasher := md5.New()
-	if !fromFile(f) {
-		data = utils.TrimTrailingLinebreaks(data)
-	}
 	hasher.Write([]byte(data))
 
 	return hex.EncodeToString(hasher.Sum(nil)), nil
@@ -61,9 +57,6 @@ func (p SHA1) Alias() []string {
 
 func (p SHA1) Transform(data string, f ...Flag) (string, error) {
 	h := sha1.New()
-	if !fromFile(f) {
-		data = utils.TrimTrailingLinebreaks(data)
-	}
 	h.Write([]byte(data))
 	bs := h.Sum(nil)
 
@@ -99,9 +92,6 @@ func (p SHA256) Alias() []string {
 
 func (p SHA256) Transform(data string, f ...Flag) (string, error) {
 	h := sha256.New()
-	if !fromFile(f) {
-		data = utils.TrimTrailingLinebreaks(data)
-	}
 	h.Write([]byte(data))
 	bs := h.Sum(nil)
 
@@ -137,9 +127,6 @@ func (p SHA512) Alias() []string {
 
 func (p SHA512) Transform(data string, f ...Flag) (string, error) {
 	h := sha512.New()
-	if !fromFile(f) {
-		data = utils.TrimTrailingLinebreaks(data)
-	}
 	h.Write([]byte(data))
 	bs := h.Sum(nil)
 

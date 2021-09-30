@@ -69,10 +69,6 @@ func TestMD5Encode_Transform(t *testing.T) {
 		}, {
 			name: "Trimmed linebreak",
 			args: args{data: "Hello World\n"},
-			want: "b10a8db164e0754105b7a99be72e3fe5",
-		}, {
-			name: "With linebreak (from file)",
-			args: args{data: "Hello World\n", in1: []Flag{{Short: FlagFile, Value: true}}},
 			want: "e59ff97941044f85df5297e1c302d260",
 		},
 	}
@@ -154,10 +150,6 @@ func TestSHA1Encode_Transform(t *testing.T) {
 		}, {
 			name: "Trimmed linebreak",
 			args: args{data: "Hello World\n"},
-			want: "0a4d55a8d778e5022fab701977c5d840bbc486d0",
-		}, {
-			name: "With linebreak (from file)",
-			args: args{data: "Hello World\n", in1: []Flag{{Short: FlagFile, Value: true}}},
 			want: "648a6a6ffffdaa0badb23b8baf90b6168dd16b3a",
 		},
 	}
@@ -239,10 +231,6 @@ func TestSHA256Encode_Transform(t *testing.T) {
 		}, {
 			name: "Trimmed linebreak",
 			args: args{data: "Hello World\n"},
-			want: "a591a6d40bf420404a011733cfb7b190d62c65bf0bcda32b57b277d9ad9f146e",
-		}, {
-			name: "With linebreak (from file)",
-			args: args{data: "Hello World\n", in1: []Flag{{Short: FlagFile, Value: true}}},
 			want: "d2a84f4b8b650937ec8f73cd8be2c74add5a911ba64df27458ed8229da804a26",
 		},
 	}
@@ -324,10 +312,6 @@ func TestSHA512Encode_Transform(t *testing.T) {
 		}, {
 			name: "Trimmed linebreak",
 			args: args{data: "Hello World\n"},
-			want: "2c74fd17edafd80e8447b0d46741ee243b7eb74dd2149a0ab1b9246fb30382f27e853d8585719e0e67cbda0daa8f51671064615d645ae27acb15bfb1447f459b",
-		}, {
-			name: "With linebreak (from file)",
-			args: args{data: "Hello World\n", in1: []Flag{{Short: FlagFile, Value: true}}},
 			want: "e1c112ff908febc3b98b1693a6cd3564eaf8e5e6ca629d084d9f0eba99247cacdd72e369ff8941397c2807409ff66be64be908da17ad7b8a49a2a26c0e8086aa",
 		},
 	}

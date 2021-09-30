@@ -11,12 +11,12 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var (
-	zeropad_flag_n uint
+var (		
+	zeropad_flag_n uint		
 	zeropad_flag_p string
 )
 
-func init() {
+func init() {	
 	zeropadCmd.Flags().UintVarP(&zeropad_flag_n, "number-of-zeros", "n", 5, "Number of zeros to be padded")
 	zeropadCmd.Flags().StringVarP(&zeropad_flag_p, "prefix", "p", "", "The number get prefixed with this")
 	rootCmd.AddCommand(zeropadCmd)
@@ -39,19 +39,7 @@ var zeropadCmd = &cobra.Command{
 			}
 			in = string(all)
 		} else {
-			if fi, err := os.Stat(args[0]); err == nil && !fi.IsDir() {
-				d, err := ioutil.ReadFile(args[0])
-				if err != nil {
-					return err
-				}
-				in = string(d)
-				flags = append(flags, processors.Flag{
-					Name:  processors.FlagFile,
-					Value: true,
-				})
-			} else {
-				in = args[0]
-			}
+			in = args[0]
 		}
 
 		p := processors.Zeropad{}

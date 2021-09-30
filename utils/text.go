@@ -32,18 +32,6 @@ func ReadMultilineInput() string {
 	return strings.Join(str[:len(str)-1], "\n")
 }
 
-// TrimTrailingLinebreaks removes trailing linebreaks ('r', '\n', '\r\n\') from
-// the input
-func TrimTrailingLinebreaks(input string) string {
-	buf := []byte(input)
-	for i := len(buf) - 1; i >= 0; i-- {
-		if buf[i] != '\n' && buf[i] != '\r' {
-			return string(buf[:i+1])
-		}
-	}
-	return ""
-}
-
 func ToKebabCase(input string) string {
 	input = regexp.MustCompile(`\s+`).ReplaceAllString(input, " ")
 	return strcase.ToKebab(input)
