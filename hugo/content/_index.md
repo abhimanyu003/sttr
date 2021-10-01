@@ -8,14 +8,19 @@
 // With input prompt
 sttr
 
-// Direct string input
-echo "Hello World" | sttr md5
+// Direct input
+sttr md5 "Hello World"
 
 // File input
-cat file.txt | sttr base64-encode
+sttr md5 file.text
+sttr base64-encode image.jpg
+
+// Reading from different processor like cat, curl, printf etc..
+echo "Hello World" | sttr md5
+cat file.txt | sttr md5
 
 // Writing output to a file
-cat file.yml | sttr yaml-json > file-output.json
+sttr yaml-json file.yaml > file-output.json
 ```
 
 # 🎥 Demo
@@ -70,19 +75,26 @@ sttr
 
 ```go
 sttr -h
+
+// Example
 sttr zeropad -h
+sttr md5 -h
 ```
 
 * Working with files input.
 
 ```go
-cat file-input.jpg | sttr base64-encode
+sttr {command-name} {filename}
+
+sttr base64-encode image.jpg
+sttr md5 file.txt
+sttr md-html Readme.md
 ```
 
 * Writing output to file.
 
 ```go
-cat words.txt | sttr count-chars > count.txt
+sttr yaml-json file.yaml > file-output.json
 ```
 
 * Taking input from other command.
@@ -94,6 +106,8 @@ curl https://jsonplaceholder.typicode.com/users | sttr json-yaml
 * Chaining the different processor.
 
 ```go
+sttr md5 hello | sttr base64-encode
+
 echo "Hello World" | sttr base64-encode | sttr md5
 ```
 
