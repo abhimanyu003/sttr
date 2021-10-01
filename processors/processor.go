@@ -9,8 +9,8 @@ import (
 )
 
 var List = []list.Item{
-	Base32Encoding{},
 	Base32Decode{},
+	Base32Encoding{},
 	Base64Decode{},
 	Base64Encode{},
 	Bcrypt{},
@@ -22,8 +22,8 @@ var List = []list.Item{
 	FormatJSON{},
 	HexEncode{},
 	HexToRGB{},
-	HTMLEncode{},
 	HTMLDecode{},
+	HTMLEncode{},
 	JSONToYAML{},
 	Kebab{},
 	Lower{},
@@ -36,6 +36,7 @@ var List = []list.Item{
 	SHA512{},
 	Slug{},
 	Snake{},
+	SortLines{},
 	Title{},
 	Upper{},
 	URLDecode{},

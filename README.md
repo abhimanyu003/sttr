@@ -136,6 +136,7 @@ echo "Hello World" | sttr base64-encode | sttr md5
 - [x] **sha512** - Get the SHA512 checksum of your text
 - [x] **slug** - Transform your text to slug-case
 - [x] **snake** - Transform your text to snake_case
+- [x] **sort-lines** - Sort lines alphabetically
 - [x] **title** - Transform your text to Title Case
 - [x] **upper** - Transform your text to UPPER CASE
 - [x] **url-decode** - Decode URL entities
