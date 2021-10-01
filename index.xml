@@ -15,7 +15,7 @@
       <description>sttr #  sttr is a fast and flexible string/text converter
 Synopsis #  sttr is a command line tool that allows you to quickly apply various transformation operations on the input text.
 Complete documentation is available at https://github.com/abhimanyu003/sttr
-sttr [flags] Options #   -h, --help help for sttr SEE ALSO #   sttr base32-decode	- Decode your base32 text sttr base32-encode	- Encode your text to Base32 sttr base64-decode	- Decode your base64 text sttr base64-encode	- Encode your text to Base64 sttr bcrypt	- Get the Bcrypt hash of your text sttr camel	- Transform your text to CamelCase sttr completion	- generate the autocompletion script for the specified shell sttr count-chars	- Find the length of your text (including spaces) sttr count-lines	- Count the number of lines in your text sttr count-words	- Count the number of words in your text sttr extract-emails	- Extract emails from given text sttr hex-encode	- Encode your text Hex sttr hex-rgb	- Convert a #hex-color code to RGB sttr html-decode	- Unescape your HTML sttr html-encode	- Escape your HTML sttr interactive	- Use sttr in interactive mode sttr json	- Format your text as JSON sttr json-yaml	- Convert JSON to YAML text sttr kebab	- Transform your text to kebab-case sttr lower	- Transform your text to lower case sttr markdown-html	- Convert Markdown to HTML sttr md5	- Get the MD5 checksum of your text sttr reverse	- Reverse Text ( txeT esreveR ) sttr rot13-encode	- Encode your text to ROT13 sttr sha1	- Get the SHA1 checksum of your text sttr sha256	- Get the SHA256 checksum of your text sttr sha512	- Get the SHA512 checksum of your text sttr slug	- Transform your text to slug-case sttr snake	- Transform your text to snake_case sttr title	- Transform your text to Title Case sttr upper	- Transform your text to UPPER CASE sttr url-decode	- Decode URL entities sttr url-encode	- Encode URL entities sttr version	- Print the version of sttr sttr yaml-json	- Convert YAML to JSON text sttr zeropad	- Pad a number with zeros  </description>
+sttr [flags] Options #   -h, --help help for sttr SEE ALSO #   sttr base32-decode	- Decode your base32 text sttr base32-encode	- Encode your text to Base32 sttr base64-decode	- Decode your base64 text sttr base64-encode	- Encode your text to Base64 sttr bcrypt	- Get the Bcrypt hash of your text sttr camel	- Transform your text to CamelCase sttr completion	- generate the autocompletion script for the specified shell sttr count-chars	- Find the length of your text (including spaces) sttr count-lines	- Count the number of lines in your text sttr count-words	- Count the number of words in your text sttr extract-emails	- Extract emails from given text sttr hex-encode	- Encode your text Hex sttr hex-rgb	- Convert a #hex-color code to RGB sttr html-decode	- Unescape your HTML sttr html-encode	- Escape your HTML sttr interactive	- Use sttr in interactive mode sttr json	- Format your text as JSON sttr json-yaml	- Convert JSON to YAML text sttr kebab	- Transform your text to kebab-case sttr lower	- Transform your text to lower case sttr markdown-html	- Convert Markdown to HTML sttr md5	- Get the MD5 checksum of your text sttr reverse	- Reverse Text ( txeT esreveR ) sttr rot13-encode	- Encode your text to ROT13 sttr sha1	- Get the SHA1 checksum of your text sttr sha256	- Get the SHA256 checksum of your text sttr sha512	- Get the SHA512 checksum of your text sttr slug	- Transform your text to slug-case sttr snake	- Transform your text to snake_case sttr sort-lines	- Sort lines alphabetically sttr title	- Transform your text to Title Case sttr upper	- Transform your text to UPPER CASE sttr url-decode	- Decode URL entities sttr url-encode	- Encode URL entities sttr version	- Print the version of sttr sttr yaml-json	- Convert YAML to JSON text sttr zeropad	- Pad a number with zeros  </description>
     </item>
     
     <item>
@@ -295,16 +295,6 @@ sttr md5 [flags] Options #   -h, --help help for md5 SEE ALSO #   sttr	- sttr is
     </item>
     
     <item>
-      <title>sttr md5-sum</title>
-      <link>https://abhimanyu003.github.io/sttr/cli/sttr_md5-sum/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://abhimanyu003.github.io/sttr/cli/sttr_md5-sum/</guid>
-      <description>sttr md5-sum #  Get the MD5 checksum of your text
-sttr md5-sum [flags] Options #   -h, --help help for md5-sum SEE ALSO #   sttr	- sttr is a fast and flexible string/text converter  </description>
-    </item>
-    
-    <item>
       <title>sttr reverse</title>
       <link>https://abhimanyu003.github.io/sttr/cli/sttr_reverse/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -335,16 +325,6 @@ sttr sha1 [flags] Options #   -h, --help help for sha1 SEE ALSO #   sttr	- sttr 
     </item>
     
     <item>
-      <title>sttr sha1-sum</title>
-      <link>https://abhimanyu003.github.io/sttr/cli/sttr_sha1-sum/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://abhimanyu003.github.io/sttr/cli/sttr_sha1-sum/</guid>
-      <description>sttr sha1-sum #  Get the SHA1 checksum of your text
-sttr sha1-sum [flags] Options #   -h, --help help for sha1-sum SEE ALSO #   sttr	- sttr is a fast and flexible string/text converter  </description>
-    </item>
-    
-    <item>
       <title>sttr sha256</title>
       <link>https://abhimanyu003.github.io/sttr/cli/sttr_sha256/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -355,16 +335,6 @@ sttr sha256 [flags] Options #   -h, --help help for sha256 SEE ALSO #   sttr	- s
     </item>
     
     <item>
-      <title>sttr sha256-sum</title>
-      <link>https://abhimanyu003.github.io/sttr/cli/sttr_sha256-sum/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://abhimanyu003.github.io/sttr/cli/sttr_sha256-sum/</guid>
-      <description>sttr sha256-sum #  Get the SHA256 checksum of your text
-sttr sha256-sum [flags] Options #   -h, --help help for sha256-sum SEE ALSO #   sttr	- sttr is a fast and flexible string/text converter  </description>
-    </item>
-    
-    <item>
       <title>sttr sha512</title>
       <link>https://abhimanyu003.github.io/sttr/cli/sttr_sha512/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -372,16 +342,6 @@ sttr sha256-sum [flags] Options #   -h, --help help for sha256-sum SEE ALSO #   
       <guid>https://abhimanyu003.github.io/sttr/cli/sttr_sha512/</guid>
       <description>sttr sha512 #  Get the SHA512 checksum of your text
 sttr sha512 [flags] Options #   -h, --help help for sha512 SEE ALSO #   sttr	- sttr is a fast and flexible string/text converter  </description>
-    </item>
-    
-    <item>
-      <title>sttr sha512-sum</title>
-      <link>https://abhimanyu003.github.io/sttr/cli/sttr_sha512-sum/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://abhimanyu003.github.io/sttr/cli/sttr_sha512-sum/</guid>
-      <description>sttr sha512-sum #  Get the SHA512 checksum of your text
-sttr sha512-sum [flags] Options #   -h, --help help for sha512-sum SEE ALSO #   sttr	- sttr is a fast and flexible string/text converter  </description>
     </item>
     
     <item>
@@ -402,6 +362,16 @@ sttr slug [flags] Options #   -h, --help help for slug SEE ALSO #   sttr	- sttr 
       <guid>https://abhimanyu003.github.io/sttr/cli/sttr_snake/</guid>
       <description>sttr snake #  Transform your text to snake_case
 sttr snake [flags] Options #   -h, --help help for snake SEE ALSO #   sttr	- sttr is a fast and flexible string/text converter  </description>
+    </item>
+    
+    <item>
+      <title>sttr sort-lines</title>
+      <link>https://abhimanyu003.github.io/sttr/cli/sttr_sort-lines/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://abhimanyu003.github.io/sttr/cli/sttr_sort-lines/</guid>
+      <description>sttr sort-lines #  Sort lines alphabetically
+sttr sort-lines [flags] Options #   -h, --help help for sort-lines SEE ALSO #   sttr	- sttr is a fast and flexible string/text converter  </description>
     </item>
     
     <item>
