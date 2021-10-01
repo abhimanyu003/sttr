@@ -14,8 +14,8 @@ func (p HTMLEncode) Alias() []string {
 	return []string{"html-enc", "html-escape"}
 }
 
-func (p HTMLEncode) Transform(input string, _ ...Flag) (string, error) {
-	return html.EscapeString(input), nil
+func (p HTMLEncode) Transform(data []byte, _ ...Flag) (string, error) {
+	return html.EscapeString(string(data)), nil
 }
 
 func (p HTMLEncode) Flags() []Flag {
@@ -44,8 +44,8 @@ func (p HTMLDecode) Alias() []string {
 	return []string{"html-dec", "html-unescape"}
 }
 
-func (p HTMLDecode) Transform(input string, _ ...Flag) (string, error) {
-	return html.UnescapeString(input), nil
+func (p HTMLDecode) Transform(data []byte, _ ...Flag) (string, error) {
+	return html.UnescapeString(string(data)), nil
 }
 
 func (p HTMLDecode) Flags() []Flag {

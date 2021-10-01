@@ -44,7 +44,7 @@ func TestRGB_Command(t *testing.T) {
 
 func TestHexToRGB_Transform(t *testing.T) {
 	type args struct {
-		input string
+		data []byte
 		in1   []Flag
 	}
 	tests := []struct {
@@ -55,18 +55,18 @@ func TestHexToRGB_Transform(t *testing.T) {
 	}{
 		{
 			name: "Hex with # string",
-			args: args{input: "#FF5733"},
+			args: args{data: []byte("#FF5733")},
 			want: "255, 87, 51",
 		},
 		{
 			name:    "HEX string with wrong string",
-			args:    args{input: "#PPPPP"},
+			args:    args{data: []byte("#PPPPP")},
 			want:    "0, 0, 0",
 			wantErr: true,
 		},
 		{
 			name:    "HEX string with wrong string",
-			args:    args{input: "FF5733"},
+			args:    args{data: []byte("FF5733")},
 			want:    "0, 0, 0",
 			wantErr: true,
 		},
@@ -74,7 +74,7 @@ func TestHexToRGB_Transform(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			p := HexToRGB{}
-			got, err := p.Transform(tt.args.input, tt.args.in1...)
+			got, err := p.Transform(tt.args.data, tt.args.in1...)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Transform() error = %v, wantErr %v", err, tt.wantErr)
 				return

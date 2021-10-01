@@ -15,8 +15,8 @@ func (p Base32Encoding) Alias() []string {
 	return []string{"b32-enc", "b32-encode"}
 }
 
-func (p Base32Encoding) Transform(data string, _ ...Flag) (string, error) {
-	return base32.StdEncoding.EncodeToString([]byte(data)), nil
+func (p Base32Encoding) Transform(data []byte, _ ...Flag) (string, error) {
+	return base32.StdEncoding.EncodeToString(data), nil
 }
 
 func (p Base32Encoding) Flags() []Flag {
@@ -46,8 +46,8 @@ func (p Base32Decode) Alias() []string {
 	return []string{"b32-dec", "b32-decode"}
 }
 
-func (p Base32Decode) Transform(data string, _ ...Flag) (string, error) {
-	decodedString, err := base32.StdEncoding.DecodeString(data)
+func (p Base32Decode) Transform(data []byte, _ ...Flag) (string, error) {
+	decodedString, err := base32.StdEncoding.DecodeString(string(data))
 	return string(decodedString), err
 }
 

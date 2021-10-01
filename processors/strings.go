@@ -24,8 +24,8 @@ func (p Lower) Alias() []string {
 	return nil
 }
 
-func (p Lower) Transform(input string, _ ...Flag) (string, error) {
-	return strings.ToLower(input), nil
+func (p Lower) Transform(data []byte, _ ...Flag) (string, error) {
+	return strings.ToLower(string(data)), nil
 }
 
 func (p Lower) Flags() []Flag {
@@ -56,8 +56,8 @@ func (p Upper) Alias() []string {
 	return nil
 }
 
-func (p Upper) Transform(input string, _ ...Flag) (string, error) {
-	return strings.ToUpper(input), nil
+func (p Upper) Transform(data []byte, _ ...Flag) (string, error) {
+	return strings.ToUpper(string(data)), nil
 }
 
 func (p Upper) Flags() []Flag {
@@ -88,8 +88,8 @@ func (p Title) Alias() []string {
 	return nil
 }
 
-func (p Title) Transform(input string, _ ...Flag) (string, error) {
-	return strings.Title(input), nil
+func (p Title) Transform(data []byte, _ ...Flag) (string, error) {
+	return strings.Title(string(data)), nil
 }
 
 func (p Title) Flags() []Flag {
@@ -120,9 +120,9 @@ func (p Snake) Alias() []string {
 	return nil
 }
 
-func (p Snake) Transform(input string, _ ...Flag) (string, error) {
-	input = regexp.MustCompile(`\s+`).ReplaceAllString(input, " ")
-	return strcase.ToSnake(input), nil
+func (p Snake) Transform(data []byte, _ ...Flag) (string, error) {
+	str := regexp.MustCompile(`\s+`).ReplaceAllString(string(data), " ")
+	return strcase.ToSnake(str), nil
 }
 
 func (p Snake) Flags() []Flag {
@@ -153,8 +153,8 @@ func (p Kebab) Alias() []string {
 	return nil
 }
 
-func (p Kebab) Transform(input string, _ ...Flag) (string, error) {
-	return utils.ToKebabCase(input), nil
+func (p Kebab) Transform(data []byte, _ ...Flag) (string, error) {
+	return utils.ToKebabCase(data), nil
 }
 
 func (p Kebab) Flags() []Flag {
@@ -185,9 +185,9 @@ func (p Camel) Alias() []string {
 	return nil
 }
 
-func (p Camel) Transform(input string, _ ...Flag) (string, error) {
-	input = regexp.MustCompile(`\s+`).ReplaceAllString(input, " ")
-	return strcase.ToCamel(input), nil
+func (p Camel) Transform(data []byte, _ ...Flag) (string, error) {
+	str := regexp.MustCompile(`\s+`).ReplaceAllString(string(data), " ")
+	return strcase.ToCamel(str), nil
 }
 
 func (p Camel) Flags() []Flag {
@@ -218,9 +218,9 @@ func (p Slug) Alias() []string {
 	return nil
 }
 
-func (p Slug) Transform(input string, _ ...Flag) (string, error) {
+func (p Slug) Transform(data []byte, _ ...Flag) (string, error) {
 	re := regexp.MustCompile("[^a-z0-9]+")
-	return strings.Trim(re.ReplaceAllString(strings.ToLower(input), "-"), "-"), nil
+	return strings.Trim(re.ReplaceAllString(strings.ToLower(string(data)), "-"), "-"), nil
 }
 
 func (p Slug) Flags() []Flag {
@@ -250,8 +250,8 @@ func (p CountCharacters) Alias() []string {
 	return nil
 }
 
-func (p CountCharacters) Transform(input string, _ ...Flag) (string, error) {
-	return fmt.Sprintf("%d", len([]rune(input))), nil
+func (p CountCharacters) Transform(data []byte, _ ...Flag) (string, error) {
+	return fmt.Sprintf("%d", len([]rune(string(data)))), nil
 }
 
 func (p CountCharacters) Flags() []Flag {
@@ -282,8 +282,8 @@ func (p CountWords) Alias() []string {
 	return nil
 }
 
-func (p CountWords) Transform(input string, _ ...Flag) (string, error) {
-	return fmt.Sprintf("%d", len(strings.Fields(input))), nil
+func (p CountWords) Transform(data []byte, _ ...Flag) (string, error) {
+	return fmt.Sprintf("%d", len(strings.Fields(string(data)))), nil
 }
 
 func (p CountWords) Flags() []Flag {
@@ -314,9 +314,9 @@ func (p CountLines) Alias() []string {
 	return nil
 }
 
-func (p CountLines) Transform(input string, _ ...Flag) (string, error) {
-	lines := strings.Count(input, "\n")
-	if len(input) > 0 && !strings.HasSuffix(input, "\n") {
+func (p CountLines) Transform(data []byte, _ ...Flag) (string, error) {
+	lines := strings.Count(string(data), "\n")
+	if len(data) > 0 && !strings.HasSuffix(string(data), "\n") {
 		lines++
 	}
 	return fmt.Sprintf("%d", lines), nil
@@ -350,8 +350,8 @@ func (p SortLines) Alias() []string {
 	return nil
 }
 
-func (p SortLines) Transform(input string, _ ...Flag) (string, error) {
-	sorted := strings.Split(input, "\n")
+func (p SortLines) Transform(data []byte, _ ...Flag) (string, error) {
+	sorted := strings.Split(string(data), "\n")
 	sort.Strings(sorted)
 	return strings.Join(sorted, "\n"), nil
 }
@@ -384,9 +384,9 @@ func (p Reverse) Alias() []string {
 	return nil
 }
 
-func (p Reverse) Transform(input string, _ ...Flag) (string, error) {
+func (p Reverse) Transform(data []byte, _ ...Flag) (string, error) {
 	result := ""
-	for _, v := range input {
+	for _, v := range data {
 		result = string(v) + result
 	}
 	return result, nil
@@ -419,9 +419,9 @@ func (p ExtractEmails) Alias() []string {
 	return []string{"find-emails", "find-email", "extract-email"}
 }
 
-func (p ExtractEmails) Transform(input string, f ...Flag) (string, error) {
+func (p ExtractEmails) Transform(data []byte, f ...Flag) (string, error) {
 	var emails []string
-	extracted := emailaddress.FindWithIcannSuffix([]byte(input), false)
+	extracted := emailaddress.FindWithIcannSuffix(data, false)
 	for _, e := range extracted {
 		emails = append(emails, e.String())
 	}

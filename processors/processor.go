@@ -109,16 +109,16 @@ func (p Zeropad) Alias() []string {
 	return nil
 }
 
-func (p Zeropad) Transform(input string, f ...Flag) (string, error) {
-	input = strings.TrimSpace(input)
+func (p Zeropad) Transform(data []byte, f ...Flag) (string, error) {
+	strIn := strings.TrimSpace(string(data))
 	neg := ""
-	i, err := strconv.ParseFloat(input, 64)
+	i, err := strconv.ParseFloat(strIn, 64)
 	if err != nil {
-		return "", fmt.Errorf("number expected: '%s'", input)
+		return "", fmt.Errorf("number expected: '%s'", data)
 	}
 	if i < 0 {
 		neg = "-"
-		input = input[1:]
+		data = data[1:]
 	}
 
 	n := 1
@@ -136,7 +136,7 @@ func (p Zeropad) Transform(input string, f ...Flag) (string, error) {
 			}
 		}
 	}
-	return fmt.Sprintf("%s%s%s%s", pre, neg, strings.Repeat("0", n), input), nil
+	return fmt.Sprintf("%s%s%s%s", pre, neg, strings.Repeat("0", n), data), nil
 }
 
 func (p Zeropad) Flags() []Flag {

@@ -44,7 +44,7 @@ func TestBase64Encode_Command(t *testing.T) {
 
 func TestBase64Encode_Transform(t *testing.T) {
 	type args struct {
-		data string
+		data []byte
 		in1  []Flag
 	}
 	tests := []struct {
@@ -55,15 +55,15 @@ func TestBase64Encode_Transform(t *testing.T) {
 	}{
 		{
 			name: "String",
-			args: args{data: "the quick brown fox jumps over a lazy dog"},
+			args: args{data: []byte("the quick brown fox jumps over a lazy dog")},
 			want: "dGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIGEgbGF6eSBkb2c=",
 		}, {
 			name: "Emoji",
-			args: args{data: "😃😇🙃🙂😉😌😙😗🇮🇳"},
+			args: args{data: []byte("😃😇🙃🙂😉😌😙😗🇮🇳")},
 			want: "8J+Yg/CfmIfwn5mD8J+ZgvCfmInwn5iM8J+YmfCfmJfwn4eu8J+Hsw==",
 		}, {
 			name: "Multi line string",
-			args: args{data: "123345\nabcd\n456\n123\nabc\n567\n7890"},
+			args: args{data: []byte("123345\nabcd\n456\n123\nabc\n567\n7890")},
 			want: "MTIzMzQ1CmFiY2QKNDU2CjEyMwphYmMKNTY3Cjc4OTA=",
 		},
 	}
@@ -121,7 +121,7 @@ func TestBase64Decode_Command(t *testing.T) {
 
 func TestBase64Decode_Transform(t *testing.T) {
 	type args struct {
-		data string
+		data []byte
 		in1  []Flag
 	}
 	tests := []struct {
@@ -132,15 +132,15 @@ func TestBase64Decode_Transform(t *testing.T) {
 	}{
 		{
 			name: "String",
-			args: args{data: "dGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIGEgbGF6eSBkb2c="},
+			args: args{data: []byte("dGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIGEgbGF6eSBkb2c=")},
 			want: "the quick brown fox jumps over a lazy dog",
 		}, {
 			name: "Emoji",
-			args: args{data: "8J+Yg/CfmIfwn5mD8J+ZgvCfmInwn5iM8J+YmfCfmJfwn4eu8J+Hsw=="},
+			args: args{data: []byte("8J+Yg/CfmIfwn5mD8J+ZgvCfmInwn5iM8J+YmfCfmJfwn4eu8J+Hsw==")},
 			want: "😃😇🙃🙂😉😌😙😗🇮🇳",
 		}, {
 			name: "Multi line string",
-			args: args{data: "MTIzMzQ1CmFiY2QKNDU2CjEyMwphYmMKNTY3Cjc4OTA="},
+			args: args{data: []byte("MTIzMzQ1CmFiY2QKNDU2CjEyMwphYmMKNTY3Cjc4OTA=")},
 			want: "123345\nabcd\n456\n123\nabc\n567\n7890",
 		},
 	}
