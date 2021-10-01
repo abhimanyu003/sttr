@@ -2,6 +2,12 @@
 
 # sttr
 
+[Website](https://abhimanyu003.github.io/sttr/)
+| [Install](https://github.com/abhimanyu003/sttr#battery-installation)
+| [Getting Started](https://github.com/abhimanyu003/sttr#books-guide)
+| [CLI Reference](https://abhimanyu003.github.io/sttr/cli/sttr/)
+| [Source Code](https://github.com/abhimanyu003/sttr)
+
 `sttr` is command line software that allows you to quickly run various transformation operations on the string.
 
 ```go
