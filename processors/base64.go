@@ -15,8 +15,8 @@ func (p Base64Encode) Alias() []string {
 	return []string{"b64-enc", "b64-encode"}
 }
 
-func (p Base64Encode) Transform(data string, _ ...Flag) (string, error) {
-	return base64.StdEncoding.EncodeToString([]byte(data)), nil
+func (p Base64Encode) Transform(data []byte, _ ...Flag) (string, error) {
+	return base64.StdEncoding.EncodeToString(data), nil
 }
 
 func (p Base64Encode) Flags() []Flag {
@@ -46,8 +46,8 @@ func (p Base64Decode) Alias() []string {
 	return []string{"b64-dec", "b64-decode"}
 }
 
-func (p Base64Decode) Transform(data string, _ ...Flag) (string, error) {
-	decodedString, err := base64.StdEncoding.DecodeString(data)
+func (p Base64Decode) Transform(data []byte, _ ...Flag) (string, error) {
+	decodedString, err := base64.StdEncoding.DecodeString(string(data))
 	return string(decodedString), err
 }
 

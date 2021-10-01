@@ -13,8 +13,8 @@ func (p ROT13Encode) Alias() []string {
 	return []string{"rot13", "rot13-enc"}
 }
 
-func (p ROT13Encode) Transform(input string, _ ...Flag) (string, error) {
-	return strings.Map(rot13, input), nil
+func (p ROT13Encode) Transform(data []byte, _ ...Flag) (string, error) {
+	return strings.Map(rot13, string(data)), nil
 }
 
 func (p ROT13Encode) Flags() []Flag {

@@ -16,9 +16,9 @@ func (p Markdown) Alias() []string {
 	return []string{"md-html"}
 }
 
-func (p Markdown) Transform(input string, _ ...Flag) (string, error) {
+func (p Markdown) Transform(data []byte, _ ...Flag) (string, error) {
 	var buf bytes.Buffer
-	if err := goldmark.Convert([]byte(input), &buf); err != nil {
+	if err := goldmark.Convert(data, &buf); err != nil {
 		return "", err
 	}
 	return buf.String(), nil

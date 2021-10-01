@@ -18,8 +18,8 @@ func (p HexToRGB) Alias() []string {
 	return nil
 }
 
-func (p HexToRGB) Transform(input string, _ ...Flag) (string, error) {
-	c, err := colorful.Hex(input)
+func (p HexToRGB) Transform(data []byte, _ ...Flag) (string, error) {
+	c, err := colorful.Hex(string(data))
 	return fmt.Sprintf("%d, %d, %d", int(c.R*255), int(c.G*255), int(c.B*255)), err
 }
 

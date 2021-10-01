@@ -44,7 +44,7 @@ func TestHexEncode_Command(t *testing.T) {
 
 func TestHexEncode_Transform(t *testing.T) {
 	type args struct {
-		input string
+		data []byte
 		in1   []Flag
 	}
 	tests := []struct {
@@ -55,31 +55,31 @@ func TestHexEncode_Transform(t *testing.T) {
 	}{
 		{
 			name: "Test empty string",
-			args: args{input: ""},
+			args: args{data: []byte("")},
 			want: "",
 		},
 		{
 			name: "String",
-			args: args{input: "this is string"},
+			args: args{data: []byte("this is string")},
 			want: "7468697320697320737472696e67",
 		}, {
 			name: "Emoji",
-			args: args{input: "😃😇🙃🙂😉😌😙😗🇮🇳"},
+			args: args{data: []byte("😃😇🙃🙂😉😌😙😗🇮🇳")},
 			want: "f09f9883f09f9887f09f9983f09f9982f09f9889f09f988cf09f9899f09f9897f09f87aef09f87b3",
 		}, {
 			name: "Multi line string",
-			args: args{input: "Hello\nfoo\nbar\nfoo\nf00\n%*&^*&^&\n***"},
+			args: args{data: []byte("Hello\nfoo\nbar\nfoo\nf00\n%*&^*&^&\n***")},
 			want: "48656c6c6f0a666f6f0a6261720a666f6f0a6630300a252a265e2a265e260a2a2a2a",
 		}, {
 			name: "Test multi lingual character",
-			args: args{input: "नमस्ते"},
+			args: args{data: []byte("नमस्ते")},
 			want: "e0a4a8e0a4aee0a4b8e0a58de0a4a4e0a587",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			p := HexEncode{}
-			got, err := p.Transform(tt.args.input, tt.args.in1...)
+			got, err := p.Transform(tt.args.data, tt.args.in1...)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Transform() error = %v, wantErr %v", err, tt.wantErr)
 				return
@@ -130,7 +130,7 @@ func TestHexDecode_Command(t *testing.T) {
 
 func TestHexDecode_Transform(t *testing.T) {
 	type args struct {
-		input string
+		data []byte
 		in1   []Flag
 	}
 	tests := []struct {
@@ -141,34 +141,34 @@ func TestHexDecode_Transform(t *testing.T) {
 	}{
 		{
 			name:    "Test empty hex",
-			args:    args{input: ""},
+			args:    args{data: []byte("")},
 			want:    "",
 			wantErr: false,
 		},
 		{
 			name:    "Test invalid hex",
-			args:    args{input: "this is invalid hex"},
+			args:    args{data: []byte("this is invalid hex")},
 			want:    "",
 			wantErr: true,
 		},
 		{
 			name: "String",
-			args: args{input: "7468697320697320737472696e67"},
+			args: args{data: []byte("7468697320697320737472696e67")},
 			want: "this is string",
 		}, {
 			name: "Emoji",
-			args: args{input: "f09f9883f09f9887f09f9983f09f9982f09f9889f09f988cf09f9899f09f9897f09f87aef09f87b3"},
+			args: args{data: []byte("f09f9883f09f9887f09f9983f09f9982f09f9889f09f988cf09f9899f09f9897f09f87aef09f87b3")},
 			want: "😃😇🙃🙂😉😌😙😗🇮🇳",
 		}, {
 			name: "Multi line string",
-			args: args{input: "48656c6c6f0a666f6f0a6261720a666f6f0a6630300a252a265e2a265e260a2a2a2a"},
+			args: args{data: []byte("48656c6c6f0a666f6f0a6261720a666f6f0a6630300a252a265e2a265e260a2a2a2a")},
 			want: "Hello\nfoo\nbar\nfoo\nf00\n%*&^*&^&\n***",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			p := HexDecode{}
-			got, err := p.Transform(tt.args.input, tt.args.in1...)
+			got, err := p.Transform(tt.args.data, tt.args.in1...)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Transform() error = %v, wantErr %v", err, tt.wantErr)
 				return

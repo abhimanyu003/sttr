@@ -44,7 +44,7 @@ func TestHTMLEncode_Command(t *testing.T) {
 
 func TestHTMLEncode_Transform(t *testing.T) {
 	type args struct {
-		input string
+		data []byte
 		in1   []Flag
 	}
 	tests := []struct {
@@ -55,7 +55,7 @@ func TestHTMLEncode_Transform(t *testing.T) {
 	}{
 		{
 			name: "Should escape HTML",
-			args: args{input: `<!DOCTYPE html>
+			args: args{data: []byte(`<!DOCTYPE html>
 <html>
 <body>
 
@@ -64,7 +64,7 @@ func TestHTMLEncode_Transform(t *testing.T) {
 <p>My first paragraph.</p>
 
 </body>
-</html>`},
+</html>`)},
 			want: `&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;body&gt;
@@ -79,7 +79,7 @@ func TestHTMLEncode_Transform(t *testing.T) {
 		},
 		{
 			name:    "should escape xss string",
-			args:    args{input: `<script>alert("XSS");</script>`},
+			args:    args{data: []byte(`<script>alert("XSS");</script>`)},
 			want:    `&lt;script&gt;alert(&#34;XSS&#34;);&lt;/script&gt;`,
 			wantErr: false,
 		},
@@ -87,7 +87,7 @@ func TestHTMLEncode_Transform(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			p := HTMLEncode{}
-			got, err := p.Transform(tt.args.input, tt.args.in1...)
+			got, err := p.Transform(tt.args.data, tt.args.in1...)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Transform() error = %v, wantErr %v", err, tt.wantErr)
 				return
@@ -138,7 +138,7 @@ func TestHTMLDecode_Command(t *testing.T) {
 
 func TestHTMLDecode_Transform(t *testing.T) {
 	type args struct {
-		input string
+		data []byte
 		in1   []Flag
 	}
 	tests := []struct {
@@ -149,7 +149,7 @@ func TestHTMLDecode_Transform(t *testing.T) {
 	}{
 		{
 			name: "Should unescape HTML",
-			args: args{input: `&lt;!DOCTYPE html&gt;
+			args: args{data: []byte(`&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;body&gt;
 
@@ -158,7 +158,7 @@ func TestHTMLDecode_Transform(t *testing.T) {
 &lt;p&gt;My first paragraph.&lt;/p&gt;
 
 &lt;/body&gt;
-&lt;/html&gt;`},
+&lt;/html&gt;`)},
 			want: `<!DOCTYPE html>
 <html>
 <body>
@@ -173,7 +173,7 @@ func TestHTMLDecode_Transform(t *testing.T) {
 		},
 		{
 			name:    "should unescape xss string",
-			args:    args{input: `&lt;script&gt;alert(&#34;XSS&#34;);&lt;/script&gt;`},
+			args:    args{data: []byte(`&lt;script&gt;alert(&#34;XSS&#34;);&lt;/script&gt;`)},
 			want:    `<script>alert("XSS");</script>`,
 			wantErr: false,
 		},
@@ -181,7 +181,7 @@ func TestHTMLDecode_Transform(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			p := HTMLDecode{}
-			got, err := p.Transform(tt.args.input, tt.args.in1...)
+			got, err := p.Transform(tt.args.data, tt.args.in1...)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Transform() error = %v, wantErr %v", err, tt.wantErr)
 				return

@@ -7,7 +7,7 @@ import (
 
 func TestCountCharacters_Transform(t *testing.T) {
 	type args struct {
-		input string
+		data []byte
 		opts  []Flag
 	}
 	tests := []struct {
@@ -18,27 +18,27 @@ func TestCountCharacters_Transform(t *testing.T) {
 	}{
 		{
 			name: "String",
-			args: args{input: "the quick brown fox jumps over a lazy dog"},
+			args: args{data: []byte("the quick brown fox jumps over a lazy dog")},
 			want: "41",
 		}, {
 			name: "Emoji",
-			args: args{input: "😃😇🙃🙂😉😌😙😗🇮🇳"},
+			args: args{data: []byte("😃😇🙃🙂😉😌😙😗🇮🇳")},
 			want: "10",
 		}, {
 			name: "Multi line string",
-			args: args{input: "123345\nabcd\n456\n123\nabc\n567\n7890"},
+			args: args{data: []byte("123345\nabcd\n456\n123\nabc\n567\n7890")},
 			want: "32",
 		},
 		{
 			name: "Double-byte characters",
-			args: args{input: "你好"},
+			args: args{data: []byte("你好")},
 			want: "2",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			p := CountCharacters{}
-			if got, _ := p.Transform(tt.args.input, tt.args.opts...); got != tt.want {
+			if got, _ := p.Transform(tt.args.data, tt.args.opts...); got != tt.want {
 				t.Errorf("CountCharacters() = %v, want %v", got, tt.want)
 			}
 		})
@@ -47,7 +47,7 @@ func TestCountCharacters_Transform(t *testing.T) {
 
 func TestSortLines_Transform(t *testing.T) {
 	type args struct {
-		input string
+		data []byte
 		opts  []Flag
 	}
 	tests := []struct {
@@ -58,19 +58,19 @@ func TestSortLines_Transform(t *testing.T) {
 	}{
 		{
 			name: "String",
-			args: args{input: "Hello\nfoo\nbar\nfoo\nf00\n%*&^*&^&\n***"},
+			args: args{data: []byte("Hello\nfoo\nbar\nfoo\nf00\n%*&^*&^&\n***")},
 			want: "%*&^*&^&\n***\nHello\nbar\nf00\nfoo\nfoo",
 		},
 		{
 			name: "Numbers",
-			args: args{input: "3\n1\n6\n5\n9\n10\n4\n8\n7\n2"},
+			args: args{data: []byte("3\n1\n6\n5\n9\n10\n4\n8\n7\n2")},
 			want: "1\n10\n2\n3\n4\n5\n6\n7\n8\n9",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			p := SortLines{}
-			if got, _ := p.Transform(tt.args.input, tt.args.opts...); got != tt.want {
+			if got, _ := p.Transform(tt.args.data, tt.args.opts...); got != tt.want {
 				t.Errorf("SortLines() = %v, want %v", got, tt.want)
 			}
 		})
@@ -79,7 +79,7 @@ func TestSortLines_Transform(t *testing.T) {
 
 func TestLower_Transform(t *testing.T) {
 	type args struct {
-		input string
+		data []byte
 		opts  []Flag
 	}
 	tests := []struct {
@@ -90,22 +90,22 @@ func TestLower_Transform(t *testing.T) {
 	}{
 		{
 			name: "String",
-			args: args{input: "THE quick brown fox jumps over a lazy dog Hello foo bar foo f00 %*&^*&^& ***"},
+			args: args{data: []byte("THE quick brown fox jumps over a lazy dog Hello foo bar foo f00 %*&^*&^& ***")},
 			want: "the quick brown fox jumps over a lazy dog hello foo bar foo f00 %*&^*&^& ***",
 		}, {
 			name: "Emoji",
-			args: args{input: "😃😇🙃🙂😉😌😙😗🇮🇳"},
+			args: args{data: []byte("😃😇🙃🙂😉😌😙😗🇮🇳")},
 			want: "😃😇🙃🙂😉😌😙😗🇮🇳",
 		}, {
 			name: "Multi line string",
-			args: args{input: "Hello\nfoo\nbar\nfoo\nf00\n%*&^*&^&\n***"},
+			args: args{data: []byte("Hello\nfoo\nbar\nfoo\nf00\n%*&^*&^&\n***")},
 			want: "hello\nfoo\nbar\nfoo\nf00\n%*&^*&^&\n***",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			p := Lower{}
-			if got, _ := p.Transform(tt.args.input, tt.args.opts...); got != tt.want {
+			if got, _ := p.Transform(tt.args.data, tt.args.opts...); got != tt.want {
 				t.Errorf("StringToLower() = %v, want %v", got, tt.want)
 			}
 		})
@@ -114,7 +114,7 @@ func TestLower_Transform(t *testing.T) {
 
 func TestTitle_Transform(t *testing.T) {
 	type args struct {
-		input string
+		data []byte
 		opts  []Flag
 	}
 	tests := []struct {
@@ -125,18 +125,18 @@ func TestTitle_Transform(t *testing.T) {
 	}{
 		{
 			name: "String",
-			args: args{input: "the quick brown fox jumps over a lazy dog"},
+			args: args{data: []byte("the quick brown fox jumps over a lazy dog")},
 			want: "The Quick Brown Fox Jumps Over A Lazy Dog",
 		}, {
 			name: "String Uppercase",
-			args: args{input: "THE QUICK BROWN FOX JUMPS OVER A LAZY DOG"},
+			args: args{data: []byte("THE QUICK BROWN FOX JUMPS OVER A LAZY DOG")},
 			want: "THE QUICK BROWN FOX JUMPS OVER A LAZY DOG",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			p := Title{}
-			if got, _ := p.Transform(tt.args.input, tt.args.opts...); got != tt.want {
+			if got, _ := p.Transform(tt.args.data, tt.args.opts...); got != tt.want {
 				t.Errorf("StringToTitle() = %v, want %v", got, tt.want)
 			}
 		})
@@ -145,7 +145,7 @@ func TestTitle_Transform(t *testing.T) {
 
 func TestUpper_Transform(t *testing.T) {
 	type args struct {
-		input string
+		data []byte
 		opts  []Flag
 	}
 	tests := []struct {
@@ -156,22 +156,22 @@ func TestUpper_Transform(t *testing.T) {
 	}{
 		{
 			name: "String",
-			args: args{input: "THE quick brown fox jumps over a lazy dog Hello foo bar foo f00 %*&^*&^& ***"},
+			args: args{data: []byte("THE quick brown fox jumps over a lazy dog Hello foo bar foo f00 %*&^*&^& ***")},
 			want: "THE QUICK BROWN FOX JUMPS OVER A LAZY DOG HELLO FOO BAR FOO F00 %*&^*&^& ***",
 		}, {
 			name: "Emoji",
-			args: args{input: "😃😇🙃🙂😉😌😙😗🇮🇳"},
+			args: args{data: []byte("😃😇🙃🙂😉😌😙😗🇮🇳")},
 			want: "😃😇🙃🙂😉😌😙😗🇮🇳",
 		}, {
 			name: "Multi line string",
-			args: args{input: "Hello\nfoo\nbar\nfoo\nf00\n%*&^*&^&\n***"},
+			args: args{data: []byte("Hello\nfoo\nbar\nfoo\nf00\n%*&^*&^&\n***")},
 			want: "HELLO\nFOO\nBAR\nFOO\nF00\n%*&^*&^&\n***",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			p := Upper{}
-			if got, _ := p.Transform(tt.args.input, tt.args.opts...); got != tt.want {
+			if got, _ := p.Transform(tt.args.data, tt.args.opts...); got != tt.want {
 				t.Errorf("StringToUpper() = %v, want %v", got, tt.want)
 			}
 		})
@@ -180,7 +180,7 @@ func TestUpper_Transform(t *testing.T) {
 
 func TestSnakeCase_Transform(t *testing.T) {
 	type args struct {
-		input string
+		data []byte
 		opts  []Flag
 	}
 	tests := []struct {
@@ -191,29 +191,29 @@ func TestSnakeCase_Transform(t *testing.T) {
 	}{
 		{
 			name: "String",
-			args: args{input: "THE quick brown fox jumps over a lazy dog Hello foo bar foo f00 %*&^*&^& ***"},
+			args: args{data: []byte("THE quick brown fox jumps over a lazy dog Hello foo bar foo f00 %*&^*&^& ***")},
 			want: "the_quick_brown_fox_jumps_over_a_lazy_dog_hello_foo_bar_foo_f_00_%*&^*&^&_***",
 		},
 		{
 			name: "TestStringExample",
-			args: args{input: "test_string_example"},
+			args: args{data: []byte("test_string_example")},
 			want: "test_string_example",
 		},
 		{
 			name: "Lots of Space",
-			args: args{input: "Lots    Of      Space   "},
+			args: args{data: []byte("Lots    Of      Space   ")},
 			want: "lots_of_space",
 		},
 		{
 			name: "Multi Line String",
-			args: args{input: "Multi\nLine\nString"},
+			args: args{data: []byte("Multi\nLine\nString")},
 			want: "multi_line_string",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			p := Snake{}
-			if got, _ := p.Transform(tt.args.input, tt.args.opts...); got != tt.want {
+			if got, _ := p.Transform(tt.args.data, tt.args.opts...); got != tt.want {
 				t.Errorf("StringToSnakeCase() = %v, want %v", got, tt.want)
 			}
 		})
@@ -259,7 +259,7 @@ func TestKebab_Command(t *testing.T) {
 
 func TestKebab_Transform(t *testing.T) {
 	type args struct {
-		input string
+		data []byte
 		opts  []Flag
 	}
 	tests := []struct {
@@ -270,29 +270,29 @@ func TestKebab_Transform(t *testing.T) {
 	}{
 		{
 			name: "String",
-			args: args{input: "THE quick brown fox jumps over a lazy dog Hello foo bar foo f00 %*&^*&^& ***"},
+			args: args{data: []byte("THE quick brown fox jumps over a lazy dog Hello foo bar foo f00 %*&^*&^& ***")},
 			want: "the-quick-brown-fox-jumps-over-a-lazy-dog-hello-foo-bar-foo-f-00-%*&^*&^&-***",
 		},
 		{
 			name: "TestStringExample",
-			args: args{input: "test_string_example"},
+			args: args{data: []byte("test_string_example")},
 			want: "test-string-example",
 		},
 		{
 			name: "Lots of Space",
-			args: args{input: "Lots    Of      Space   "},
+			args: args{data: []byte("Lots    Of      Space   ")},
 			want: "lots-of-space",
 		},
 		{
 			name: "Multi Line String",
-			args: args{input: "Multi\nLine\nString"},
+			args: args{data: []byte("Multi\nLine\nString")},
 			want: "multi-line-string",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			p := Kebab{}
-			if got, _ := p.Transform(tt.args.input, tt.args.opts...); got != tt.want {
+			if got, _ := p.Transform(tt.args.data, tt.args.opts...); got != tt.want {
 				t.Errorf("StringToKebab() = %v, want %v", got, tt.want)
 			}
 		})
@@ -301,7 +301,7 @@ func TestKebab_Transform(t *testing.T) {
 
 func TestSlug_Transform(t *testing.T) {
 	type args struct {
-		input string
+		data []byte
 		opts  []Flag
 	}
 	tests := []struct {
@@ -312,29 +312,29 @@ func TestSlug_Transform(t *testing.T) {
 	}{
 		{
 			name: "hello world",
-			args: args{input: "hello world"},
+			args: args{data: []byte("hello world")},
 			want: "hello-world",
 		},
 		{
 			name: "hello_world",
-			args: args{input: "hello_world"},
+			args: args{data: []byte("hello_world")},
 			want: "hello-world",
 		},
 		{
 			name: "Lots of Space",
-			args: args{input: "Lots    Of      Space   "},
+			args: args{data: []byte("Lots    Of      Space   ")},
 			want: "lots-of-space",
 		},
 		{
 			name: "String",
-			args: args{input: "THE quick brown fox jumps over a lazy dog Hello foo bar foo f00 %*&^*&^& ***"},
+			args: args{data: []byte("THE quick brown fox jumps over a lazy dog Hello foo bar foo f00 %*&^*&^& ***")},
 			want: "the-quick-brown-fox-jumps-over-a-lazy-dog-hello-foo-bar-foo-f00",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			p := Slug{}
-			if got, _ := p.Transform(tt.args.input, tt.args.opts...); got != tt.want {
+			if got, _ := p.Transform(tt.args.data, tt.args.opts...); got != tt.want {
 				t.Errorf("StringToSlug() = %v, want %v", got, tt.want)
 			}
 		})
@@ -343,7 +343,7 @@ func TestSlug_Transform(t *testing.T) {
 
 func TestStringReverse_Transform(t *testing.T) {
 	type args struct {
-		input string
+		data []byte
 		opts  []Flag
 	}
 	tests := []struct {
@@ -354,34 +354,34 @@ func TestStringReverse_Transform(t *testing.T) {
 	}{
 		{
 			name: "hello world",
-			args: args{input: "hello world"},
+			args: args{data: []byte("hello world")},
 			want: "dlrow olleh",
 		},
 		{
 			name: "hello_world",
-			args: args{input: "hello_world"},
+			args: args{data: []byte("hello_world")},
 			want: "dlrow_olleh",
 		},
 		{
 			name: "Lots of Space",
-			args: args{input: "Lots    Of      Space   "},
+			args: args{data: []byte("Lots    Of      Space   ")},
 			want: "   ecapS      fO    stoL",
 		},
 		{
 			name: "String",
-			args: args{input: "THE quick brown fox jumps over a lazy dog Hello foo bar foo f00 %*&^*&^& ***"},
+			args: args{data: []byte("THE quick brown fox jumps over a lazy dog Hello foo bar foo f00 %*&^*&^& ***")},
 			want: "*** &^&*^&*% 00f oof rab oof olleH god yzal a revo spmuj xof nworb kciuq EHT",
 		},
 		{
 			name: "Multi line string",
-			args: args{input: "123345\nabcd\n456\n123\nabc\n567\n7890"},
+			args: args{data: []byte("123345\nabcd\n456\n123\nabc\n567\n7890")},
 			want: "0987\n765\ncba\n321\n654\ndcba\n543321",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			p := Reverse{}
-			if got, _ := p.Transform(tt.args.input, tt.args.opts...); got != tt.want {
+			if got, _ := p.Transform(tt.args.data, tt.args.opts...); got != tt.want {
 				t.Errorf("Reverse() = %v, want %v", got, tt.want)
 			}
 		})
@@ -390,7 +390,7 @@ func TestStringReverse_Transform(t *testing.T) {
 
 func TestCountWords_Transform(t *testing.T) {
 	type args struct {
-		input string
+		data []byte
 		opts  []Flag
 	}
 	tests := []struct {
@@ -401,24 +401,24 @@ func TestCountWords_Transform(t *testing.T) {
 	}{
 		{
 			name: "count number of words in string",
-			args: args{input: "hello world"},
+			args: args{data: []byte("hello world")},
 			want: "2",
 		},
 		{
 			name: "count number of words in string contains spaces",
-			args: args{input: " This  is string having spaces?"},
+			args: args{data: []byte(" This  is string having spaces?")},
 			want: "5",
 		},
 		{
 			name: "count number of words in comma separated string",
-			args: args{input: "word1, word2, word3"},
+			args: args{data: []byte("word1, word2, word3")},
 			want: "3",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			p := CountWords{}
-			if got, _ := p.Transform(tt.args.input, tt.args.opts...); got != tt.want {
+			if got, _ := p.Transform(tt.args.data, tt.args.opts...); got != tt.want {
 				t.Errorf("CountWords() = %v, want %v", got, tt.want)
 			}
 		})
@@ -427,7 +427,7 @@ func TestCountWords_Transform(t *testing.T) {
 
 func TestCountLines_Transform(t *testing.T) {
 	type args struct {
-		input string
+		data []byte
 		opts  []Flag
 	}
 	tests := []struct {
@@ -438,29 +438,29 @@ func TestCountLines_Transform(t *testing.T) {
 	}{
 		{
 			name: "Count one line",
-			args: args{input: "one line"},
+			args: args{data: []byte("one line")},
 			want: "1",
 		},
 		{
 			name: "Count two line",
-			args: args{input: "1st line\n 2nd line"},
+			args: args{data: []byte("1st line\n 2nd line")},
 			want: "2",
 		},
 		{
 			name: "Count empty line",
-			args: args{input: "\n\n\n"},
+			args: args{data: []byte("\n\n\n")},
 			want: "3",
 		},
 		{
 			name: "Count empty + text line",
-			args: args{input: "\n\n2nd line\n"},
+			args: args{data: []byte("\n\n2nd line\n")},
 			want: "3",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			p := CountLines{}
-			if got, _ := p.Transform(tt.args.input, tt.args.opts...); got != tt.want {
+			if got, _ := p.Transform(tt.args.data, tt.args.opts...); got != tt.want {
 				t.Errorf("CountLines() = %v, want %v", got, tt.want)
 			}
 		})
@@ -469,7 +469,7 @@ func TestCountLines_Transform(t *testing.T) {
 
 func TestStringToCamel(t *testing.T) {
 	type args struct {
-		data string
+		data []byte
 		in1  []Flag
 	}
 	tests := []struct {
@@ -480,11 +480,11 @@ func TestStringToCamel(t *testing.T) {
 	}{
 		{
 			name: "String",
-			args: args{data: "the quick brown fox jumps over a lazy dog"},
+			args: args{data: []byte("the quick brown fox jumps over a lazy dog")},
 			want: "TheQuickBrownFoxJumpsOverALazyDog",
 		}, {
 			name: "String Uppercase",
-			args: args{data: "THE QUICK BROWN FOX JUMPS OVER A LAZY DOG"},
+			args: args{data: []byte("THE QUICK BROWN FOX JUMPS OVER A LAZY DOG")},
 			want: "THEQUICKBROWNFOXJUMPSOVERALAZYDOG",
 		},
 	}
@@ -550,7 +550,7 @@ func TestExtractEmails_Command(t *testing.T) {
 
 func TestExtractEmails_Transform(t *testing.T) {
 	type args struct {
-		input string
+		data []byte
 		opts  []Flag
 	}
 	tests := []struct {
@@ -561,34 +561,34 @@ func TestExtractEmails_Transform(t *testing.T) {
 	}{
 		{
 			name: "Email in single line string",
-			args: args{input: "this is example@gmail.com"},
+			args: args{data: []byte("this is example@gmail.com")},
 			want: "example@gmail.com",
 		},
 		{
 			name: "Multiple Emails in single line string",
-			args: args{input: "this is example@gmail.com and this is example2@gmail.com"},
+			args: args{data: []byte("this is example@gmail.com and this is example2@gmail.com")},
 			want: "example@gmail.com\nexample2@gmail.com",
 		},
 		{
 			name: "No email in text",
-			args: args{input: "there is no email in text"},
+			args: args{data: []byte("there is no email in text")},
 			want: "",
 		},
 		{
 			name: "Fake emails",
-			args: args{input: "this is @fake.com email"},
+			args: args{data: []byte("this is @fake.com email")},
 			want: "",
 		},
 		{
 			name: "Multiple Emails with separator flag",
-			args: args{input: "this is example@gmail.com and this is example2@gmail.com", opts: []Flag{{Short: "s", Value: ","}}},
+			args: args{data: []byte("this is example@gmail.com and this is example2@gmail.com"), opts: []Flag{{Short: "s", Value: ","}}},
 			want: "example@gmail.com,example2@gmail.com",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			p := ExtractEmails{}
-			if got, _ := p.Transform(tt.args.input, tt.args.opts...); got != tt.want {
+			if got, _ := p.Transform(tt.args.data, tt.args.opts...); got != tt.want {
 				t.Errorf("ExtractEmails() = %v, want %v", got, tt.want)
 			}
 		})
