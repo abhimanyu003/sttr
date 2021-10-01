@@ -72,9 +72,9 @@ func (f FlagType) IsString() bool {
 }
 
 const (
-	FlagInt  = FlagType("Int")
-	FlagUint = FlagType("Uint")
-	FlagBool = FlagType("Bool")
+	FlagInt    = FlagType("Int")
+	FlagUint   = FlagType("Uint")
+	FlagBool   = FlagType("Bool")
 	FlagString = FlagType("String")
 )
 
@@ -122,13 +122,13 @@ func (p Zeropad) Transform(data []byte, f ...Flag) (string, error) {
 		data = data[1:]
 	}
 
-	n := 1
+	var n int
 	pre := ""
 	for _, flag := range f {
 		if flag.Short == "n" {
-			x, ok := flag.Value.(int)
+			x, ok := flag.Value.(uint)
 			if ok {
-				n = x
+				n = int(x)
 			}
 		} else if flag.Short == "p" {
 			x, ok := flag.Value.(string)
