@@ -7,6 +7,7 @@
     <loc>https://abhimanyu003.github.io/sttr/cli/</loc>
   </url><url>
     <loc>https://abhimanyu003.github.io/sttr/</loc>
+    <priority>0</priority>
   </url><url>
     <loc>https://abhimanyu003.github.io/sttr/cli/sttr/</loc>
   </url><url>
@@ -17,6 +18,8 @@
     <loc>https://abhimanyu003.github.io/sttr/cli/sttr_base64-decode/</loc>
   </url><url>
     <loc>https://abhimanyu003.github.io/sttr/cli/sttr_base64-encode/</loc>
+  </url><url>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_bcrypt/</loc>
   </url><url>
     <loc>https://abhimanyu003.github.io/sttr/cli/sttr_camel/</loc>
   </url><url>
@@ -36,6 +39,10 @@
   </url><url>
     <loc>https://abhimanyu003.github.io/sttr/cli/sttr_count-words/</loc>
   </url><url>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_extract-emails/</loc>
+  </url><url>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_hex-encode/</loc>
+  </url><url>
     <loc>https://abhimanyu003.github.io/sttr/cli/sttr_hex-rgb/</loc>
   </url><url>
     <loc>https://abhimanyu003.github.io/sttr/cli/sttr_html-decode/</loc>
@@ -48,9 +55,13 @@
   </url><url>
     <loc>https://abhimanyu003.github.io/sttr/cli/sttr_json-yaml/</loc>
   </url><url>
-    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_kebap/</loc>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_kebab/</loc>
   </url><url>
     <loc>https://abhimanyu003.github.io/sttr/cli/sttr_lower/</loc>
+  </url><url>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_markdown-html/</loc>
+  </url><url>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_md5/</loc>
   </url><url>
     <loc>https://abhimanyu003.github.io/sttr/cli/sttr_md5-sum/</loc>
   </url><url>
@@ -58,9 +69,15 @@
   </url><url>
     <loc>https://abhimanyu003.github.io/sttr/cli/sttr_rot13-encode/</loc>
   </url><url>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_sha1/</loc>
+  </url><url>
     <loc>https://abhimanyu003.github.io/sttr/cli/sttr_sha1-sum/</loc>
   </url><url>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_sha256/</loc>
+  </url><url>
     <loc>https://abhimanyu003.github.io/sttr/cli/sttr_sha256-sum/</loc>
+  </url><url>
+    <loc>https://abhimanyu003.github.io/sttr/cli/sttr_sha512/</loc>
   </url><url>
     <loc>https://abhimanyu003.github.io/sttr/cli/sttr_sha512-sum/</loc>
   </url><url>
