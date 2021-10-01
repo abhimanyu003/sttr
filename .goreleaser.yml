@@ -36,8 +36,5 @@ brews:
     folder: Formula
     install: |-
       bin.install "sttr"
-      bash_completion.install "completions/sttr.bash" => "sttr"
-      zsh_completion.install "completions/sttr.zsh" => "_sttr"
-      fish_completion.install "completions/sttr.fish"
     test: |
       system "#{bin}/sttr -v"
