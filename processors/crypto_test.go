@@ -67,9 +67,33 @@ func TestMD5Encode_Transform(t *testing.T) {
 			args: args{data: []byte("123345\nabcd\n456\n123\nabc\n567\n7890")},
 			want: "4da14107f15ce261f2641ab7b8769466",
 		}, {
-			name: "Trimmed linebreak",
-			args: args{data: []byte("Hello World\n")},
-			want: "e59ff97941044f85df5297e1c302d260",
+			name: "empty rfc1321", // test values from https://datatracker.ietf.org/doc/html/rfc1321
+			args: args{data: []byte("")},
+			want: "d41d8cd98f00b204e9800998ecf8427e",
+		}, {
+			name: "a rfc1321", // test values from https://datatracker.ietf.org/doc/html/rfc1321
+			args: args{data: []byte("a")},
+			want: "0cc175b9c0f1b6a831c399e269772661",
+		},{
+			name: "abc rfc1321", // test values from https://datatracker.ietf.org/doc/html/rfc1321
+			args: args{data: []byte("abc")},
+			want: "900150983cd24fb0d6963f7d28e17f72",
+		},{
+			name: "message digest rfc1321", // test values from https://datatracker.ietf.org/doc/html/rfc1321
+			args: args{data: []byte("message digest")},
+			want: "f96b697d7cb7938d525a2f31aaf161d0",
+		},{
+			name: "abcdefghijklmnopqrstuvwxyz rfc1321", // test values from https://datatracker.ietf.org/doc/html/rfc1321
+			args: args{data: []byte("abcdefghijklmnopqrstuvwxyz")},
+			want: "c3fcd3d76192e4007dfb496cca67e13b",
+		},{
+			name: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 rfc1321", // test values from https://datatracker.ietf.org/doc/html/rfc1321
+			args: args{data: []byte("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789")},
+			want: "d174ab98d277d9f5a5611c2c9f419d9f",
+		},{
+			name: "12345678901234567890123456789012345678901234567890123456789012345678901234567890 rfc1321", // test values from https://datatracker.ietf.org/doc/html/rfc1321
+			args: args{data: []byte("12345678901234567890123456789012345678901234567890123456789012345678901234567890")},
+			want: "57edf4a22be3c955ac49da2e2107b67a",
 		},
 	}
 	for _, tt := range tests {
