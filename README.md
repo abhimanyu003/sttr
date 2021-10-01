@@ -101,33 +101,42 @@ echo "Hello World" | sttr base64-encode | sttr md5
 # :boom: Supported Operations
 
 
-- [x] Base64 Encode
-- [x] Base64 Decode
-- [x] URL Encode
-- [x] URL Decode
-- [x] ROT13 Encode
-- [x] String To Title
-- [x] String To lower
-- [x] String To UPPER
-- [x] String To snake_case
-- [x] String To Kebab
-- [x] String To Slug
-- [x] String To Camel
-- [x] String Reverse
-- [x] Count Number Characters
-- [x] Count Words
-- [x] Count Lines
-- [x] MD5 Encode
-- [x] SHA1 Encode
-- [x] SHA256 Encode
-- [x] SHA512 Encode
-- [x] Format JSON
-- [x] JSON To YAML
-- [x] YAML To JSON
-- [x] Hex To RGB
-- [x] Hexadecimal To String
-- [x] String to Hexadecimal
-- [x] Sort Lines
+- [x] **base32-decode** - Decode your base32 text
+- [x] **base32-encode** - Encode your text to Base32
+- [x] **base64-decode** - Decode your base64 text
+- [x] **base64-encode** - Encode your text to Base64
+- [x] **bcrypt** - Get the Bcrypt hash of your text
+- [x] **camel** - Transform your text to CamelCase
+- [x] **completion** - generate the autocompletion script for the specified shell
+- [x] **count-chars** - Find the length of your text (including spaces)
+- [x] **count-lines** - Count the number of lines in your text
+- [x] **count-words** - Count the number of words in your text
+- [x] **extract-emails** - Extract emails from given text
+- [x] **hex-encode** - Encode your text Hex
+- [x] **hex-rgb** - Convert a #hex-color code to RGB
+- [x] **html-decode** - Unescape your HTML
+- [x] **html-encode** - Escape your HTML
+- [x] **interactive** - Use sttr in interactive mode
+- [x] **json** - Format your text as JSON
+- [x] **json-yaml** - Convert JSON to YAML text
+- [x] **kebab** - Transform your text to kebab-case
+- [x] **lower** - Transform your text to lower case
+- [x] **markdown-html** - Convert Markdown to HTML
+- [x] **md5** - Get the MD5 checksum of your text
+- [x] **reverse** - Reverse Text ( txeT esreveR )
+- [x] **rot13-encode** - Encode your text to ROT13
+- [x] **sha1** - Get the SHA1 checksum of your text
+- [x] **sha256** - Get the SHA256 checksum of your text
+- [x] **sha512** - Get the SHA512 checksum of your text
+- [x] **slug** - Transform your text to slug-case
+- [x] **snake** - Transform your text to snake_case
+- [x] **title** - Transform your text to Title Case
+- [x] **upper** - Transform your text to UPPER CASE
+- [x] **url-decode** - Decode URL entities
+- [x] **url-encode** - Encode URL entities
+- [x] **version** - Print the version of sttr
+- [x] **yaml-json** - Convert YAML to JSON text
+- [x] **zeropad** - Pad a number with zeros
 - [x] **and adding more....**
 
 # Contribution
