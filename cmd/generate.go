@@ -41,7 +41,7 @@ func main() {
 		d := data{
 			Name:  p.Name(),
 			Alias: p.Alias(),
-			Camel: utils.ToLowerCamelCase(p.Name()),
+			Camel: utils.ToLowerCamelCase([]byte(p.Name())),
 			SName: fmt.Sprintf("%T", p),
 			Desc:  i.Description(),
 			Flags: p.Flags(),
