@@ -14,11 +14,11 @@ import (
 type MD5 struct{}
 
 func (p MD5) Name() string {
-	return "md5-sum"
+	return "md5"
 }
 
 func (p MD5) Alias() []string {
-	return []string{"md5"}
+	return []string{"md5-sum"}
 }
 
 func (p MD5) Transform(data string, f ...Flag) (string, error) {
@@ -48,11 +48,11 @@ func (p MD5) FilterValue() string {
 type SHA1 struct{}
 
 func (p SHA1) Name() string {
-	return "sha1-sum"
+	return "sha1"
 }
 
 func (p SHA1) Alias() []string {
-	return []string{"sha1"}
+	return []string{"sha1-sum"}
 }
 
 func (p SHA1) Transform(data string, f ...Flag) (string, error) {
@@ -83,11 +83,11 @@ func (p SHA1) FilterValue() string {
 type SHA256 struct{}
 
 func (p SHA256) Name() string {
-	return "sha256-sum"
+	return "sha256"
 }
 
 func (p SHA256) Alias() []string {
-	return []string{"sha256"}
+	return []string{"sha256-sum"}
 }
 
 func (p SHA256) Transform(data string, f ...Flag) (string, error) {
@@ -118,11 +118,11 @@ func (p SHA256) FilterValue() string {
 type SHA512 struct{}
 
 func (p SHA512) Name() string {
-	return "sha512-sum"
+	return "sha512"
 }
 
 func (p SHA512) Alias() []string {
-	return []string{"sha512"}
+	return []string{"sha512-sum"}
 }
 
 func (p SHA512) Transform(data string, f ...Flag) (string, error) {

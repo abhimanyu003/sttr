@@ -15,11 +15,11 @@ func TestMD5Encode_Command(t *testing.T) {
 		name        string
 		title       string
 	}{
-		alias:       []string{"md5"},
+		alias:       []string{"md5-sum"},
 		description: "Get the MD5 checksum of your text",
 		filterValue: "MD5 Sum",
 		flags:       nil,
-		name:        "md5-sum",
+		name:        "md5",
 		title:       "MD5 Sum",
 	}
 	p := MD5{}
@@ -96,11 +96,11 @@ func TestSHA1Encode_Command(t *testing.T) {
 		name        string
 		title       string
 	}{
-		alias:       []string{"sha1"},
+		alias:       []string{"sha1-sum"},
 		description: "Get the SHA1 checksum of your text",
 		filterValue: "SHA1 Sum",
 		flags:       nil,
-		name:        "sha1-sum",
+		name:        "sha1",
 		title:       "SHA1 Sum",
 	}
 	p := SHA1{}
@@ -177,11 +177,11 @@ func TestSHA256Encode_Command(t *testing.T) {
 		name        string
 		title       string
 	}{
-		alias:       []string{"sha256"},
+		alias:       []string{"sha256-sum"},
 		description: "Get the SHA256 checksum of your text",
 		filterValue: "SHA256 Sum",
 		flags:       nil,
-		name:        "sha256-sum",
+		name:        "sha256",
 		title:       "SHA256 Sum",
 	}
 	p := SHA256{}
@@ -258,11 +258,11 @@ func TestSHA512Encode_Command(t *testing.T) {
 		name        string
 		title       string
 	}{
-		alias:       []string{"sha512"},
+		alias:       []string{"sha512-sum"},
 		description: "Get the SHA512 checksum of your text",
 		filterValue: "SHA512 Sum",
 		flags:       nil,
-		name:        "sha512-sum",
+		name:        "sha512",
 		title:       "SHA512 Sum",
 	}
 	p := SHA512{}

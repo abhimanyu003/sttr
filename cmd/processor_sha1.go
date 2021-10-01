@@ -12,13 +12,13 @@ import (
 )
 
 func init() {
-	rootCmd.AddCommand(sha1SumCmd)
+	rootCmd.AddCommand(sha1Cmd)
 }
 
-var sha1SumCmd = &cobra.Command{
-	Use:     "sha1-sum",
+var sha1Cmd = &cobra.Command{
+	Use:     "sha1",
 	Short:   "Get the SHA1 checksum of your text",
-	Aliases: []string{"sha1"},
+	Aliases: []string{"sha1-sum"},
 	Args:    cobra.MaximumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error

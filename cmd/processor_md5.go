@@ -12,13 +12,13 @@ import (
 )
 
 func init() {
-	rootCmd.AddCommand(md5SumCmd)
+	rootCmd.AddCommand(md5Cmd)
 }
 
-var md5SumCmd = &cobra.Command{
-	Use:     "md5-sum",
+var md5Cmd = &cobra.Command{
+	Use:     "md5",
 	Short:   "Get the MD5 checksum of your text",
-	Aliases: []string{"md5"},
+	Aliases: []string{"md5-sum"},
 	Args:    cobra.MaximumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error

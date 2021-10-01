@@ -12,13 +12,13 @@ import (
 )
 
 func init() {
-	rootCmd.AddCommand(sha256SumCmd)
+	rootCmd.AddCommand(sha512Cmd)
 }
 
-var sha256SumCmd = &cobra.Command{
-	Use:     "sha256-sum",
-	Short:   "Get the SHA256 checksum of your text",
-	Aliases: []string{"sha256"},
+var sha512Cmd = &cobra.Command{
+	Use:     "sha512",
+	Short:   "Get the SHA512 checksum of your text",
+	Aliases: []string{"sha512-sum"},
 	Args:    cobra.MaximumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
@@ -35,7 +35,7 @@ var sha256SumCmd = &cobra.Command{
 			in = args[0]
 		}
 
-		p := processors.SHA256{}
+		p := processors.SHA512{}
 
 		out, err = p.Transform(in, flags...)
 		if err != nil {
