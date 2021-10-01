@@ -54,7 +54,7 @@ type Processor interface {
 	Alias() []string
 
 	// Transform is the text transformation function, implemented by the processor
-	Transform(input string, opts ...Flag) (string, error)
+	Transform(data []byte, opts ...Flag) (string, error)
 
 	// Flags are flags that could be used to transform the text
 	Flags() []Flag
