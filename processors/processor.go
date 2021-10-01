@@ -71,10 +71,9 @@ func (f FlagType) IsString() bool {
 }
 
 const (
-	FlagUInt   = FlagType("Uint")
-	FlagInt    = FlagType("Int")
-	FlagUint   = FlagType("Uint")
-	FlagBool   = FlagType("Bool")
+	FlagInt  = FlagType("Int")
+	FlagUint = FlagType("Uint")
+	FlagBool = FlagType("Bool")
 	FlagString = FlagType("String")
 )
 
@@ -147,7 +146,7 @@ func (p Zeropad) Flags() []Flag {
 			Short: "n",
 			Desc:  "Number of zeros to be padded",
 			Value: 5,
-			Type:  FlagUInt,
+			Type:  FlagUint,
 		},
 		{
 			Name:  "prefix",
