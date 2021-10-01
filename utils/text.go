@@ -32,12 +32,12 @@ func ReadMultilineInput() string {
 	return strings.Join(str[:len(str)-1], "\n")
 }
 
-func ToKebabCase(input string) string {
-	input = regexp.MustCompile(`\s+`).ReplaceAllString(input, " ")
-	return strcase.ToKebab(input)
+func ToKebabCase(input []byte) string {
+	str := regexp.MustCompile(`\s+`).ReplaceAllString(string(input), " ")
+	return strcase.ToKebab(str)
 }
 
-func ToLowerCamelCase(input string) string {
-	input = regexp.MustCompile(`\s+`).ReplaceAllString(input, " ")
-	return strcase.ToLowerCamel(input)
+func ToLowerCamelCase(input []byte) string {
+	str := regexp.MustCompile(`\s+`).ReplaceAllString(string(input), " ")
+	return strcase.ToLowerCamel(str)
 }

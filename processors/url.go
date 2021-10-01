@@ -15,8 +15,8 @@ func (p URLEncode) Alias() []string {
 	return []string{"url-enc"}
 }
 
-func (p URLEncode) Transform(input string, _ ...Flag) (string, error) {
-	return url.QueryEscape(input), nil
+func (p URLEncode) Transform(data []byte, _ ...Flag) (string, error) {
+	return url.QueryEscape(string(data)), nil
 }
 
 func (p URLEncode) Flags() []Flag {
@@ -46,8 +46,8 @@ func (p URLDecode) Alias() []string {
 	return []string{"url-dec"}
 }
 
-func (p URLDecode) Transform(input string, _ ...Flag) (string, error) {
-	res, _ := url.QueryUnescape(input)
+func (p URLDecode) Transform(data []byte, _ ...Flag) (string, error) {
+	res, _ := url.QueryUnescape(string(data))
 	return res, nil
 }
 

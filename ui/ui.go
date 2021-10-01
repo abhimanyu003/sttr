@@ -82,7 +82,7 @@ func (u UI) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			var err error
 			i, ok := u.list.SelectedItem().(processors.Processor)
 			if ok {
-				data, err = i.Transform(u.input)
+				data, err = i.Transform([]byte(u.input))
 				if err != nil {
 					data = fmt.Sprintf("error: %s", err.Error())
 				}

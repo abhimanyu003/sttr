@@ -21,9 +21,10 @@ func (p MD5) Alias() []string {
 	return []string{"md5-sum"}
 }
 
-func (p MD5) Transform(data string, f ...Flag) (string, error) {
+func (p MD5) Transform(data []byte, _ ...Flag) (string, error) {
+
 	hasher := md5.New()
-	hasher.Write([]byte(data))
+	hasher.Write(data)
 
 	return hex.EncodeToString(hasher.Sum(nil)), nil
 }
@@ -55,9 +56,9 @@ func (p SHA1) Alias() []string {
 	return []string{"sha1-sum"}
 }
 
-func (p SHA1) Transform(data string, f ...Flag) (string, error) {
+func (p SHA1) Transform(data []byte, _ ...Flag) (string, error) {
 	h := sha1.New()
-	h.Write([]byte(data))
+	h.Write(data)
 	bs := h.Sum(nil)
 
 	return fmt.Sprintf("%x", bs), nil
@@ -90,9 +91,9 @@ func (p SHA256) Alias() []string {
 	return []string{"sha256-sum"}
 }
 
-func (p SHA256) Transform(data string, f ...Flag) (string, error) {
+func (p SHA256) Transform(data []byte, _ ...Flag) (string, error) {
 	h := sha256.New()
-	h.Write([]byte(data))
+	h.Write(data)
 	bs := h.Sum(nil)
 
 	return fmt.Sprintf("%x", bs), nil
@@ -125,9 +126,9 @@ func (p SHA512) Alias() []string {
 	return []string{"sha512-sum"}
 }
 
-func (p SHA512) Transform(data string, f ...Flag) (string, error) {
+func (p SHA512) Transform(data []byte, _ ...Flag) (string, error) {
 	h := sha512.New()
-	h.Write([]byte(data))
+	h.Write(data)
 	bs := h.Sum(nil)
 
 	return fmt.Sprintf("%x", bs), nil
@@ -160,7 +161,7 @@ func (p Bcrypt) Alias() []string {
 	return []string{"bcrypt-hash"}
 }
 
-func (p Bcrypt) Transform(data string, f ...Flag) (string, error) {
+func (p Bcrypt) Transform(data []byte, f ...Flag) (string, error) {
 	var rounds uint
 	for _, flag := range f {
 		if flag.Short == "r" {
@@ -171,7 +172,7 @@ func (p Bcrypt) Transform(data string, f ...Flag) (string, error) {
 		}
 	}
 
-	bytes, err := bcrypt.GenerateFromPassword([]byte(data), int(rounds))
+	bytes, err := bcrypt.GenerateFromPassword(data, int(rounds))
 
 	return string(bytes), err
 }
@@ -183,7 +184,7 @@ func (p Bcrypt) Flags() []Flag {
 			Short: "r",
 			Desc:  "Number of rounds",
 			Value: 10,
-			Type:  FlagUInt,
+			Type:  FlagUint,
 		},
 	}
 }

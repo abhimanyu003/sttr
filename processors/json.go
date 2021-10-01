@@ -16,9 +16,9 @@ func (p FormatJSON) Alias() []string {
 	return nil
 }
 
-func (p FormatJSON) Transform(input string, f ...Flag) (string, error) {
+func (p FormatJSON) Transform(data []byte, f ...Flag) (string, error) {
 	var objmap map[string]*json.RawMessage
-	err := json.Unmarshal([]byte(input), &objmap)
+	err := json.Unmarshal(data, &objmap)
 	if err != nil {
 		return "", err
 	}
@@ -70,8 +70,8 @@ func (p JSONToYAML) Alias() []string {
 	return []string{"json-yml"}
 }
 
-func (p JSONToYAML) Transform(input string, _ ...Flag) (string, error) {
-	y, err := yaml.JSONToYAML([]byte(input))
+func (p JSONToYAML) Transform(data []byte, _ ...Flag) (string, error) {
+	y, err := yaml.JSONToYAML(data)
 	if err != nil {
 		return "", err
 	}
@@ -105,13 +105,13 @@ func (p YAMLToJSON) Alias() []string {
 	return []string{"yml-json"}
 }
 
-func (p YAMLToJSON) Transform(input string, f ...Flag) (string, error) {
-	y, err := yaml.YAMLToJSON([]byte(input))
+func (p YAMLToJSON) Transform(data []byte, f ...Flag) (string, error) {
+	y, err := yaml.YAMLToJSON(data)
 	if err != nil {
 		return "", err
 	}
 	j := FormatJSON{}
-	return j.Transform(string(y), f...)
+	return j.Transform(y, f...)
 }
 
 func (p YAMLToJSON) Flags() []Flag {

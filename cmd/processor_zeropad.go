@@ -29,19 +29,27 @@ var zeropadCmd = &cobra.Command{
 	Args:    cobra.MaximumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
-		in, out := "", ""
+		var in []byte
+		var out string
 
-		flags := make([]processors.Flag, 0)
 		if len(args) == 0 {
-			all, err := ioutil.ReadAll(cmd.InOrStdin())
+			in, err = ioutil.ReadAll(cmd.InOrStdin())
 			if err != nil {
 				return err
 			}
-			in = string(all)
 		} else {
-			in = args[0]
+			if fi, err := os.Stat(args[0]); err == nil && !fi.IsDir() {
+				d, err := ioutil.ReadFile(args[0])
+				if err != nil {
+					return err
+				}
+				in = d
+			} else {
+				in = []byte(args[0])
+			}
 		}
 
+		flags := make([]processors.Flag, 0)
 		p := processors.Zeropad{}
 		flags = append(flags, processors.Flag{Short: "n", Value: zeropad_flag_n})
 		flags = append(flags, processors.Flag{Short: "p", Value: zeropad_flag_p})

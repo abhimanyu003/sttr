@@ -44,7 +44,7 @@ func TestMarkdown_Command(t *testing.T) {
 
 func TestMarkdown_Transform(t *testing.T) {
 	type args struct {
-		input string
+		data []byte
 		in1   []Flag
 	}
 	tests := []struct {
@@ -55,24 +55,24 @@ func TestMarkdown_Transform(t *testing.T) {
 	}{
 		{
 			name: "test empty string",
-			args: args{input: ""},
+			args: args{data: []byte("")},
 			want: "",
 		},
 		{
 			name: "test H1",
-			args: args{input: "# H1"},
+			args: args{data: []byte("# H1")},
 			want: "<h1>H1</h1>\n",
 		},
 		{
 			name: "test bold",
-			args: args{input: "**the quick brown fox jumps over a lazy dog**"},
+			args: args{data: []byte("**the quick brown fox jumps over a lazy dog**")},
 			want: "<p><strong>the quick brown fox jumps over a lazy dog</strong></p>\n",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			p := Markdown{}
-			got, err := p.Transform(tt.args.input, tt.args.in1...)
+			got, err := p.Transform(tt.args.data, tt.args.in1...)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Transform() error = %v, wantErr %v", err, tt.wantErr)
 				return

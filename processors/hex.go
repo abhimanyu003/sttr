@@ -12,8 +12,8 @@ func (p HexEncode) Alias() []string {
 	return []string{"hex-enc", "hexadecimal-encode"}
 }
 
-func (p HexEncode) Transform(input string, _ ...Flag) (string, error) {
-	return hex.EncodeToString([]byte(input)), nil
+func (p HexEncode) Transform(data []byte, _ ...Flag) (string, error) {
+	return hex.EncodeToString(data), nil
 }
 
 func (p HexEncode) Flags() []Flag {
@@ -42,8 +42,8 @@ func (p HexDecode) Alias() []string {
 	return []string{"hex-dec", "hexadecimal-decode"}
 }
 
-func (p HexDecode) Transform(input string, _ ...Flag) (string, error) {
-	output, err := hex.DecodeString(input)
+func (p HexDecode) Transform(data []byte, _ ...Flag) (string, error) {
+	output, err := hex.DecodeString(string(data))
 
 	if err != nil {
 		return "", err
