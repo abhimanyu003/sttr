@@ -29,7 +29,7 @@ func ReadMultilineInput() string {
 		}
 	}
 	// Use collected inputs
-	return strings.Join(str[:len(str)-1], "\n")
+	return strings.Join(str[:len(str)-2], "\n")
 }
 
 func ToKebabCase(input []byte) string {
