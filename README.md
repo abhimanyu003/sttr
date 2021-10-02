@@ -121,42 +121,68 @@ echo "Hello World" | sttr base64-encode | sttr md5
 # :boom: Supported Operations
 
 
+#### Encode/Decode
+
 - [x] **base32-decode** - Decode your base32 text
 - [x] **base32-encode** - Encode your text to Base32
 - [x] **base64-decode** - Decode your base64 text
 - [x] **base64-encode** - Encode your text to Base64
-- [x] **bcrypt** - Get the Bcrypt hash of your text
-- [x] **camel** - Transform your text to CamelCase
-- [x] **completion** - generate the autocompletion script for the specified shell
-- [x] **count-chars** - Find the length of your text (including spaces)
-- [x] **count-lines** - Count the number of lines in your text
-- [x] **count-words** - Count the number of words in your text
-- [x] **extract-emails** - Extract emails from given text
-- [x] **hex-encode** - Encode your text Hex
-- [x] **hex-rgb** - Convert a #hex-color code to RGB
 - [x] **html-decode** - Unescape your HTML
 - [x] **html-encode** - Escape your HTML
-- [x] **interactive** - Use sttr in interactive mode
-- [x] **json** - Format your text as JSON
-- [x] **json-yaml** - Convert JSON to YAML text
-- [x] **kebab** - Transform your text to kebab-case
-- [x] **lower** - Transform your text to lower case
-- [x] **markdown-html** - Convert Markdown to HTML
-- [x] **md5** - Get the MD5 checksum of your text
-- [x] **reverse** - Reverse Text ( txeT esreveR )
 - [x] **rot13-encode** - Encode your text to ROT13
+- [x] **url-decode** - Decode URL entities
+- [x] **url-encode** - Encode URL entities
+
+#### Hash
+
+- [x] **bcrypt** - Get the Bcrypt hash of your text
+- [x] **md5** - Get the MD5 checksum of your text
 - [x] **sha1** - Get the SHA1 checksum of your text
 - [x] **sha256** - Get the SHA256 checksum of your text
 - [x] **sha512** - Get the SHA512 checksum of your text
+
+#### String
+
+- [x] **camel** - Transform your text to CamelCase
+- [x] **kebab** - Transform your text to kebab-case
+- [x] **lower** - Transform your text to lower case
+- [x] **reverse** - Reverse Text ( txeT esreveR )
 - [x] **slug** - Transform your text to slug-case
 - [x] **snake** - Transform your text to snake_case
 - [x] **sort-lines** - Sort lines alphabetically
 - [x] **title** - Transform your text to Title Case
 - [x] **upper** - Transform your text to UPPER CASE
-- [x] **url-decode** - Decode URL entities
-- [x] **url-encode** - Encode URL entities
-- [x] **version** - Print the version of sttr
+
+
+#### Count
+
+- [x] **count-chars** - Find the length of your text (including spaces)
+- [x] **count-lines** - Count the number of lines in your text
+- [x] **count-words** - Count the number of words in your text
+- [x] **extract-emails** - Extract emails from given text
+
+### RGB/Hex
+
+- [x] **hex-rgb** - Convert a #hex-color code to RGB
+- [x] **hex-encode** - Encode your text Hex
+
+#### JSON
+
+- [x] **json** - Format your text as JSON
+- [x] **json-yaml** - Convert JSON to YAML text
+
+#### YAML
+
 - [x] **yaml-json** - Convert YAML to JSON text
+
+#### Markdown
+
+- [x] **markdown-html** - Convert Markdown to HTML
+
+#### Other
+- [x] **completion** - generate the autocompletion script for the specified shell
+- [x] **interactive** - Use sttr in interactive mode
+- [x] **version** - Print the version of sttr
 - [x] **zeropad** - Pad a number with zeros
 - [x] **and adding more....**
 
