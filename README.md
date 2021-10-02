@@ -161,7 +161,7 @@ echo "Hello World" | sttr base64-encode | sttr md5
 - [x] **count-words** - Count the number of words in your text
 - [x] **extract-emails** - Extract emails from given text
 
-### RGB/Hex
+#### RGB/Hex
 
 - [x] **hex-rgb** - Convert a #hex-color code to RGB
 - [x] **hex-encode** - Encode your text Hex
