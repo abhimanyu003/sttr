@@ -74,23 +74,23 @@ func TestMD5Encode_Transform(t *testing.T) {
 			name: "a rfc1321", // test values from https://datatracker.ietf.org/doc/html/rfc1321
 			args: args{data: []byte("a")},
 			want: "0cc175b9c0f1b6a831c399e269772661",
-		},{
+		}, {
 			name: "abc rfc1321", // test values from https://datatracker.ietf.org/doc/html/rfc1321
 			args: args{data: []byte("abc")},
 			want: "900150983cd24fb0d6963f7d28e17f72",
-		},{
+		}, {
 			name: "message digest rfc1321", // test values from https://datatracker.ietf.org/doc/html/rfc1321
 			args: args{data: []byte("message digest")},
 			want: "f96b697d7cb7938d525a2f31aaf161d0",
-		},{
+		}, {
 			name: "abcdefghijklmnopqrstuvwxyz rfc1321", // test values from https://datatracker.ietf.org/doc/html/rfc1321
 			args: args{data: []byte("abcdefghijklmnopqrstuvwxyz")},
 			want: "c3fcd3d76192e4007dfb496cca67e13b",
-		},{
+		}, {
 			name: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 rfc1321", // test values from https://datatracker.ietf.org/doc/html/rfc1321
 			args: args{data: []byte("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789")},
 			want: "d174ab98d277d9f5a5611c2c9f419d9f",
-		},{
+		}, {
 			name: "12345678901234567890123456789012345678901234567890123456789012345678901234567890 rfc1321", // test values from https://datatracker.ietf.org/doc/html/rfc1321
 			args: args{data: []byte("12345678901234567890123456789012345678901234567890123456789012345678901234567890")},
 			want: "57edf4a22be3c955ac49da2e2107b67a",
@@ -416,7 +416,7 @@ func TestBcrypt_Transform(t *testing.T) {
 		},
 		{
 			name: "String",
-			args: args{data: []byte("the quick brown fox jumps over a lazy dog"), in1: []Flag{{Value: 12}}},
+			args: args{data: []byte("the quick brown fox jumps over a lazy dog"), in1: []Flag{{Short: "r", Value: 12}}},
 		},
 	}
 	for _, tt := range tests {
@@ -427,7 +427,7 @@ func TestBcrypt_Transform(t *testing.T) {
 				t.Errorf("Transform() error = %v, wantErr %v", err, tt.wantErr)
 				return
 			}
-			err = bcrypt.CompareHashAndPassword([]byte(got), []byte(tt.args.data))
+			err = bcrypt.CompareHashAndPassword([]byte(got), tt.args.data)
 			if err != nil {
 				t.Errorf("Bcrypt validation failed")
 			}
