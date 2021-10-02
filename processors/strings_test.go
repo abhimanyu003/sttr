@@ -8,7 +8,7 @@ import (
 func TestCountCharacters_Transform(t *testing.T) {
 	type args struct {
 		data []byte
-		opts  []Flag
+		opts []Flag
 	}
 	tests := []struct {
 		name    string
@@ -48,7 +48,7 @@ func TestCountCharacters_Transform(t *testing.T) {
 func TestSortLines_Transform(t *testing.T) {
 	type args struct {
 		data []byte
-		opts  []Flag
+		opts []Flag
 	}
 	tests := []struct {
 		name    string
@@ -80,7 +80,7 @@ func TestSortLines_Transform(t *testing.T) {
 func TestLower_Transform(t *testing.T) {
 	type args struct {
 		data []byte
-		opts  []Flag
+		opts []Flag
 	}
 	tests := []struct {
 		name    string
@@ -115,7 +115,7 @@ func TestLower_Transform(t *testing.T) {
 func TestTitle_Transform(t *testing.T) {
 	type args struct {
 		data []byte
-		opts  []Flag
+		opts []Flag
 	}
 	tests := []struct {
 		name    string
@@ -146,7 +146,7 @@ func TestTitle_Transform(t *testing.T) {
 func TestUpper_Transform(t *testing.T) {
 	type args struct {
 		data []byte
-		opts  []Flag
+		opts []Flag
 	}
 	tests := []struct {
 		name    string
@@ -181,7 +181,7 @@ func TestUpper_Transform(t *testing.T) {
 func TestSnakeCase_Transform(t *testing.T) {
 	type args struct {
 		data []byte
-		opts  []Flag
+		opts []Flag
 	}
 	tests := []struct {
 		name    string
@@ -260,7 +260,7 @@ func TestKebab_Command(t *testing.T) {
 func TestKebab_Transform(t *testing.T) {
 	type args struct {
 		data []byte
-		opts  []Flag
+		opts []Flag
 	}
 	tests := []struct {
 		name    string
@@ -302,7 +302,7 @@ func TestKebab_Transform(t *testing.T) {
 func TestSlug_Transform(t *testing.T) {
 	type args struct {
 		data []byte
-		opts  []Flag
+		opts []Flag
 	}
 	tests := []struct {
 		name    string
@@ -344,7 +344,7 @@ func TestSlug_Transform(t *testing.T) {
 func TestStringReverse_Transform(t *testing.T) {
 	type args struct {
 		data []byte
-		opts  []Flag
+		opts []Flag
 	}
 	tests := []struct {
 		name    string
@@ -391,7 +391,7 @@ func TestStringReverse_Transform(t *testing.T) {
 func TestCountWords_Transform(t *testing.T) {
 	type args struct {
 		data []byte
-		opts  []Flag
+		opts []Flag
 	}
 	tests := []struct {
 		name    string
@@ -428,7 +428,7 @@ func TestCountWords_Transform(t *testing.T) {
 func TestCountLines_Transform(t *testing.T) {
 	type args struct {
 		data []byte
-		opts  []Flag
+		opts []Flag
 	}
 	tests := []struct {
 		name    string
@@ -436,6 +436,11 @@ func TestCountLines_Transform(t *testing.T) {
 		want    string
 		wantErr bool
 	}{
+		{
+			name: "Count empty",
+			args: args{data: []byte(nil)},
+			want: "0",
+		},
 		{
 			name: "Count one line",
 			args: args{data: []byte("one line")},
@@ -449,12 +454,15 @@ func TestCountLines_Transform(t *testing.T) {
 		{
 			name: "Count empty line",
 			args: args{data: []byte("\n\n\n")},
-			want: "3",
+			want: "4",
 		},
 		{
 			name: "Count empty + text line",
-			args: args{data: []byte("\n\n2nd line\n")},
-			want: "3",
+			args: args{data: []byte(`1
+2
+3
+ `)},
+			want: "4",
 		},
 	}
 	for _, tt := range tests {
@@ -551,7 +559,7 @@ func TestExtractEmails_Command(t *testing.T) {
 func TestExtractEmails_Transform(t *testing.T) {
 	type args struct {
 		data []byte
-		opts  []Flag
+		opts []Flag
 	}
 	tests := []struct {
 		name    string

@@ -315,9 +315,9 @@ func (p CountLines) Alias() []string {
 }
 
 func (p CountLines) Transform(data []byte, _ ...Flag) (string, error) {
-	lines := strings.Count(string(data), "\n")
-	if len(data) > 0 && !strings.HasSuffix(string(data), "\n") {
-		lines++
+	var lines int
+	if len(data) > 0 {
+		lines = strings.Count(string(data), "\n") + 1
 	}
 	return fmt.Sprintf("%d", lines), nil
 }
