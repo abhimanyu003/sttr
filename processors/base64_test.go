@@ -65,6 +65,10 @@ func TestBase64Encode_Transform(t *testing.T) {
 			name: "Multi line string",
 			args: args{data: []byte("123345\nabcd\n456\n123\nabc\n567\n7890")},
 			want: "MTIzMzQ1CmFiY2QKNDU2CjEyMwphYmMKNTY3Cjc4OTA=",
+		}, {
+			name: "Test For baser64 standard Encoding",
+			args: args{data: []byte("�")},
+			want: "77+9",
 		},
 	}
 	for _, tt := range tests {
@@ -142,6 +146,11 @@ func TestBase64Decode_Transform(t *testing.T) {
 			name: "Multi line string",
 			args: args{data: []byte("MTIzMzQ1CmFiY2QKNDU2CjEyMwphYmMKNTY3Cjc4OTA=")},
 			want: "123345\nabcd\n456\n123\nabc\n567\n7890",
+		},
+		{
+			name: "Test baser64 standard decode",
+			args: args{data: []byte("77+9")},
+			want: "�",
 		},
 	}
 	for _, tt := range tests {
