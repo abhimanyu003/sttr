@@ -24,7 +24,7 @@ func (p Base64URLEncode) Flags() []Flag {
 }
 
 func (p Base64URLEncode) Title() string {
-	return "Base64 URL Encoding"
+	return "Base64URL Encoding"
 }
 
 func (p Base64URLEncode) Description() string {
@@ -56,7 +56,7 @@ func (p Base64URLDecode) Flags() []Flag {
 }
 
 func (p Base64URLDecode) Title() string {
-	return "Base64 URL Decode"
+	return "Base64URL Decode"
 }
 
 func (p Base64URLDecode) Description() string {
