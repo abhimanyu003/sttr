@@ -13,6 +13,8 @@ var List = []list.Item{
 	Base32Encoding{},
 	Base64Decode{},
 	Base64Encode{},
+	Base64URLDecode{},
+	Base64URLEncode{},
 	Bcrypt{},
 	Camel{},
 	CountCharacters{},
