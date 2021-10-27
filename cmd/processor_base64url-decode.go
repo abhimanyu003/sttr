@@ -11,7 +11,10 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var base64UrlDecode_flag_r bool
+
 func init() {
+	base64UrlDecodeCmd.Flags().BoolVarP(&base64UrlDecode_flag_r, "raw", "r", false, "unpadded base64 encoding")
 	rootCmd.AddCommand(base64UrlDecodeCmd)
 }
 
@@ -44,6 +47,7 @@ var base64UrlDecodeCmd = &cobra.Command{
 
 		flags := make([]processors.Flag, 0)
 		p := processors.Base64URLDecode{}
+		flags = append(flags, processors.Flag{Short: "r", Value: base64UrlDecode_flag_r})
 
 		out, err = p.Transform(in, flags...)
 		if err != nil {
