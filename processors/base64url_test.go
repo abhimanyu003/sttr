@@ -17,7 +17,7 @@ func TestBase64URLEncode_Command(t *testing.T) {
 		alias:       []string{"b64url-enc", "b64url-encode"},
 		description: "Encode your text to Base64 with URL Safe",
 		filterValue: "Base64URL Encoding",
-		flags:       nil,
+		flags:       []Flag{base64RawFlag},
 		name:        "base64url-encode",
 		title:       "Base64URL Encoding",
 	}
@@ -70,6 +70,23 @@ func TestBase64URLEncode_Transform(t *testing.T) {
 			args: args{data: []byte("�")},
 			want: "77-9",
 		},
+		{
+			name: "String",
+			args: args{data: []byte("the quick brown fox jumps over a lazy dog?"), in1: []Flag{{Short: "r", Value: true}}},
+			want: "dGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIGEgbGF6eSBkb2c_",
+		}, {
+			name: "Emoji",
+			args: args{data: []byte("😃😇🙃🙂😉😌😙😗🇮🇳"), in1: []Flag{{Short: "r", Value: true}}},
+			want: "8J-Yg_CfmIfwn5mD8J-ZgvCfmInwn5iM8J-YmfCfmJfwn4eu8J-Hsw",
+		}, {
+			name: "Multi line string",
+			args: args{data: []byte("123345\nabcd\n456\n123\nabc\n567\n7890?"), in1: []Flag{{Short: "r", Value: true}}},
+			want: "MTIzMzQ1CmFiY2QKNDU2CjEyMwphYmMKNTY3Cjc4OTA_",
+		}, {
+			name: "Test For base64url Encoding",
+			args: args{data: []byte("�")},
+			want: "77-9",
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -98,7 +115,7 @@ func TestBase64URLDecode_Command(t *testing.T) {
 		alias:       []string{"b64url-dec", "b64url-decode"},
 		description: "Decode your base64 text with URL Safe",
 		filterValue: "Base64URL Decode",
-		flags:       nil,
+		flags:       []Flag{base64RawFlag},
 		name:        "base64url-decode",
 		title:       "Base64URL Decode",
 	}
@@ -150,6 +167,24 @@ func TestBase64URLDecode_Transform(t *testing.T) {
 		{
 			name: "Test baser64url decode",
 			args: args{data: []byte("77-9")},
+			want: "�",
+		},
+		{
+			name: "String",
+			args: args{data: []byte("dGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIGEgbGF6eSBkb2c_"), in1: []Flag{{Short: "r", Value: true}}},
+			want: "the quick brown fox jumps over a lazy dog?",
+		}, {
+			name: "Emoji",
+			args: args{data: []byte("8J-Yg_CfmIfwn5mD8J-ZgvCfmInwn5iM8J-YmfCfmJfwn4eu8J-Hsw"), in1: []Flag{{Short: "r", Value: true}}},
+			want: "😃😇🙃🙂😉😌😙😗🇮🇳",
+		}, {
+			name: "Multi line string",
+			args: args{data: []byte("MTIzMzQ1CmFiY2QKNDU2CjEyMwphYmMKNTY3Cjc4OTA_"), in1: []Flag{{Short: "r", Value: true}}},
+			want: "123345\nabcd\n456\n123\nabc\n567\n7890?",
+		},
+		{
+			name: "Test baser64url decode",
+			args: args{data: []byte("77-9"), in1: []Flag{{Short: "r", Value: true}}},
 			want: "�",
 		},
 	}

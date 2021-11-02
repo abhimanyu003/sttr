@@ -11,7 +11,10 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var base64Encode_flag_r bool
+
 func init() {
+	base64EncodeCmd.Flags().BoolVarP(&base64Encode_flag_r, "raw", "r", false, "unpadded base64 encoding")
 	rootCmd.AddCommand(base64EncodeCmd)
 }
 
@@ -44,6 +47,7 @@ var base64EncodeCmd = &cobra.Command{
 
 		flags := make([]processors.Flag, 0)
 		p := processors.Base64Encode{}
+		flags = append(flags, processors.Flag{Short: "r", Value: base64Encode_flag_r})
 
 		out, err = p.Transform(in, flags...)
 		if err != nil {
