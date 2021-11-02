@@ -13,7 +13,7 @@ import (
 
 var base64Encode_flag_r bool
 
-func init() {
+func init() {	
 	base64EncodeCmd.Flags().BoolVarP(&base64Encode_flag_r, "raw", "r", false, "unpadded base64 encoding")
 	rootCmd.AddCommand(base64EncodeCmd)
 }
