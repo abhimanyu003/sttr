@@ -23,6 +23,7 @@ var List = []list.Item{
 	ExtractEmails{},
 	FormatJSON{},
 	HexEncode{},
+	HexDecode{},
 	HexToRGB{},
 	HTMLDecode{},
 	HTMLEncode{},
