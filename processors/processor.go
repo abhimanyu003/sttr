@@ -32,7 +32,7 @@ var List = []list.Item{
 	Kebab{},
 	Lower{},
 	Markdown{},
-	MSGPACKToJson{},
+	MSGPACKToJSON{},
 	MD5{},
 	Reverse{},
 	ROT13Encode{},

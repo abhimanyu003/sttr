@@ -139,19 +139,18 @@ func (p JSONToMSGPACK) FilterValue() string {
 	return p.Title()
 }
 
+// MSGPACKToJSON convert MSGPACK to JSON string.
+type MSGPACKToJSON struct{}
 
-// MSGPACKToJson convert MSGPACK to JSON string.
-type MSGPACKToJson struct{}
-
-func (p MSGPACKToJson) Name() string {
+func (p MSGPACKToJSON) Name() string {
 	return "msgpack-json"
 }
 
-func (p MSGPACKToJson) Alias() []string {
+func (p MSGPACKToJSON) Alias() []string {
 	return []string{}
 }
 
-func (p MSGPACKToJson) Transform(data []byte, _ ...Flag) (string, error) {
+func (p MSGPACKToJSON) Transform(data []byte, _ ...Flag) (string, error) {
 
 	var rawData interface{}
 
@@ -168,19 +167,19 @@ func (p MSGPACKToJson) Transform(data []byte, _ ...Flag) (string, error) {
 	return string(m), nil
 }
 
-func (p MSGPACKToJson) Flags() []Flag {
+func (p MSGPACKToJSON) Flags() []Flag {
 	return nil
 }
 
-func (p MSGPACKToJson) Title() string {
-	return "MSGPACK TO JSON"
+func (p MSGPACKToJSON) Title() string {
+	return "MSGPACK To JSON"
 }
 
-func (p MSGPACKToJson) Description() string {
+func (p MSGPACKToJSON) Description() string {
 	return "Convert MSGPACK to JSON text"
 }
 
-func (p MSGPACKToJson) FilterValue() string {
+func (p MSGPACKToJSON) FilterValue() string {
 	return p.Title()
 }
 
