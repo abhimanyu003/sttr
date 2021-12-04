@@ -43,7 +43,7 @@ var msgpackJsonCmd = &cobra.Command{
 		}
 
 		flags := make([]processors.Flag, 0)
-		p := processors.MSGPACKToJson{}
+		p := processors.MSGPACKToJSON{}
 
 		out, err = p.Transform(in, flags...)
 		if err != nil {
