@@ -3,6 +3,7 @@ package processors
 import (
 	"encoding/json"
 	"github.com/ghodss/yaml"
+	"github.com/vmihailenco/msgpack/v5"
 )
 
 // FormatJSON format given string to a JSON with Indent.
@@ -93,6 +94,95 @@ func (p JSONToYAML) Description() string {
 func (p JSONToYAML) FilterValue() string {
 	return p.Title()
 }
+
+// JSONToMSGPACK convert JSON to MSGPACK string.
+type JSONToMSGPACK struct{}
+
+func (p JSONToMSGPACK) Name() string {
+	return "json-msgpack"
+}
+
+func (p JSONToMSGPACK) Alias() []string {
+	return []string{}
+}
+
+func (p JSONToMSGPACK) Transform(data []byte, _ ...Flag) (string, error) {
+
+	var rawData interface{}
+
+	err := json.Unmarshal(data, &rawData)
+
+	if err != nil {
+		return "", err
+	}
+
+	m, err := msgpack.Marshal(rawData)
+	if err != nil {
+		return "", err
+	}
+	return string(m), nil
+}
+
+func (p JSONToMSGPACK) Flags() []Flag {
+	return nil
+}
+
+func (p JSONToMSGPACK) Title() string {
+	return "JSON To MSGPACK"
+}
+
+func (p JSONToMSGPACK) Description() string {
+	return "Convert JSON to MSGPACK text"
+}
+
+func (p JSONToMSGPACK) FilterValue() string {
+	return p.Title()
+}
+
+// MSGPACKToJSON convert MSGPACK to JSON string.
+type MSGPACKToJSON struct{}
+
+func (p MSGPACKToJSON) Name() string {
+	return "msgpack-json"
+}
+
+func (p MSGPACKToJSON) Alias() []string {
+	return []string{}
+}
+
+func (p MSGPACKToJSON) Transform(data []byte, _ ...Flag) (string, error) {
+
+	var rawData interface{}
+
+	err := msgpack.Unmarshal(data, &rawData)
+
+	if err != nil {
+		return "", err
+	}
+
+	m, err := json.Marshal(rawData)
+	if err != nil {
+		return "", err
+	}
+	return string(m), nil
+}
+
+func (p MSGPACKToJSON) Flags() []Flag {
+	return nil
+}
+
+func (p MSGPACKToJSON) Title() string {
+	return "MSGPACK To JSON"
+}
+
+func (p MSGPACKToJSON) Description() string {
+	return "Convert MSGPACK to JSON text"
+}
+
+func (p MSGPACKToJSON) FilterValue() string {
+	return p.Title()
+}
+
 
 // YAMLToJSON convert YAML to JSON string with formatted output.
 type YAMLToJSON struct{}
