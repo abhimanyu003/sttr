@@ -7,31 +7,6 @@ import (
 	"testing"
 )
 
-var (
-	tests = []struct {
-		name    string
-		json    string
-		msgpack []byte
-	}{
-		{
-			"Simple string",
-			"\"Hello\"",
-			[]byte{165, 72, 101, 108, 108, 111},
-		},
-		{
-			"Map",
-			"{\"id\":\"1\",\"user\":\"name\"}",
-			[]byte{223, 0, 0, 0, 2, 162, 105, 100, 161, 49, 164, 117, 115, 101, 114, 164, 110, 97, 109, 101},
-		},
-		{
-			"List",
-			"{\"data\":[\"1\", \"2\", \"3\"]}",
-			[]byte{223, 0, 0, 0, 1, 164, 100, 97, 116, 97, 221, 0, 0, 0, 3, 161, 49, 161, 50, 161,
-				51},
-		},
-	}
-)
-
 func TestJSONToMSGPACK_Command(t *testing.T) {
 	test := struct {
 		alias       []string
@@ -70,6 +45,28 @@ func TestJSONToMSGPACK_Command(t *testing.T) {
 }
 
 func TestJSONToMSGPACK_Transform(t *testing.T) {
+	tests := []struct {
+		name    string
+		json    string
+		msgpack []byte
+	}{
+		{
+			"Simple string",
+			"\"Hello\"",
+			[]byte{165, 72, 101, 108, 108, 111},
+		},
+		{
+			"Map",
+			"{\"id\":\"1\",\"user\":\"name\"}",
+			[]byte{223, 0, 0, 0, 2, 162, 105, 100, 161, 49, 164, 117, 115, 101, 114, 164, 110, 97, 109, 101},
+		},
+		{
+			"List",
+			"{\"data\":[\"1\", \"2\", \"3\"]}",
+			[]byte{223, 0, 0, 0, 1, 164, 100, 97, 116, 97, 221, 0, 0, 0, 3, 161, 49, 161, 50, 161,
+				51},
+		},
+	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -78,21 +75,16 @@ func TestJSONToMSGPACK_Transform(t *testing.T) {
 			if err != nil {
 				t.Errorf("Transform() error = %v, wantErr %v", err, nil)
 			}
-
 			var resultInterface interface{}
-
 			err = msgpack.Unmarshal([]byte(result), &resultInterface)
 			if err != nil {
 				t.Errorf("Transform() error = %v, wantErr %v", err, nil)
 			}
-
 			var wantInterface interface{}
-
 			err = json.Unmarshal([]byte(tt.json), &wantInterface)
 			if err != nil {
 				t.Errorf("Transform() error = %v, wantErr %v", err, nil)
 			}
-
 			if !reflect.DeepEqual(wantInterface, resultInterface) {
 				if err != nil {
 					t.Errorf("Transform() got = %v, want %v", resultInterface, wantInterface)
@@ -141,7 +133,28 @@ func TestMSGPACKToJSON_Command(t *testing.T) {
 }
 
 func TestMSGPACKToJSON_Transform(t *testing.T) {
-
+	tests := []struct {
+		name    string
+		json    string
+		msgpack []byte
+	}{
+		{
+			"Simple string",
+			"\"Hello\"",
+			[]byte{165, 72, 101, 108, 108, 111},
+		},
+		{
+			"Map",
+			"{\"id\":\"1\",\"user\":\"name\"}",
+			[]byte{223, 0, 0, 0, 2, 162, 105, 100, 161, 49, 164, 117, 115, 101, 114, 164, 110, 97, 109, 101},
+		},
+		{
+			"List",
+			"{\"data\":[\"1\", \"2\", \"3\"]}",
+			[]byte{223, 0, 0, 0, 1, 164, 100, 97, 116, 97, 221, 0, 0, 0, 3, 161, 49, 161, 50, 161,
+				51},
+		},
+	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			p := MSGPACKToJSON{}
@@ -149,16 +162,12 @@ func TestMSGPACKToJSON_Transform(t *testing.T) {
 			if err != nil {
 				t.Errorf("Transform() error = %v, wantErr %v", err, nil)
 			}
-
 			var resultInterface interface{}
-
 			err = json.Unmarshal([]byte(result), &resultInterface)
 			if err != nil {
 				t.Errorf("Transform() error = %v, wantErr %v", err, nil)
 			}
-
 			var wantInterface interface{}
-
 			err = msgpack.Unmarshal(tt.msgpack, &wantInterface)
 			if err != nil {
 				t.Errorf("Transform() error = %v, wantErr %v", err, nil)
