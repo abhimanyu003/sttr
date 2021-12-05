@@ -33,16 +33,15 @@ sttr yaml-json file.yaml > file-output.json
 
 ![sttr demo](./media/demo.gif)
 
-
 # :battery: Installation
 
 #### Quick install
 
-You can run the below `curl` to install it somewhere in your PATH for easy use.
-Ideally it will be installed at `./bin` folder
+You can run the below `curl` to install it somewhere in your PATH for easy use. Ideally it will be installed at `./bin`
+folder
 
 ```go
-curl -sfL https://raw.githubusercontent.com/abhimanyu003/sttr/main/install.sh | sh
+curl -sfL https: //raw.githubusercontent.com/abhimanyu003/sttr/main/install.sh | sh
 ```
 
 #### Homebrew
@@ -54,7 +53,7 @@ brew tap abhimanyu003/sttr
 brew install sttr
 ```
 
-#### Go 
+#### Go
 
 ```go
 go install github.com/abhimanyu003/sttr@latest
@@ -62,7 +61,8 @@ go install github.com/abhimanyu003/sttr@latest
 
 #### Manually
 
-Download the pre-compiled binaries from the [Release!](https://github.com/abhimanyu003/sttr/releases) page and copy them to the desired location.
+Download the pre-compiled binaries from the [Release!](https://github.com/abhimanyu003/sttr/releases) page and copy them
+to the desired location.
 
 # :books: Guide
 
@@ -70,7 +70,7 @@ Download the pre-compiled binaries from the [Release!](https://github.com/abhima
 
 ```go
 // For interactive menu
-sttr 
+sttr
 // Provide your input
 // Press two enter to open operation menu
 // Press `/` to filter various operations.
@@ -106,7 +106,7 @@ sttr yaml-json file.yaml > file-output.json
 * Taking input from other command.
 
 ```go
-curl https://jsonplaceholder.typicode.com/users | sttr json-yaml
+curl https: //jsonplaceholder.typicode.com/users | sttr json-yaml
 ```
 
 * Chaining the different processor.
@@ -117,9 +117,7 @@ sttr md5 hello | sttr base64-encode
 echo "Hello World" | sttr base64-encode | sttr md5
 ```
 
-
 # :boom: Supported Operations
-
 
 #### Encode/Decode
 
@@ -155,7 +153,6 @@ echo "Hello World" | sttr base64-encode | sttr md5
 - [x] **title** - Transform your text to Title Case
 - [x] **upper** - Transform your text to UPPER CASE
 
-
 #### Count
 
 - [x] **count-chars** - Find the length of your text (including spaces)
@@ -167,11 +164,14 @@ echo "Hello World" | sttr base64-encode | sttr md5
 
 - [x] **hex-rgb** - Convert a #hex-color code to RGB
 - [x] **hex-encode** - Encode your text Hex
+- [x] **hex-decode** - Convert Hexadecimal to String
 
 #### JSON
 
 - [x] **json** - Format your text as JSON
 - [x] **json-yaml** - Convert JSON to YAML text
+- [x] **json-msgpack** - Convert JSON to MSGPACK
+- [x] **msgpack-json** - Convert MSGPACK to JSON
 
 #### YAML
 
@@ -182,6 +182,7 @@ echo "Hello World" | sttr base64-encode | sttr md5
 - [x] **markdown-html** - Convert Markdown to HTML
 
 #### Other
+
 - [x] **completion** - generate the autocompletion script for the specified shell
 - [x] **interactive** - Use sttr in interactive mode
 - [x] **version** - Print the version of sttr
@@ -190,9 +191,8 @@ echo "Hello World" | sttr base64-encode | sttr md5
 
 # Contribution
 
-This project welcomes your PR and issues.
-For example, refactoring, adding features, correcting English, etc.
-If you need any help, you can contact me on [Twitter](https://twitter.com/abhimanyu003).
+This project welcomes your PR and issues. For example, refactoring, adding features, correcting English, etc. If you
+need any help, you can contact me on [Twitter](https://twitter.com/abhimanyu003).
 
 Thanks to all the people who already contributed!
 
