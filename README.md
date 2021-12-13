@@ -169,6 +169,8 @@ echo "Hello World" | sttr base64-encode | sttr md5
 #### JSON
 
 - [x] **json** - Format your text as JSON
+- [x] **json-escape** - JSON Escape
+- [x] **json-unescape** - JSON Unescape
 - [x] **json-yaml** - Convert JSON to YAML text
 - [x] **json-msgpack** - Convert JSON to MSGPACK
 - [x] **msgpack-json** - Convert MSGPACK to JSON
