@@ -11,14 +11,17 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var jsonUnescape_flag_i bool
+
 func init() {
-	rootCmd.AddCommand(jsonMsgpackCmd)
+	jsonUnescapeCmd.Flags().BoolVarP(&jsonUnescape_flag_i, "indent", "i", false, "Indent the output (prettyprint)")
+	rootCmd.AddCommand(jsonUnescapeCmd)
 }
 
-var jsonMsgpackCmd = &cobra.Command{
-	Use:     "json-msgpack",
-	Short:   "Convert JSON to MSGPACK text",
-	Aliases: []string{},
+var jsonUnescapeCmd = &cobra.Command{
+	Use:     "json-unescape",
+	Short:   "JSON Unescape",
+	Aliases: []string{"json-unesc"},
 	Args:    cobra.MaximumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
@@ -43,7 +46,8 @@ var jsonMsgpackCmd = &cobra.Command{
 		}
 
 		flags := make([]processors.Flag, 0)
-		p := processors.JSONToMSGPACK{}
+		p := processors.JSONUnescape{}
+		flags = append(flags, processors.Flag{Short: "i", Value: jsonUnescape_flag_i})
 
 		out, err = p.Transform(in, flags...)
 		if err != nil {

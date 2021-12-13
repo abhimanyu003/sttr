@@ -2,6 +2,9 @@ package processors
 
 import (
 	"encoding/json"
+	"strconv"
+	"strings"
+
 	"github.com/ghodss/yaml"
 	"github.com/vmihailenco/msgpack/v5"
 )
@@ -17,13 +20,29 @@ func (p FormatJSON) Alias() []string {
 	return nil
 }
 
+// unmarshalJson converts given bytes to json.RawMessage
+// it checks if input is of type array or non array
+func unmarshalJSON(data []byte) (interface{}, error) {
+	var nonArray map[string]*json.RawMessage
+	var arrayBased []map[string]*json.RawMessage
+	err := json.Unmarshal(data, &nonArray)
+	if err == nil {
+		return nonArray, nil
+	}
+
+	err = json.Unmarshal(data, &arrayBased)
+	if err == nil {
+		return arrayBased, nil
+	}
+
+	return nil, err
+}
+
 func (p FormatJSON) Transform(data []byte, f ...Flag) (string, error) {
-	var objmap map[string]*json.RawMessage
-	err := json.Unmarshal(data, &objmap)
+	objmap, err := unmarshalJSON(data)
 	if err != nil {
 		return "", err
 	}
-
 	var indent bool
 	for _, flag := range f {
 		if flag.Short == "i" {
@@ -53,7 +72,7 @@ func (p FormatJSON) Title() string {
 }
 
 func (p FormatJSON) Description() string {
-	return "Format your text as JSON"
+	return "Format your text as JSON ( json decode )"
 }
 
 func (p FormatJSON) FilterValue() string {
@@ -107,7 +126,6 @@ func (p JSONToMSGPACK) Alias() []string {
 }
 
 func (p JSONToMSGPACK) Transform(data []byte, _ ...Flag) (string, error) {
-
 	var rawData interface{}
 
 	err := json.Unmarshal(data, &rawData)
@@ -151,7 +169,6 @@ func (p MSGPACKToJSON) Alias() []string {
 }
 
 func (p MSGPACKToJSON) Transform(data []byte, _ ...Flag) (string, error) {
-
 	var rawData interface{}
 
 	err := msgpack.Unmarshal(data, &rawData)
@@ -182,7 +199,6 @@ func (p MSGPACKToJSON) Description() string {
 func (p MSGPACKToJSON) FilterValue() string {
 	return p.Title()
 }
-
 
 // YAMLToJSON convert YAML to JSON string with formatted output.
 type YAMLToJSON struct{}
@@ -219,5 +235,107 @@ func (p YAMLToJSON) Description() string {
 }
 
 func (p YAMLToJSON) FilterValue() string {
+	return p.Title()
+}
+
+// JSONUnescape unescape given string to a JSON with Indent.
+type JSONUnescape struct{}
+
+func (p JSONUnescape) Name() string {
+	return "json-unescape"
+}
+
+func (p JSONUnescape) Alias() []string {
+	return []string{"json-unesc"}
+}
+
+func (p JSONUnescape) Transform(data []byte, f ...Flag) (string, error) {
+	s, err := strconv.Unquote(`"` + strings.Trim(string(data), " ") + `"`)
+	if err != nil {
+		return "", err
+	}
+	objmap, err := unmarshalJSON([]byte(s))
+	if err != nil {
+		return "", err
+	}
+
+	var indent bool
+	for _, flag := range f {
+		if flag.Short == "i" {
+			if b, ok := flag.Value.(bool); ok {
+				indent = b
+			}
+		}
+	}
+	var newJSON []byte
+	if indent {
+		newJSON, err = json.MarshalIndent(objmap, "", "  ")
+	} else {
+		newJSON, err = json.Marshal(objmap)
+	}
+
+	return string(newJSON), err
+}
+
+func (p JSONUnescape) Flags() []Flag {
+	return []Flag{
+		{Name: "indent", Short: "i", Desc: "Indent the output (prettyprint)", Type: FlagBool, Value: false},
+	}
+}
+
+func (p JSONUnescape) Title() string {
+	return "JSON Unescape"
+}
+
+func (p JSONUnescape) Description() string {
+	return "JSON Unescape"
+}
+
+func (p JSONUnescape) FilterValue() string {
+	return p.Title()
+}
+
+// JSONEscape unescape given string to a JSON with Indent.
+type JSONEscape struct{}
+
+func (p JSONEscape) Name() string {
+	return "json-escape"
+}
+
+func (p JSONEscape) Alias() []string {
+	return []string{"json-esc"}
+}
+
+func (p JSONEscape) Transform(data []byte, f ...Flag) (string, error) {
+	objmap, err := unmarshalJSON(data)
+	if err != nil {
+		return "", err
+	}
+
+	newJSON, err := json.Marshal(objmap)
+	if err != nil {
+		return "", err
+	}
+
+	output := strconv.Quote(string(newJSON))
+	output = strings.TrimLeft(output, `"`)
+	output = strings.TrimRight(output, `"`)
+
+	return output, err
+}
+
+func (p JSONEscape) Flags() []Flag {
+	return nil
+}
+
+func (p JSONEscape) Title() string {
+	return "JSON Escape"
+}
+
+func (p JSONEscape) Description() string {
+	return "JSON Escape"
+}
+
+func (p JSONEscape) FilterValue() string {
 	return p.Title()
 }

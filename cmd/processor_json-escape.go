@@ -12,13 +12,13 @@ import (
 )
 
 func init() {
-	rootCmd.AddCommand(jsonMsgpackCmd)
+	rootCmd.AddCommand(jsonEscapeCmd)
 }
 
-var jsonMsgpackCmd = &cobra.Command{
-	Use:     "json-msgpack",
-	Short:   "Convert JSON to MSGPACK text",
-	Aliases: []string{},
+var jsonEscapeCmd = &cobra.Command{
+	Use:     "json-escape",
+	Short:   "JSON Escape",
+	Aliases: []string{"json-esc"},
 	Args:    cobra.MaximumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
@@ -43,7 +43,7 @@ var jsonMsgpackCmd = &cobra.Command{
 		}
 
 		flags := make([]processors.Flag, 0)
-		p := processors.JSONToMSGPACK{}
+		p := processors.JSONEscape{}
 
 		out, err = p.Transform(in, flags...)
 		if err != nil {

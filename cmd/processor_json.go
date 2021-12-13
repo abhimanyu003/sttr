@@ -13,14 +13,14 @@ import (
 
 var json_flag_i bool
 
-func init() {	
+func init() {
 	jsonCmd.Flags().BoolVarP(&json_flag_i, "indent", "i", false, "Indent the output (prettyprint)")
 	rootCmd.AddCommand(jsonCmd)
 }
 
 var jsonCmd = &cobra.Command{
 	Use:     "json",
-	Short:   "Format your text as JSON",
+	Short:   "Format your text as JSON ( json decode )",
 	Aliases: []string{},
 	Args:    cobra.MaximumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {

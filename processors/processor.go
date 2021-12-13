@@ -9,7 +9,6 @@ import (
 )
 
 var List = []list.Item{
-	Base32Decode{},
 	Base32Encoding{},
 	Base64Decode{},
 	Base64Encode{},
@@ -22,18 +21,20 @@ var List = []list.Item{
 	CountWords{},
 	ExtractEmails{},
 	FormatJSON{},
-	HexEncode{},
 	HexDecode{},
+	HexEncode{},
 	HexToRGB{},
 	HTMLDecode{},
 	HTMLEncode{},
-	JSONToYAML{},
+	JSONEscape{},
 	JSONToMSGPACK{},
+	JSONToYAML{},
+	JSONUnescape{},
 	Kebab{},
 	Lower{},
 	Markdown{},
-	MSGPACKToJSON{},
 	MD5{},
+	MSGPACKToJSON{},
 	Reverse{},
 	ROT13Encode{},
 	SHA1{},
@@ -48,6 +49,7 @@ var List = []list.Item{
 	URLEncode{},
 	YAMLToJSON{},
 	Zeropad{},
+	Base32Decode{},
 }
 
 type Processor interface {

@@ -2,10 +2,107 @@ package processors
 
 import (
 	"encoding/json"
-	"github.com/vmihailenco/msgpack/v5"
 	"reflect"
 	"testing"
+
+	"github.com/vmihailenco/msgpack/v5"
 )
+
+func TestJSON_Command(t *testing.T) {
+	test := struct {
+		alias       []string
+		description string
+		filterValue string
+		flags       []Flag
+		name        string
+		title       string
+	}{
+		alias:       nil,
+		description: "Format your text as JSON ( json decode )",
+		filterValue: "Format JSON",
+		flags: []Flag{
+			{
+				Name:  "indent",
+				Short: "i",
+				Desc:  "Indent the output (prettyprint)",
+				Value: false,
+				Type:  FlagBool,
+			},
+		},
+		name:  "json",
+		title: "Format JSON",
+	}
+	p := FormatJSON{}
+	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
+		t.Errorf("Alias() = %v, want %v", got, test.alias)
+	}
+	if got := p.Description(); got != test.description {
+		t.Errorf("Description() = %v, want %v", got, test.description)
+	}
+	if got := p.FilterValue(); got != test.filterValue {
+		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+	}
+	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
+		t.Errorf("Flags() = %v, want %v", got, test.flags)
+	}
+	if got := p.Name(); got != test.name {
+		t.Errorf("Name() = %v, want %v", got, test.name)
+	}
+	if got := p.Title(); got != test.title {
+		t.Errorf("Title() = %v, want %v", got, test.title)
+	}
+}
+
+func TestJSON_Transform(t *testing.T) {
+	type args struct {
+		data []byte
+		f    []Flag
+	}
+	tests := []struct {
+		name    string
+		args    args
+		want    string
+		wantErr bool
+	}{
+		{
+			name:    "Should generate correct JSON for object input",
+			args:    args{data: []byte(`{"name":"sttr"}`)},
+			want:    `{"name":"sttr"}`,
+			wantErr: false,
+		},
+		{
+			name:    "Should generate correct JSON for array input",
+			args:    args{data: []byte(`[{"name":"sttr"}]`)},
+			want:    `[{"name":"sttr"}]`,
+			wantErr: false,
+		},
+		{
+			name:    "Should generate correct JSON having right space",
+			args:    args{data: []byte(`{"name":"sttr"}       `)},
+			want:    `{"name":"sttr"}`,
+			wantErr: false,
+		},
+		{
+			name:    "Should generate correct JSON having right space",
+			args:    args{data: []byte(`       {"name":"sttr"}`)},
+			want:    `{"name":"sttr"}`,
+			wantErr: false,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			p := FormatJSON{}
+			got, err := p.Transform(tt.args.data, tt.args.f...)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("Transform() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			if got != tt.want {
+				t.Errorf("Transform() got = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
 
 func TestJSONToMSGPACK_Command(t *testing.T) {
 	test := struct {
@@ -179,6 +276,219 @@ func TestMSGPACKToJSON_Transform(t *testing.T) {
 				}
 			}
 
+		})
+	}
+}
+
+func TestJSONUnescape_Command(t *testing.T) {
+	test := struct {
+		alias       []string
+		description string
+		filterValue string
+		flags       []Flag
+		name        string
+		title       string
+	}{
+		alias:       []string{"json-unesc"},
+		description: "JSON Unescape",
+		filterValue: "JSON Unescape",
+		flags: []Flag{
+			{
+				Name:  "indent",
+				Short: "i",
+				Desc:  "Indent the output (prettyprint)",
+				Value: false,
+				Type:  FlagBool,
+			},
+		},
+		name:  "json-unescape",
+		title: "JSON Unescape",
+	}
+	p := JSONUnescape{}
+	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
+		t.Errorf("Alias() = %v, want %v", got, test.alias)
+	}
+	if got := p.Description(); got != test.description {
+		t.Errorf("Description() = %v, want %v", got, test.description)
+	}
+	if got := p.FilterValue(); got != test.filterValue {
+		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+	}
+	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
+		t.Errorf("Flags() = %v, want %v", got, test.flags)
+	}
+	if got := p.Name(); got != test.name {
+		t.Errorf("Name() = %v, want %v", got, test.name)
+	}
+	if got := p.Title(); got != test.title {
+		t.Errorf("Title() = %v, want %v", got, test.title)
+	}
+}
+
+func TestJSONUnescape_Transform(t *testing.T) {
+	type args struct {
+		data []byte
+		f    []Flag
+	}
+	tests := []struct {
+		name    string
+		args    args
+		want    string
+		wantErr bool
+	}{
+		{
+			name:    "Should generate correct JSON",
+			args:    args{data: []byte(`{\n  \"name\": \"sttr\"\n}`)},
+			want:    `{"name":"sttr"}`,
+			wantErr: false,
+		},
+		{
+			name: "Should generate correct JSON with indent",
+			args: args{data: []byte(`{\n  \"name\": \"sttr\"\n}`), f: []Flag{
+				{
+					Short: "i",
+					Value: true,
+				},
+			}},
+			want: `{
+  "name": "sttr"
+}`,
+			wantErr: false,
+		},
+		{
+			name:    "Should generate correct JSON having right space",
+			args:    args{data: []byte(`{\n  \"name\": \"sttr\"\n}       `)},
+			want:    `{"name":"sttr"}`,
+			wantErr: false,
+		},
+		{
+			name:    "Should generate correct JSON having having let space",
+			args:    args{data: []byte(`   {\n  \"name\": \"sttr\"\n}`)},
+			want:    `{"name":"sttr"}`,
+			wantErr: false,
+		},
+		{
+
+			name:    "Should return error on invalid input",
+			args:    args{data: []byte(`Invalid Input`)},
+			want:    ``,
+			wantErr: true,
+		},
+		{
+
+			name:    "Should return error on invalid JSON",
+			args:    args{data: []byte(`{\n  \"name\: \"name is mising quote\"\n}`)},
+			want:    ``,
+			wantErr: true,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			p := JSONUnescape{}
+			got, err := p.Transform(tt.args.data, tt.args.f...)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("Transform() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			if got != tt.want {
+				t.Errorf("Transform() got = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestJSONEscape_Command(t *testing.T) {
+	test := struct {
+		alias       []string
+		description string
+		filterValue string
+		flags       []Flag
+		name        string
+		title       string
+	}{
+		alias:       []string{"json-esc"},
+		description: "JSON Escape",
+		filterValue: "JSON Escape",
+		flags:       nil,
+		name:        "json-escape",
+		title:       "JSON Escape",
+	}
+	p := JSONEscape{}
+	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
+		t.Errorf("Alias() = %v, want %v", got, test.alias)
+	}
+	if got := p.Description(); got != test.description {
+		t.Errorf("Description() = %v, want %v", got, test.description)
+	}
+	if got := p.FilterValue(); got != test.filterValue {
+		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+	}
+	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
+		t.Errorf("Flags() = %v, want %v", got, test.flags)
+	}
+	if got := p.Name(); got != test.name {
+		t.Errorf("Name() = %v, want %v", got, test.name)
+	}
+	if got := p.Title(); got != test.title {
+		t.Errorf("Title() = %v, want %v", got, test.title)
+	}
+}
+
+func TestJSONEscape_Transform(t *testing.T) {
+	type args struct {
+		data []byte
+		f    []Flag
+	}
+	tests := []struct {
+		name    string
+		args    args
+		want    string
+		wantErr bool
+	}{
+		{
+			name:    "Should generate correct JSON",
+			args:    args{data: []byte(`{"name":"sttr"}`)},
+			want:    `{\"name\":\"sttr\"}`,
+			wantErr: false,
+		},
+		{
+			name:    "Should generate correct JSON having right space",
+			args:    args{data: []byte(`{"name":"sttr"}       `)},
+			want:    `{\"name\":\"sttr\"}`,
+			wantErr: false,
+		},
+		{
+			name:    "Should generate correct JSON having having let space",
+			args:    args{data: []byte(`   {"name":"sttr"}`)},
+			want:    `{\"name\":\"sttr\"}`,
+			wantErr: false,
+		},
+		{
+
+			name:    "Should return error on invalid input",
+			args:    args{data: []byte(`Invalid Input`)},
+			want:    ``,
+			wantErr: true,
+		},
+		{
+
+			name:    "Should return error on invalid JSON",
+			args:    args{data: []byte(`{\n  \"name\: \"name is mising quote\"\n}`)},
+			want:    ``,
+			wantErr: true,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			p := JSONEscape{}
+			got, err := p.Transform(tt.args.data, tt.args.f...)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("Transform() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			if got != tt.want {
+				t.Errorf("Transform() got = %v, want %v", got, tt.want)
+			}
 		})
 	}
 }
