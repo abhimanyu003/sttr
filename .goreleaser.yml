@@ -38,3 +38,18 @@ brews:
       bin.install "sttr"
     test: |
       system "#{bin}/sttr -v"
+
+snapcrafts:
+  - name: sttr
+    publish: true
+    summary: A cross-platform, cli app to perform various operations on string.
+    description: |
+      sttr is command line software that allows you to quickly run various transformation operations on the string.
+    grade: stable
+    confinement: classic
+    license: MIT
+    base: core20
+
+    apps:
+      sttr:
+        plugs: ["home", "network"]
