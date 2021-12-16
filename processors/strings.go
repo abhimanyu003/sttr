@@ -3,9 +3,11 @@ package processors
 import (
 	"fmt"
 	"github.com/mcnijman/go-emailaddress"
+	"math/rand"
 	"regexp"
 	"sort"
 	"strings"
+	"time"
 
 	"github.com/abhimanyu003/sttr/utils"
 
@@ -361,7 +363,7 @@ func (p SortLines) Flags() []Flag {
 }
 
 func (p SortLines) Title() string {
-	return "SortLines"
+	return "Sort Lines"
 }
 
 func (p SortLines) Description() string {
@@ -369,6 +371,43 @@ func (p SortLines) Description() string {
 }
 
 func (p SortLines) FilterValue() string {
+	return p.Title()
+}
+
+// ShuffleLines sort given lines, in random order.
+type ShuffleLines struct{}
+
+func (p ShuffleLines) Name() string {
+	return "shuffle-lines"
+}
+
+func (p ShuffleLines) Alias() []string {
+	return nil
+}
+
+func (p ShuffleLines) Transform(data []byte, _ ...Flag) (string, error) {
+	rand.Seed(int64(time.Now().Nanosecond()))
+
+	shuffle := strings.Split(string(data), "\n")
+	rand.Shuffle(len(shuffle), func(i, j int) {
+		shuffle[i], shuffle[j] = shuffle[j], shuffle[i]
+	})
+	return strings.Join(shuffle, "\n"), nil
+}
+
+func (p ShuffleLines) Flags() []Flag {
+	return nil
+}
+
+func (p ShuffleLines) Title() string {
+	return "Shuffle Lines"
+}
+
+func (p ShuffleLines) Description() string {
+	return "Shuffle lines randomly"
+}
+
+func (p ShuffleLines) FilterValue() string {
 	return p.Title()
 }
 

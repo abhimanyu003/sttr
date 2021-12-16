@@ -150,6 +150,7 @@ echo "Hello World" | sttr base64-encode | sttr md5
 - [x] **slug** - Transform your text to slug-case
 - [x] **snake** - Transform your text to snake_case
 - [x] **sort-lines** - Sort lines alphabetically
+- [x] **shuffle-lines** - Shuffle lines randomly
 - [x] **title** - Transform your text to Title Case
 - [x] **upper** - Transform your text to UPPER CASE
 
