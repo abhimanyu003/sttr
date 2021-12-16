@@ -53,6 +53,12 @@ brew tap abhimanyu003/sttr
 brew install sttr
 ```
 
+#### Snap
+
+```
+sudo snap install sttr
+```
+
 #### Go
 
 ```go
