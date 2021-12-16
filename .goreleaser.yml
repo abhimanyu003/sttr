@@ -46,7 +46,7 @@ snapcrafts:
     description: |
       sttr is command line software that allows you to quickly run various transformation operations on the string.
     grade: stable
-    confinement: classic
+    confinement: strict
     license: MIT
     base: core20
 
