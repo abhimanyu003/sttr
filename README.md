@@ -41,7 +41,7 @@ You can run the below `curl` to install it somewhere in your PATH for easy use. 
 folder
 
 ```go
-curl -sfL https: //raw.githubusercontent.com/abhimanyu003/sttr/main/install.sh | sh
+curl -sfL https://raw.githubusercontent.com/abhimanyu003/sttr/main/install.sh | sh
 ```
 
 #### Homebrew
