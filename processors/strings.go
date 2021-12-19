@@ -1,13 +1,16 @@
 package processors
 
 import (
+	crypto_rand "crypto/rand"
 	"fmt"
-	"github.com/mcnijman/go-emailaddress"
+	"math/big"
 	"math/rand"
 	"regexp"
 	"sort"
 	"strings"
 	"time"
+
+	"github.com/mcnijman/go-emailaddress"
 
 	"github.com/abhimanyu003/sttr/utils"
 
@@ -386,7 +389,11 @@ func (p ShuffleLines) Alias() []string {
 }
 
 func (p ShuffleLines) Transform(data []byte, _ ...Flag) (string, error) {
-	rand.Seed(int64(time.Now().Nanosecond()))
+	seed, err := crypto_rand.Int(crypto_rand.Reader, big.NewInt(int64(time.Now().Nanosecond())))
+	if err != nil {
+		return "", err
+	}
+	rand.Seed(seed.Int64())
 
 	shuffle := strings.Split(string(data), "\n")
 	rand.Shuffle(len(shuffle), func(i, j int) {

@@ -7,6 +7,7 @@ import (
 	"crypto/sha512"
 	"encoding/hex"
 	"fmt"
+
 	"golang.org/x/crypto/bcrypt"
 )
 
@@ -22,7 +23,6 @@ func (p MD5) Alias() []string {
 }
 
 func (p MD5) Transform(data []byte, _ ...Flag) (string, error) {
-
 	hasher := md5.New()
 	hasher.Write(data)
 
