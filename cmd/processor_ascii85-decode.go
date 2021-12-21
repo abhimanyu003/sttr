@@ -43,7 +43,7 @@ var ascii85DecodeCmd = &cobra.Command{
 		}
 
 		flags := make([]processors.Flag, 0)
-		p := processors.Ascii85Decoding{}
+		p := processors.ASCII85Decoding{}
 
 		out, err = p.Transform(in, flags...)
 		if err != nil {

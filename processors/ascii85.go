@@ -6,18 +6,18 @@ import (
 	"io"
 )
 
-// Ascii85Encoding encode string to base64.
-type Ascii85Encoding struct{}
+// ASCII85Encoding encode string to base64.
+type ASCII85Encoding struct{}
 
-func (p Ascii85Encoding) Name() string {
+func (p ASCII85Encoding) Name() string {
 	return "ascii85-encode"
 }
 
-func (p Ascii85Encoding) Alias() []string {
+func (p ASCII85Encoding) Alias() []string {
 	return []string{"ascii85-encoding", "base85-encode", "b85-encode"}
 }
 
-func (p Ascii85Encoding) Transform(data []byte, _ ...Flag) (string, error) {
+func (p ASCII85Encoding) Transform(data []byte, _ ...Flag) (string, error) {
 	buf := &bytes.Buffer{}
 	encoder := ascii85.NewEncoder(buf)
 	_, err := encoder.Write(data)
@@ -31,34 +31,34 @@ func (p Ascii85Encoding) Transform(data []byte, _ ...Flag) (string, error) {
 	return buf.String(), nil
 }
 
-func (p Ascii85Encoding) Flags() []Flag {
+func (p ASCII85Encoding) Flags() []Flag {
 	return nil
 }
 
-func (p Ascii85Encoding) Title() string {
+func (p ASCII85Encoding) Title() string {
 	return "Ascii85 / Base85 Encoding"
 }
 
-func (p Ascii85Encoding) Description() string {
+func (p ASCII85Encoding) Description() string {
 	return "Encode your text to Ascii85 ( Base85 )"
 }
 
-func (p Ascii85Encoding) FilterValue() string {
+func (p ASCII85Encoding) FilterValue() string {
 	return p.Title()
 }
 
-// Ascii85Decoding encode string to Ascii aka base85.
-type Ascii85Decoding struct{}
+// ASCII85Decoding encode string to Ascii aka base85.
+type ASCII85Decoding struct{}
 
-func (p Ascii85Decoding) Name() string {
+func (p ASCII85Decoding) Name() string {
 	return "ascii85-decode"
 }
 
-func (p Ascii85Decoding) Alias() []string {
+func (p ASCII85Decoding) Alias() []string {
 	return []string{"ascii85-decoding", "base85-decode", "b85-decode"}
 }
 
-func (p Ascii85Decoding) Transform(data []byte, _ ...Flag) (string, error) {
+func (p ASCII85Decoding) Transform(data []byte, _ ...Flag) (string, error) {
 	decoder := ascii85.NewDecoder(bytes.NewReader(data))
 	buf, err := io.ReadAll(decoder)
 	if err != nil {
@@ -68,18 +68,18 @@ func (p Ascii85Decoding) Transform(data []byte, _ ...Flag) (string, error) {
 	return string(buf), nil
 }
 
-func (p Ascii85Decoding) Flags() []Flag {
+func (p ASCII85Decoding) Flags() []Flag {
 	return nil
 }
 
-func (p Ascii85Decoding) Title() string {
+func (p ASCII85Decoding) Title() string {
 	return "Ascii85 / Base85 Decoding"
 }
 
-func (p Ascii85Decoding) Description() string {
+func (p ASCII85Decoding) Description() string {
 	return "Decode your text to Ascii85 ( Base85 ) text"
 }
 
-func (p Ascii85Decoding) FilterValue() string {
+func (p ASCII85Decoding) FilterValue() string {
 	return p.Title()
 }

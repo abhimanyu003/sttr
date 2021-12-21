@@ -21,7 +21,7 @@ func TestAscii85Encoding_Command(t *testing.T) {
 		name:        "ascii85-encode",
 		title:       "Ascii85 / Base85 Encoding",
 	}
-	p := Ascii85Encoding{}
+	p := ASCII85Encoding{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
 		t.Errorf("Alias() = %v, want %v", got, test.alias)
 	}
@@ -69,7 +69,7 @@ func TestAscii85Encoding_Transform(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			p := Ascii85Encoding{}
+			p := ASCII85Encoding{}
 			got, err := p.Transform(tt.args.data, tt.args.in1...)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Transform() error = %v, wantErr %v", err, tt.wantErr)
@@ -98,7 +98,7 @@ func TestAscii85Decoding_Command(t *testing.T) {
 		name:        "ascii85-decode",
 		title:       "Ascii85 / Base85 Decoding",
 	}
-	p := Ascii85Decoding{}
+	p := ASCII85Decoding{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
 		t.Errorf("Alias() = %v, want %v", got, test.alias)
 	}
@@ -146,7 +146,7 @@ func TestAscii85Decoding_Transform(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			p := Ascii85Decoding{}
+			p := ASCII85Decoding{}
 			got, err := p.Transform(tt.args.data, tt.args.in1...)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Transform() error = %v, wantErr %v", err, tt.wantErr)

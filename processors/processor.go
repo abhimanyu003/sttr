@@ -9,8 +9,8 @@ import (
 )
 
 var List = []list.Item{
-	Ascii85Encoding{},
-	Ascii85Decoding{},
+	ASCII85Encoding{},
+	ASCII85Decoding{},
 	Base32Encoding{},
 	Base64Decode{},
 	Base64Encode{},
