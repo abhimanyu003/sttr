@@ -41,7 +41,7 @@ You can run the below `curl` to install it somewhere in your PATH for easy use. 
 folder
 
 ```go
-curl -sfL https://raw.githubusercontent.com/abhimanyu003/sttr/main/install.sh | sh
+curl -sfL https: //raw.githubusercontent.com/abhimanyu003/sttr/main/install.sh | sh
 ```
 
 #### Homebrew
@@ -127,10 +127,14 @@ echo "Hello World" | sttr base64-encode | sttr md5
 
 #### Encode/Decode
 
+- [x] **ascii85-encode** - Encode your text to ascii85
+- [x] **ascii85-decode** - Decode your ascii85 text
 - [x] **base32-decode** - Decode your base32 text
 - [x] **base32-encode** - Encode your text to Base32
 - [x] **base64-decode** - Decode your base64 text
 - [x] **base64-encode** - Encode your text to Base64
+- [x] **base85-encode** - Encode your text to base85
+- [x] **base85-decode** - Decode your ascii85 text
 - [x] **base64url-decode** - Decode your base64 url
 - [x] **base64url-encode** - Encode your text to url
 - [x] **html-decode** - Unescape your HTML
