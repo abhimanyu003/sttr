@@ -11,17 +11,14 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var jsonUnescape_flag_i bool
-
 func init() {
-	jsonUnescapeCmd.Flags().BoolVarP(&jsonUnescape_flag_i, "indent", "i", false, "Indent the output (prettyprint)")
-	rootCmd.AddCommand(jsonUnescapeCmd)
+	rootCmd.AddCommand(ascii85EncodeCmd)
 }
 
-var jsonUnescapeCmd = &cobra.Command{
-	Use:     "json-unescape",
-	Short:   "JSON Unescape",
-	Aliases: []string{"json-unesc"},
+var ascii85EncodeCmd = &cobra.Command{
+	Use:     "ascii85-encode",
+	Short:   "Encode your text to Ascii85 ( Base85 )",
+	Aliases: []string{"ascii85-encoding", "base85-encode", "b85-encode"},
 	Args:    cobra.MaximumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
@@ -46,8 +43,7 @@ var jsonUnescapeCmd = &cobra.Command{
 		}
 
 		flags := make([]processors.Flag, 0)
-		p := processors.JSONUnescape{}
-		flags = append(flags, processors.Flag{Short: "i", Value: jsonUnescape_flag_i})
+		p := processors.Ascii85Encoding{}
 
 		out, err = p.Transform(in, flags...)
 		if err != nil {
