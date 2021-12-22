@@ -19,9 +19,10 @@ var (
 )
 
 type UI struct {
-	list   list.Model
-	input  string
-	output string
+	list     list.Model
+	input    string
+	output   string
+	quitting bool
 }
 
 func New(input string) UI {
@@ -61,6 +62,10 @@ func (u UI) Init() tea.Cmd {
 }
 
 func (u UI) View() string {
+	if u.quitting {
+		return ""
+	}
+
 	if u.output != "" {
 		return lipgloss.NewStyle().
 			Padding(1, 0, 1, 0).
@@ -77,7 +82,11 @@ func (u UI) View() string {
 func (u UI) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
 	case tea.KeyMsg:
-		if keypress := msg.String(); keypress == "enter" {
+		switch keypress := msg.String(); keypress {
+		case "q", "ctrl+c":
+			u.quitting = true
+			return u, tea.Quit
+		case "enter":
 			var data string
 			var err error
 			i, ok := u.list.SelectedItem().(processors.Processor)
