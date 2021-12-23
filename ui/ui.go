@@ -56,20 +56,22 @@ func (u *UI) Render() {
 		log.Fatalf("error running ui: %v", err)
 	}
 
-	data, err := u.selectedProcessor.Transform([]byte(u.input))
-	if err != nil {
-		data = fmt.Sprintf("error: %s", err.Error())
+	if u.selectedProcessor != nil {
+		data, err := u.selectedProcessor.Transform([]byte(u.input))
+		if err != nil {
+			data = fmt.Sprintf("error: %s", err.Error())
+		}
+
+		output := lipgloss.NewStyle().
+			Padding(1, 0, 1, 0).
+			BorderTop(true).
+			BorderStyle(lipgloss.DoubleBorder()).
+			BorderForeground(borderStyle).
+			Width(80).
+			Render(data)
+
+		fmt.Println(output)
 	}
-
-	output := lipgloss.NewStyle().
-		Padding(1, 0, 1, 0).
-		BorderTop(true).
-		BorderStyle(lipgloss.DoubleBorder()).
-		BorderForeground(borderStyle).
-		Width(80).
-		Render(data)
-
-	fmt.Println(output)
 }
 
 func (u *UI) Init() tea.Cmd {
@@ -87,6 +89,9 @@ func (u *UI) View() string {
 func (u *UI) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
 	case tea.KeyMsg:
+		if u.list.FilterState() == list.Filtering {
+			break
+		}
 		switch keypress := msg.String(); keypress {
 		case "q", "ctrl+c":
 			u.quitting = true
