@@ -169,7 +169,6 @@ echo "Hello World" | sttr base64-encode | sttr md5
 - [x] **count-chars** - Find the length of your text (including spaces)
 - [x] **count-lines** - Count the number of lines in your text
 - [x] **count-words** - Count the number of words in your text
-- [x] **extract-emails** - Extract emails from given text
 
 #### RGB/Hex
 
@@ -193,6 +192,11 @@ echo "Hello World" | sttr base64-encode | sttr md5
 #### Markdown
 
 - [x] **markdown-html** - Convert Markdown to HTML
+
+#### Extract
+
+- [x] **extract-emails** - Extract emails from given text
+- [x] **extract-ip** - Extract IPv4 and IPv6 from your text
 
 #### Other
 
