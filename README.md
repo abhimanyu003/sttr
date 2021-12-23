@@ -159,9 +159,6 @@ echo "Hello World" | sttr base64-encode | sttr md5
 - [x] **reverse** - Reverse Text ( txeT esreveR )
 - [x] **slug** - Transform your text to slug-case
 - [x] **snake** - Transform your text to snake_case
-- [x] **sort-lines** - Sort lines alphabetically
-- [x] **shuffle-lines** - Shuffle lines randomly
-- [x] **unique-lines** - Get unique lines from list
 - [x] **title** - Transform your text to Title Case
 - [x] **upper** - Transform your text to UPPER CASE
 
@@ -170,6 +167,14 @@ echo "Hello World" | sttr base64-encode | sttr md5
 - [x] **count-chars** - Find the length of your text (including spaces)
 - [x] **count-lines** - Count the number of lines in your text
 - [x] **count-words** - Count the number of words in your text
+
+### Lines
+
+- [x] **count-lines** - Count the number of lines in your text
+- [x] **reverse-lines** - Reverse lines
+- [x] **shuffle-lines** - Shuffle lines randomly
+- [x] **sort-lines** - Sort lines alphabetically
+- [x] **unique-lines** - Get unique lines from list
 
 #### RGB/Hex
 

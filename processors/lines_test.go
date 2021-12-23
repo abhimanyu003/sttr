@@ -246,3 +246,90 @@ func TestUniqueLines_Transform(t *testing.T) {
 		})
 	}
 }
+
+func TestReverseLines_Command(t *testing.T) {
+	test := struct {
+		alias       []string
+		description string
+		filterValue string
+		flags       []Flag
+		name        string
+		title       string
+	}{
+		alias:       nil,
+		description: "Reverse Lines",
+		filterValue: "Reverse Lines",
+		flags:       nil,
+		name:        "reverse-lines",
+		title:       "Reverse Lines",
+	}
+	p := ReverseLines{}
+	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
+		t.Errorf("Alias() = %v, want %v", got, test.alias)
+	}
+	if got := p.Description(); got != test.description {
+		t.Errorf("Description() = %v, want %v", got, test.description)
+	}
+	if got := p.FilterValue(); got != test.filterValue {
+		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+	}
+	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
+		t.Errorf("Flags() = %v, want %v", got, test.flags)
+	}
+	if got := p.Name(); got != test.name {
+		t.Errorf("Name() = %v, want %v", got, test.name)
+	}
+	if got := p.Title(); got != test.title {
+		t.Errorf("Title() = %v, want %v", got, test.title)
+	}
+}
+
+func TestReverseLines_Transform(t *testing.T) {
+	type args struct {
+		data []byte
+		opts []Flag
+	}
+	tests := []struct {
+		name    string
+		args    args
+		want    string
+		wantErr bool
+	}{
+		{
+			name: "Reverse lines with numbers",
+			args: args{data: []byte("1\n2\n3\n4")},
+			want: "4\n3\n2\n1",
+		},
+		{
+			name: "Reverse lines with numbers and alpha",
+			args: args{data: []byte("1\n2\ntest")},
+			want: "test\n2\n1",
+		},
+		{
+			name: "Empty input",
+			args: args{data: []byte("")},
+			want: "",
+		},
+		{
+			name: "Single input",
+			args: args{data: []byte("1")},
+			want: "1",
+		},
+		{
+			name: "Single input with new line",
+			args: args{data: []byte("1\n")},
+			want: "\n1",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			// We are going run test 100 to make sure that list order is preserved.
+			for i := 0; i < 100; i++ {
+				p := ReverseLines{}
+				if got, _ := p.Transform(tt.args.data, tt.args.opts...); got != tt.want {
+					t.Errorf("ReverseLines() = %v, want %v", got, tt.want)
+				}
+			}
+		})
+	}
+}

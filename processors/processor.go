@@ -41,6 +41,7 @@ var List = []list.Item{
 	Markdown{},
 	ROT13Encode{},
 	Reverse{},
+	ReverseLines{},
 	SHA1{},
 	SHA256{},
 	SHA512{},

@@ -181,3 +181,42 @@ func (p UniqueLines) Description() string {
 func (p UniqueLines) FilterValue() string {
 	return p.Title()
 }
+
+// ReverseLines sort given lines, in random order.
+type ReverseLines struct{}
+
+func (p ReverseLines) Name() string {
+	return "reverse-lines"
+}
+
+func (p ReverseLines) Alias() []string {
+	return nil
+}
+
+func (p ReverseLines) Transform(data []byte, _ ...Flag) (string, error) {
+	var output []string
+	split := strings.Split(string(data), "\n")
+	length := len(split) - 1
+
+	for i := length; i >= 0; i-- {
+		output = append(output, split[i])
+	}
+
+	return strings.Join(output, "\n"), nil
+}
+
+func (p ReverseLines) Flags() []Flag {
+	return nil
+}
+
+func (p ReverseLines) Title() string {
+	return "Reverse Lines"
+}
+
+func (p ReverseLines) Description() string {
+	return "Reverse Lines"
+}
+
+func (p ReverseLines) FilterValue() string {
+	return p.Title()
+}
