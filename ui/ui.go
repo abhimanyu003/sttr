@@ -19,10 +19,10 @@ var (
 )
 
 type UI struct {
-	list     list.Model
-	input    string
-	output   string
-	quitting bool
+	list              list.Model
+	input             string
+	quitting          bool
+	selectedProcessor processors.Processor
 }
 
 func New(input string) UI {
@@ -31,7 +31,7 @@ func New(input string) UI {
 	}
 }
 
-func (u UI) Render() {
+func (u *UI) Render() {
 	if u.input == "" {
 		divider := lipgloss.NewStyle().Padding(0, 1).Foreground(borderStyle).SetString("•").String()
 		info := lipgloss.NewStyle().Foreground(specialStyle).Render
@@ -55,31 +55,36 @@ func (u UI) Render() {
 	if err := tea.NewProgram(u).Start(); err != nil {
 		log.Fatalf("error running ui: %v", err)
 	}
+
+	data, err := u.selectedProcessor.Transform([]byte(u.input))
+	if err != nil {
+		data = fmt.Sprintf("error: %s", err.Error())
+	}
+
+	output := lipgloss.NewStyle().
+		Padding(1, 0, 1, 0).
+		BorderTop(true).
+		BorderStyle(lipgloss.DoubleBorder()).
+		BorderForeground(borderStyle).
+		Width(80).
+		Render(data)
+
+	fmt.Println(output)
 }
 
-func (u UI) Init() tea.Cmd {
+func (u *UI) Init() tea.Cmd {
 	return nil
 }
 
-func (u UI) View() string {
+func (u *UI) View() string {
 	if u.quitting {
 		return ""
-	}
-
-	if u.output != "" {
-		return lipgloss.NewStyle().
-			Padding(1, 0, 1, 0).
-			BorderTop(true).
-			BorderStyle(lipgloss.DoubleBorder()).
-			BorderForeground(borderStyle).
-			Width(80).
-			Render(u.output)
 	}
 
 	return appStyle.Margin(1, 1).Render(u.list.View())
 }
 
-func (u UI) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
+func (u *UI) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
 	case tea.KeyMsg:
 		switch keypress := msg.String(); keypress {
@@ -87,16 +92,8 @@ func (u UI) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			u.quitting = true
 			return u, tea.Quit
 		case "enter":
-			var data string
-			var err error
-			i, ok := u.list.SelectedItem().(processors.Processor)
-			if ok {
-				data, err = i.Transform([]byte(u.input))
-				if err != nil {
-					data = fmt.Sprintf("error: %s", err.Error())
-				}
-			}
-			u.output = data
+			u.selectedProcessor = u.list.SelectedItem().(processors.Processor)
+			u.quitting = true
 			return u, tea.Quit
 		}
 	case tea.WindowSizeMsg:
