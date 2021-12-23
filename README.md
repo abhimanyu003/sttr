@@ -162,19 +162,19 @@ echo "Hello World" | sttr base64-encode | sttr md5
 - [x] **title** - Transform your text to Title Case
 - [x] **upper** - Transform your text to UPPER CASE
 
-#### Count
-
-- [x] **count-chars** - Find the length of your text (including spaces)
-- [x] **count-lines** - Count the number of lines in your text
-- [x] **count-words** - Count the number of words in your text
-
-### Lines
+#### Lines
 
 - [x] **count-lines** - Count the number of lines in your text
 - [x] **reverse-lines** - Reverse lines
 - [x] **shuffle-lines** - Shuffle lines randomly
 - [x] **sort-lines** - Sort lines alphabetically
 - [x] **unique-lines** - Get unique lines from list
+
+#### Count
+
+- [x] **count-chars** - Find the length of your text (including spaces)
+- [x] **count-lines** - Count the number of lines in your text
+- [x] **count-words** - Count the number of words in your text
 
 #### RGB/Hex
 
