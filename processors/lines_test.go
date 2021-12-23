@@ -122,7 +122,7 @@ func TestShuffleLines_Transform(t *testing.T) {
 			got, _ := p.Transform(tt.args.data, tt.args.opts...)
 			count := len(strings.Split(got, "\n"))
 			if count != tt.want {
-				t.Errorf("ExtractEmails() = %v, want %v", count, tt.want)
+				t.Errorf("ShuffleLines() = %v, want %v", count, tt.want)
 			}
 		})
 	}
@@ -240,7 +240,7 @@ func TestUniqueLines_Transform(t *testing.T) {
 			for i := 0; i < 100; i++ {
 				p := UniqueLines{}
 				if got, _ := p.Transform(tt.args.data, tt.args.opts...); got != tt.want {
-					t.Errorf("SortLines() = %v, want %v", got, tt.want)
+					t.Errorf("UniqueLines() = %v, want %v", got, tt.want)
 				}
 			}
 		})
