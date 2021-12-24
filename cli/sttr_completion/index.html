@@ -3,13 +3,24 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="sttr completion #  generate the autocompletion script for the specified shell
-Synopsis #  Generate the autocompletion script for sttr for the specified shell. See each sub-command&rsquo;s help for details on how to use the generated script.
-Options #   -h, --help help for completion SEE ALSO #   sttr	- sttr is a fast and flexible string/text converter sttr completion bash	- generate the autocompletion script for bash sttr completion fish	- generate the autocompletion script for fish sttr completion powershell	- generate the autocompletion script for powershell sttr completion zsh	- generate the autocompletion script for zsh  ">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="sttr completion" />
-<meta property="og:description" content="sttr completion #  generate the autocompletion script for the specified shell
-Synopsis #  Generate the autocompletion script for sttr for the specified shell. See each sub-command&rsquo;s help for details on how to use the generated script.
-Options #   -h, --help help for completion SEE ALSO #   sttr	- sttr is a fast and flexible string/text converter sttr completion bash	- generate the autocompletion script for bash sttr completion fish	- generate the autocompletion script for fish sttr completion powershell	- generate the autocompletion script for powershell sttr completion zsh	- generate the autocompletion script for zsh  " />
+<meta name="description" content="sttr completion #  Generate completion script
+Synopsis #  To load completions:
+Bash:
+$ source &lt;(sttr completion bash)
+To load completions for each session, execute once: #  Linux: #  $ sttr completion bash &gt; /etc/bash_completion.d/sttr
+macOS: #  $ sttr completion bash &gt; /usr/local/etc/bash_completion.d/sttr
+Zsh:
+If shell completion is not already enabled in your environment, #  you will need to enable it. You can execute the following once: #  $ echo &ldquo;autoload -U compinit; compinit&rdquo; &raquo; ~/.">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="sttr completion" />
+<meta property="og:description" content="sttr completion #  Generate completion script
+Synopsis #  To load completions:
+Bash:
+$ source &lt;(sttr completion bash)
+To load completions for each session, execute once: #  Linux: #  $ sttr completion bash &gt; /etc/bash_completion.d/sttr
+macOS: #  $ sttr completion bash &gt; /usr/local/etc/bash_completion.d/sttr
+Zsh:
+If shell completion is not already enabled in your environment, #  you will need to enable it. You can execute the following once: #  $ echo &ldquo;autoload -U compinit; compinit&rdquo; &raquo; ~/." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://abhimanyu003.github.io/sttr/cli/sttr_completion/" /><meta property="article:section" content="cli" />
 
@@ -20,7 +31,7 @@ Options #   -h, --help help for completion SEE ALSO #   sttr	- sttr is a fast an
 <link rel="icon" href="/sttr/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/sttr/book.min.95d69eb6bad8b9707ff2b5d8d9e31ce70a1b84f2ed7ffaf665ffcf00aa7993bd.css" integrity="sha256-ldaetrrYuXB/8rXY2eMc5wobhPLtf/r2Zf/PAKp5k70=" crossorigin="anonymous">
   <script defer src="/sttr/flexsearch.min.js"></script>
-  <script defer src="/sttr/en.search.min.dee88386236bb94400e551dae2ff3c95cde596270196075d6440800f9fb54176.js" integrity="sha256-3uiDhiNruUQA5VHa4v88lc3llicBlgddZECAD5&#43;1QXY=" crossorigin="anonymous"></script>
+  <script defer src="/sttr/en.search.min.fc819c237a53079189572fdf23520fc7d777eae39b794562d97c61ef42f35b7b.js" integrity="sha256-/IGcI3pTB5GJVy/fI1IPx9d36uObeUVi2Xxh70LzW3s=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -121,6 +132,32 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_ascii85-decode/" class="">sttr ascii85-decode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_ascii85-encode/" class="">sttr ascii85-encode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="https://abhimanyu003.github.io/sttr/cli/sttr_base32-decode/" class="">sttr base32-decode</a>
   
 
@@ -173,6 +210,32 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_base64url-decode/" class="">sttr base64url-decode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_base64url-encode/" class="">sttr base64url-encode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="https://abhimanyu003.github.io/sttr/cli/sttr_bcrypt/" class="">sttr bcrypt</a>
   
 
@@ -200,58 +263,6 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="https://abhimanyu003.github.io/sttr/cli/sttr_completion/" class=" active">sttr completion</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_completion_bash/" class="">sttr completion bash</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_completion_fish/" class="">sttr completion fish</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_completion_powershell/" class="">sttr completion powershell</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_completion_zsh/" class="">sttr completion zsh</a>
   
 
         </li>
@@ -304,6 +315,32 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="https://abhimanyu003.github.io/sttr/cli/sttr_extract-emails/" class="">sttr extract-emails</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_extract-ip/" class="">sttr extract-ip</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_hex-decode/" class="">sttr hex-decode</a>
   
 
         </li>
@@ -394,6 +431,45 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_json-escape/" class="">sttr json-escape</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_json-msgpack/" class="">sttr json-msgpack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_json-unescape/" class="">sttr json-unescape</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="https://abhimanyu003.github.io/sttr/cli/sttr_json-yaml/" class="">sttr json-yaml</a>
   
 
@@ -459,7 +535,33 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_msgpack-json/" class="">sttr msgpack-json</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="https://abhimanyu003.github.io/sttr/cli/sttr_reverse/" class="">sttr reverse</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_reverse-lines/" class="">sttr reverse-lines</a>
   
 
         </li>
@@ -524,6 +626,19 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_shuffle-lines/" class="">sttr shuffle-lines</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="https://abhimanyu003.github.io/sttr/cli/sttr_slug/" class="">sttr slug</a>
   
 
@@ -564,6 +679,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="https://abhimanyu003.github.io/sttr/cli/sttr_title/" class="">sttr title</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_unique-lines/" class="">sttr unique-lines</a>
   
 
         </li>
@@ -719,6 +847,13 @@ https://github.com/alex-shpak/hugo-book
     <li><a href="#sttr-completion">sttr completion</a>
       <ul>
         <li><a href="#synopsis">Synopsis</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
         <li><a href="#options">Options</a></li>
         <li><a href="#see-also">SEE ALSO</a></li>
       </ul>
@@ -739,14 +874,71 @@ https://github.com/alex-shpak/hugo-book
   sttr completion
   <a class="anchor" href="#sttr-completion">#</a>
 </h2>
-<p>generate the autocompletion script for the specified shell</p>
+<p>Generate completion script</p>
 <h3 id="synopsis">
   Synopsis
   <a class="anchor" href="#synopsis">#</a>
 </h3>
-<p>Generate the autocompletion script for sttr for the specified shell.
-See each sub-command&rsquo;s help for details on how to use the generated script.</p>
-<h3 id="options">
+<p>To load completions:</p>
+<p>Bash:</p>
+<p>$ source &lt;(sttr completion bash)</p>
+<h1 id="to-load-completions-for-each-session-execute-once">
+  To load completions for each session, execute once:
+  <a class="anchor" href="#to-load-completions-for-each-session-execute-once">#</a>
+</h1>
+<h1 id="linux">
+  Linux:
+  <a class="anchor" href="#linux">#</a>
+</h1>
+<p>$ sttr completion bash &gt; /etc/bash_completion.d/sttr</p>
+<h1 id="macos">
+  macOS:
+  <a class="anchor" href="#macos">#</a>
+</h1>
+<p>$ sttr completion bash &gt; /usr/local/etc/bash_completion.d/sttr</p>
+<p>Zsh:</p>
+<h1 id="if-shell-completion-is-not-already-enabled-in-your-environment">
+  If shell completion is not already enabled in your environment,
+  <a class="anchor" href="#if-shell-completion-is-not-already-enabled-in-your-environment">#</a>
+</h1>
+<h1 id="you-will-need-to-enable-it--you-can-execute-the-following-once">
+  you will need to enable it.  You can execute the following once:
+  <a class="anchor" href="#you-will-need-to-enable-it--you-can-execute-the-following-once">#</a>
+</h1>
+<p>$ echo &ldquo;autoload -U compinit; compinit&rdquo; &raquo; ~/.zshrc</p>
+<h1 id="to-load-completions-for-each-session-execute-once-1">
+  To load completions for each session, execute once:
+  <a class="anchor" href="#to-load-completions-for-each-session-execute-once-1">#</a>
+</h1>
+<h1 id="generate-a-_sttr-completion-script-and-put-it-somewhere-in-your-fpath">
+  Generate a _sttr completion script and put it somewhere in your $fpath
+  <a class="anchor" href="#generate-a-_sttr-completion-script-and-put-it-somewhere-in-your-fpath">#</a>
+</h1>
+<p>$ sttr completion zsh &gt; /usr/local/share/zsh/site-functions/_sttr</p>
+<h1 id="you-will-need-to-start-a-new-shell-for-this-setup-to-take-effect">
+  You will need to start a new shell for this setup to take effect.
+  <a class="anchor" href="#you-will-need-to-start-a-new-shell-for-this-setup-to-take-effect">#</a>
+</h1>
+<p>fish:</p>
+<p>$ sttr completion fish | source</p>
+<h1 id="to-load-completions-for-each-session-execute-once-2">
+  To load completions for each session, execute once:
+  <a class="anchor" href="#to-load-completions-for-each-session-execute-once-2">#</a>
+</h1>
+<p>$ sttr completion fish &gt; ~/.config/fish/completions/sttr.fish</p>
+<p>PowerShell:</p>
+<p>PS&gt; sttr completion powershell | Out-String | Invoke-Expression</p>
+<h1 id="to-load-completions-for-every-new-session-run">
+  To load completions for every new session, run:
+  <a class="anchor" href="#to-load-completions-for-every-new-session-run">#</a>
+</h1>
+<p>PS&gt; sttr completion powershell &gt; sttr.ps1</p>
+<h1 id="and-source-this-file-from-your-powershell-profile">
+  and source this file from your PowerShell profile.
+  <a class="anchor" href="#and-source-this-file-from-your-powershell-profile">#</a>
+</h1>
+<pre tabindex="0"><code>sttr completion [bash|zsh|fish|powershell]
+</code></pre><h3 id="options">
   Options
   <a class="anchor" href="#options">#</a>
 </h3>
@@ -757,10 +949,6 @@ See each sub-command&rsquo;s help for details on how to use the generated script
 </h3>
 <ul>
 <li><a href="/sttr/cli/sttr/">sttr</a>	 - sttr is a fast and flexible string/text converter</li>
-<li><a href="/sttr/cli/sttr_completion_bash/">sttr completion bash</a>	 - generate the autocompletion script for bash</li>
-<li><a href="/sttr/cli/sttr_completion_fish/">sttr completion fish</a>	 - generate the autocompletion script for fish</li>
-<li><a href="/sttr/cli/sttr_completion_powershell/">sttr completion powershell</a>	 - generate the autocompletion script for powershell</li>
-<li><a href="/sttr/cli/sttr_completion_zsh/">sttr completion zsh</a>	 - generate the autocompletion script for zsh</li>
 </ul>
 </article>
  
@@ -806,6 +994,13 @@ See each sub-command&rsquo;s help for details on how to use the generated script
     <li><a href="#sttr-completion">sttr completion</a>
       <ul>
         <li><a href="#synopsis">Synopsis</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
         <li><a href="#options">Options</a></li>
         <li><a href="#see-also">SEE ALSO</a></li>
       </ul>

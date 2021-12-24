@@ -15,7 +15,27 @@
       <description>sttr #  sttr is a fast and flexible string/text converter
 Synopsis #  sttr is a command line tool that allows you to quickly apply various transformation operations on the input text.
 Complete documentation is available at https://github.com/abhimanyu003/sttr
-sttr [flags] Options #   -h, --help help for sttr SEE ALSO #   sttr base32-decode	- Decode your base32 text sttr base32-encode	- Encode your text to Base32 sttr base64-decode	- Decode your base64 text sttr base64-encode	- Encode your text to Base64 sttr bcrypt	- Get the Bcrypt hash of your text sttr camel	- Transform your text to CamelCase sttr completion	- generate the autocompletion script for the specified shell sttr count-chars	- Find the length of your text (including spaces) sttr count-lines	- Count the number of lines in your text sttr count-words	- Count the number of words in your text sttr extract-emails	- Extract emails from given text sttr hex-encode	- Encode your text Hex sttr hex-rgb	- Convert a #hex-color code to RGB sttr html-decode	- Unescape your HTML sttr html-encode	- Escape your HTML sttr interactive	- Use sttr in interactive mode sttr json	- Format your text as JSON sttr json-yaml	- Convert JSON to YAML text sttr kebab	- Transform your text to kebab-case sttr lower	- Transform your text to lower case sttr markdown-html	- Convert Markdown to HTML sttr md5	- Get the MD5 checksum of your text sttr reverse	- Reverse Text ( txeT esreveR ) sttr rot13-encode	- Encode your text to ROT13 sttr sha1	- Get the SHA1 checksum of your text sttr sha256	- Get the SHA256 checksum of your text sttr sha512	- Get the SHA512 checksum of your text sttr slug	- Transform your text to slug-case sttr snake	- Transform your text to snake_case sttr sort-lines	- Sort lines alphabetically sttr title	- Transform your text to Title Case sttr upper	- Transform your text to UPPER CASE sttr url-decode	- Decode URL entities sttr url-encode	- Encode URL entities sttr version	- Print the version of sttr sttr yaml-json	- Convert YAML to JSON text sttr zeropad	- Pad a number with zeros  </description>
+sttr [flags] Options #   -h, --help help for sttr SEE ALSO #   sttr ascii85-decode	- Decode your text to Ascii85 ( Base85 ) text sttr ascii85-encode	- Encode your text to Ascii85 ( Base85 ) sttr base32-decode	- Decode your base32 text sttr base32-encode	- Encode your text to Base32 sttr base64-decode	- Decode your base64 text sttr base64-encode	- Encode your text to Base64 sttr base64url-decode	- Decode your base64 text with URL Safe sttr base64url-encode	- Encode your text to Base64 with URL Safe sttr bcrypt	- Get the Bcrypt hash of your text sttr camel	- Transform your text to CamelCase sttr completion	- Generate completion script sttr count-chars	- Find the length of your text (including spaces) sttr count-lines	- Count the number of lines in your text sttr count-words	- Count the number of words in your text sttr extract-emails	- Extract emails from given text sttr extract-ip	- Extract IPv4 and IPv6 from your text sttr hex-decode	- Convert Hexadecimal to String sttr hex-encode	- Encode your text Hex sttr hex-rgb	- Convert a #hex-color code to RGB sttr html-decode	- Unescape your HTML sttr html-encode	- Escape your HTML sttr interactive	- Use sttr in interactive mode sttr json	- Format your text as JSON ( json decode ) sttr json-escape	- JSON Escape sttr json-msgpack	- Convert JSON to MSGPACK text sttr json-unescape	- JSON Unescape sttr json-yaml	- Convert JSON to YAML text sttr kebab	- Transform your text to kebab-case sttr lower	- Transform your text to lower case sttr markdown-html	- Convert Markdown to HTML sttr md5	- Get the MD5 checksum of your text sttr msgpack-json	- Convert MSGPACK to JSON text sttr reverse	- Reverse Text ( txeT esreveR ) sttr reverse-lines	- Reverse Lines sttr rot13-encode	- Encode your text to ROT13 sttr sha1	- Get the SHA1 checksum of your text sttr sha256	- Get the SHA256 checksum of your text sttr sha512	- Get the SHA512 checksum of your text sttr shuffle-lines	- Shuffle lines randomly sttr slug	- Transform your text to slug-case sttr snake	- Transform your text to snake_case sttr sort-lines	- Sort lines alphabetically sttr title	- Transform your text to Title Case sttr unique-lines	- Unique Lines sttr upper	- Transform your text to UPPER CASE sttr url-decode	- Decode URL entities sttr url-encode	- Encode URL entities sttr version	- Print the version of sttr sttr yaml-json	- Convert YAML to JSON text sttr zeropad	- Pad a number with zeros  </description>
+    </item>
+    
+    <item>
+      <title>sttr ascii85-decode</title>
+      <link>https://abhimanyu003.github.io/sttr/cli/sttr_ascii85-decode/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://abhimanyu003.github.io/sttr/cli/sttr_ascii85-decode/</guid>
+      <description>sttr ascii85-decode #  Decode your text to Ascii85 ( Base85 ) text
+sttr ascii85-decode [flags] Options #   -h, --help help for ascii85-decode SEE ALSO #   sttr	- sttr is a fast and flexible string/text converter  </description>
+    </item>
+    
+    <item>
+      <title>sttr ascii85-encode</title>
+      <link>https://abhimanyu003.github.io/sttr/cli/sttr_ascii85-encode/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://abhimanyu003.github.io/sttr/cli/sttr_ascii85-encode/</guid>
+      <description>sttr ascii85-encode #  Encode your text to Ascii85 ( Base85 )
+sttr ascii85-encode [flags] Options #   -h, --help help for ascii85-encode SEE ALSO #   sttr	- sttr is a fast and flexible string/text converter  </description>
     </item>
     
     <item>
@@ -45,7 +65,7 @@ sttr base32-encode [flags] Options #   -h, --help help for base32-encode SEE ALS
       
       <guid>https://abhimanyu003.github.io/sttr/cli/sttr_base64-decode/</guid>
       <description>sttr base64-decode #  Decode your base64 text
-sttr base64-decode [flags] Options #   -h, --help help for base64-decode SEE ALSO #   sttr	- sttr is a fast and flexible string/text converter  </description>
+sttr base64-decode [flags] Options #   -h, --help help for base64-decode -r, --raw unpadded base64 encoding SEE ALSO #   sttr	- sttr is a fast and flexible string/text converter  </description>
     </item>
     
     <item>
@@ -55,7 +75,27 @@ sttr base64-decode [flags] Options #   -h, --help help for base64-decode SEE ALS
       
       <guid>https://abhimanyu003.github.io/sttr/cli/sttr_base64-encode/</guid>
       <description>sttr base64-encode #  Encode your text to Base64
-sttr base64-encode [flags] Options #   -h, --help help for base64-encode SEE ALSO #   sttr	- sttr is a fast and flexible string/text converter  </description>
+sttr base64-encode [flags] Options #   -h, --help help for base64-encode -r, --raw unpadded base64 encoding SEE ALSO #   sttr	- sttr is a fast and flexible string/text converter  </description>
+    </item>
+    
+    <item>
+      <title>sttr base64url-decode</title>
+      <link>https://abhimanyu003.github.io/sttr/cli/sttr_base64url-decode/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://abhimanyu003.github.io/sttr/cli/sttr_base64url-decode/</guid>
+      <description>sttr base64url-decode #  Decode your base64 text with URL Safe
+sttr base64url-decode [flags] Options #   -h, --help help for base64url-decode -r, --raw unpadded base64 encoding SEE ALSO #   sttr	- sttr is a fast and flexible string/text converter  </description>
+    </item>
+    
+    <item>
+      <title>sttr base64url-encode</title>
+      <link>https://abhimanyu003.github.io/sttr/cli/sttr_base64url-encode/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://abhimanyu003.github.io/sttr/cli/sttr_base64url-encode/</guid>
+      <description>sttr base64url-encode #  Encode your text to Base64 with URL Safe
+sttr base64url-encode [flags] Options #   -h, --help help for base64url-encode -r, --raw unpadded base64 encoding SEE ALSO #   sttr	- sttr is a fast and flexible string/text converter  </description>
     </item>
     
     <item>
@@ -84,63 +124,14 @@ sttr camel [flags] Options #   -h, --help help for camel SEE ALSO #   sttr	- stt
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://abhimanyu003.github.io/sttr/cli/sttr_completion/</guid>
-      <description>sttr completion #  generate the autocompletion script for the specified shell
-Synopsis #  Generate the autocompletion script for sttr for the specified shell. See each sub-command&amp;rsquo;s help for details on how to use the generated script.
-Options #   -h, --help help for completion SEE ALSO #   sttr	- sttr is a fast and flexible string/text converter sttr completion bash	- generate the autocompletion script for bash sttr completion fish	- generate the autocompletion script for fish sttr completion powershell	- generate the autocompletion script for powershell sttr completion zsh	- generate the autocompletion script for zsh  </description>
-    </item>
-    
-    <item>
-      <title>sttr completion bash</title>
-      <link>https://abhimanyu003.github.io/sttr/cli/sttr_completion_bash/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://abhimanyu003.github.io/sttr/cli/sttr_completion_bash/</guid>
-      <description>sttr completion bash #  generate the autocompletion script for bash
-Synopsis #  Generate the autocompletion script for the bash shell.
-This script depends on the &amp;lsquo;bash-completion&amp;rsquo; package. If it is not installed already, you can install it via your OS&amp;rsquo;s package manager.
-To load completions in your current shell session: $ source &amp;lt;(sttr completion bash)
-To load completions for every new session, execute once: Linux: $ sttr completion bash &amp;gt; /etc/bash_completion.</description>
-    </item>
-    
-    <item>
-      <title>sttr completion fish</title>
-      <link>https://abhimanyu003.github.io/sttr/cli/sttr_completion_fish/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://abhimanyu003.github.io/sttr/cli/sttr_completion_fish/</guid>
-      <description>sttr completion fish #  generate the autocompletion script for fish
-Synopsis #  Generate the autocompletion script for the fish shell.
-To load completions in your current shell session: $ sttr completion fish | source
-To load completions for every new session, execute once: $ sttr completion fish &amp;gt; ~/.config/fish/completions/sttr.fish
-You will need to start a new shell for this setup to take effect.
-sttr completion fish [flags] Options #   -h, --help help for fish --no-descriptions disable completion descriptions SEE ALSO #   sttr completion	- generate the autocompletion script for the specified shell  </description>
-    </item>
-    
-    <item>
-      <title>sttr completion powershell</title>
-      <link>https://abhimanyu003.github.io/sttr/cli/sttr_completion_powershell/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://abhimanyu003.github.io/sttr/cli/sttr_completion_powershell/</guid>
-      <description>sttr completion powershell #  generate the autocompletion script for powershell
-Synopsis #  Generate the autocompletion script for powershell.
-To load completions in your current shell session: PS C:&amp;gt; sttr completion powershell | Out-String | Invoke-Expression
-To load completions for every new session, add the output of the above command to your powershell profile.
-sttr completion powershell [flags] Options #   -h, --help help for powershell --no-descriptions disable completion descriptions SEE ALSO #   sttr completion	- generate the autocompletion script for the specified shell  </description>
-    </item>
-    
-    <item>
-      <title>sttr completion zsh</title>
-      <link>https://abhimanyu003.github.io/sttr/cli/sttr_completion_zsh/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://abhimanyu003.github.io/sttr/cli/sttr_completion_zsh/</guid>
-      <description>sttr completion zsh #  generate the autocompletion script for zsh
-Synopsis #  Generate the autocompletion script for the zsh shell.
-If shell completion is not already enabled in your environment you will need to enable it. You can execute the following once:
-$ echo &amp;ldquo;autoload -U compinit; compinit&amp;rdquo; &amp;raquo; ~/.zshrc
-To load completions for every new session, execute once:
-Linux: #  $ sttr completion zsh &amp;gt; &amp;ldquo;${fpath[1]}/_sttr&amp;rdquo;</description>
+      <description>sttr completion #  Generate completion script
+Synopsis #  To load completions:
+Bash:
+$ source &amp;lt;(sttr completion bash)
+To load completions for each session, execute once: #  Linux: #  $ sttr completion bash &amp;gt; /etc/bash_completion.d/sttr
+macOS: #  $ sttr completion bash &amp;gt; /usr/local/etc/bash_completion.d/sttr
+Zsh:
+If shell completion is not already enabled in your environment, #  you will need to enable it. You can execute the following once: #  $ echo &amp;ldquo;autoload -U compinit; compinit&amp;rdquo; &amp;raquo; ~/.</description>
     </item>
     
     <item>
@@ -181,6 +172,26 @@ sttr count-words [flags] Options #   -h, --help help for count-words SEE ALSO # 
       <guid>https://abhimanyu003.github.io/sttr/cli/sttr_extract-emails/</guid>
       <description>sttr extract-emails #  Extract emails from given text
 sttr extract-emails [flags] Options #   -h, --help help for extract-emails -s, --separator string Separator to split multiple emails SEE ALSO #   sttr	- sttr is a fast and flexible string/text converter  </description>
+    </item>
+    
+    <item>
+      <title>sttr extract-ip</title>
+      <link>https://abhimanyu003.github.io/sttr/cli/sttr_extract-ip/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://abhimanyu003.github.io/sttr/cli/sttr_extract-ip/</guid>
+      <description>sttr extract-ip #  Extract IPv4 and IPv6 from your text
+sttr extract-ip [flags] Options #   -h, --help help for extract-ip SEE ALSO #   sttr	- sttr is a fast and flexible string/text converter  </description>
+    </item>
+    
+    <item>
+      <title>sttr hex-decode</title>
+      <link>https://abhimanyu003.github.io/sttr/cli/sttr_hex-decode/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://abhimanyu003.github.io/sttr/cli/sttr_hex-decode/</guid>
+      <description>sttr hex-decode #  Convert Hexadecimal to String
+sttr hex-decode [flags] Options #   -h, --help help for hex-decode SEE ALSO #   sttr	- sttr is a fast and flexible string/text converter  </description>
     </item>
     
     <item>
@@ -240,8 +251,38 @@ sttr interactive [flags] Options #   -h, --help help for interactive SEE ALSO # 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://abhimanyu003.github.io/sttr/cli/sttr_json/</guid>
-      <description>sttr json #  Format your text as JSON
+      <description>sttr json #  Format your text as JSON ( json decode )
 sttr json [flags] Options #   -h, --help help for json -i, --indent Indent the output (prettyprint) SEE ALSO #   sttr	- sttr is a fast and flexible string/text converter  </description>
+    </item>
+    
+    <item>
+      <title>sttr json-escape</title>
+      <link>https://abhimanyu003.github.io/sttr/cli/sttr_json-escape/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://abhimanyu003.github.io/sttr/cli/sttr_json-escape/</guid>
+      <description>sttr json-escape #  JSON Escape
+sttr json-escape [flags] Options #   -h, --help help for json-escape SEE ALSO #   sttr	- sttr is a fast and flexible string/text converter  </description>
+    </item>
+    
+    <item>
+      <title>sttr json-msgpack</title>
+      <link>https://abhimanyu003.github.io/sttr/cli/sttr_json-msgpack/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://abhimanyu003.github.io/sttr/cli/sttr_json-msgpack/</guid>
+      <description>sttr json-msgpack #  Convert JSON to MSGPACK text
+sttr json-msgpack [flags] Options #   -h, --help help for json-msgpack SEE ALSO #   sttr	- sttr is a fast and flexible string/text converter  </description>
+    </item>
+    
+    <item>
+      <title>sttr json-unescape</title>
+      <link>https://abhimanyu003.github.io/sttr/cli/sttr_json-unescape/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://abhimanyu003.github.io/sttr/cli/sttr_json-unescape/</guid>
+      <description>sttr json-unescape #  JSON Unescape
+sttr json-unescape [flags] Options #   -h, --help help for json-unescape -i, --indent Indent the output (prettyprint) SEE ALSO #   sttr	- sttr is a fast and flexible string/text converter  </description>
     </item>
     
     <item>
@@ -295,6 +336,16 @@ sttr md5 [flags] Options #   -h, --help help for md5 SEE ALSO #   sttr	- sttr is
     </item>
     
     <item>
+      <title>sttr msgpack-json</title>
+      <link>https://abhimanyu003.github.io/sttr/cli/sttr_msgpack-json/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://abhimanyu003.github.io/sttr/cli/sttr_msgpack-json/</guid>
+      <description>sttr msgpack-json #  Convert MSGPACK to JSON text
+sttr msgpack-json [flags] Options #   -h, --help help for msgpack-json SEE ALSO #   sttr	- sttr is a fast and flexible string/text converter  </description>
+    </item>
+    
+    <item>
       <title>sttr reverse</title>
       <link>https://abhimanyu003.github.io/sttr/cli/sttr_reverse/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -302,6 +353,16 @@ sttr md5 [flags] Options #   -h, --help help for md5 SEE ALSO #   sttr	- sttr is
       <guid>https://abhimanyu003.github.io/sttr/cli/sttr_reverse/</guid>
       <description>sttr reverse #  Reverse Text ( txeT esreveR )
 sttr reverse [flags] Options #   -h, --help help for reverse SEE ALSO #   sttr	- sttr is a fast and flexible string/text converter  </description>
+    </item>
+    
+    <item>
+      <title>sttr reverse-lines</title>
+      <link>https://abhimanyu003.github.io/sttr/cli/sttr_reverse-lines/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://abhimanyu003.github.io/sttr/cli/sttr_reverse-lines/</guid>
+      <description>sttr reverse-lines #  Reverse Lines
+sttr reverse-lines [flags] Options #   -h, --help help for reverse-lines SEE ALSO #   sttr	- sttr is a fast and flexible string/text converter  </description>
     </item>
     
     <item>
@@ -345,6 +406,16 @@ sttr sha512 [flags] Options #   -h, --help help for sha512 SEE ALSO #   sttr	- s
     </item>
     
     <item>
+      <title>sttr shuffle-lines</title>
+      <link>https://abhimanyu003.github.io/sttr/cli/sttr_shuffle-lines/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://abhimanyu003.github.io/sttr/cli/sttr_shuffle-lines/</guid>
+      <description>sttr shuffle-lines #  Shuffle lines randomly
+sttr shuffle-lines [flags] Options #   -h, --help help for shuffle-lines SEE ALSO #   sttr	- sttr is a fast and flexible string/text converter  </description>
+    </item>
+    
+    <item>
       <title>sttr slug</title>
       <link>https://abhimanyu003.github.io/sttr/cli/sttr_slug/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -382,6 +453,16 @@ sttr sort-lines [flags] Options #   -h, --help help for sort-lines SEE ALSO #   
       <guid>https://abhimanyu003.github.io/sttr/cli/sttr_title/</guid>
       <description>sttr title #  Transform your text to Title Case
 sttr title [flags] Options #   -h, --help help for title SEE ALSO #   sttr	- sttr is a fast and flexible string/text converter  </description>
+    </item>
+    
+    <item>
+      <title>sttr unique-lines</title>
+      <link>https://abhimanyu003.github.io/sttr/cli/sttr_unique-lines/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://abhimanyu003.github.io/sttr/cli/sttr_unique-lines/</guid>
+      <description>sttr unique-lines #  Unique Lines
+sttr unique-lines [flags] Options #   -h, --help help for unique-lines SEE ALSO #   sttr	- sttr is a fast and flexible string/text converter  </description>
     </item>
     
     <item>

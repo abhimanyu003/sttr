@@ -84,55 +84,55 @@
     <configuration name="TestBase32Decode_Transform in github.com/abhimanyu003/sttr/processors" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="sttr" />
       <working_directory value="$PROJECT_DIR$/processors" />
-      <framework value="gotest" />
       <kind value="PACKAGE" />
       <package value="github.com/abhimanyu003/sttr/processors" />
       <directory value="$PROJECT_DIR$/" />
       <filePath value="$PROJECT_DIR$/" />
+      <framework value="gotest" />
       <pattern value="^TestBase32Decode_Transform$" />
       <method v="2" />
     </configuration>
     <configuration name="TestBase32Encode_Transform in github.com/abhimanyu003/sttr/processors" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="sttr" />
       <working_directory value="$PROJECT_DIR$/processors" />
-      <framework value="gotest" />
       <kind value="PACKAGE" />
       <package value="github.com/abhimanyu003/sttr/processors" />
       <directory value="$PROJECT_DIR$/" />
       <filePath value="$PROJECT_DIR$/" />
+      <framework value="gotest" />
       <pattern value="^TestBase32Encode_Transform$" />
       <method v="2" />
     </configuration>
     <configuration name="TestHTMLDecode_Transform in github.com/abhimanyu003/sttr/processors" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="sttr" />
       <working_directory value="$PROJECT_DIR$/processors" />
-      <framework value="gotest" />
       <kind value="PACKAGE" />
       <package value="github.com/abhimanyu003/sttr/processors" />
       <directory value="$PROJECT_DIR$/" />
       <filePath value="$PROJECT_DIR$/" />
+      <framework value="gotest" />
       <pattern value="^TestHTMLDecode_Transform$" />
       <method v="2" />
     </configuration>
     <configuration name="TestHTMLEncode_Transform in github.com/abhimanyu003/sttr/processors" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="sttr" />
       <working_directory value="$PROJECT_DIR$/processors" />
-      <framework value="gotest" />
       <kind value="PACKAGE" />
       <package value="github.com/abhimanyu003/sttr/processors" />
       <directory value="$PROJECT_DIR$/" />
       <filePath value="$PROJECT_DIR$/" />
+      <framework value="gotest" />
       <pattern value="^TestHTMLEncode_Transform$" />
       <method v="2" />
     </configuration>
     <configuration name="go test github.com/abhimanyu003/sttr/processors" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="sttr" />
       <working_directory value="$PROJECT_DIR$/processors" />
-      <framework value="gotest" />
       <kind value="PACKAGE" />
       <package value="github.com/abhimanyu003/sttr/processors" />
       <directory value="$PROJECT_DIR$/" />
       <filePath value="$PROJECT_DIR$/" />
+      <framework value="gotest" />
       <method v="2" />
     </configuration>
     <list>

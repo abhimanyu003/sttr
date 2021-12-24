@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="sttr base64url-decode #  Decode your base64 text with URL Safe
+sttr base64url-decode [flags] Options #   -h, --help help for base64url-decode -r, --raw unpadded base64 encoding SEE ALSO #   sttr	- sttr is a fast and flexible string/text converter  ">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="sttr base64url-decode" />
+<meta property="og:description" content="sttr base64url-decode #  Decode your base64 text with URL Safe
+sttr base64url-decode [flags] Options #   -h, --help help for base64url-decode -r, --raw unpadded base64 encoding SEE ALSO #   sttr	- sttr is a fast and flexible string/text converter  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://abhimanyu003.github.io/sttr/cli/sttr_base64url-decode/" /><meta property="article:section" content="cli" />
+
+
+
+<title>sttr base64url-decode | sttr</title>
+<link rel="manifest" href="/sttr/manifest.json">
+<link rel="icon" href="/sttr/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/sttr/book.min.95d69eb6bad8b9707ff2b5d8d9e31ce70a1b84f2ed7ffaf665ffcf00aa7993bd.css" integrity="sha256-ldaetrrYuXB/8rXY2eMc5wobhPLtf/r2Zf/PAKp5k70=" crossorigin="anonymous">
+  <script defer src="/sttr/flexsearch.min.js"></script>
+  <script defer src="/sttr/en.search.min.fc819c237a53079189572fdf23520fc7d777eae39b794562d97c61ef42f35b7b.js" integrity="sha256-/IGcI3pTB5GJVy/fI1IPx9d36uObeUVi2Xxh70LzW3s=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/sttr/"><span>sttr</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/install/" class="">Install</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8c728f663f5d611199f5b6f4f3a214a5" class="toggle" checked />
+    <label for="section-8c728f663f5d611199f5b6f4f3a214a5" class="flex justify-between">
+      <a role="button" class="">CLI Reference</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr/" class="">sttr</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_ascii85-decode/" class="">sttr ascii85-decode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_ascii85-encode/" class="">sttr ascii85-encode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_base32-decode/" class="">sttr base32-decode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_base32-encode/" class="">sttr base32-encode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_base64-decode/" class="">sttr base64-decode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_base64-encode/" class="">sttr base64-encode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_base64url-decode/" class=" active">sttr base64url-decode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_base64url-encode/" class="">sttr base64url-encode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_bcrypt/" class="">sttr bcrypt</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_camel/" class="">sttr camel</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_completion/" class="">sttr completion</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_count-chars/" class="">sttr count-chars</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_count-lines/" class="">sttr count-lines</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_count-words/" class="">sttr count-words</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_extract-emails/" class="">sttr extract-emails</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_extract-ip/" class="">sttr extract-ip</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_hex-decode/" class="">sttr hex-decode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_hex-encode/" class="">sttr hex-encode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_hex-rgb/" class="">sttr hex-rgb</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_html-decode/" class="">sttr html-decode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_html-encode/" class="">sttr html-encode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_interactive/" class="">sttr interactive</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_json/" class="">sttr json</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_json-escape/" class="">sttr json-escape</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_json-msgpack/" class="">sttr json-msgpack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_json-unescape/" class="">sttr json-unescape</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_json-yaml/" class="">sttr json-yaml</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_kebab/" class="">sttr kebab</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_lower/" class="">sttr lower</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_markdown-html/" class="">sttr markdown-html</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_md5/" class="">sttr md5</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_msgpack-json/" class="">sttr msgpack-json</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_reverse/" class="">sttr reverse</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_reverse-lines/" class="">sttr reverse-lines</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_rot13-encode/" class="">sttr rot13-encode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_sha1/" class="">sttr sha1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_sha256/" class="">sttr sha256</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_sha512/" class="">sttr sha512</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_shuffle-lines/" class="">sttr shuffle-lines</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_slug/" class="">sttr slug</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_snake/" class="">sttr snake</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_sort-lines/" class="">sttr sort-lines</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_title/" class="">sttr title</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_unique-lines/" class="">sttr unique-lines</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_upper/" class="">sttr upper</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_url-decode/" class="">sttr url-decode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_url-encode/" class="">sttr url-encode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_version/" class="">sttr version</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_yaml-json/" class="">sttr yaml-json</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://abhimanyu003.github.io/sttr/cli/sttr_zeropad/" class="">sttr zeropad</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://github.com/abhimanyu003/sttr" target="_blank" rel="noopener">
+        Source code
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/sttr/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>sttr base64url-decode</strong>
+
+  <label for="toc-control">
+    
+    <img src="/sttr/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#sttr-base64url-decode">sttr base64url-decode</a>
+      <ul>
+        <li><a href="#options">Options</a></li>
+        <li><a href="#see-also">SEE ALSO</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h2 id="sttr-base64url-decode">
+  sttr base64url-decode
+  <a class="anchor" href="#sttr-base64url-decode">#</a>
+</h2>
+<p>Decode your base64 text with URL Safe</p>
+<pre tabindex="0"><code>sttr base64url-decode [flags]
+</code></pre><h3 id="options">
+  Options
+  <a class="anchor" href="#options">#</a>
+</h3>
+<pre tabindex="0"><code>  -h, --help   help for base64url-decode
+  -r, --raw    unpadded base64 encoding
+</code></pre><h3 id="see-also">
+  SEE ALSO
+  <a class="anchor" href="#see-also">#</a>
+</h3>
+<ul>
+<li><a href="/sttr/cli/sttr/">sttr</a>	 - sttr is a fast and flexible string/text converter</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#sttr-base64url-decode">sttr base64url-decode</a>
+      <ul>
+        <li><a href="#options">Options</a></li>
+        <li><a href="#see-also">SEE ALSO</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
