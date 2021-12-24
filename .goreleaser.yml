@@ -12,9 +12,12 @@ builds:
   - main: ./main.go
     binary: sttr
     goos: ['linux', 'darwin', 'windows']
-    goarch: ['386', 'amd64']
+    goarch: ['386', 'amd64', 'arm64']
     env:
       - CGO_ENABLED=0
+
+universal_binaries:
+- replace: true
 
 changelog:
   sort: 'asc'
@@ -38,6 +41,19 @@ brews:
       bin.install "sttr"
     test: |
       system "#{bin}/sttr -v"
+
+nfpms:
+  - builds:
+      - sttr
+    vendor: abhimanyu003
+    homepage: "https://github.com/abhimanyu003/sttr/"
+    maintainer: "Abhimanyu Sharma <abhimanyusharma003@gmail.com>"
+    description: "A cross-platform, cli app to perform various operations on string"
+    license: MIT
+    formats:
+      - deb
+      - rpm
+    bindir: /usr/bin
 
 snapcrafts:
   - name: sttr
