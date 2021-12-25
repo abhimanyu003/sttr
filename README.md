@@ -214,8 +214,11 @@ echo "Hello World" | sttr base64-encode | sttr md5
 
 # Contribution
 
-This project welcomes your PR and issues. For example, refactoring, adding features, correcting English, etc. If you
-need any help, you can contact me on [Twitter](https://twitter.com/abhimanyu003).
+This project welcomes your PR and issues. For example, refactoring, adding features, correcting English, etc. 
+
+A quick development guide can be found on. [Developer-Guides](https://github.com/abhimanyu003/sttr/wiki/Developer-Guides) wiki page.
+
+If you need any help, you can contact me on [Twitter](https://twitter.com/abhimanyu003).
 
 Thanks to all the people who already contributed!
 
