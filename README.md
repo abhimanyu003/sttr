@@ -134,7 +134,7 @@ echo "Hello World" | sttr base64-encode | sttr md5
 - [x] **base64-decode** - Decode your base64 text
 - [x] **base64-encode** - Encode your text to Base64
 - [x] **base85-encode** - Encode your text to base85
-- [x] **base85-decode** - Decode your ascii85 text
+- [x] **base85-decode** - Decode your base85 text
 - [x] **base64url-decode** - Decode your base64 url
 - [x] **base64url-encode** - Encode your text to url
 - [x] **html-decode** - Unescape your HTML
