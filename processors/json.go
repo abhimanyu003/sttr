@@ -22,7 +22,7 @@ func (p FormatJSON) Alias() []string {
 
 // unmarshalJson converts given bytes to json.RawMessage
 // it checks if input is of type array or non array
-func unmarshalJSON(data []byte) (interface{}, error) {
+func unmarshalJSON(data []byte) (any, error) {
 	var nonArray map[string]*json.RawMessage
 	var arrayBased []map[string]*json.RawMessage
 	err := json.Unmarshal(data, &nonArray)
@@ -126,7 +126,7 @@ func (p JSONToMSGPACK) Alias() []string {
 }
 
 func (p JSONToMSGPACK) Transform(data []byte, _ ...Flag) (string, error) {
-	var rawData interface{}
+	var rawData any
 
 	err := json.Unmarshal(data, &rawData)
 
@@ -169,7 +169,7 @@ func (p MSGPACKToJSON) Alias() []string {
 }
 
 func (p MSGPACKToJSON) Transform(data []byte, _ ...Flag) (string, error) {
-	var rawData interface{}
+	var rawData any
 
 	err := msgpack.Unmarshal(data, &rawData)
 

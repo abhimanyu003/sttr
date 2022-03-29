@@ -172,12 +172,12 @@ func TestJSONToMSGPACK_Transform(t *testing.T) {
 			if err != nil {
 				t.Errorf("Transform() error = %v, wantErr %v", err, nil)
 			}
-			var resultInterface interface{}
+			var resultInterface any
 			err = msgpack.Unmarshal([]byte(result), &resultInterface)
 			if err != nil {
 				t.Errorf("Transform() error = %v, wantErr %v", err, nil)
 			}
-			var wantInterface interface{}
+			var wantInterface any
 			err = json.Unmarshal([]byte(tt.json), &wantInterface)
 			if err != nil {
 				t.Errorf("Transform() error = %v, wantErr %v", err, nil)
@@ -259,12 +259,12 @@ func TestMSGPACKToJSON_Transform(t *testing.T) {
 			if err != nil {
 				t.Errorf("Transform() error = %v, wantErr %v", err, nil)
 			}
-			var resultInterface interface{}
+			var resultInterface any
 			err = json.Unmarshal([]byte(result), &resultInterface)
 			if err != nil {
 				t.Errorf("Transform() error = %v, wantErr %v", err, nil)
 			}
-			var wantInterface interface{}
+			var wantInterface any
 			err = msgpack.Unmarshal(tt.msgpack, &wantInterface)
 			if err != nil {
 				t.Errorf("Transform() error = %v, wantErr %v", err, nil)

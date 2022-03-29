@@ -45,7 +45,7 @@ func TestURLEncode_Command(t *testing.T) {
 func TestURLEncode_Transform(t *testing.T) {
 	type args struct {
 		data []byte
-		in1   []Flag
+		in1  []Flag
 	}
 	tests := []struct {
 		name    string
@@ -119,7 +119,7 @@ func TestURLDecode_Command(t *testing.T) {
 func TestURLDecode_Transform(t *testing.T) {
 	type args struct {
 		data []byte
-		in1   []Flag
+		in1  []Flag
 	}
 	tests := []struct {
 		name    string

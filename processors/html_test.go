@@ -45,7 +45,7 @@ func TestHTMLEncode_Command(t *testing.T) {
 func TestHTMLEncode_Transform(t *testing.T) {
 	type args struct {
 		data []byte
-		in1   []Flag
+		in1  []Flag
 	}
 	tests := []struct {
 		name    string
@@ -139,7 +139,7 @@ func TestHTMLDecode_Command(t *testing.T) {
 func TestHTMLDecode_Transform(t *testing.T) {
 	type args struct {
 		data []byte
-		in1   []Flag
+		in1  []Flag
 	}
 	tests := []struct {
 		name    string

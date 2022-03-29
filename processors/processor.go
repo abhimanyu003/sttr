@@ -104,7 +104,7 @@ type Flag struct {
 	Type FlagType
 
 	// Value - optional default value of the flag
-	Value interface{}
+	Value any
 }
 
 // Zeropad is an Example processor to show how to add text processors,

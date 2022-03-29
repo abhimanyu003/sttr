@@ -8,7 +8,7 @@ import (
 func TestROT13Encode_Transform(t *testing.T) {
 	type args struct {
 		data []byte
-		in1   []Flag
+		in1  []Flag
 	}
 	tests := []struct {
 		name    string
