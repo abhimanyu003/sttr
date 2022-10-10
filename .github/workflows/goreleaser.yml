@@ -16,17 +16,18 @@ jobs:
           go-version: 1.18.x
       - run: go mod download
       - run: go build
-      - run: | 
-            curl \
+      - name: Setting upload url
+        run: | 
+           $(upload_url=curl \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer ${{ secrets.GORELEASER_TOKEN }}" \
-            https://api.github.com/repos/puni9869/sttr/releases
+            https://api.github.com/repos/puni9869/sttr/releases | jq '.[0].upload_url')
       
       - run: zip -r sttr.zip ./sttr
       - name: upload linux artifact
         uses: actions/upload-release-asset@v1
         with:
-          upload_url: ${{ github.event.release.upload_url }}
+          upload_url: ${{ upload_url }}
           asset_path: ./sttr.zip
           asset_name: sttr.zip
           asset_content_type: application/gzip
