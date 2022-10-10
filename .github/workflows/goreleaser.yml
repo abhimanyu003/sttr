@@ -16,6 +16,8 @@ jobs:
       - run: go build
       - name: Setting assets upload url
         run: |
+            echo $GITHUB_REPOSITORY_OWNER
+            echo ${{ github.event.repository.name }}
             export UPLOAD_URL=`curl -s -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.GORELEASER_TOKEN }}" https://api.github.com/repos/$GITHUB_REPOSITORY_OWNER/${{ github.event.repository.name }}/releases/latest | jq '.assets_url' | tr -d \"`
             echo "UPLOAD_URL=$UPLOAD_URL" >> $GITHUB_ENV
       
