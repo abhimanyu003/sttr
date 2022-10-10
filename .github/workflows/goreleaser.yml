@@ -1,8 +1,5 @@
 name: Releases
 on:
-  release:
-    types:
-      - published
   push:
     tags:
       - "*"
