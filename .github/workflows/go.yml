@@ -16,9 +16,9 @@ jobs:
       - run: go build
       - name: Setting upload url
         run: |
-            upload_url = $(curl -s -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.GORELEASER_TOKEN }}"  https://api.github.com/repos/puni9869/sttr/releases/latest | jq '.upload_url')   
-            echo "upload_url=$upload_url" >> $GITHUB_ENV 
-            echo $GITHUB_ENV
+            export UPLOAD_URL=`curl -s -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.GORELEASER_TOKEN }}" https://api.github.com/repos/puni9869/sttr/releases/latest | jq '.upload_url' | tr -d \" | cut -d"{" -f 1`
+            echo "UPLOAD_URL=$UPLOAD_URL" >> $GITHUB_ENV
+            cat $GITHUB_ENV
       
       - run: zip -r sttr.zip ./sttr
       - name: upload linux artifact
