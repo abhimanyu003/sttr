@@ -21,7 +21,7 @@ jobs:
       - run: go build
       - name: Setting assets upload url
         run: |
-            export UPLOAD_URL=`curl -s -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.GORELEASER_TOKEN }}" https://api.github.com/repos/${{ github.event.org.login }}/${{ github.event.repository.name }}/releases/latest | jq '.assets_url' | tr -d \"`
+            export UPLOAD_URL=`curl -s -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.GORELEASER_TOKEN }}" https://api.github.com/repos/${{ github.event.repository.owner.name }}/${{ github.event.repository.name }}/releases/latest | jq '.assets_url' | tr -d \"`
             echo "UPLOAD_URL=$UPLOAD_URL" >> $GITHUB_ENV
       
       - run: zip -r sttr.zip ./sttr
