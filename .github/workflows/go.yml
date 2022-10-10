@@ -24,8 +24,8 @@ jobs:
       - name: upload linux artifact
         uses: actions/upload-release-asset@v1
         with:
-          upload_url: ${{ env.UPLOAD_URL }}
-          asset_path: sttr.zip
+          upload_url: "https://uploads.github.com/repos/puni9869/sttr/releases/79439059/assets"
+          asset_path: ./sttr.zip
           asset_name: sttr.zip
           asset_content_type: application/gzip
         env:
