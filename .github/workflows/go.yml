@@ -4,7 +4,6 @@ jobs:
   goreleaser-pre:
     runs-on: ubuntu-latest
     steps:
-      - run: sudo apt-get -y purge jq
       - name: Checkout
         uses: actions/checkout@v2
         with:
@@ -17,6 +16,7 @@ jobs:
       - run: go build
       - name: Setting upload url
         run: |
+            sudo apt-get -y purge jq
             upload_url = $(curl -s -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.GORELEASER_TOKEN }}"  https://api.github.com/repos/puni9869/sttr/releases/latest | jq '.upload_url')   
             echo "upload_url=$upload_url" >> $GITHUB_ENV 
       
