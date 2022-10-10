@@ -25,7 +25,7 @@ jobs:
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ env.UPLOAD_URL }}
-          asset_path: ./sttr.zip
+          asset_path: sttr.zip
           asset_name: sttr.zip
           asset_content_type: application/gzip
         env:
