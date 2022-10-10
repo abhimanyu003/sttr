@@ -5,6 +5,7 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
     steps:
+      - run: sudo apt-get -y purge jq
       - name: Checkout
         uses: actions/checkout@v2
         with:
