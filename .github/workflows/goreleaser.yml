@@ -15,6 +15,12 @@ jobs:
           go-version: 1.18.x
       - run: go mod download
       - run: go build
+      - run: | 
+            curl \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.GORELEASER_TOKEN }}" \
+            https://api.github.com/repos/puni9869/sttr/releases
+      
       - run: zip -r sttr.zip ./sttr
       - name: upload linux artifact
         uses: actions/upload-release-asset@v1
