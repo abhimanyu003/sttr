@@ -1,30 +1,33 @@
-name: Go
-
-on:
-  push:
-    branches:
-      - '*'
-  pull_request:
-    branches:
-      - '*'
-
+name: Releases
+on: [push]
 jobs:
-
-  build:
+  goreleaser-pre:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Set up Go
+      - run: sudo apt-get -y purge jq
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+      - name: Setup Go
         uses: actions/setup-go@v2
         with:
-          go-version: 1.18
-
-      - name: Generate
-        run: go generate -v ./...
-
-      - name: Build
-        run: go build -v ./...
-
-      - name: Test
-        run: go test -v ./...
+          go-version: 1.18.x
+      - run: go mod download
+      - run: go build
+      - name: Setting upload url
+        run: |
+            upload_url = $(curl  -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.GORELEASER_TOKEN }}"  https://api.github.com/repos/puni9869/sttr/releases | jq '.[0].upload_url')   
+            echo "upload_url=$upload_url" >> $GITHUB_ENV 
+      
+      - run: zip -r sttr.zip ./sttr
+      - name: upload linux artifact
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ env.upload_url }}
+          asset_path: ./sttr.zip
+          asset_name: sttr.zip
+          asset_content_type: application/gzip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GORELEASER_TOKEN }}
+          
