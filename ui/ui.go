@@ -13,7 +13,8 @@ import (
 )
 
 var (
-	appStyle     = lipgloss.NewStyle().Width(80)
+	maxWidth     = 72
+	appStyle     = lipgloss.NewStyle().MaxWidth(maxWidth)
 	borderStyle  = lipgloss.AdaptiveColor{Light: "#874BFD", Dark: "#7D56F4"}
 	specialStyle = lipgloss.AdaptiveColor{Light: "#43BF6D", Dark: "#73F59F"}
 )
@@ -33,17 +34,15 @@ func New(input string) UI {
 
 func (u *UI) Render() {
 	if u.input == "" {
-		divider := lipgloss.NewStyle().Padding(0, 1).Foreground(borderStyle).SetString("•").String()
-		info := lipgloss.NewStyle().Foreground(specialStyle).Render
+		divider := lipgloss.NewStyle().Padding(0, 1).Foreground(borderStyle).Render("•")
+		info := lipgloss.NewStyle().Foreground(specialStyle).Render("[ Enter 2 empty lines to process ]")
 
-		title := lipgloss.NewStyle().
-			Padding(0, 0, 0, 0).
-			Width(80).
+		title := lipgloss.NewStyle().Width(maxWidth).
 			BorderStyle(lipgloss.DoubleBorder()).
 			BorderTop(true).
 			BorderBottom(true).
 			BorderForeground(borderStyle).
-			Render("Provide string to transform" + divider + info("[ Enter 2 empty lines to process ]"))
+			Render("Provide string to transform" + divider + info)
 
 		fmt.Println(appStyle.Render(title))
 		u.input = utils.ReadMultilineInput()
@@ -62,15 +61,13 @@ func (u *UI) Render() {
 			data = fmt.Sprintf("error: %s", err.Error())
 		}
 
-		output := lipgloss.NewStyle().
-			Padding(1, 0, 1, 0).
+		border := lipgloss.NewStyle().Width(maxWidth).
 			BorderTop(true).
 			BorderStyle(lipgloss.DoubleBorder()).
-			BorderForeground(borderStyle).
-			Width(80).
-			Render(data)
+			BorderForeground(borderStyle).String()
 
-		fmt.Println(output)
+		fmt.Println(border)
+		fmt.Println(data)
 	}
 }
 
