@@ -1,8 +1,5 @@
 name: Releases
-on:
-  push:
-    tags:
-      - "*"
+on: [push]
 jobs:
   goreleaser:
     if: startsWith(github.ref, 'refs/tags/v')
