@@ -2,7 +2,7 @@ name: Releases
 on:
   push:
     tags:
-      - "v[0-9]+.[0-9]+.[0-9]+"
+      - "*"
 jobs:
   goreleaser:
     runs-on: ubuntu-latest
@@ -15,11 +15,16 @@ jobs:
         uses: actions/setup-go@v2
         with:
           go-version: 1.18.x
-      - name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v2
+      - run: go mod download
+      - run: go build
+      - run: zip -r sttr.zip ./sttr
+      - name: upload linux artifact
+        uses: actions/upload-release-asset@v1
         with:
-          version: latest
-          args: release --rm-dist
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./sttr.zip
+          asset_name: sttr.zip
+          asset_content_type: application/gzip
         env:
           GITHUB_TOKEN: ${{ secrets.GORELEASER_TOKEN }}
           
