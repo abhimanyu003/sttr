@@ -1,5 +1,8 @@
 name: Releases
 on:
+  release:
+    types:
+      - published
   push:
     tags:
       - "*"
@@ -21,7 +24,7 @@ jobs:
       - name: upload linux artifact
         uses: actions/upload-release-asset@v1
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          upload_url: ${{ github.event.release.upload_url }}
           asset_path: ./sttr.zip
           asset_name: sttr.zip
           asset_content_type: application/gzip
