@@ -24,7 +24,7 @@ jobs:
       - name: upload linux artifact
         uses: actions/upload-release-asset@v1
         with:
-          upload_url: "{{ $env.UPLOAD_URL}}?name=sttr_windows"
+          upload_url: ${{ format('{0}/{1}', env.UPLOAD_URL, '?name=sttr_windows') }}
           asset_path: ./sttr.zip
           asset_name: sttr.zip
           asset_content_type: application/gzip
