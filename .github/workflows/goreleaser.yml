@@ -5,7 +5,7 @@ jobs:
     if: ${{ github.ref != 'refs/heads/main' || contains(github.ref, '/tags/v') }}
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{github.ref}}
+      - run: echo ${{contains(github.ref, '/tags/v')}}
       - name: Checkout
         uses: actions/checkout@v2
         with:
