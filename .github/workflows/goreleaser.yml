@@ -2,7 +2,7 @@ name: Releases
 on: [push]
 jobs:
   goreleaser-pre:
-    if: (github.ref != 'refs/heads/main' || !contains(github.ref, '/tags/v'))
+    if: ${{ github.ref != 'refs/heads/main' || contains(${{ github.ref }}, '/tags/v') }}
     runs-on: ubuntu-latest
     steps:
       - run: echo ${{github.ref}}
