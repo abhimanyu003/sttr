@@ -3,8 +3,6 @@ on: [push]
 jobs:
   goreleaser-pre:
     runs-on: ubuntu-latest
-    env:
-      GITHUB_TOKEN: ${{ secrets.GH_STTR }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -18,8 +16,9 @@ jobs:
       - run: go build
       - name: Setting upload url
         run: |
-            export UPLOAD_URL=`curl -s -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.GH_STTR }}" https://api.github.com/repos/${{github.repository}}/releases/latest | jq '.upload_url' | tr -d \" | cut -d"{" -f 1`
+            export UPLOAD_URL=`curl -s -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.GORELEASER_TOKEN }}" https://api.github.com/repos/${{github.repository}}/releases/latest | jq '.upload_url' | tr -d \" | cut -d"{" -f 1`
             echo "UPLOAD_URL=$UPLOAD_URL" >> $GITHUB_ENV
+            echo $UPLOAD_URL
             cat $GITHUB_ENV
       
 #       - run: zip -r sttr.zip ./sttr
