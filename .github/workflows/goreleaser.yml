@@ -21,6 +21,6 @@ jobs:
             echo $UPLOAD_URL
             cat $GITHUB_ENV
       
-#       - run: zip -r sttr.zip ./sttr
-#       - run: |
-#             curl --location --request POST ${{ format('{0}?name={1}', env.UPLOAD_URL, 'stt123r.zip') }} -H 'Authorization: Bearer ${{ secrets.GH_STTR }}' - H 'Content-Type: application/zip' --data-binary 'sttr.zip'
+      - run: zip -r sttr.zip ./sttr
+      - run: |
+            curl  -s --request POST ${{ format('{0}?name={1}', env.UPLOAD_URL, 'stt14523r.zip') }} -H 'Authorization: Bearer ${{ secrets.GH_STTR }}' - H 'Content-Type: application/zip' --data-binary 'sttr.zip'
