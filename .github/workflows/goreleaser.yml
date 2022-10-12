@@ -3,6 +3,8 @@ on: [push]
 jobs:
   goreleaser-pre:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GORELEASER_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -21,12 +23,8 @@ jobs:
             cat $GITHUB_ENV
       
       - run: zip -r sttr.zip ./sttr
-      - name: upload linux artifact
-        uses: actions/upload-release-asset@v1
-        with:
-          upload_url: ${{ format('{0}{1}', env.UPLOAD_URL, '?name=sttr_windows.zip') }}
-          asset_path: ./sttr.zip
-          asset_name: sttr.zip
-          asset_content_type: application/gzip
-        env:
-          GITHUB_TOKEN: ${{ secrets.GORELEASER_TOKEN }}
+      - run: |
+            curl --location --request POST ${{ format('{0}?name={1}', env.UPLOAD_URL, 'sttr.zip') }} \
+            --header 'Authorization: Bearer ${{ secrets.GORELEASER_TOKEN }}' \
+            --header 'Content-Type: application/zip' \
+            --data-binary './sttr.zip'
