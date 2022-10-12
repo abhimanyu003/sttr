@@ -10,7 +10,7 @@ jobs:
         with:
           fetch-depth: 1
       - run: |
-          echo ${{ github.ref != 'refs/heads/main' }}
+         echo ${{ github.ref != 'refs/heads/main' }}  ${{ !contains(github.ref, '/tags/v') }}
 
 
       # - name: Setup Go
