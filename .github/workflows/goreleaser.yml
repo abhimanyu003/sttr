@@ -5,10 +5,10 @@ jobs:
     
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 1
+      # - name: Checkout
+      #   uses: actions/checkout@v2
+      #   with:
+      #     fetch-depth: 1
       - run: |
          echo ${{ github.ref != 'refs/heads/main' }}  ${{ contains(github.ref, '/tags/v') }}
 
