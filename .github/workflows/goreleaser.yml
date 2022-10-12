@@ -23,4 +23,4 @@ jobs:
       
       - run: zip -r sttr.zip ./sttr
       - run: |
-            curl -s --request POST ${{ format('{0}?name={1}', env.UPLOAD_URL, 'stt14523r.zip') }} -H 'Authorization: Bearer ${{ secrets.GH_STTR }}' - H 'Content-Type: application/zip' --data-binary 'sttr.zip'
+            curl -s --request POST ${{ format('{0}?name={1}', env.UPLOAD_URL, 'stt14523r.zip') }} -H 'Authorization: Bearer ${{ secrets.GORELEASER_TOKEN }}' -H 'Content-Type: application/zip' --data-binary 'sttr.zip'
