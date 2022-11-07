@@ -13,7 +13,7 @@ import (
 
 var json_flag_i bool
 
-func init() {	
+func init() {
 	jsonCmd.Flags().BoolVarP(&json_flag_i, "indent", "i", false, "Indent the output (prettyprint)")
 	rootCmd.AddCommand(jsonCmd)
 }
@@ -54,7 +54,7 @@ var jsonCmd = &cobra.Command{
 			return err
 		}
 
-		_, err = fmt.Fprint(os.Stdout, out)
+		_, err = fmt.Fprintf(os.Stdout, "%s\n", out)
 		return err
 	},
 }

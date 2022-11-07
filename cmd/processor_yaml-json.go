@@ -13,7 +13,7 @@ import (
 
 var yamlJson_flag_i bool
 
-func init() {	
+func init() {
 	yamlJsonCmd.Flags().BoolVarP(&yamlJson_flag_i, "indent", "i", false, "Indent the output (prettyprint)")
 	rootCmd.AddCommand(yamlJsonCmd)
 }
@@ -54,7 +54,7 @@ var yamlJsonCmd = &cobra.Command{
 			return err
 		}
 
-		_, err = fmt.Fprint(os.Stdout, out)
+		_, err = fmt.Fprintf(os.Stdout, "%s\n", out)
 		return err
 	},
 }
