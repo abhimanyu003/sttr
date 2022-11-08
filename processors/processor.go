@@ -49,6 +49,7 @@ var List = []list.Item{
 	Slug{},
 	Snake{},
 	SortLines{},
+	Split{},
 	Title{},
 	URLDecode{},
 	URLEncode{},

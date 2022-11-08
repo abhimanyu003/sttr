@@ -428,3 +428,42 @@ func TestStringToCamel(t *testing.T) {
 		})
 	}
 }
+
+func TestSplit_Transform(t *testing.T) {
+	type args struct {
+		data []byte
+		opts []Flag
+	}
+	tests := []struct {
+		name    string
+		args    args
+		want    string
+		wantErr bool
+	}{
+		{
+			name: "String without separator flag",
+			args: args{data: []byte("this,is,example")},
+			//want: "[\"this\", \"is\", \"example\"]",
+			want: `["this","is","example"]`,
+		},
+		{
+			name: "String with separator flag",
+			args: args{data: []byte("this is example and this is another"), opts: []Flag{{Short: "s", Value: " "}}},
+			//want: "[\"this\", \"is\", \"example\", \"and\", \"this\", \"is\", \"another\"]",
+			want: `["this","is","example","and","this","is","another"]`,
+		},
+		{
+			name: "String without separator",
+			args: args{data: []byte("this is example"), opts: []Flag{{Short: "s", Value: ","}}},
+			want: `["this is example"]`,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			p := Split{}
+			if got, _ := p.Transform(tt.args.data, tt.args.opts...); got != tt.want {
+				t.Errorf("ExtractEmails() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}

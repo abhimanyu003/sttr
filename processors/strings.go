@@ -334,3 +334,53 @@ func (p Reverse) Description() string {
 func (p Reverse) FilterValue() string {
 	return p.Title()
 }
+
+// Split a given string
+// Example: "test,test"  to ["test", "test"]
+type Split struct{}
+
+func (p Split) Name() string {
+	return "split"
+}
+
+func (p Split) Alias() []string {
+	return nil
+}
+
+func (p Split) Transform(data []byte, s ...Flag) (string, error) {
+	separator := ","
+	for _, flag := range s {
+		if flag.Short == "s" {
+			if s, ok := flag.Value.(string); ok {
+				separator = s
+			}
+
+		}
+	}
+	strList := strings.Split(string(data), separator)
+	return fmt.Sprintf("[\"%s\"]", strings.Join(strList, "\",\"")), nil
+}
+
+func (p Split) Flags() []Flag {
+	return []Flag{
+		{
+			Name:  "separator",
+			Short: "s",
+			Desc:  "Separator to split string",
+			Value: ",",
+			Type:  FlagString,
+		},
+	}
+}
+
+func (p Split) Title() string {
+	return "Split text"
+}
+
+func (p Split) Description() string {
+	return "Split Text to string list"
+}
+
+func (p Split) FilterValue() string {
+	return p.Title()
+}
