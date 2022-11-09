@@ -348,6 +348,7 @@ func (p Split) Alias() []string {
 }
 
 func (p Split) Transform(data []byte, s ...Flag) (string, error) {
+	// default separator is ,
 	separator := ","
 	for _, flag := range s {
 		if flag.Short == "s" {
@@ -357,8 +358,16 @@ func (p Split) Transform(data []byte, s ...Flag) (string, error) {
 
 		}
 	}
-	strList := strings.Split(string(data), separator)
-	return fmt.Sprintf("[\"%s\"]", strings.Join(strList, "\",\"")), nil
+
+	// escape \n and \t
+	if strings.Contains(separator, "\\n") {
+		separator = strings.Replace(separator, "\\n", string([]byte{0xa}), -1)
+	}
+	if strings.Contains(separator, "\\t") {
+		separator = strings.Replace(separator, "\\t", string([]byte{0x9}), -1)
+	}
+	strOut := strings.Join(strings.Split(string(data), separator), "\",\"")
+	return fmt.Sprintf("[\"%s\"]", strOut), nil
 }
 
 func (p Split) Flags() []Flag {
