@@ -2,9 +2,10 @@ package processors
 
 import (
 	"fmt"
-	"github.com/abhimanyu003/sttr/utils"
 	"regexp"
 	"strings"
+
+	"github.com/abhimanyu003/sttr/utils"
 
 	"github.com/iancoleman/strcase"
 )

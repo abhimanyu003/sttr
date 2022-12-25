@@ -2,6 +2,7 @@ package processors
 
 import (
 	"bytes"
+
 	"github.com/yuin/goldmark"
 )
 

@@ -21,7 +21,7 @@ func (p FormatJSON) Alias() []string {
 }
 
 // unmarshalJson converts given bytes to json.RawMessage
-// it checks if input is of type array or non array
+// it checks if input is of type array or non array.
 func unmarshalJSON(data []byte) (any, error) {
 	var nonArray map[string]*json.RawMessage
 	var arrayBased []map[string]*json.RawMessage

@@ -16,9 +16,7 @@ func (p Base64URLEncode) Alias() []string {
 }
 
 func (p Base64URLEncode) Transform(data []byte, f ...Flag) (string, error) {
-	raw := checkBase64RawFlag(f)
-
-	if raw {
+	if checkBase64RawFlag(f) {
 		return base64.RawURLEncoding.EncodeToString(data), nil
 	}
 	return base64.URLEncoding.EncodeToString(data), nil
@@ -52,10 +50,9 @@ func (p Base64URLDecode) Alias() []string {
 }
 
 func (p Base64URLDecode) Transform(data []byte, f ...Flag) (string, error) {
-	raw := checkBase64RawFlag(f)
 	var decodedString []byte
 	var err error
-	if raw {
+	if checkBase64RawFlag(f) {
 		decodedString, err = base64.RawURLEncoding.DecodeString(string(data))
 	} else {
 		decodedString, err = base64.URLEncoding.DecodeString(string(data))

@@ -11,7 +11,7 @@ import (
 )
 
 // CountLines count number of words in string.
-// Example: "line 1\n line 2" = 2
+// Example: "line 1\n line 2" = 2.
 type CountLines struct{}
 
 func (p CountLines) Name() string {
@@ -47,7 +47,7 @@ func (p CountLines) FilterValue() string {
 }
 
 // SortLines sort given lines, it's not a natural sort.
-// Example: 2\n 1\n -> 1\n 2\n
+// Example: 2\n 1\n -> 1\n 2\n.
 type SortLines struct{}
 
 func (p SortLines) Name() string {
