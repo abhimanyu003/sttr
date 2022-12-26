@@ -269,7 +269,7 @@ func (p CountCharacters) FilterValue() string {
 }
 
 // CountWords count number of words in string.
-// Example: "hello world" = 2
+// Example: "hello world" = 2.
 type CountWords struct{}
 
 func (p CountWords) Name() string {
@@ -301,7 +301,7 @@ func (p CountWords) FilterValue() string {
 }
 
 // Reverse reverse a given string
-// Example: "test" to "tset"
+// Example: "test" to "tset".
 type Reverse struct{}
 
 func (p Reverse) Name() string {

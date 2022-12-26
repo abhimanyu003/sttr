@@ -37,8 +37,7 @@ func (p Base64Encode) Alias() []string {
 }
 
 func (p Base64Encode) Transform(data []byte, f ...Flag) (string, error) {
-	raw := checkBase64RawFlag(f)
-	if raw {
+	if checkBase64RawFlag(f) {
 		return base64.RawStdEncoding.EncodeToString(data), nil
 	}
 	return base64.StdEncoding.EncodeToString(data), nil
@@ -72,10 +71,9 @@ func (p Base64Decode) Alias() []string {
 }
 
 func (p Base64Decode) Transform(data []byte, f ...Flag) (string, error) {
-	raw := checkBase64RawFlag(f)
 	var decodedString []byte
 	var err error
-	if raw {
+	if checkBase64RawFlag(f) {
 		decodedString, err = base64.RawStdEncoding.DecodeString(string(data))
 	} else {
 		decodedString, err = base64.StdEncoding.DecodeString(string(data))

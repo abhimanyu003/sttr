@@ -4,7 +4,7 @@ import (
 	"net/url"
 )
 
-// URLEncode encode url string
+// URLEncode encode url string.
 type URLEncode struct{}
 
 func (p URLEncode) Name() string {
@@ -35,7 +35,7 @@ func (p URLEncode) FilterValue() string {
 	return p.Title()
 }
 
-// URLDecode decode url string
+// URLDecode decode url string.
 type URLDecode struct{}
 
 func (p URLDecode) Name() string {

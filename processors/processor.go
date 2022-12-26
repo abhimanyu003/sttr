@@ -112,7 +112,7 @@ type Flag struct {
 // Example implements 'Item' and 'DefaultItem' from package 'github.com/charmbracelet/bubbles/list'
 // to work with the ui, and `Processor` from this package to do the text transformation and generation
 // of the cli commands
-// After implementing add the struct to List
+// After implementing add the struct to List.
 type Zeropad struct{}
 
 func (p Zeropad) Name() string {
