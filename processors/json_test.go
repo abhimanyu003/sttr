@@ -88,6 +88,41 @@ func TestJSON_Transform(t *testing.T) {
 			want:    `{"name":"sttr"}`,
 			wantErr: false,
 		},
+		{
+			name:    "Should preserver order of object input",
+			args:    args{data: []byte(`{"c":"c","b":"b","a":"a"}`)},
+			want:    `{"c":"c","b":"b","a":"a"}`,
+			wantErr: false,
+		},
+		{
+			name:    "Should preserver order of array input",
+			args:    args{data: []byte(`[{"c":"c","b":"b","a":"a"}]`)},
+			want:    `[{"c":"c","b":"b","a":"a"}]`,
+			wantErr: false,
+		},
+		{
+			name: "Should preserver order of array input and indent on flag",
+			args: args{
+				data: []byte(`[{"c":"c","b":"b","a":"a"}]`),
+				f: []Flag{
+					{
+						Name:  "indent",
+						Short: "i",
+						Desc:  "Indent the output (prettyprint)",
+						Value: true,
+						Type:  FlagBool,
+					},
+				},
+			},
+			want: `[
+  {
+    "c": "c",
+    "b": "b",
+    "a": "a"
+  }
+]`,
+			wantErr: false,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -381,6 +416,29 @@ func TestJSONUnescape_Transform(t *testing.T) {
 			want:    ``,
 			wantErr: true,
 		},
+		{
+			name: "Should preserver order of array input and indent on flag",
+			args: args{
+				data: []byte(`[{\"c\":\"c\",\"b\":\"b\",\"a\":\"a\"}]`),
+				f: []Flag{
+					{
+						Name:  "indent",
+						Short: "i",
+						Desc:  "Indent the output (prettyprint)",
+						Value: true,
+						Type:  FlagBool,
+					},
+				},
+			},
+			want: `[
+  {
+    "c": "c",
+    "b": "b",
+    "a": "a"
+  }
+]`,
+			wantErr: false,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -476,6 +534,14 @@ func TestJSONEscape_Transform(t *testing.T) {
 			args:    args{data: []byte(`{\n  \"name\: \"name is mising quote\"\n}`)},
 			want:    ``,
 			wantErr: true,
+		},
+		{
+			name: "Should preserver order of array input and indent on flag",
+			args: args{
+				data: []byte(`[{"c":"c","b":"b","a":"a"}]`),
+			},
+			want:    `[{\"c\":\"c\",\"b\":\"b\",\"a\":\"a\"}]`,
+			wantErr: false,
 		},
 	}
 	for _, tt := range tests {

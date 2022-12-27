@@ -7,6 +7,7 @@ import (
 
 	"github.com/ghodss/yaml"
 	"github.com/vmihailenco/msgpack/v5"
+	"gitlab.com/abhimanyusharma003/go-ordered-json"
 )
 
 // FormatJSON format given string to a JSON with Indent.
@@ -23,8 +24,8 @@ func (p FormatJSON) Alias() []string {
 // unmarshalJson converts given bytes to json.RawMessage
 // it checks if input is of type array or non array.
 func unmarshalJSON(data []byte) (any, error) {
-	var nonArray map[string]*json.RawMessage
-	var arrayBased []map[string]*json.RawMessage
+	nonArray := ordered.NewOrderedMap()
+	arrayBased := make([]ordered.OrderedMap, 0)
 	err := json.Unmarshal(data, &nonArray)
 	if err == nil {
 		return nonArray, nil

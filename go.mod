@@ -13,6 +13,7 @@ require (
 	github.com/spf13/cobra v1.6.1
 	github.com/vmihailenco/msgpack/v5 v5.3.5
 	github.com/yuin/goldmark v1.5.3
+	gitlab.com/abhimanyusharma003/go-ordered-json v0.0.0-20200508150302-7ef32eef8ead
 	golang.org/x/crypto v0.4.0
 )
 
