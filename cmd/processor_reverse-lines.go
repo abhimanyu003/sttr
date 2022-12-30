@@ -50,7 +50,7 @@ var reverseLinesCmd = &cobra.Command{
 			return err
 		}
 
-		_, err = fmt.Fprint(os.Stdout, out)
+		_, err = fmt.Fprintf(os.Stdout, "%s\n", out)
 		return err
 	},
 }

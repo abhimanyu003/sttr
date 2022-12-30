@@ -13,7 +13,7 @@ import (
 
 var base64Encode_flag_r bool
 
-func init() {	
+func init() {
 	base64EncodeCmd.Flags().BoolVarP(&base64Encode_flag_r, "raw", "r", false, "unpadded base64 encoding")
 	rootCmd.AddCommand(base64EncodeCmd)
 }
@@ -54,7 +54,7 @@ var base64EncodeCmd = &cobra.Command{
 			return err
 		}
 
-		_, err = fmt.Fprint(os.Stdout, out)
+		_, err = fmt.Fprintf(os.Stdout, "%s\n", out)
 		return err
 	},
 }

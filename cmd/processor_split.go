@@ -11,13 +11,16 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var split_flag_s string
+
 func init() {
-	rootCmd.AddCommand(titleCmd)
+	splitCmd.Flags().StringVarP(&split_flag_s, "separator", "s", ",", "Separator to split string")
+	rootCmd.AddCommand(splitCmd)
 }
 
-var titleCmd = &cobra.Command{
-	Use:     "title",
-	Short:   "Transform your text to Title Case",
+var splitCmd = &cobra.Command{
+	Use:     "split",
+	Short:   "Split Text to string list",
 	Aliases: []string{},
 	Args:    cobra.MaximumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
@@ -43,7 +46,8 @@ var titleCmd = &cobra.Command{
 		}
 
 		flags := make([]processors.Flag, 0)
-		p := processors.Title{}
+		p := processors.Split{}
+		flags = append(flags, processors.Flag{Short: "s", Value: split_flag_s})
 
 		out, err = p.Transform(in, flags...)
 		if err != nil {

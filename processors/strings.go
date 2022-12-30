@@ -335,3 +335,62 @@ func (p Reverse) Description() string {
 func (p Reverse) FilterValue() string {
 	return p.Title()
 }
+
+// Split a given string
+// Example: "test,test"  to ["test", "test"]
+type Split struct{}
+
+func (p Split) Name() string {
+	return "split"
+}
+
+func (p Split) Alias() []string {
+	return nil
+}
+
+func (p Split) Transform(data []byte, s ...Flag) (string, error) {
+	// default separator is ,
+	separator := ","
+	for _, flag := range s {
+		if flag.Short == "s" {
+			if s, ok := flag.Value.(string); ok {
+				separator = s
+			}
+
+		}
+	}
+
+	// escape \n and \t
+	if strings.Contains(separator, "\\n") {
+		separator = strings.Replace(separator, "\\n", string([]byte{0xa}), -1)
+	}
+	if strings.Contains(separator, "\\t") {
+		separator = strings.Replace(separator, "\\t", string([]byte{0x9}), -1)
+	}
+	strOut := strings.Join(strings.Split(string(data), separator), "\",\"")
+	return fmt.Sprintf("[\"%s\"]", strOut), nil
+}
+
+func (p Split) Flags() []Flag {
+	return []Flag{
+		{
+			Name:  "separator",
+			Short: "s",
+			Desc:  "Separator to split string",
+			Value: ",",
+			Type:  FlagString,
+		},
+	}
+}
+
+func (p Split) Title() string {
+	return "Split text"
+}
+
+func (p Split) Description() string {
+	return "Split Text to string list"
+}
+
+func (p Split) FilterValue() string {
+	return p.Title()
+}

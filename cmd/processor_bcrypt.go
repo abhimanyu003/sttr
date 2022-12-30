@@ -13,7 +13,7 @@ import (
 
 var bcrypt_flag_r uint
 
-func init() {	
+func init() {
 	bcryptCmd.Flags().UintVarP(&bcrypt_flag_r, "number-of-rounds", "r", 10, "Number of rounds")
 	rootCmd.AddCommand(bcryptCmd)
 }
@@ -54,7 +54,7 @@ var bcryptCmd = &cobra.Command{
 			return err
 		}
 
-		_, err = fmt.Fprint(os.Stdout, out)
+		_, err = fmt.Fprintf(os.Stdout, "%s\n", out)
 		return err
 	},
 }
