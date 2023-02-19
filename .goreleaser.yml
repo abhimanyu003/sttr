@@ -11,18 +11,20 @@ before:
 builds:
   - main: ./main.go
     binary: sttr
-    goos: ['linux', 'darwin', 'windows']
-    goarch: ['386', 'amd64', 'arm64']
+    goos: [ 'linux', 'darwin', 'windows' ]
+    goarch: [ '386', 'amd64', 'arm64' ]
+    ldflags:
+      - -s -w -X "main.version={{.Version}}"
     env:
       - CGO_ENABLED=0
 
 universal_binaries:
-- replace: true
+  - replace: true
 
 changelog:
   sort: 'asc'
   filters:
-    exclude: ['^docs:', 'demo', '^hugo:', 'Merge pull request', 'Merge branch']
+    exclude: [ '^docs:', 'demo', '^hugo:', 'Merge pull request', 'Merge branch' ]
 
 brews:
   - tap:
@@ -41,6 +43,16 @@ brews:
       bin.install "sttr"
     test: |
       system "#{bin}/sttr -v"
+
+scoop:
+  bucket:
+    owner: abhimanyu003
+    name: scoop-bucket
+    token: "{{ .Env.GITHUB_TOKEN }}"
+  name: sttr
+  homepage: "https://github.com/abhimanyu003/sttr"
+  description: "sttr is command line software that allows you to quickly run various transformation operations on the string."
+  license: "MIT"
 
 nfpms:
   - builds:
@@ -68,4 +80,17 @@ snapcrafts:
 
     apps:
       sttr:
-        plugs: ["home", "network"]
+        plugs: [ "home", "network" ]
+
+aurs:
+  - name: sttr-bin
+    homepage: "https://github.com/abhimanyu003/sttr"
+    description: "sttr is command line software that allows you to quickly run various transformation operations on the string."
+    maintainers:
+      - 'Abhimanyu Sharma <abhimanyusharma003@gmail.com>'
+    license: "MIT"
+    private_key: '{{ .Env.AUR_KEY }}'
+    git_url: 'ssh://aur@aur.archlinux.org/sttr-bin.git'
+    commit_author:
+      name: Abhimanyu Sharma
+      email: abhimanyusharma003@gmail.com

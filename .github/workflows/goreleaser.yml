@@ -27,6 +27,6 @@ jobs:
           version: latest
           args: release --rm-dist
         env:
+          AUR_KEY: ${{ secrets.AUR_SSH_KEY }}
           GITHUB_TOKEN: ${{ secrets.GORELEASER_TOKEN }}
-          FURY_TOKEN: ${{ secrets.FURY_TOKEN }}
           SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.SNAPCRAFT_LOGIN }}
