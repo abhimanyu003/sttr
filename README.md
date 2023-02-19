@@ -59,13 +59,13 @@ brew install sttr
 sudo snap install sttr
 ```
 
-### Arch Linux 
+#### Arch Linux 
 
 ```
 yay -S sttr-bin
 ```
 
-### Scoop
+#### Scoop
 
 ```
 scoop bucket add sttr https://github.com/abhimanyu003/scoop-bucket.git
