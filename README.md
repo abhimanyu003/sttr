@@ -59,7 +59,7 @@ brew install sttr
 sudo snap install sttr
 ```
 
-#### Arch Linux 
+#### Arch Linux
 
 ```
 yay -S sttr-bin
@@ -183,7 +183,7 @@ echo "Hello World" | sttr base64-encode | sttr md5
 - [x] **sort-lines** - Sort lines alphabetically
 - [x] **unique-lines** - Get unique lines from list
 
-### Spaces
+#### Spaces
 
 - [x] **remove-spaces** - Remove all spaces + new lines
 - [x] **remove-newlines** - Remove all new lines
@@ -232,9 +232,10 @@ echo "Hello World" | sttr base64-encode | sttr md5
 
 # Contribution
 
-This project welcomes your PR and issues. For example, refactoring, adding features, correcting English, etc. 
+This project welcomes your PR and issues. For example, refactoring, adding features, correcting English, etc.
 
-A quick development guide can be found on. [Developer-Guides](https://github.com/abhimanyu003/sttr/wiki/Developer-Guides) wiki page.
+A quick development guide can be found
+on. [Developer-Guides](https://github.com/abhimanyu003/sttr/wiki/Developer-Guides) wiki page.
 
 If you need any help, you can contact me on [Twitter](https://twitter.com/abhimanyu003).
 
