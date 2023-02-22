@@ -183,6 +183,11 @@ echo "Hello World" | sttr base64-encode | sttr md5
 - [x] **sort-lines** - Sort lines alphabetically
 - [x] **unique-lines** - Get unique lines from list
 
+### Spaces
+
+- [x] **remove-spaces** - Remove all spaces + new lines
+- [x] **remove-newlines** - Remove all new lines
+
 #### Count
 
 - [x] **count-chars** - Find the length of your text (including spaces)
