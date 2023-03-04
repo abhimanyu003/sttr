@@ -5,6 +5,187 @@ import (
 	"testing"
 )
 
+func TestLower_Command(t *testing.T) {
+	test := struct {
+		alias       []string
+		description string
+		filterValue string
+		flags       []Flag
+		name        string
+		title       string
+	}{
+		alias:       nil,
+		description: "Transform your text to lower case",
+		filterValue: "To Lower case",
+		flags:       nil,
+		name:        "lower",
+		title:       "To Lower case",
+	}
+	p := Lower{}
+	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
+		t.Errorf("Alias() = %v, want %v", got, test.alias)
+	}
+	if got := p.Description(); got != test.description {
+		t.Errorf("Description() = %v, want %v", got, test.description)
+	}
+	if got := p.FilterValue(); got != test.filterValue {
+		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+	}
+	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
+		t.Errorf("Flags() = %v, want %v", got, test.flags)
+	}
+	if got := p.Name(); got != test.name {
+		t.Errorf("Name() = %v, want %v", got, test.name)
+	}
+	if got := p.Title(); got != test.title {
+		t.Errorf("Title() = %v, want %v", got, test.title)
+	}
+}
+
+func TestLower_Transform(t *testing.T) {
+	type args struct {
+		data []byte
+		opts []Flag
+	}
+	tests := []struct {
+		name    string
+		args    args
+		want    string
+		wantErr bool
+	}{
+		{
+			name: "Normal String",
+			args: args{data: []byte("THE quick brown fox jumps over a lazy dog Hello foo bar foo f00 %*&^*&^& ***")},
+			want: "the quick brown fox jumps over a lazy dog hello foo bar foo f00 %*&^*&^& ***",
+		}, {
+			name: "Emoji",
+			args: args{data: []byte("😃😇🙃🙂😉😌😙😗🇮🇳")},
+			want: "😃😇🙃🙂😉😌😙😗🇮🇳",
+		}, {
+			name: "Multi line string",
+			args: args{data: []byte("Hello\nfoo\nbar\nfoo\nf00\n%*&^*&^&\n***")},
+			want: "hello\nfoo\nbar\nfoo\nf00\n%*&^*&^&\n***",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			p := Lower{}
+			if got, _ := p.Transform(tt.args.data, tt.args.opts...); got != tt.want {
+				t.Errorf("StringToLower() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestUpper_Command(t *testing.T) {
+	test := struct {
+		alias       []string
+		description string
+		filterValue string
+		flags       []Flag
+		name        string
+		title       string
+	}{
+		alias:       nil,
+		description: "Transform your text to UPPER CASE",
+		filterValue: "To Upper case",
+		flags:       nil,
+		name:        "upper",
+		title:       "To Upper case",
+	}
+	p := Upper{}
+	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
+		t.Errorf("Alias() = %v, want %v", got, test.alias)
+	}
+	if got := p.Description(); got != test.description {
+		t.Errorf("Description() = %v, want %v", got, test.description)
+	}
+	if got := p.FilterValue(); got != test.filterValue {
+		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+	}
+	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
+		t.Errorf("Flags() = %v, want %v", got, test.flags)
+	}
+	if got := p.Name(); got != test.name {
+		t.Errorf("Name() = %v, want %v", got, test.name)
+	}
+	if got := p.Title(); got != test.title {
+		t.Errorf("Title() = %v, want %v", got, test.title)
+	}
+}
+
+func TestUpper_Transform(t *testing.T) {
+	type args struct {
+		data []byte
+		opts []Flag
+	}
+	tests := []struct {
+		name    string
+		args    args
+		want    string
+		wantErr bool
+	}{
+		{
+			name: "Normal String",
+			args: args{data: []byte("THE quick brown fox jumps over a lazy dog Hello foo bar foo f00 %*&^*&^& ***")},
+			want: "THE QUICK BROWN FOX JUMPS OVER A LAZY DOG HELLO FOO BAR FOO F00 %*&^*&^& ***",
+		}, {
+			name: "Emoji",
+			args: args{data: []byte("😃😇🙃🙂😉😌😙😗🇮🇳")},
+			want: "😃😇🙃🙂😉😌😙😗🇮🇳",
+		}, {
+			name: "Multi line string",
+			args: args{data: []byte("Hello\nfoo\nbar\nfoo\nf00\n%*&^*&^&\n***")},
+			want: "HELLO\nFOO\nBAR\nFOO\nF00\n%*&^*&^&\n***",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			p := Upper{}
+			if got, _ := p.Transform(tt.args.data, tt.args.opts...); got != tt.want {
+				t.Errorf("StringToUpper() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestCountCharacters_Command(t *testing.T) {
+	test := struct {
+		alias       []string
+		description string
+		filterValue string
+		flags       []Flag
+		name        string
+		title       string
+	}{
+		alias:       nil,
+		description: "Find the length of your text (including spaces)",
+		filterValue: "Count Number of Characters",
+		flags:       nil,
+		name:        "count-chars",
+		title:       "Count Number of Characters",
+	}
+	p := CountCharacters{}
+	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
+		t.Errorf("Alias() = %v, want %v", got, test.alias)
+	}
+	if got := p.Description(); got != test.description {
+		t.Errorf("Description() = %v, want %v", got, test.description)
+	}
+	if got := p.FilterValue(); got != test.filterValue {
+		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+	}
+	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
+		t.Errorf("Flags() = %v, want %v", got, test.flags)
+	}
+	if got := p.Name(); got != test.name {
+		t.Errorf("Name() = %v, want %v", got, test.name)
+	}
+	if got := p.Title(); got != test.title {
+		t.Errorf("Title() = %v, want %v", got, test.title)
+	}
+}
+
 func TestCountCharacters_Transform(t *testing.T) {
 	type args struct {
 		data []byte
@@ -17,7 +198,7 @@ func TestCountCharacters_Transform(t *testing.T) {
 		wantErr bool
 	}{
 		{
-			name: "String",
+			name: "Normal String",
 			args: args{data: []byte("the quick brown fox jumps over a lazy dog")},
 			want: "41",
 		}, {
@@ -45,38 +226,40 @@ func TestCountCharacters_Transform(t *testing.T) {
 	}
 }
 
-func TestLower_Transform(t *testing.T) {
-	type args struct {
-		data []byte
-		opts []Flag
-	}
-	tests := []struct {
-		name    string
-		args    args
-		want    string
-		wantErr bool
+func TestTitle_Command(t *testing.T) {
+	test := struct {
+		alias       []string
+		description string
+		filterValue string
+		flags       []Flag
+		name        string
+		title       string
 	}{
-		{
-			name: "String",
-			args: args{data: []byte("THE quick brown fox jumps over a lazy dog Hello foo bar foo f00 %*&^*&^& ***")},
-			want: "the quick brown fox jumps over a lazy dog hello foo bar foo f00 %*&^*&^& ***",
-		}, {
-			name: "Emoji",
-			args: args{data: []byte("😃😇🙃🙂😉😌😙😗🇮🇳")},
-			want: "😃😇🙃🙂😉😌😙😗🇮🇳",
-		}, {
-			name: "Multi line string",
-			args: args{data: []byte("Hello\nfoo\nbar\nfoo\nf00\n%*&^*&^&\n***")},
-			want: "hello\nfoo\nbar\nfoo\nf00\n%*&^*&^&\n***",
-		},
+		alias:       nil,
+		description: "Transform your text to Title Case",
+		filterValue: "To Title Case",
+		flags:       nil,
+		name:        "title",
+		title:       "To Title Case",
 	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			p := Lower{}
-			if got, _ := p.Transform(tt.args.data, tt.args.opts...); got != tt.want {
-				t.Errorf("StringToLower() = %v, want %v", got, tt.want)
-			}
-		})
+	p := Title{}
+	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
+		t.Errorf("Alias() = %v, want %v", got, test.alias)
+	}
+	if got := p.Description(); got != test.description {
+		t.Errorf("Description() = %v, want %v", got, test.description)
+	}
+	if got := p.FilterValue(); got != test.filterValue {
+		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+	}
+	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
+		t.Errorf("Flags() = %v, want %v", got, test.flags)
+	}
+	if got := p.Name(); got != test.name {
+		t.Errorf("Name() = %v, want %v", got, test.name)
+	}
+	if got := p.Title(); got != test.title {
+		t.Errorf("Title() = %v, want %v", got, test.title)
 	}
 }
 
@@ -92,13 +275,24 @@ func TestTitle_Transform(t *testing.T) {
 		wantErr bool
 	}{
 		{
-			name: "String",
+			name: "Normal String",
 			args: args{data: []byte("the quick brown fox jumps over a lazy dog")},
 			want: "The Quick Brown Fox Jumps Over A Lazy Dog",
-		}, {
+		},
+		{
 			name: "String Uppercase",
 			args: args{data: []byte("THE QUICK BROWN FOX JUMPS OVER A LAZY DOG")},
 			want: "THE QUICK BROWN FOX JUMPS OVER A LAZY DOG",
+		},
+		{
+			name: "Camel Case Text",
+			args: args{data: []byte("camelCaseText")},
+			want: "CamelCaseText",
+		},
+		{
+			name: "Underscore text",
+			args: args{data: []byte("underscore_text")},
+			want: "Underscore_text",
 		},
 	}
 	for _, tt := range tests {
@@ -111,38 +305,40 @@ func TestTitle_Transform(t *testing.T) {
 	}
 }
 
-func TestUpper_Transform(t *testing.T) {
-	type args struct {
-		data []byte
-		opts []Flag
-	}
-	tests := []struct {
-		name    string
-		args    args
-		want    string
-		wantErr bool
+func TestSnake_Command(t *testing.T) {
+	test := struct {
+		alias       []string
+		description string
+		filterValue string
+		flags       []Flag
+		name        string
+		title       string
 	}{
-		{
-			name: "String",
-			args: args{data: []byte("THE quick brown fox jumps over a lazy dog Hello foo bar foo f00 %*&^*&^& ***")},
-			want: "THE QUICK BROWN FOX JUMPS OVER A LAZY DOG HELLO FOO BAR FOO F00 %*&^*&^& ***",
-		}, {
-			name: "Emoji",
-			args: args{data: []byte("😃😇🙃🙂😉😌😙😗🇮🇳")},
-			want: "😃😇🙃🙂😉😌😙😗🇮🇳",
-		}, {
-			name: "Multi line string",
-			args: args{data: []byte("Hello\nfoo\nbar\nfoo\nf00\n%*&^*&^&\n***")},
-			want: "HELLO\nFOO\nBAR\nFOO\nF00\n%*&^*&^&\n***",
-		},
+		alias:       nil,
+		description: "Transform your text to snake_case",
+		filterValue: "To Snake case",
+		flags:       nil,
+		name:        "snake",
+		title:       "To Snake case",
 	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			p := Upper{}
-			if got, _ := p.Transform(tt.args.data, tt.args.opts...); got != tt.want {
-				t.Errorf("StringToUpper() = %v, want %v", got, tt.want)
-			}
-		})
+	p := Snake{}
+	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
+		t.Errorf("Alias() = %v, want %v", got, test.alias)
+	}
+	if got := p.Description(); got != test.description {
+		t.Errorf("Description() = %v, want %v", got, test.description)
+	}
+	if got := p.FilterValue(); got != test.filterValue {
+		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+	}
+	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
+		t.Errorf("Flags() = %v, want %v", got, test.flags)
+	}
+	if got := p.Name(); got != test.name {
+		t.Errorf("Name() = %v, want %v", got, test.name)
+	}
+	if got := p.Title(); got != test.title {
+		t.Errorf("Title() = %v, want %v", got, test.title)
 	}
 }
 
@@ -158,7 +354,7 @@ func TestSnakeCase_Transform(t *testing.T) {
 		wantErr bool
 	}{
 		{
-			name: "String",
+			name: "Normal String",
 			args: args{data: []byte("THE quick brown fox jumps over a lazy dog Hello foo bar foo f00 %*&^*&^& ***")},
 			want: "the_quick_brown_fox_jumps_over_a_lazy_dog_hello_foo_bar_foo_f_00_%*&^*&^&_***",
 		},
@@ -237,7 +433,7 @@ func TestKebab_Transform(t *testing.T) {
 		wantErr bool
 	}{
 		{
-			name: "String",
+			name: "Normal String",
 			args: args{data: []byte("THE quick brown fox jumps over a lazy dog Hello foo bar foo f00 %*&^*&^& ***")},
 			want: "the-quick-brown-fox-jumps-over-a-lazy-dog-hello-foo-bar-foo-f-00-%*&^*&^&-***",
 		},
@@ -264,6 +460,43 @@ func TestKebab_Transform(t *testing.T) {
 				t.Errorf("StringToKebab() = %v, want %v", got, tt.want)
 			}
 		})
+	}
+}
+
+func TestSlug_Command(t *testing.T) {
+	test := struct {
+		alias       []string
+		description string
+		filterValue string
+		flags       []Flag
+		name        string
+		title       string
+	}{
+		alias:       nil,
+		description: "Transform your text to slug-case",
+		filterValue: "To Slug case",
+		flags:       nil,
+		name:        "slug",
+		title:       "To Slug case",
+	}
+	p := Slug{}
+	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
+		t.Errorf("Alias() = %v, want %v", got, test.alias)
+	}
+	if got := p.Description(); got != test.description {
+		t.Errorf("Description() = %v, want %v", got, test.description)
+	}
+	if got := p.FilterValue(); got != test.filterValue {
+		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+	}
+	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
+		t.Errorf("Flags() = %v, want %v", got, test.flags)
+	}
+	if got := p.Name(); got != test.name {
+		t.Errorf("Name() = %v, want %v", got, test.name)
+	}
+	if got := p.Title(); got != test.title {
+		t.Errorf("Title() = %v, want %v", got, test.title)
 	}
 }
 
@@ -294,7 +527,7 @@ func TestSlug_Transform(t *testing.T) {
 			want: "lots-of-space",
 		},
 		{
-			name: "String",
+			name: "Normal String",
 			args: args{data: []byte("THE quick brown fox jumps over a lazy dog Hello foo bar foo f00 %*&^*&^& ***")},
 			want: "the-quick-brown-fox-jumps-over-a-lazy-dog-hello-foo-bar-foo-f00",
 		},
@@ -306,6 +539,43 @@ func TestSlug_Transform(t *testing.T) {
 				t.Errorf("StringToSlug() = %v, want %v", got, tt.want)
 			}
 		})
+	}
+}
+
+func TestReverse_Command(t *testing.T) {
+	test := struct {
+		alias       []string
+		description string
+		filterValue string
+		flags       []Flag
+		name        string
+		title       string
+	}{
+		alias:       nil,
+		description: "Reverse Text ( txeT esreveR )",
+		filterValue: "Reverse text",
+		flags:       nil,
+		name:        "reverse",
+		title:       "Reverse text",
+	}
+	p := Reverse{}
+	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
+		t.Errorf("Alias() = %v, want %v", got, test.alias)
+	}
+	if got := p.Description(); got != test.description {
+		t.Errorf("Description() = %v, want %v", got, test.description)
+	}
+	if got := p.FilterValue(); got != test.filterValue {
+		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+	}
+	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
+		t.Errorf("Flags() = %v, want %v", got, test.flags)
+	}
+	if got := p.Name(); got != test.name {
+		t.Errorf("Name() = %v, want %v", got, test.name)
+	}
+	if got := p.Title(); got != test.title {
+		t.Errorf("Title() = %v, want %v", got, test.title)
 	}
 }
 
@@ -336,7 +606,7 @@ func TestStringReverse_Transform(t *testing.T) {
 			want: "   ecapS      fO    stoL",
 		},
 		{
-			name: "String",
+			name: "Normal String",
 			args: args{data: []byte("THE quick brown fox jumps over a lazy dog Hello foo bar foo f00 %*&^*&^& ***")},
 			want: "*** &^&*^&*% 00f oof rab oof olleH god yzal a revo spmuj xof nworb kciuq EHT",
 		},
@@ -353,6 +623,43 @@ func TestStringReverse_Transform(t *testing.T) {
 				t.Errorf("Reverse() = %v, want %v", got, tt.want)
 			}
 		})
+	}
+}
+
+func TestCountWords_Command(t *testing.T) {
+	test := struct {
+		alias       []string
+		description string
+		filterValue string
+		flags       []Flag
+		name        string
+		title       string
+	}{
+		alias:       nil,
+		description: "Count the number of words in your text",
+		filterValue: "Count Number of Words",
+		flags:       nil,
+		name:        "count-words",
+		title:       "Count Number of Words",
+	}
+	p := CountWords{}
+	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
+		t.Errorf("Alias() = %v, want %v", got, test.alias)
+	}
+	if got := p.Description(); got != test.description {
+		t.Errorf("Description() = %v, want %v", got, test.description)
+	}
+	if got := p.FilterValue(); got != test.filterValue {
+		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+	}
+	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
+		t.Errorf("Flags() = %v, want %v", got, test.flags)
+	}
+	if got := p.Name(); got != test.name {
+		t.Errorf("Name() = %v, want %v", got, test.name)
+	}
+	if got := p.Title(); got != test.title {
+		t.Errorf("Title() = %v, want %v", got, test.title)
 	}
 }
 
@@ -393,6 +700,43 @@ func TestCountWords_Transform(t *testing.T) {
 	}
 }
 
+func TestCamel_Command(t *testing.T) {
+	test := struct {
+		alias       []string
+		description string
+		filterValue string
+		flags       []Flag
+		name        string
+		title       string
+	}{
+		alias:       nil,
+		description: "Transform your text to CamelCase",
+		filterValue: "To Camel case",
+		flags:       nil,
+		name:        "camel",
+		title:       "To Camel case",
+	}
+	p := Camel{}
+	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
+		t.Errorf("Alias() = %v, want %v", got, test.alias)
+	}
+	if got := p.Description(); got != test.description {
+		t.Errorf("Description() = %v, want %v", got, test.description)
+	}
+	if got := p.FilterValue(); got != test.filterValue {
+		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+	}
+	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
+		t.Errorf("Flags() = %v, want %v", got, test.flags)
+	}
+	if got := p.Name(); got != test.name {
+		t.Errorf("Name() = %v, want %v", got, test.name)
+	}
+	if got := p.Title(); got != test.title {
+		t.Errorf("Title() = %v, want %v", got, test.title)
+	}
+}
+
 func TestStringToCamel(t *testing.T) {
 	type args struct {
 		data []byte
@@ -405,13 +749,28 @@ func TestStringToCamel(t *testing.T) {
 		wantErr bool
 	}{
 		{
-			name: "String",
+			name: "Normal String",
 			args: args{data: []byte("the quick brown fox jumps over a lazy dog")},
 			want: "TheQuickBrownFoxJumpsOverALazyDog",
 		}, {
 			name: "String Uppercase",
 			args: args{data: []byte("THE QUICK BROWN FOX JUMPS OVER A LAZY DOG")},
 			want: "THEQUICKBROWNFOXJUMPSOVERALAZYDOG",
+		},
+		{
+			name: "Camel Case Text",
+			args: args{data: []byte("camelCaseText")},
+			want: "CamelCaseText",
+		},
+		{
+			name: "Underscore text lowercase",
+			args: args{data: []byte("underscore_text")},
+			want: "UnderscoreText",
+		},
+		{
+			name: "Underscore text uppercase",
+			args: args{data: []byte("UNDERSCORE_TEXT_UPPER_CASE")},
+			want: "UNDERSCORETEXTUPPERCASE",
 		},
 	}
 	for _, tt := range tests {
