@@ -44,6 +44,21 @@ folder
 curl -sfL https://raw.githubusercontent.com/abhimanyu003/sttr/main/install.sh | sh
 ```
 
+#### Webi
+
+**MacOS / Linux**
+```
+curl -sS https://webi.sh/sttr | sh
+```
+
+**Windows**
+
+```
+curl.exe https://webi.ms/sttr | powershell
+```
+
+See [here](https://webinstall.dev/sttr/)
+
 #### Homebrew
 
 If you are on macOS and using Homebrew, you can install `sttr` with the following:
