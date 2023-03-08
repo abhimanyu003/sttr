@@ -46,6 +46,7 @@ var List = []list.Item{
 	ReverseLines{},
 	ROT13Encode{},
 	SHA1{},
+	SHA224{},
 	SHA256{},
 	SHA512{},
 	ShuffleLines{},

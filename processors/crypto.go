@@ -150,6 +150,38 @@ func (p SHA512) FilterValue() string {
 	return p.Title()
 }
 
+type SHA224 struct{}
+
+func (p SHA224) Name() string {
+	return "SHA224"
+}
+
+func (p SHA224) Alias() []string {
+	return []string{"SHA224-sum"}
+}
+
+func (p SHA224) Transform(data []byte, _ ...Flag) (string, error) {
+	bs := sha256.Sum224(data)
+
+	return fmt.Sprintf("%x", bs), nil
+}
+
+func (p SHA224) Flags() []Flag {
+	return nil
+}
+
+func (p SHA224) Title() string {
+	return "SHA224 Sum"
+}
+
+func (p SHA224) Description() string {
+	return "Get the SHA224 checksum of your text"
+}
+
+func (p SHA224) FilterValue() string {
+	return p.Title()
+}
+
 // Bcrypt encode string to Bcrypt.
 type Bcrypt struct{}
 
