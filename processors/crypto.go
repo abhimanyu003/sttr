@@ -150,6 +150,7 @@ func (p SHA512) FilterValue() string {
 	return p.Title()
 }
 
+// SHA224 encode string to sha224.
 type SHA224 struct{}
 
 func (p SHA224) Name() string {
@@ -179,6 +180,39 @@ func (p SHA224) Description() string {
 }
 
 func (p SHA224) FilterValue() string {
+	return p.Title()
+}
+
+// SHA224 encode string to sha224.
+type SHA384 struct{}
+
+func (p SHA384) Name() string {
+	return "SHA384"
+}
+
+func (p SHA384) Alias() []string {
+	return []string{"SHA384-sum"}
+}
+
+func (p SHA384) Transform(data []byte, _ ...Flag) (string, error) {
+	bs := sha512.Sum384(data)
+
+	return fmt.Sprintf("%x", bs), nil
+}
+
+func (p SHA384) Flags() []Flag {
+	return nil
+}
+
+func (p SHA384) Title() string {
+	return "SHA384 Sum"
+}
+
+func (p SHA384) Description() string {
+	return "Get the SHA384 checksum of your text"
+}
+
+func (p SHA384) FilterValue() string {
 	return p.Title()
 }
 

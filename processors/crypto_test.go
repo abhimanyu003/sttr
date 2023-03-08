@@ -355,6 +355,87 @@ func TestSHA224Encode_Transform(t *testing.T) {
 	}
 }
 
+func TestSHA384Encode_Command(t *testing.T) {
+	test := struct {
+		alias       []string
+		description string
+		filterValue string
+		flags       []Flag
+		name        string
+		title       string
+	}{
+		alias:       []string{"SHA384-sum"},
+		description: "Get the SHA384 checksum of your text",
+		filterValue: "SHA384 Sum",
+		flags:       nil,
+		name:        "SHA384",
+		title:       "SHA384 Sum",
+	}
+	p := SHA384{}
+	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
+		t.Errorf("Alias() = %v, want %v", got, test.alias)
+	}
+	if got := p.Description(); got != test.description {
+		t.Errorf("Description() = %v, want %v", got, test.description)
+	}
+	if got := p.FilterValue(); got != test.filterValue {
+		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+	}
+	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
+		t.Errorf("Flags() = %v, want %v", got, test.flags)
+	}
+	if got := p.Name(); got != test.name {
+		t.Errorf("Name() = %v, want %v", got, test.name)
+	}
+	if got := p.Title(); got != test.title {
+		t.Errorf("Title() = %v, want %v", got, test.title)
+	}
+}
+
+func TestSHA384Encode_Transform(t *testing.T) {
+	type args struct {
+		data []byte
+		in1  []Flag
+	}
+	tests := []struct {
+		name    string
+		args    args
+		want    string
+		wantErr bool
+	}{
+		{
+			name: "String",
+			args: args{data: []byte("the quick brown fox jumps over a lazy dog")},
+			want: "40c4474cc2ce8d43fcea7ae23974078b970d984bed88ac5920499b3b3634f49e4fc1e689434c423508138d5d0972561b",
+		}, {
+			name: "Emoji",
+			args: args{data: []byte("😃😇🙃🙂😉😌😙😗🇮🇳")},
+			want: "8557db557fc52550ff148ffded2b3c39726aafe6159431aee9844561a83ec83ac5872cd9bdac9deba46e7f6d75d6d5c8",
+		}, {
+			name: "Multi line string",
+			args: args{data: []byte("123345\nabcd\n456\n123\nabc\n567\n7890")},
+			want: "71bd688b9c316981c5fa511dbdded308325cff9b90b85b94eb261ab0ac83041714caec6a5751d27f53c0ee8a12135eb5",
+		}, {
+			name: "Trimmed linebreak",
+			args: args{data: []byte("Hello World\n")},
+			want: "acbfd470c22c0d95a1d10a087dc31988b9f7bfeb13be70b876a73558be664e5858d11f9459923e6e5fd838cb5708b969",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			p := SHA384{}
+			got, err := p.Transform(tt.args.data, tt.args.in1...)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("Transform() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			if got != tt.want {
+				t.Errorf("Transform() got = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
 func TestSHA512Encode_Command(t *testing.T) {
 	test := struct {
 		alias       []string

@@ -48,6 +48,7 @@ var List = []list.Item{
 	SHA1{},
 	SHA224{},
 	SHA256{},
+	SHA384{},
 	SHA512{},
 	ShuffleLines{},
 	Slug{},
