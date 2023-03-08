@@ -21,6 +21,13 @@ jobs:
           sudo apt-get -yq --no-install-suggests --no-install-recommends install snapcraft
           mkdir -p $HOME/.cache/snapcraft/download
           mkdir -p $HOME/.cache/snapcraft/stage-packages
+      - name: install chocolatey
+        run: |
+          mkdir -p /opt/chocolatey
+          wget -q -O - "https://github.com/chocolatey/choco/releases/download/1.3.0/chocolatey.v1.3.0.tar.gz " | tar -xz -C "/opt/chocolatey"
+          echo '#!/bin/bash' >> /usr/local/bin/choco
+          echo 'mono /opt/chocolatey/choco.exe $@' >> /usr/local/bin/choco
+          chmod +x /usr/local/bin/choco
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v4
         with:
@@ -30,3 +37,4 @@ jobs:
           AUR_KEY: ${{ secrets.AUR_SSH_KEY }}
           GITHUB_TOKEN: ${{ secrets.GORELEASER_TOKEN }}
           SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.SNAPCRAFT_LOGIN }}
+          CHOCOLATEY_API_KEY: ${{ secrets.CHOCOLATEY_API_KEY }}
