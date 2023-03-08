@@ -111,7 +111,7 @@ chocolateys:
     tags: "productivity encoding terminal string decoding tui developer-tools transform cli-app encrypt encryption-decryption count-lines devutils tui-app count-words zeropad"
     summary: A cross-platform, cli app to perform various operations on string.
     description: |
-      {{ .ProjectName }} installer package.
+      sttr installer package.
       A cross-platform, cli app to perform various operations on string.
     release_notes: "https://github.com/abhimanyu003/sttr/releases/tag/v{{ .Version }}"
     api_key: "{{ .Env.CHOCOLATEY_API_KEY }}"
