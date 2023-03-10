@@ -48,10 +48,10 @@ func (u *UI) Render() {
 		u.input = utils.ReadMultilineInput()
 	}
 
-	u.list = list.NewModel(processors.List, list.NewDefaultDelegate(), 0, 0)
+	u.list = list.New(processors.List, list.NewDefaultDelegate(), 0, 0)
 	u.list.Title = "Select transformation"
 
-	if err := tea.NewProgram(u).Start(); err != nil {
+	if _, err := tea.NewProgram(u).Run(); err != nil {
 		log.Fatalf("error running ui: %v", err)
 	}
 
