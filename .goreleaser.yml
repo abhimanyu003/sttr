@@ -65,6 +65,7 @@ nfpms:
     formats:
       - deb
       - rpm
+      - termux.deb
     bindir: /usr/bin
 
 snapcrafts:
