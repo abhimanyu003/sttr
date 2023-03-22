@@ -37,6 +37,8 @@ var List = []list.Item{
 	Kebab{},
 	Lower{},
 	Markdown{},
+	MorseCodeEncode{},
+	MorseCodeDecode{},
 	MD5{},
 	MSGPACKToJSON{},
 	RemoveNewLines{},

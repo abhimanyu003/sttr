@@ -97,7 +97,7 @@ package cmd
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"os"
 
 	"github.com/abhimanyu003/sttr/processors"
@@ -139,13 +139,13 @@ var {{ .Camel }}Cmd = &cobra.Command{
 		var out string
 
 		if len(args) == 0 {
-			in, err = ioutil.ReadAll(cmd.InOrStdin())
+			in, err = io.ReadAll(cmd.InOrStdin())
 			if err != nil {
 				return err
 			}
 		} else {
 			if fi, err := os.Stat(args[0]); err == nil && !fi.IsDir() {
-				d, err := ioutil.ReadFile(args[0])
+				d, err := os.ReadFile(args[0])
 				if err != nil {
 					return err
 				}

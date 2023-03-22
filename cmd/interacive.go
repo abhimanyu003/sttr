@@ -1,10 +1,9 @@
 package cmd
 
 import (
-	"io/ioutil"
-
 	"github.com/abhimanyu003/sttr/ui"
 	"github.com/spf13/cobra"
+	"io"
 )
 
 func init() {
@@ -21,7 +20,7 @@ can explore the available processors interactively`,
 		in := ""
 
 		if len(args) == 0 {
-			all, err := ioutil.ReadAll(cmd.InOrStdin())
+			all, err := io.ReadAll(cmd.InOrStdin())
 			if err != nil {
 				return err
 			}
