@@ -283,12 +283,12 @@ func TestSHA224Encode_Command(t *testing.T) {
 		name        string
 		title       string
 	}{
-		alias:       []string{"SHA224-sum"},
+		alias:       []string{"sha224-sum"},
 		description: "Get the SHA224 checksum of your text",
-		filterValue: "SHA224 Sum (SHA224)",
+		filterValue: "sha224 Sum (sha224)",
 		flags:       nil,
-		name:        "SHA224",
-		title:       "SHA224 Sum (SHA224)",
+		name:        "sha224",
+		title:       "sha224 Sum (sha224)",
 	}
 	p := SHA224{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
@@ -364,12 +364,12 @@ func TestSHA384Encode_Command(t *testing.T) {
 		name        string
 		title       string
 	}{
-		alias:       []string{"SHA384-sum"},
+		alias:       []string{"sha384-sum"},
 		description: "Get the SHA384 checksum of your text",
-		filterValue: "SHA384 Sum (SHA384)",
+		filterValue: "sha384 Sum (sha384)",
 		flags:       nil,
-		name:        "SHA384",
-		title:       "SHA384 Sum (SHA384)",
+		name:        "sha384",
+		title:       "sha384 Sum (sha384)",
 	}
 	p := SHA384{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {

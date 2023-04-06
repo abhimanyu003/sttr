@@ -158,11 +158,11 @@ func (p SHA512) FilterValue() string {
 type SHA224 struct{}
 
 func (p SHA224) Name() string {
-	return "SHA224"
+	return "sha224"
 }
 
 func (p SHA224) Alias() []string {
-	return []string{"SHA224-sum"}
+	return []string{"sha224-sum"}
 }
 
 func (p SHA224) Transform(data []byte, _ ...Flag) (string, error) {
@@ -176,7 +176,7 @@ func (p SHA224) Flags() []Flag {
 }
 
 func (p SHA224) Title() string {
-	title := "SHA224 Sum"
+	title := "sha224 Sum"
 	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
@@ -192,11 +192,11 @@ func (p SHA224) FilterValue() string {
 type SHA384 struct{}
 
 func (p SHA384) Name() string {
-	return "SHA384"
+	return "sha384"
 }
 
 func (p SHA384) Alias() []string {
-	return []string{"SHA384-sum"}
+	return []string{"sha384-sum"}
 }
 
 func (p SHA384) Transform(data []byte, _ ...Flag) (string, error) {
@@ -210,7 +210,7 @@ func (p SHA384) Flags() []Flag {
 }
 
 func (p SHA384) Title() string {
-	title := "SHA384 Sum"
+	title := "sha384 Sum"
 	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
