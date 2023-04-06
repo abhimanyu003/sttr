@@ -16,10 +16,10 @@ func TestAscii85Encoding_Command(t *testing.T) {
 	}{
 		alias:       []string{"ascii85-encoding", "base85-encode", "b85-encode"},
 		description: "Encode your text to Ascii85 ( Base85 )",
-		filterValue: "Ascii85 / Base85 Encoding",
+		filterValue: "Ascii85 / Base85 Encoding (ascii85-encode)",
 		flags:       nil,
 		name:        "ascii85-encode",
-		title:       "Ascii85 / Base85 Encoding",
+		title:       "Ascii85 / Base85 Encoding (ascii85-encode)",
 	}
 	p := ASCII85Encoding{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
@@ -93,10 +93,10 @@ func TestAscii85Decoding_Command(t *testing.T) {
 	}{
 		alias:       []string{"ascii85-decoding", "base85-decode", "b85-decode"},
 		description: "Decode your text to Ascii85 ( Base85 ) text",
-		filterValue: "Ascii85 / Base85 Decoding",
+		filterValue: "Ascii85 / Base85 Decoding (ascii85-decode)",
 		flags:       nil,
 		name:        "ascii85-decode",
-		title:       "Ascii85 / Base85 Decoding",
+		title:       "Ascii85 / Base85 Decoding (ascii85-decode)",
 	}
 	p := ASCII85Decoding{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {

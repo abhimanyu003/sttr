@@ -1,6 +1,7 @@
 package processors
 
 import (
+	"fmt"
 	"net/url"
 )
 
@@ -24,7 +25,8 @@ func (p URLEncode) Flags() []Flag {
 }
 
 func (p URLEncode) Title() string {
-	return "URL Encode"
+	title := "URL Encode"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p URLEncode) Description() string {
@@ -56,7 +58,8 @@ func (p URLDecode) Flags() []Flag {
 }
 
 func (p URLDecode) Title() string {
-	return "URL Decode"
+	title := "URL Decode"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p URLDecode) Description() string {

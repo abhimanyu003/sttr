@@ -35,7 +35,8 @@ func (p CountLines) Flags() []Flag {
 }
 
 func (p CountLines) Title() string {
-	return "Count Number of Lines"
+	title := "Count Number of Lines"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p CountLines) Description() string {
@@ -69,7 +70,8 @@ func (p SortLines) Flags() []Flag {
 }
 
 func (p SortLines) Title() string {
-	return "Sort Lines"
+	title := "Sort Lines"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p SortLines) Description() string {
@@ -110,7 +112,8 @@ func (p ShuffleLines) Flags() []Flag {
 }
 
 func (p ShuffleLines) Title() string {
-	return "Shuffle Lines"
+	title := "Shuffle Lines"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p ShuffleLines) Description() string {
@@ -171,7 +174,8 @@ func (p UniqueLines) Flags() []Flag {
 }
 
 func (p UniqueLines) Title() string {
-	return "Unique Lines"
+	title := "Unique Lines"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p UniqueLines) Description() string {
@@ -210,7 +214,8 @@ func (p ReverseLines) Flags() []Flag {
 }
 
 func (p ReverseLines) Title() string {
-	return "Reverse Lines"
+	title := "Reverse Lines"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p ReverseLines) Description() string {

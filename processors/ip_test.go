@@ -16,10 +16,10 @@ func TestExtractIPs_Command(t *testing.T) {
 	}{
 		alias:       []string{"find-ips", "find-ip", "extract-ips"},
 		description: "Extract IPv4 and IPv6 from your text",
-		filterValue: "Extract IPs",
+		filterValue: "Extract IPs (extract-ip)",
 		flags:       nil,
 		name:        "extract-ip",
-		title:       "Extract IPs",
+		title:       "Extract IPs (extract-ip)",
 	}
 	p := ExtractIPs{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {

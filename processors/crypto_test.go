@@ -18,10 +18,10 @@ func TestMD5Encode_Command(t *testing.T) {
 	}{
 		alias:       []string{"md5-sum"},
 		description: "Get the MD5 checksum of your text",
-		filterValue: "MD5 Sum",
+		filterValue: "MD5 Sum (md5)",
 		flags:       nil,
 		name:        "md5",
-		title:       "MD5 Sum",
+		title:       "MD5 Sum (md5)",
 	}
 	p := MD5{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
@@ -123,10 +123,10 @@ func TestSHA1Encode_Command(t *testing.T) {
 	}{
 		alias:       []string{"sha1-sum"},
 		description: "Get the SHA1 checksum of your text",
-		filterValue: "SHA1 Sum",
+		filterValue: "SHA1 Sum (sha1)",
 		flags:       nil,
 		name:        "sha1",
-		title:       "SHA1 Sum",
+		title:       "SHA1 Sum (sha1)",
 	}
 	p := SHA1{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
@@ -204,10 +204,10 @@ func TestSHA256Encode_Command(t *testing.T) {
 	}{
 		alias:       []string{"sha256-sum"},
 		description: "Get the SHA256 checksum of your text",
-		filterValue: "SHA256 Sum",
+		filterValue: "SHA256 Sum (sha256)",
 		flags:       nil,
 		name:        "sha256",
-		title:       "SHA256 Sum",
+		title:       "SHA256 Sum (sha256)",
 	}
 	p := SHA256{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
@@ -285,10 +285,10 @@ func TestSHA224Encode_Command(t *testing.T) {
 	}{
 		alias:       []string{"SHA224-sum"},
 		description: "Get the SHA224 checksum of your text",
-		filterValue: "SHA224 Sum",
+		filterValue: "SHA224 Sum (SHA224)",
 		flags:       nil,
 		name:        "SHA224",
-		title:       "SHA224 Sum",
+		title:       "SHA224 Sum (SHA224)",
 	}
 	p := SHA224{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
@@ -366,10 +366,10 @@ func TestSHA384Encode_Command(t *testing.T) {
 	}{
 		alias:       []string{"SHA384-sum"},
 		description: "Get the SHA384 checksum of your text",
-		filterValue: "SHA384 Sum",
+		filterValue: "SHA384 Sum (SHA384)",
 		flags:       nil,
 		name:        "SHA384",
-		title:       "SHA384 Sum",
+		title:       "SHA384 Sum (SHA384)",
 	}
 	p := SHA384{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
@@ -447,10 +447,10 @@ func TestSHA512Encode_Command(t *testing.T) {
 	}{
 		alias:       []string{"sha512-sum"},
 		description: "Get the SHA512 checksum of your text",
-		filterValue: "SHA512 Sum",
+		filterValue: "SHA512 Sum (sha512)",
 		flags:       nil,
 		name:        "sha512",
-		title:       "SHA512 Sum",
+		title:       "SHA512 Sum (sha512)",
 	}
 	p := SHA512{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
@@ -528,7 +528,7 @@ func TestBcrypt_Command(t *testing.T) {
 	}{
 		alias:       []string{"bcrypt-hash"},
 		description: "Get the Bcrypt hash of your text",
-		filterValue: "Bcrypt Hash",
+		filterValue: "Bcrypt Hash (bcrypt)",
 		flags: []Flag{
 			{
 				Name:  "number-of-rounds",
@@ -539,7 +539,7 @@ func TestBcrypt_Command(t *testing.T) {
 			},
 		},
 		name:  "bcrypt",
-		title: "Bcrypt Hash",
+		title: "Bcrypt Hash (bcrypt)",
 	}
 	p := Bcrypt{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {

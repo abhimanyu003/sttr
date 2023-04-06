@@ -16,7 +16,7 @@ func TestExtractEmails_Command(t *testing.T) {
 	}{
 		alias:       []string{"find-emails", "find-email", "extract-email"},
 		description: "Extract emails from given text",
-		filterValue: "Extract Emails",
+		filterValue: "Extract Emails (extract-emails)",
 		flags: []Flag{
 			{
 				Name:  "separator",
@@ -27,7 +27,7 @@ func TestExtractEmails_Command(t *testing.T) {
 			},
 		},
 		name:  "extract-emails",
-		title: "Extract Emails",
+		title: "Extract Emails (extract-emails)",
 	}
 	p := ExtractEmails{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {

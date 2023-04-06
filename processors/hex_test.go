@@ -16,10 +16,10 @@ func TestHexEncode_Command(t *testing.T) {
 	}{
 		alias:       []string{"hex-enc", "hexadecimal-encode"},
 		description: "Encode your text Hex",
-		filterValue: "Hex Encode",
+		filterValue: "Hex Encode (hex-encode)",
 		flags:       nil,
 		name:        "hex-encode",
-		title:       "Hex Encode",
+		title:       "Hex Encode (hex-encode)",
 	}
 	p := HexEncode{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
@@ -102,10 +102,10 @@ func TestHexDecode_Command(t *testing.T) {
 	}{
 		alias:       []string{"hex-dec", "hexadecimal-decode"},
 		description: "Convert Hexadecimal to String",
-		filterValue: "Hex Decode",
+		filterValue: "Hex Decode (hex-decode)",
 		flags:       nil,
 		name:        "hex-decode",
-		title:       "Hex Decode",
+		title:       "Hex Decode (hex-decode)",
 	}
 	p := HexDecode{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {

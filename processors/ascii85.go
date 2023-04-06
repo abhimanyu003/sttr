@@ -3,6 +3,7 @@ package processors
 import (
 	"bytes"
 	"encoding/ascii85"
+	"fmt"
 	"io"
 )
 
@@ -36,7 +37,8 @@ func (p ASCII85Encoding) Flags() []Flag {
 }
 
 func (p ASCII85Encoding) Title() string {
-	return "Ascii85 / Base85 Encoding"
+	title := "Ascii85 / Base85 Encoding"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p ASCII85Encoding) Description() string {
@@ -73,7 +75,8 @@ func (p ASCII85Decoding) Flags() []Flag {
 }
 
 func (p ASCII85Decoding) Title() string {
-	return "Ascii85 / Base85 Decoding"
+	title := "Ascii85 / Base85 Decoding"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p ASCII85Decoding) Description() string {

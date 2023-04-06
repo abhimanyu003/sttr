@@ -16,7 +16,7 @@ func TestZeropad_Command(t *testing.T) {
 	}{
 		//alias:       []string{"md-html"},
 		description: "Pad a number with zeros",
-		filterValue: "Zeropad",
+		filterValue: "Zeropad (zeropad)",
 		flags: []Flag{
 			{
 				Name:  "number-of-zeros",
@@ -34,7 +34,7 @@ func TestZeropad_Command(t *testing.T) {
 			},
 		},
 		name:  "zeropad",
-		title: "Zeropad",
+		title: "Zeropad (zeropad)",
 	}
 	p := Zeropad{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {

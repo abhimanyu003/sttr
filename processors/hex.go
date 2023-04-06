@@ -1,6 +1,9 @@
 package processors
 
-import "encoding/hex"
+import (
+	"encoding/hex"
+	"fmt"
+)
 
 type HexEncode struct{}
 
@@ -21,7 +24,8 @@ func (p HexEncode) Flags() []Flag {
 }
 
 func (p HexEncode) Title() string {
-	return "Hex Encode"
+	title := "Hex Encode"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p HexEncode) Description() string {
@@ -56,7 +60,8 @@ func (p HexDecode) Flags() []Flag {
 }
 
 func (p HexDecode) Title() string {
-	return "Hex Decode"
+	title := "Hex Decode"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p HexDecode) Description() string {

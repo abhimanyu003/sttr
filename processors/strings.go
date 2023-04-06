@@ -31,7 +31,8 @@ func (p Lower) Flags() []Flag {
 }
 
 func (p Lower) Title() string {
-	return "To Lower case"
+	title := "To Lower case"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p Lower) Description() string {
@@ -63,7 +64,8 @@ func (p Upper) Flags() []Flag {
 }
 
 func (p Upper) Title() string {
-	return "To Upper case"
+	title := "To Upper case"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p Upper) Description() string {
@@ -95,7 +97,8 @@ func (p Title) Flags() []Flag {
 }
 
 func (p Title) Title() string {
-	return "To Title Case"
+	title := "To Title Case"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p Title) Description() string {
@@ -128,7 +131,8 @@ func (p Snake) Flags() []Flag {
 }
 
 func (p Snake) Title() string {
-	return "To Snake case"
+	title := "To Snake case"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p Snake) Description() string {
@@ -160,7 +164,8 @@ func (p Kebab) Flags() []Flag {
 }
 
 func (p Kebab) Title() string {
-	return "To Kebab case"
+	title := "To Kebab case"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p Kebab) Description() string {
@@ -193,7 +198,8 @@ func (p Camel) Flags() []Flag {
 }
 
 func (p Camel) Title() string {
-	return "To Camel case"
+	title := "To Camel case"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p Camel) Description() string {
@@ -226,7 +232,8 @@ func (p Slug) Flags() []Flag {
 }
 
 func (p Slug) Title() string {
-	return "To Slug case"
+	title := "To Slug case"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p Slug) Description() string {
@@ -257,7 +264,8 @@ func (p CountCharacters) Flags() []Flag {
 }
 
 func (p CountCharacters) Title() string {
-	return "Count Number of Characters"
+	title := "Count Number of Characters"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p CountCharacters) Description() string {
@@ -289,7 +297,8 @@ func (p CountWords) Flags() []Flag {
 }
 
 func (p CountWords) Title() string {
-	return "Count Number of Words"
+	title := "Count Number of Words"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p CountWords) Description() string {
@@ -325,7 +334,8 @@ func (p Reverse) Flags() []Flag {
 }
 
 func (p Reverse) Title() string {
-	return "Reverse text"
+	title := "Reverse text"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p Reverse) Description() string {

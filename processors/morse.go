@@ -138,7 +138,8 @@ func (p MorseCodeEncode) Flags() []Flag {
 }
 
 func (p MorseCodeEncode) Title() string {
-	return "Morse Code Encoding"
+	title := "Morse Code Encoding"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p MorseCodeEncode) Description() string {
@@ -189,7 +190,8 @@ func (p MorseCodeDecode) Flags() []Flag {
 }
 
 func (p MorseCodeDecode) Title() string {
-	return "Morse Code Decode"
+	title := "Morse Code Decode"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p MorseCodeDecode) Description() string {

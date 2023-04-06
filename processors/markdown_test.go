@@ -16,10 +16,10 @@ func TestMarkdown_Command(t *testing.T) {
 	}{
 		alias:       []string{"md-html"},
 		description: "Convert Markdown to HTML",
-		filterValue: "Markdown to HTML",
+		filterValue: "Markdown to HTML (markdown-html)",
 		flags:       nil,
 		name:        "markdown-html",
-		title:       "Markdown to HTML",
+		title:       "Markdown to HTML (markdown-html)",
 	}
 	p := Markdown{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {

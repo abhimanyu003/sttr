@@ -16,10 +16,10 @@ func TestURLEncode_Command(t *testing.T) {
 	}{
 		alias:       []string{"url-enc"},
 		description: "Encode URL entities",
-		filterValue: "URL Encode",
+		filterValue: "URL Encode (url-encode)",
 		flags:       nil,
 		name:        "url-encode",
-		title:       "URL Encode",
+		title:       "URL Encode (url-encode)",
 	}
 	p := URLEncode{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
@@ -90,10 +90,10 @@ func TestURLDecode_Command(t *testing.T) {
 	}{
 		alias:       []string{"url-dec"},
 		description: "Decode URL entities",
-		filterValue: "URL Decode",
+		filterValue: "URL Decode (url-decode)",
 		flags:       nil,
 		name:        "url-decode",
-		title:       "URL Decode",
+		title:       "URL Decode (url-decode)",
 	}
 	p := URLDecode{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {

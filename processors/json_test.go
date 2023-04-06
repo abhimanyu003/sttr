@@ -19,7 +19,7 @@ func TestJSON_Command(t *testing.T) {
 	}{
 		alias:       nil,
 		description: "Format your text as JSON ( json decode )",
-		filterValue: "Format JSON",
+		filterValue: "Format JSON (json)",
 		flags: []Flag{
 			{
 				Name:  "indent",
@@ -30,7 +30,7 @@ func TestJSON_Command(t *testing.T) {
 			},
 		},
 		name:  "json",
-		title: "Format JSON",
+		title: "Format JSON (json)",
 	}
 	p := FormatJSON{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
@@ -150,10 +150,10 @@ func TestJSONToMSGPACK_Command(t *testing.T) {
 	}{
 		alias:       []string{},
 		description: "Convert JSON to MSGPACK text",
-		filterValue: "JSON To MSGPACK",
+		filterValue: "JSON To MSGPACK (json-msgpack)",
 		flags:       nil,
 		name:        "json-msgpack",
-		title:       "JSON To MSGPACK",
+		title:       "JSON To MSGPACK (json-msgpack)",
 	}
 	p := JSONToMSGPACK{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
@@ -238,10 +238,10 @@ func TestMSGPACKToJSON_Command(t *testing.T) {
 	}{
 		alias:       []string{},
 		description: "Convert MSGPACK to JSON text",
-		filterValue: "MSGPACK To JSON",
+		filterValue: "MSGPACK To JSON (msgpack-json)",
 		flags:       nil,
 		name:        "msgpack-json",
-		title:       "MSGPACK To JSON",
+		title:       "MSGPACK To JSON (msgpack-json)",
 	}
 	p := MSGPACKToJSON{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
@@ -326,7 +326,7 @@ func TestJSONUnescape_Command(t *testing.T) {
 	}{
 		alias:       []string{"json-unesc"},
 		description: "JSON Unescape",
-		filterValue: "JSON Unescape",
+		filterValue: "JSON Unescape (json-unescape)",
 		flags: []Flag{
 			{
 				Name:  "indent",
@@ -337,7 +337,7 @@ func TestJSONUnescape_Command(t *testing.T) {
 			},
 		},
 		name:  "json-unescape",
-		title: "JSON Unescape",
+		title: "JSON Unescape (json-unescape)",
 	}
 	p := JSONUnescape{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
@@ -466,10 +466,10 @@ func TestJSONEscape_Command(t *testing.T) {
 	}{
 		alias:       []string{"json-esc"},
 		description: "JSON Escape",
-		filterValue: "JSON Escape",
+		filterValue: "JSON Escape (json-escape)",
 		flags:       nil,
 		name:        "json-escape",
-		title:       "JSON Escape",
+		title:       "JSON Escape (json-escape)",
 	}
 	p := JSONEscape{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {

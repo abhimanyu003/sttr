@@ -2,6 +2,7 @@ package processors
 
 import (
 	"encoding/base64"
+	"fmt"
 )
 
 var base64RawFlag = Flag{
@@ -48,7 +49,8 @@ func (p Base64Encode) Flags() []Flag {
 }
 
 func (p Base64Encode) Title() string {
-	return "Base64 Encoding"
+	title := "Base64 Encoding"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p Base64Encode) Description() string {
@@ -86,7 +88,8 @@ func (p Base64Decode) Flags() []Flag {
 }
 
 func (p Base64Decode) Title() string {
-	return "Base64 Decode"
+	title := "Base64 Decode"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p Base64Decode) Description() string {

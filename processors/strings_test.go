@@ -16,10 +16,10 @@ func TestLower_Command(t *testing.T) {
 	}{
 		alias:       nil,
 		description: "Transform your text to lower case",
-		filterValue: "To Lower case",
+		filterValue: "To Lower case (lower)",
 		flags:       nil,
 		name:        "lower",
-		title:       "To Lower case",
+		title:       "To Lower case (lower)",
 	}
 	p := Lower{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
@@ -88,10 +88,10 @@ func TestUpper_Command(t *testing.T) {
 	}{
 		alias:       nil,
 		description: "Transform your text to UPPER CASE",
-		filterValue: "To Upper case",
+		filterValue: "To Upper case (upper)",
 		flags:       nil,
 		name:        "upper",
-		title:       "To Upper case",
+		title:       "To Upper case (upper)",
 	}
 	p := Upper{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
@@ -160,10 +160,10 @@ func TestCountCharacters_Command(t *testing.T) {
 	}{
 		alias:       nil,
 		description: "Find the length of your text (including spaces)",
-		filterValue: "Count Number of Characters",
+		filterValue: "Count Number of Characters (count-chars)",
 		flags:       nil,
 		name:        "count-chars",
-		title:       "Count Number of Characters",
+		title:       "Count Number of Characters (count-chars)",
 	}
 	p := CountCharacters{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
@@ -237,10 +237,10 @@ func TestTitle_Command(t *testing.T) {
 	}{
 		alias:       nil,
 		description: "Transform your text to Title Case",
-		filterValue: "To Title Case",
+		filterValue: "To Title Case (title)",
 		flags:       nil,
 		name:        "title",
-		title:       "To Title Case",
+		title:       "To Title Case (title)",
 	}
 	p := Title{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
@@ -316,10 +316,10 @@ func TestSnake_Command(t *testing.T) {
 	}{
 		alias:       nil,
 		description: "Transform your text to snake_case",
-		filterValue: "To Snake case",
+		filterValue: "To Snake case (snake)",
 		flags:       nil,
 		name:        "snake",
-		title:       "To Snake case",
+		title:       "To Snake case (snake)",
 	}
 	p := Snake{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
@@ -395,10 +395,10 @@ func TestKebab_Command(t *testing.T) {
 	}{
 		//alias:       []string{"b64-enc", "b64-encode"},
 		description: "Transform your text to kebab-case",
-		filterValue: "To Kebab case",
+		filterValue: "To Kebab case (kebab)",
 		flags:       nil,
 		name:        "kebab",
-		title:       "To Kebab case",
+		title:       "To Kebab case (kebab)",
 	}
 	p := Kebab{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
@@ -474,10 +474,10 @@ func TestSlug_Command(t *testing.T) {
 	}{
 		alias:       nil,
 		description: "Transform your text to slug-case",
-		filterValue: "To Slug case",
+		filterValue: "To Slug case (slug)",
 		flags:       nil,
 		name:        "slug",
-		title:       "To Slug case",
+		title:       "To Slug case (slug)",
 	}
 	p := Slug{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
@@ -553,10 +553,10 @@ func TestReverse_Command(t *testing.T) {
 	}{
 		alias:       nil,
 		description: "Reverse Text ( txeT esreveR )",
-		filterValue: "Reverse text",
+		filterValue: "Reverse text (reverse)",
 		flags:       nil,
 		name:        "reverse",
-		title:       "Reverse text",
+		title:       "Reverse text (reverse)",
 	}
 	p := Reverse{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
@@ -637,10 +637,10 @@ func TestCountWords_Command(t *testing.T) {
 	}{
 		alias:       nil,
 		description: "Count the number of words in your text",
-		filterValue: "Count Number of Words",
+		filterValue: "Count Number of Words (count-words)",
 		flags:       nil,
 		name:        "count-words",
-		title:       "Count Number of Words",
+		title:       "Count Number of Words (count-words)",
 	}
 	p := CountWords{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
@@ -711,10 +711,10 @@ func TestCamel_Command(t *testing.T) {
 	}{
 		alias:       nil,
 		description: "Transform your text to CamelCase",
-		filterValue: "To Camel case",
+		filterValue: "To Camel case (camel)",
 		flags:       nil,
 		name:        "camel",
-		title:       "To Camel case",
+		title:       "To Camel case (camel)",
 	}
 	p := Camel{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {

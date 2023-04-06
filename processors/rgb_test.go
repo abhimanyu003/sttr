@@ -16,10 +16,10 @@ func TestRGB_Command(t *testing.T) {
 	}{
 		//alias:       []string{},
 		description: "Convert a #hex-color code to RGB",
-		filterValue: "Hex To RGB",
+		filterValue: "Hex To RGB (hex-rgb)",
 		flags:       nil,
 		name:        "hex-rgb",
-		title:       "Hex To RGB",
+		title:       "Hex To RGB (hex-rgb)",
 	}
 	p := HexToRGB{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {

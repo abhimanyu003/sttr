@@ -17,10 +17,10 @@ func TestCountLines_Command(t *testing.T) {
 	}{
 		alias:       nil,
 		description: "Count the number of lines in your text",
-		filterValue: "Count Number of Lines",
+		filterValue: "Count Number of Lines (count-lines)",
 		flags:       nil,
 		name:        "count-lines",
-		title:       "Count Number of Lines",
+		title:       "Count Number of Lines (count-lines)",
 	}
 	p := CountLines{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
@@ -104,10 +104,10 @@ func TestShuffleLines_Command(t *testing.T) {
 	}{
 		alias:       nil,
 		description: "Shuffle lines randomly",
-		filterValue: "Shuffle Lines",
+		filterValue: "Shuffle Lines (shuffle-lines)",
 		flags:       nil,
 		name:        "shuffle-lines",
-		title:       "Shuffle Lines",
+		title:       "Shuffle Lines (shuffle-lines)",
 	}
 	p := ShuffleLines{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
@@ -176,10 +176,10 @@ func TestSortLines_Command(t *testing.T) {
 	}{
 		alias:       nil,
 		description: "Sort lines alphabetically",
-		filterValue: "Sort Lines",
+		filterValue: "Sort Lines (sort-lines)",
 		flags:       nil,
 		name:        "sort-lines",
-		title:       "Sort Lines",
+		title:       "Sort Lines (sort-lines)",
 	}
 	p := SortLines{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
@@ -245,10 +245,10 @@ func TestUniqueLines_Command(t *testing.T) {
 	}{
 		alias:       nil,
 		description: "Unique Lines",
-		filterValue: "Unique Lines",
+		filterValue: "Unique Lines (unique-lines)",
 		flags:       nil,
 		name:        "unique-lines",
-		title:       "Unique Lines",
+		title:       "Unique Lines (unique-lines)",
 	}
 	p := UniqueLines{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
@@ -332,10 +332,10 @@ func TestReverseLines_Command(t *testing.T) {
 	}{
 		alias:       nil,
 		description: "Reverse Lines",
-		filterValue: "Reverse Lines",
+		filterValue: "Reverse Lines (reverse-lines)",
 		flags:       nil,
 		name:        "reverse-lines",
-		title:       "Reverse Lines",
+		title:       "Reverse Lines (reverse-lines)",
 	}
 	p := ReverseLines{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {

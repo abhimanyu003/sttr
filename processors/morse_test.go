@@ -16,10 +16,10 @@ func TestMorseCodeEncode_Command(t *testing.T) {
 	}{
 		alias:       []string{"morse-enc", "morse-encode", "morse-code-encode", "morse-code-enc"},
 		description: "Encode your text to Morse Code",
-		filterValue: "Morse Code Encoding",
+		filterValue: "Morse Code Encoding (morse-encode)",
 		flags:       nil,
 		name:        "morse-encode",
-		title:       "Morse Code Encoding",
+		title:       "Morse Code Encoding (morse-encode)",
 	}
 	p := MorseCodeEncode{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {

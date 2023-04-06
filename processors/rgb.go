@@ -28,7 +28,8 @@ func (p HexToRGB) Flags() []Flag {
 }
 
 func (p HexToRGB) Title() string {
-	return "Hex To RGB"
+	title := "Hex To RGB"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p HexToRGB) Description() string {

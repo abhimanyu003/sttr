@@ -60,10 +60,10 @@ func TestROT13Encode_Command(t *testing.T) {
 	}{
 		alias:       []string{"rot13", "rot13-enc"},
 		description: "Encode your text to ROT13",
-		filterValue: "ROT13 Encode",
+		filterValue: "ROT13 Encode (rot13-encode)",
 		flags:       nil,
 		name:        "rot13-encode",
-		title:       "ROT13 Encode",
+		title:       "ROT13 Encode (rot13-encode)",
 	}
 	p := ROT13Encode{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {

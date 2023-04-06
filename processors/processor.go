@@ -180,7 +180,8 @@ func (p Zeropad) Flags() []Flag {
 }
 
 func (p Zeropad) Title() string {
-	return strings.Title(p.Name())
+	title := strings.Title(p.Name())
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p Zeropad) Description() string {

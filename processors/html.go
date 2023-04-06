@@ -1,6 +1,7 @@
 package processors
 
 import (
+	"fmt"
 	"html"
 )
 
@@ -23,7 +24,8 @@ func (p HTMLEncode) Flags() []Flag {
 }
 
 func (p HTMLEncode) Title() string {
-	return "HTML Encode"
+	title := "HTML Encode"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p HTMLEncode) Description() string {
@@ -53,7 +55,8 @@ func (p HTMLDecode) Flags() []Flag {
 }
 
 func (p HTMLDecode) Title() string {
-	return "HTML Decode"
+	title := "HTML Decode"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p HTMLDecode) Description() string {

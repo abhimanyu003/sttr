@@ -16,10 +16,10 @@ func TestBase64Encode_Command(t *testing.T) {
 	}{
 		alias:       []string{"b64-enc", "b64-encode"},
 		description: "Encode your text to Base64",
-		filterValue: "Base64 Encoding",
+		filterValue: "Base64 Encoding (base64-encode)",
 		flags:       []Flag{base64RawFlag},
 		name:        "base64-encode",
-		title:       "Base64 Encoding",
+		title:       "Base64 Encoding (base64-encode)",
 	}
 	p := Base64Encode{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
@@ -114,10 +114,10 @@ func TestBase64Decode_Command(t *testing.T) {
 	}{
 		alias:       []string{"b64-dec", "b64-decode"},
 		description: "Decode your base64 text",
-		filterValue: "Base64 Decode",
+		filterValue: "Base64 Decode (base64-decode)",
 		flags:       []Flag{base64RawFlag},
 		name:        "base64-decode",
-		title:       "Base64 Decode",
+		title:       "Base64 Decode (base64-decode)",
 	}
 	p := Base64Decode{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {

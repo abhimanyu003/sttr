@@ -16,10 +16,10 @@ func TestBase32Encode_Command(t *testing.T) {
 	}{
 		alias:       []string{"b32-enc", "b32-encode"},
 		description: "Encode your text to Base32",
-		filterValue: "Base32 Encoding",
+		filterValue: "Base32 Encoding (base32-encode)",
 		flags:       nil,
 		name:        "base32-encode",
-		title:       "Base32 Encoding",
+		title:       "Base32 Encoding (base32-encode)",
 	}
 	p := Base32Encoding{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
@@ -93,10 +93,10 @@ func TestBase32Decode_Command(t *testing.T) {
 	}{
 		alias:       []string{"b32-dec", "b32-decode"},
 		description: "Decode your base32 text",
-		filterValue: "Base32 Decode",
+		filterValue: "Base32 Decode (base32-decode)",
 		flags:       nil,
 		name:        "base32-decode",
-		title:       "Base32 Decode",
+		title:       "Base32 Decode (base32-decode)",
 	}
 	p := Base32Decode{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {

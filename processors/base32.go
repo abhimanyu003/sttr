@@ -2,6 +2,7 @@ package processors
 
 import (
 	"encoding/base32"
+	"fmt"
 )
 
 // Base32Encoding encode string to base64.
@@ -24,7 +25,8 @@ func (p Base32Encoding) Flags() []Flag {
 }
 
 func (p Base32Encoding) Title() string {
-	return "Base32 Encoding"
+	title := "Base32 Encoding"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p Base32Encoding) Description() string {
@@ -56,7 +58,8 @@ func (p Base32Decode) Flags() []Flag {
 }
 
 func (p Base32Decode) Title() string {
-	return "Base32 Decode"
+	title := "Base32 Decode"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p Base32Decode) Description() string {

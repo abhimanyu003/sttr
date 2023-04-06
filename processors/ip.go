@@ -1,6 +1,7 @@
 package processors
 
 import (
+	"fmt"
 	"net"
 	"regexp"
 	"strings"
@@ -50,7 +51,8 @@ func (p ExtractIPs) Flags() []Flag {
 }
 
 func (p ExtractIPs) Title() string {
-	return "Extract IPs"
+	title := "Extract IPs"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p ExtractIPs) Description() string {

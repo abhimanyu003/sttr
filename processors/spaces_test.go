@@ -16,7 +16,7 @@ func TestRemoveNewLines_Command(t *testing.T) {
 	}{
 		alias:       []string{"remove-new-lines", "trim-newlines", "trim-new-lines"},
 		description: "Remove all new lines",
-		filterValue: "Remove all new lines",
+		filterValue: "Remove all new lines (remove-newlines)",
 		flags: []Flag{
 			{
 				Name:  "separator",
@@ -27,7 +27,7 @@ func TestRemoveNewLines_Command(t *testing.T) {
 			},
 		},
 		name:  "remove-newlines",
-		title: "Remove all new lines",
+		title: "Remove all new lines (remove-newlines)",
 	}
 	p := RemoveNewLines{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
@@ -113,7 +113,7 @@ func TestRemoveSpaces_Command(t *testing.T) {
 	}{
 		alias:       []string{"remove-space", "trim-spaces", "trim-space"},
 		description: "Remove all spaces + new lines",
-		filterValue: "Remove all spaces + new lines",
+		filterValue: "Remove all spaces + new lines (remove-spaces)",
 		flags: []Flag{
 			{
 				Name:  "separator",
@@ -124,7 +124,7 @@ func TestRemoveSpaces_Command(t *testing.T) {
 			},
 		},
 		name:  "remove-spaces",
-		title: "Remove all spaces + new lines",
+		title: "Remove all spaces + new lines (remove-spaces)",
 	}
 	p := RemoveSpaces{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {

@@ -16,10 +16,10 @@ func TestHTMLEncode_Command(t *testing.T) {
 	}{
 		alias:       []string{"html-enc", "html-escape"},
 		description: "Escape your HTML",
-		filterValue: "HTML Encode",
+		filterValue: "HTML Encode (html-encode)",
 		flags:       nil,
 		name:        "html-encode",
-		title:       "HTML Encode",
+		title:       "HTML Encode (html-encode)",
 	}
 	p := HTMLEncode{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
@@ -110,10 +110,10 @@ func TestHTMLDecode_Command(t *testing.T) {
 	}{
 		alias:       []string{"html-dec", "html-unescape"},
 		description: "Unescape your HTML",
-		filterValue: "HTML Decode",
+		filterValue: "HTML Decode (html-decode)",
 		flags:       nil,
 		name:        "html-decode",
-		title:       "HTML Decode",
+		title:       "HTML Decode (html-decode)",
 	}
 	p := HTMLDecode{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {

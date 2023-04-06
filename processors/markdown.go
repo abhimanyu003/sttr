@@ -2,6 +2,7 @@ package processors
 
 import (
 	"bytes"
+	"fmt"
 
 	"github.com/yuin/goldmark"
 )
@@ -30,7 +31,8 @@ func (p Markdown) Flags() []Flag {
 }
 
 func (p Markdown) Title() string {
-	return "Markdown to HTML"
+	title := "Markdown to HTML"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p Markdown) Description() string {

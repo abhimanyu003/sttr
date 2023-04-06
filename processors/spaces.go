@@ -1,6 +1,7 @@
 package processors
 
 import (
+	"fmt"
 	"regexp"
 	"strings"
 )
@@ -45,7 +46,8 @@ func (p RemoveNewLines) Flags() []Flag {
 }
 
 func (p RemoveNewLines) Title() string {
-	return "Remove all new lines"
+	title := "Remove all new lines"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p RemoveNewLines) Description() string {
@@ -96,7 +98,8 @@ func (p RemoveSpaces) Flags() []Flag {
 }
 
 func (p RemoveSpaces) Title() string {
-	return "Remove all spaces + new lines"
+	title := "Remove all spaces + new lines"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p RemoveSpaces) Description() string {

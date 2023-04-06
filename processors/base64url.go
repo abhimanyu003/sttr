@@ -2,6 +2,7 @@ package processors
 
 import (
 	"encoding/base64"
+	"fmt"
 )
 
 // Base64URLEncode encode string to base64.
@@ -27,7 +28,8 @@ func (p Base64URLEncode) Flags() []Flag {
 }
 
 func (p Base64URLEncode) Title() string {
-	return "Base64URL Encoding"
+	title := "Base64URL Encoding"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p Base64URLEncode) Description() string {
@@ -65,7 +67,8 @@ func (p Base64URLDecode) Flags() []Flag {
 }
 
 func (p Base64URLDecode) Title() string {
-	return "Base64URL Decode"
+	title := "Base64URL Decode"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p Base64URLDecode) Description() string {

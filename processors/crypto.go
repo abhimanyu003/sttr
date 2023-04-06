@@ -34,7 +34,8 @@ func (p MD5) Flags() []Flag {
 }
 
 func (p MD5) Title() string {
-	return "MD5 Sum"
+	title := "MD5 Sum"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p MD5) Description() string {
@@ -69,7 +70,8 @@ func (p SHA1) Flags() []Flag {
 }
 
 func (p SHA1) Title() string {
-	return "SHA1 Sum"
+	title := "SHA1 Sum"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p SHA1) Description() string {
@@ -104,7 +106,8 @@ func (p SHA256) Flags() []Flag {
 }
 
 func (p SHA256) Title() string {
-	return "SHA256 Sum"
+	title := "SHA256 Sum"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p SHA256) Description() string {
@@ -139,7 +142,8 @@ func (p SHA512) Flags() []Flag {
 }
 
 func (p SHA512) Title() string {
-	return "SHA512 Sum"
+	title := "SHA512 Sum"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p SHA512) Description() string {
@@ -172,7 +176,8 @@ func (p SHA224) Flags() []Flag {
 }
 
 func (p SHA224) Title() string {
-	return "SHA224 Sum"
+	title := "SHA224 Sum"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p SHA224) Description() string {
@@ -205,7 +210,8 @@ func (p SHA384) Flags() []Flag {
 }
 
 func (p SHA384) Title() string {
-	return "SHA384 Sum"
+	title := "SHA384 Sum"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p SHA384) Description() string {
@@ -256,7 +262,8 @@ func (p Bcrypt) Flags() []Flag {
 }
 
 func (p Bcrypt) Title() string {
-	return "Bcrypt Hash"
+	title := "Bcrypt Hash"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p Bcrypt) Description() string {

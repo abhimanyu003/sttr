@@ -1,6 +1,9 @@
 package processors
 
-import "strings"
+import (
+	"fmt"
+	"strings"
+)
 
 // ROT13Encode convert string to ROT13 encoding.
 type ROT13Encode struct{}
@@ -22,7 +25,8 @@ func (p ROT13Encode) Flags() []Flag {
 }
 
 func (p ROT13Encode) Title() string {
-	return "ROT13 Encode"
+	title := "ROT13 Encode"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p ROT13Encode) Description() string {

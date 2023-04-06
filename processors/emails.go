@@ -1,6 +1,7 @@
 package processors
 
 import (
+	"fmt"
 	"github.com/mcnijman/go-emailaddress"
 	"strings"
 )
@@ -48,7 +49,8 @@ func (p ExtractEmails) Flags() []Flag {
 }
 
 func (p ExtractEmails) Title() string {
-	return "Extract Emails"
+	title := "Extract Emails"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p ExtractEmails) Description() string {

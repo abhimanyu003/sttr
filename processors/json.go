@@ -2,6 +2,7 @@ package processors
 
 import (
 	"encoding/json"
+	"fmt"
 	"strconv"
 	"strings"
 
@@ -69,7 +70,8 @@ func (p FormatJSON) Flags() []Flag {
 }
 
 func (p FormatJSON) Title() string {
-	return "Format JSON"
+	title := "Format JSON"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p FormatJSON) Description() string {
@@ -104,7 +106,8 @@ func (p JSONToYAML) Flags() []Flag {
 }
 
 func (p JSONToYAML) Title() string {
-	return "JSON To YAML"
+	title := "JSON To YAML"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p JSONToYAML) Description() string {
@@ -147,7 +150,8 @@ func (p JSONToMSGPACK) Flags() []Flag {
 }
 
 func (p JSONToMSGPACK) Title() string {
-	return "JSON To MSGPACK"
+	title := "JSON To MSGPACK"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p JSONToMSGPACK) Description() string {
@@ -190,7 +194,8 @@ func (p MSGPACKToJSON) Flags() []Flag {
 }
 
 func (p MSGPACKToJSON) Title() string {
-	return "MSGPACK To JSON"
+	title := "MSGPACK To JSON"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p MSGPACKToJSON) Description() string {
@@ -228,7 +233,8 @@ func (p YAMLToJSON) Flags() []Flag {
 }
 
 func (p YAMLToJSON) Title() string {
-	return "YAML To JSON"
+	title := "YAML To JSON"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p YAMLToJSON) Description() string {
@@ -285,7 +291,8 @@ func (p JSONUnescape) Flags() []Flag {
 }
 
 func (p JSONUnescape) Title() string {
-	return "JSON Unescape"
+	title := "JSON Unescape"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p JSONUnescape) Description() string {
@@ -330,7 +337,8 @@ func (p JSONEscape) Flags() []Flag {
 }
 
 func (p JSONEscape) Title() string {
-	return "JSON Escape"
+	title := "JSON Escape"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
 func (p JSONEscape) Description() string {
