@@ -4,10 +4,10 @@ package cmd
 
 import (
 	"fmt"
-	"io"
 	"os"
 
 	"github.com/abhimanyu003/sttr/processors"
+	"github.com/abhimanyu003/sttr/utils"
 	"github.com/spf13/cobra"
 )
 
@@ -33,10 +33,7 @@ var zeropadCmd = &cobra.Command{
 		var out string
 
 		if len(args) == 0 {
-			in, err = io.ReadAll(cmd.InOrStdin())
-			if err != nil {
-				return err
-			}
+			in = []byte(utils.ReadMultilineInput())
 		} else {
 			if fi, err := os.Stat(args[0]); err == nil && !fi.IsDir() {
 				d, err := os.ReadFile(args[0])
