@@ -16,7 +16,7 @@ func init() {
 }
 
 var urlDecodeCmd = &cobra.Command{
-	Use:     "url-decode",
+	Use:     "url-decode [string]",
 	Short:   "Decode URL entities",
 	Aliases: []string{"url-dec"},
 	Args:    cobra.MaximumNArgs(1),

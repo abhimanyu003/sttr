@@ -16,7 +16,7 @@ func init() {
 }
 
 var countCharsCmd = &cobra.Command{
-	Use:     "count-chars",
+	Use:     "count-chars [string]",
 	Short:   "Find the length of your text (including spaces)",
 	Aliases: []string{},
 	Args:    cobra.MaximumNArgs(1),

@@ -16,7 +16,7 @@ func init() {
 }
 
 var uniqueLinesCmd = &cobra.Command{
-	Use:     "unique-lines",
+	Use:     "unique-lines [string]",
 	Short:   "Unique Lines",
 	Aliases: []string{},
 	Args:    cobra.MaximumNArgs(1),

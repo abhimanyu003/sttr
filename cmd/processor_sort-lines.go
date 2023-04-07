@@ -16,7 +16,7 @@ func init() {
 }
 
 var sortLinesCmd = &cobra.Command{
-	Use:     "sort-lines",
+	Use:     "sort-lines [string]",
 	Short:   "Sort lines alphabetically",
 	Aliases: []string{},
 	Args:    cobra.MaximumNArgs(1),

@@ -16,7 +16,7 @@ func init() {
 }
 
 var htmlDecodeCmd = &cobra.Command{
-	Use:     "html-decode",
+	Use:     "html-decode [string]",
 	Short:   "Unescape your HTML",
 	Aliases: []string{"html-dec", "html-unescape"},
 	Args:    cobra.MaximumNArgs(1),

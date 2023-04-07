@@ -16,7 +16,7 @@ func init() {
 }
 
 var reverseLinesCmd = &cobra.Command{
-	Use:     "reverse-lines",
+	Use:     "reverse-lines [string]",
 	Short:   "Reverse Lines",
 	Aliases: []string{},
 	Args:    cobra.MaximumNArgs(1),

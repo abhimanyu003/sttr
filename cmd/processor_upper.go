@@ -16,7 +16,7 @@ func init() {
 }
 
 var upperCmd = &cobra.Command{
-	Use:     "upper",
+	Use:     "upper [string]",
 	Short:   "Transform your text to UPPER CASE",
 	Aliases: []string{},
 	Args:    cobra.MaximumNArgs(1),

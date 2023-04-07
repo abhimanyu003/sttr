@@ -16,7 +16,7 @@ func init() {
 }
 
 var md5Cmd = &cobra.Command{
-	Use:     "md5",
+	Use:     "md5 [string]",
 	Short:   "Get the MD5 checksum of your text",
 	Aliases: []string{"md5-sum"},
 	Args:    cobra.MaximumNArgs(1),

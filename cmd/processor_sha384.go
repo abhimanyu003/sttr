@@ -16,7 +16,7 @@ func init() {
 }
 
 var sha384Cmd = &cobra.Command{
-	Use:     "sha384",
+	Use:     "sha384 [string]",
 	Short:   "Get the SHA384 checksum of your text",
 	Aliases: []string{"sha384-sum"},
 	Args:    cobra.MaximumNArgs(1),

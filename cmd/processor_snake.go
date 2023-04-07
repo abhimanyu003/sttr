@@ -16,7 +16,7 @@ func init() {
 }
 
 var snakeCmd = &cobra.Command{
-	Use:     "snake",
+	Use:     "snake [string]",
 	Short:   "Transform your text to snake_case",
 	Aliases: []string{},
 	Args:    cobra.MaximumNArgs(1),

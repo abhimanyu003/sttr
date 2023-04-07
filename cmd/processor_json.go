@@ -19,7 +19,7 @@ func init() {
 }
 
 var jsonCmd = &cobra.Command{
-	Use:     "json",
+	Use:     "json [string]",
 	Short:   "Format your text as JSON ( json decode )",
 	Aliases: []string{},
 	Args:    cobra.MaximumNArgs(1),

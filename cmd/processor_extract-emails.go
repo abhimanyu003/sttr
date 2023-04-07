@@ -19,7 +19,7 @@ func init() {
 }
 
 var extractEmailsCmd = &cobra.Command{
-	Use:     "extract-emails",
+	Use:     "extract-emails [string]",
 	Short:   "Extract emails from given text",
 	Aliases: []string{"find-emails", "find-email", "extract-email"},
 	Args:    cobra.MaximumNArgs(1),

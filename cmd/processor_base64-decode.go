@@ -19,7 +19,7 @@ func init() {
 }
 
 var base64DecodeCmd = &cobra.Command{
-	Use:     "base64-decode",
+	Use:     "base64-decode [string]",
 	Short:   "Decode your base64 text",
 	Aliases: []string{"b64-dec", "b64-decode"},
 	Args:    cobra.MaximumNArgs(1),

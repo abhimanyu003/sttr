@@ -16,7 +16,7 @@ func init() {
 }
 
 var hexEncodeCmd = &cobra.Command{
-	Use:     "hex-encode",
+	Use:     "hex-encode [string]",
 	Short:   "Encode your text Hex",
 	Aliases: []string{"hex-enc", "hexadecimal-encode"},
 	Args:    cobra.MaximumNArgs(1),

@@ -19,7 +19,7 @@ func init() {
 }
 
 var removeNewlinesCmd = &cobra.Command{
-	Use:     "remove-newlines",
+	Use:     "remove-newlines [string]",
 	Short:   "Remove all new lines",
 	Aliases: []string{"remove-new-lines", "trim-newlines", "trim-new-lines"},
 	Args:    cobra.MaximumNArgs(1),

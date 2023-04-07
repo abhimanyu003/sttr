@@ -16,7 +16,7 @@ func init() {
 }
 
 var htmlEncodeCmd = &cobra.Command{
-	Use:     "html-encode",
+	Use:     "html-encode [string]",
 	Short:   "Escape your HTML",
 	Aliases: []string{"html-enc", "html-escape"},
 	Args:    cobra.MaximumNArgs(1),

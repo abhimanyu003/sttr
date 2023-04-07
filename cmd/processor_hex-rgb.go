@@ -16,7 +16,7 @@ func init() {
 }
 
 var hexRgbCmd = &cobra.Command{
-	Use:     "hex-rgb",
+	Use:     "hex-rgb [string]",
 	Short:   "Convert a #hex-color code to RGB",
 	Aliases: []string{},
 	Args:    cobra.MaximumNArgs(1),

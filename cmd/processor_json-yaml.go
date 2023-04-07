@@ -16,7 +16,7 @@ func init() {
 }
 
 var jsonYamlCmd = &cobra.Command{
-	Use:     "json-yaml",
+	Use:     "json-yaml [string]",
 	Short:   "Convert JSON to YAML text",
 	Aliases: []string{"json-yml"},
 	Args:    cobra.MaximumNArgs(1),

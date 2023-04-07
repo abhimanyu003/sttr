@@ -129,7 +129,7 @@ func init() {
 }
 
 var {{ .Camel }}Cmd = &cobra.Command{
-	Use:     "{{ .Name }}",
+	Use:     "{{ .Name }} [string]",
 	Short:   "{{ .Desc }}",
 	Aliases: []string{ {{- .Alias | ListAlias -}} },
 	Args:    cobra.MaximumNArgs(1),

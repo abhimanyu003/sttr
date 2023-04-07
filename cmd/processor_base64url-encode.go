@@ -19,7 +19,7 @@ func init() {
 }
 
 var base64UrlEncodeCmd = &cobra.Command{
-	Use:     "base64url-encode",
+	Use:     "base64url-encode [string]",
 	Short:   "Encode your text to Base64 with URL Safe",
 	Aliases: []string{"b64url-enc", "b64url-encode"},
 	Args:    cobra.MaximumNArgs(1),

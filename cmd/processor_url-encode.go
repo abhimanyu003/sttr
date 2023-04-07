@@ -16,7 +16,7 @@ func init() {
 }
 
 var urlEncodeCmd = &cobra.Command{
-	Use:     "url-encode",
+	Use:     "url-encode [string]",
 	Short:   "Encode URL entities",
 	Aliases: []string{"url-enc"},
 	Args:    cobra.MaximumNArgs(1),

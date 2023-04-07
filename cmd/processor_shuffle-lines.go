@@ -16,7 +16,7 @@ func init() {
 }
 
 var shuffleLinesCmd = &cobra.Command{
-	Use:     "shuffle-lines",
+	Use:     "shuffle-lines [string]",
 	Short:   "Shuffle lines randomly",
 	Aliases: []string{},
 	Args:    cobra.MaximumNArgs(1),

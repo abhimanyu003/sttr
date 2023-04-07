@@ -16,7 +16,7 @@ func init() {
 }
 
 var reverseCmd = &cobra.Command{
-	Use:     "reverse",
+	Use:     "reverse [string]",
 	Short:   "Reverse Text ( txeT esreveR )",
 	Aliases: []string{},
 	Args:    cobra.MaximumNArgs(1),

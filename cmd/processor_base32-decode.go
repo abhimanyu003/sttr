@@ -16,7 +16,7 @@ func init() {
 }
 
 var base32DecodeCmd = &cobra.Command{
-	Use:     "base32-decode",
+	Use:     "base32-decode [string]",
 	Short:   "Decode your base32 text",
 	Aliases: []string{"b32-dec", "b32-decode"},
 	Args:    cobra.MaximumNArgs(1),

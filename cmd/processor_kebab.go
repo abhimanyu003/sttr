@@ -16,7 +16,7 @@ func init() {
 }
 
 var kebabCmd = &cobra.Command{
-	Use:     "kebab",
+	Use:     "kebab [string]",
 	Short:   "Transform your text to kebab-case",
 	Aliases: []string{},
 	Args:    cobra.MaximumNArgs(1),

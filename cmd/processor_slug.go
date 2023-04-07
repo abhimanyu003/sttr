@@ -16,7 +16,7 @@ func init() {
 }
 
 var slugCmd = &cobra.Command{
-	Use:     "slug",
+	Use:     "slug [string]",
 	Short:   "Transform your text to slug-case",
 	Aliases: []string{},
 	Args:    cobra.MaximumNArgs(1),

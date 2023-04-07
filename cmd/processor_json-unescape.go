@@ -19,7 +19,7 @@ func init() {
 }
 
 var jsonUnescapeCmd = &cobra.Command{
-	Use:     "json-unescape",
+	Use:     "json-unescape [string]",
 	Short:   "JSON Unescape",
 	Aliases: []string{"json-unesc"},
 	Args:    cobra.MaximumNArgs(1),

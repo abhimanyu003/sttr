@@ -16,7 +16,7 @@ func init() {
 }
 
 var markdownHtmlCmd = &cobra.Command{
-	Use:     "markdown-html",
+	Use:     "markdown-html [string]",
 	Short:   "Convert Markdown to HTML",
 	Aliases: []string{"md-html"},
 	Args:    cobra.MaximumNArgs(1),

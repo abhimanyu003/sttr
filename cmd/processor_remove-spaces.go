@@ -19,7 +19,7 @@ func init() {
 }
 
 var removeSpacesCmd = &cobra.Command{
-	Use:     "remove-spaces",
+	Use:     "remove-spaces [string]",
 	Short:   "Remove all spaces + new lines",
 	Aliases: []string{"remove-space", "trim-spaces", "trim-space"},
 	Args:    cobra.MaximumNArgs(1),

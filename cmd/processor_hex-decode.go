@@ -16,7 +16,7 @@ func init() {
 }
 
 var hexDecodeCmd = &cobra.Command{
-	Use:     "hex-decode",
+	Use:     "hex-decode [string]",
 	Short:   "Convert Hexadecimal to String",
 	Aliases: []string{"hex-dec", "hexadecimal-decode"},
 	Args:    cobra.MaximumNArgs(1),

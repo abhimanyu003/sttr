@@ -16,7 +16,7 @@ func init() {
 }
 
 var extractIpCmd = &cobra.Command{
-	Use:     "extract-ip",
+	Use:     "extract-ip [string]",
 	Short:   "Extract IPv4 and IPv6 from your text",
 	Aliases: []string{"find-ips", "find-ip", "extract-ips"},
 	Args:    cobra.MaximumNArgs(1),

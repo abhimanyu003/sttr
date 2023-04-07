@@ -16,7 +16,7 @@ func init() {
 }
 
 var titleCmd = &cobra.Command{
-	Use:     "title",
+	Use:     "title [string]",
 	Short:   "Transform your text to Title Case",
 	Aliases: []string{},
 	Args:    cobra.MaximumNArgs(1),

@@ -16,7 +16,7 @@ func init() {
 }
 
 var ascii85DecodeCmd = &cobra.Command{
-	Use:     "ascii85-decode",
+	Use:     "ascii85-decode [string]",
 	Short:   "Decode your text to Ascii85 ( Base85 ) text",
 	Aliases: []string{"ascii85-decoding", "base85-decode", "b85-decode"},
 	Args:    cobra.MaximumNArgs(1),

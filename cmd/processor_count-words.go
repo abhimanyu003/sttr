@@ -16,7 +16,7 @@ func init() {
 }
 
 var countWordsCmd = &cobra.Command{
-	Use:     "count-words",
+	Use:     "count-words [string]",
 	Short:   "Count the number of words in your text",
 	Aliases: []string{},
 	Args:    cobra.MaximumNArgs(1),

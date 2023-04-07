@@ -16,7 +16,7 @@ func init() {
 }
 
 var msgpackJsonCmd = &cobra.Command{
-	Use:     "msgpack-json",
+	Use:     "msgpack-json [string]",
 	Short:   "Convert MSGPACK to JSON text",
 	Aliases: []string{},
 	Args:    cobra.MaximumNArgs(1),

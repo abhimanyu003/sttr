@@ -16,7 +16,7 @@ func init() {
 }
 
 var lowerCmd = &cobra.Command{
-	Use:     "lower",
+	Use:     "lower [string]",
 	Short:   "Transform your text to lower case",
 	Aliases: []string{},
 	Args:    cobra.MaximumNArgs(1),

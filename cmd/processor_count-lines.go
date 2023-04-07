@@ -16,7 +16,7 @@ func init() {
 }
 
 var countLinesCmd = &cobra.Command{
-	Use:     "count-lines",
+	Use:     "count-lines [string]",
 	Short:   "Count the number of lines in your text",
 	Aliases: []string{},
 	Args:    cobra.MaximumNArgs(1),

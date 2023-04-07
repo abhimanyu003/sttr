@@ -16,7 +16,7 @@ func init() {
 }
 
 var base32EncodeCmd = &cobra.Command{
-	Use:     "base32-encode",
+	Use:     "base32-encode [string]",
 	Short:   "Encode your text to Base32",
 	Aliases: []string{"b32-enc", "b32-encode"},
 	Args:    cobra.MaximumNArgs(1),

@@ -16,7 +16,7 @@ func init() {
 }
 
 var jsonEscapeCmd = &cobra.Command{
-	Use:     "json-escape",
+	Use:     "json-escape [string]",
 	Short:   "JSON Escape",
 	Aliases: []string{"json-esc"},
 	Args:    cobra.MaximumNArgs(1),

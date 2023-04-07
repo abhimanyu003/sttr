@@ -23,7 +23,7 @@ func init() {
 }
 
 var zeropadCmd = &cobra.Command{
-	Use:     "zeropad",
+	Use:     "zeropad [string]",
 	Short:   "Pad a number with zeros",
 	Aliases: []string{},
 	Args:    cobra.MaximumNArgs(1),

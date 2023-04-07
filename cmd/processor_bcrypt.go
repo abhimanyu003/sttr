@@ -19,7 +19,7 @@ func init() {
 }
 
 var bcryptCmd = &cobra.Command{
-	Use:     "bcrypt",
+	Use:     "bcrypt [string]",
 	Short:   "Get the Bcrypt hash of your text",
 	Aliases: []string{"bcrypt-hash"},
 	Args:    cobra.MaximumNArgs(1),

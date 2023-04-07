@@ -16,7 +16,7 @@ func init() {
 }
 
 var rot13EncodeCmd = &cobra.Command{
-	Use:     "rot13-encode",
+	Use:     "rot13-encode [string]",
 	Short:   "Encode your text to ROT13",
 	Aliases: []string{"rot13", "rot13-enc"},
 	Args:    cobra.MaximumNArgs(1),

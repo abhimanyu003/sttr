@@ -16,7 +16,7 @@ func init() {
 }
 
 var morseEncodeCmd = &cobra.Command{
-	Use:     "morse-encode",
+	Use:     "morse-encode [string]",
 	Short:   "Decode Morse Code to text",
 	Aliases: []string{"morse-enc", "morse-encode", "morse-code-encode", "morse-code-enc"},
 	Args:    cobra.MaximumNArgs(1),
