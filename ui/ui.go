@@ -2,7 +2,9 @@ package ui
 
 import (
 	"fmt"
+	"golang.org/x/term"
 	"log"
+	"os"
 
 	"github.com/abhimanyu003/sttr/processors"
 
@@ -33,11 +35,16 @@ func New(input string) UI {
 }
 
 func (u *UI) Render() {
+	termWidth, _, err := term.GetSize(int(os.Stdout.Fd()))
+	if err != nil || termWidth > maxWidth {
+		termWidth = maxWidth
+	}
 	if u.input == "" {
 		divider := lipgloss.NewStyle().Padding(0, 1).Foreground(borderStyle).Render("•")
 		info := lipgloss.NewStyle().Foreground(specialStyle).Render("[ Enter 2 empty lines to process ]")
 
-		title := lipgloss.NewStyle().Width(maxWidth).
+		title := lipgloss.NewStyle().
+			MaxWidth(termWidth).
 			BorderStyle(lipgloss.DoubleBorder()).
 			BorderTop(true).
 			BorderBottom(true).
@@ -61,7 +68,8 @@ func (u *UI) Render() {
 			data = fmt.Sprintf("error: %s", err.Error())
 		}
 
-		border := lipgloss.NewStyle().Width(maxWidth).
+		border := lipgloss.NewStyle().
+			Width(termWidth).
 			BorderTop(true).
 			BorderStyle(lipgloss.DoubleBorder()).
 			BorderForeground(borderStyle).String()
@@ -99,8 +107,8 @@ func (u *UI) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			return u, tea.Quit
 		}
 	case tea.WindowSizeMsg:
-		top, right, bottom, left := appStyle.GetMargin()
-		u.list.SetSize(msg.Width-left-right, msg.Height-top-bottom)
+		h, w := appStyle.GetFrameSize()
+		u.list.SetSize(msg.Width-h, msg.Height-w)
 	}
 
 	var cmd tea.Cmd
