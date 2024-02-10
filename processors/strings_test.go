@@ -755,7 +755,7 @@ func TestStringToCamel(t *testing.T) {
 		}, {
 			name: "String Uppercase",
 			args: args{data: []byte("THE QUICK BROWN FOX JUMPS OVER A LAZY DOG")},
-			want: "THEQUICKBROWNFOXJUMPSOVERALAZYDOG",
+			want: "TheQuickBrownFoxJumpsOverALazyDog",
 		},
 		{
 			name: "Camel Case Text",
@@ -770,7 +770,7 @@ func TestStringToCamel(t *testing.T) {
 		{
 			name: "Underscore text uppercase",
 			args: args{data: []byte("UNDERSCORE_TEXT_UPPER_CASE")},
-			want: "UNDERSCORETEXTUPPERCASE",
+			want: "UnderscoreTextUpperCase",
 		},
 	}
 	for _, tt := range tests {
