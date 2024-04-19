@@ -30,7 +30,7 @@ func TestCountLines_Command(t *testing.T) {
 		t.Errorf("Description() = %v, want %v", got, test.description)
 	}
 	if got := p.FilterValue(); got != test.filterValue {
-		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+		t.Errorf("FilterValue() = %v, want %v", got, test.filterValue)
 	}
 	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
 		t.Errorf("Flags() = %v, want %v", got, test.flags)
@@ -117,7 +117,7 @@ func TestShuffleLines_Command(t *testing.T) {
 		t.Errorf("Description() = %v, want %v", got, test.description)
 	}
 	if got := p.FilterValue(); got != test.filterValue {
-		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+		t.Errorf("FilterValue() = %v, want %v", got, test.filterValue)
 	}
 	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
 		t.Errorf("Flags() = %v, want %v", got, test.flags)
@@ -189,7 +189,7 @@ func TestSortLines_Command(t *testing.T) {
 		t.Errorf("Description() = %v, want %v", got, test.description)
 	}
 	if got := p.FilterValue(); got != test.filterValue {
-		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+		t.Errorf("FilterValue() = %v, want %v", got, test.filterValue)
 	}
 	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
 		t.Errorf("Flags() = %v, want %v", got, test.flags)
@@ -258,7 +258,7 @@ func TestUniqueLines_Command(t *testing.T) {
 		t.Errorf("Description() = %v, want %v", got, test.description)
 	}
 	if got := p.FilterValue(); got != test.filterValue {
-		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+		t.Errorf("FilterValue() = %v, want %v", got, test.filterValue)
 	}
 	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
 		t.Errorf("Flags() = %v, want %v", got, test.flags)
@@ -345,7 +345,7 @@ func TestReverseLines_Command(t *testing.T) {
 		t.Errorf("Description() = %v, want %v", got, test.description)
 	}
 	if got := p.FilterValue(); got != test.filterValue {
-		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+		t.Errorf("FilterValue() = %v, want %v", got, test.filterValue)
 	}
 	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
 		t.Errorf("Flags() = %v, want %v", got, test.flags)

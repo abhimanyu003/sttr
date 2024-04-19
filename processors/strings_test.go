@@ -29,7 +29,7 @@ func TestLower_Command(t *testing.T) {
 		t.Errorf("Description() = %v, want %v", got, test.description)
 	}
 	if got := p.FilterValue(); got != test.filterValue {
-		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+		t.Errorf("FilterValue() = %v, want %v", got, test.filterValue)
 	}
 	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
 		t.Errorf("Flags() = %v, want %v", got, test.flags)
@@ -101,7 +101,7 @@ func TestUpper_Command(t *testing.T) {
 		t.Errorf("Description() = %v, want %v", got, test.description)
 	}
 	if got := p.FilterValue(); got != test.filterValue {
-		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+		t.Errorf("FilterValue() = %v, want %v", got, test.filterValue)
 	}
 	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
 		t.Errorf("Flags() = %v, want %v", got, test.flags)
@@ -173,7 +173,7 @@ func TestCountCharacters_Command(t *testing.T) {
 		t.Errorf("Description() = %v, want %v", got, test.description)
 	}
 	if got := p.FilterValue(); got != test.filterValue {
-		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+		t.Errorf("FilterValue() = %v, want %v", got, test.filterValue)
 	}
 	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
 		t.Errorf("Flags() = %v, want %v", got, test.flags)
@@ -250,7 +250,7 @@ func TestTitle_Command(t *testing.T) {
 		t.Errorf("Description() = %v, want %v", got, test.description)
 	}
 	if got := p.FilterValue(); got != test.filterValue {
-		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+		t.Errorf("FilterValue() = %v, want %v", got, test.filterValue)
 	}
 	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
 		t.Errorf("Flags() = %v, want %v", got, test.flags)
@@ -329,7 +329,7 @@ func TestSnake_Command(t *testing.T) {
 		t.Errorf("Description() = %v, want %v", got, test.description)
 	}
 	if got := p.FilterValue(); got != test.filterValue {
-		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+		t.Errorf("FilterValue() = %v, want %v", got, test.filterValue)
 	}
 	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
 		t.Errorf("Flags() = %v, want %v", got, test.flags)
@@ -408,7 +408,7 @@ func TestKebab_Command(t *testing.T) {
 		t.Errorf("Description() = %v, want %v", got, test.description)
 	}
 	if got := p.FilterValue(); got != test.filterValue {
-		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+		t.Errorf("FilterValue() = %v, want %v", got, test.filterValue)
 	}
 	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
 		t.Errorf("Flags() = %v, want %v", got, test.flags)
@@ -487,7 +487,7 @@ func TestSlug_Command(t *testing.T) {
 		t.Errorf("Description() = %v, want %v", got, test.description)
 	}
 	if got := p.FilterValue(); got != test.filterValue {
-		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+		t.Errorf("FilterValue() = %v, want %v", got, test.filterValue)
 	}
 	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
 		t.Errorf("Flags() = %v, want %v", got, test.flags)
@@ -566,7 +566,7 @@ func TestReverse_Command(t *testing.T) {
 		t.Errorf("Description() = %v, want %v", got, test.description)
 	}
 	if got := p.FilterValue(); got != test.filterValue {
-		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+		t.Errorf("FilterValue() = %v, want %v", got, test.filterValue)
 	}
 	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
 		t.Errorf("Flags() = %v, want %v", got, test.flags)
@@ -650,7 +650,7 @@ func TestCountWords_Command(t *testing.T) {
 		t.Errorf("Description() = %v, want %v", got, test.description)
 	}
 	if got := p.FilterValue(); got != test.filterValue {
-		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+		t.Errorf("FilterValue() = %v, want %v", got, test.filterValue)
 	}
 	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
 		t.Errorf("Flags() = %v, want %v", got, test.flags)
@@ -724,7 +724,7 @@ func TestCamel_Command(t *testing.T) {
 		t.Errorf("Description() = %v, want %v", got, test.description)
 	}
 	if got := p.FilterValue(); got != test.filterValue {
-		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+		t.Errorf("FilterValue() = %v, want %v", got, test.filterValue)
 	}
 	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
 		t.Errorf("Flags() = %v, want %v", got, test.flags)
@@ -777,6 +777,125 @@ func TestStringToCamel(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			p := Camel{}
 			got, err := p.Transform(tt.args.data, tt.args.in1...)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("Transform() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			if got != tt.want {
+				t.Errorf("Transform() got = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestEscapeQuotes_Command(t *testing.T) {
+	test := struct {
+		alias       []string
+		description string
+		filterValue string
+		flags       []Flag
+		name        string
+		title       string
+	}{
+		alias:       []string{"esc-quotes", "escape-quotes"},
+		description: "Escapes single and double quotes by default",
+		filterValue: "Escape Quotes (escape-quotes)",
+		flags: []Flag{
+			{
+				Name:  "double-quote",
+				Short: "d",
+				Desc:  "Escape double quote",
+				Value: true,
+				Type:  FlagBool,
+			},
+			{
+				Name:  "single-quote",
+				Short: "s",
+				Desc:  "Escape single quote",
+				Value: true,
+				Type:  FlagBool,
+			},
+		},
+		name:  "escape-quotes",
+		title: "Escape Quotes (escape-quotes)",
+	}
+	p := EscapeQuotes{}
+	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
+		t.Errorf("Alias() = %v, want %v", got, test.alias)
+	}
+	if got := p.Description(); got != test.description {
+		t.Errorf("Description() = %v, want %v", got, test.description)
+	}
+	if got := p.FilterValue(); got != test.filterValue {
+		t.Errorf("FilterValue() = %v, want %v", got, test.filterValue)
+	}
+	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
+		t.Errorf("Flags() = %v, want %v", got, test.flags)
+	}
+	if got := p.Name(); got != test.name {
+		t.Errorf("Name() = %v, want %v", got, test.name)
+	}
+	if got := p.Title(); got != test.title {
+		t.Errorf("Title() = %v, want %v", got, test.title)
+	}
+}
+
+func TestEscapeQuotes(t *testing.T) {
+	type args struct {
+		data []byte
+		f    []Flag
+	}
+	tests := []struct {
+		name    string
+		args    args
+		want    string
+		wantErr bool
+	}{
+		{
+			name: "Normal String double quote",
+			args: args{data: []byte("this is great \"test\"")},
+			want: "this is great \\\"test\\\"",
+		},
+		{
+			name: "Normal String single quote",
+			args: args{data: []byte("this is great 'test'")},
+			want: "this is great \\'test\\'",
+		},
+		{
+			name: "Both single and double quote",
+			args: args{data: []byte("this is 'great' \"test\"")},
+			want: "this is \\'great\\' \\\"test\\\"",
+		},
+		{
+			name: "Normal String double quote",
+			args: args{data: []byte("this is great \"test\"")},
+			want: "this is great \\\"test\\\"",
+		},
+		{
+			name: "Normal String double quote",
+			args: args{data: []byte("this is great \"test\""), f: []Flag{{Short: "d", Value: true}}},
+			want: "this is great \\\"test\\\"",
+		},
+		{
+			name: "Normal String single quote",
+			args: args{data: []byte("this is great 'test'"), f: []Flag{{Short: "s", Value: true}}},
+			want: "this is great \\'test\\'",
+		},
+		{
+			name: "Both single and double quote",
+			args: args{data: []byte("this is 'great' \"test\""), f: []Flag{{Short: "d", Value: true}, {Short: "s", Value: true}}},
+			want: "this is \\'great\\' \\\"test\\\"",
+		},
+		{
+			name: "String with no quote",
+			args: args{data: []byte("this is great test")},
+			want: "this is great test",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			p := EscapeQuotes{}
+			got, err := p.Transform(tt.args.data, tt.args.f...)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Transform() error = %v, wantErr %v", err, tt.wantErr)
 				return

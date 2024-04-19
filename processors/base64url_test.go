@@ -29,7 +29,7 @@ func TestBase64URLEncode_Command(t *testing.T) {
 		t.Errorf("Description() = %v, want %v", got, test.description)
 	}
 	if got := p.FilterValue(); got != test.filterValue {
-		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+		t.Errorf("FilterValue() = %v, want %v", got, test.filterValue)
 	}
 	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
 		t.Errorf("Flags() = %v, want %v", got, test.flags)
@@ -127,7 +127,7 @@ func TestBase64URLDecode_Command(t *testing.T) {
 		t.Errorf("Description() = %v, want %v", got, test.description)
 	}
 	if got := p.FilterValue(); got != test.filterValue {
-		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+		t.Errorf("FilterValue() = %v, want %v", got, test.filterValue)
 	}
 	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
 		t.Errorf("Flags() = %v, want %v", got, test.flags)

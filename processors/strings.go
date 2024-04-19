@@ -345,3 +345,75 @@ func (p Reverse) Description() string {
 func (p Reverse) FilterValue() string {
 	return p.Title()
 }
+
+// EscapeQuotes escape quotes from a given string
+// Example: "test" to \"tset\".
+type EscapeQuotes struct{}
+
+func (p EscapeQuotes) Name() string {
+	return "escape-quotes"
+}
+
+func (p EscapeQuotes) Alias() []string {
+	return []string{"esc-quotes", "escape-quotes"}
+}
+
+func (p EscapeQuotes) Transform(data []byte, f ...Flag) (string, error) {
+	result := ""
+	for _, v := range data {
+		for _, flag := range f {
+			switch flag.Short {
+			case "d":
+				if v == '"' {
+					result += "\\"
+				}
+			case "s":
+				if v == '\'' {
+					result += "\\"
+				}
+			}
+		}
+		if len(f) == 0 {
+			if v == '"' {
+				result += "\\"
+			}
+			if v == '\'' {
+				result += "\\"
+			}
+		}
+		result += string(v)
+	}
+	return result, nil
+}
+
+func (p EscapeQuotes) Flags() []Flag {
+	return []Flag{
+		{
+			Name:  "double-quote",
+			Short: "d",
+			Desc:  "Escape double quote",
+			Value: true,
+			Type:  FlagBool,
+		},
+		{
+			Name:  "single-quote",
+			Short: "s",
+			Desc:  "Escape single quote",
+			Value: true,
+			Type:  FlagBool,
+		},
+	}
+}
+
+func (p EscapeQuotes) Title() string {
+	title := "Escape Quotes"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
+}
+
+func (p EscapeQuotes) Description() string {
+	return "Escapes single and double quotes by default"
+}
+
+func (p EscapeQuotes) FilterValue() string {
+	return p.Title()
+}

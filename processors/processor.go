@@ -22,6 +22,7 @@ var List = []list.Item{
 	CountCharacters{},
 	CountLines{},
 	CountWords{},
+	EscapeQuotes{},
 	ExtractEmails{},
 	ExtractIPs{},
 	FormatJSON{},

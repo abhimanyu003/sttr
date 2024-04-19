@@ -31,7 +31,7 @@ func TestMD5Encode_Command(t *testing.T) {
 		t.Errorf("Description() = %v, want %v", got, test.description)
 	}
 	if got := p.FilterValue(); got != test.filterValue {
-		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+		t.Errorf("FilterValue() = %v, want %v", got, test.filterValue)
 	}
 	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
 		t.Errorf("Flags() = %v, want %v", got, test.flags)
@@ -136,7 +136,7 @@ func TestSHA1Encode_Command(t *testing.T) {
 		t.Errorf("Description() = %v, want %v", got, test.description)
 	}
 	if got := p.FilterValue(); got != test.filterValue {
-		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+		t.Errorf("FilterValue() = %v, want %v", got, test.filterValue)
 	}
 	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
 		t.Errorf("Flags() = %v, want %v", got, test.flags)
@@ -217,7 +217,7 @@ func TestSHA256Encode_Command(t *testing.T) {
 		t.Errorf("Description() = %v, want %v", got, test.description)
 	}
 	if got := p.FilterValue(); got != test.filterValue {
-		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+		t.Errorf("FilterValue() = %v, want %v", got, test.filterValue)
 	}
 	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
 		t.Errorf("Flags() = %v, want %v", got, test.flags)
@@ -298,7 +298,7 @@ func TestSHA224Encode_Command(t *testing.T) {
 		t.Errorf("Description() = %v, want %v", got, test.description)
 	}
 	if got := p.FilterValue(); got != test.filterValue {
-		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+		t.Errorf("FilterValue() = %v, want %v", got, test.filterValue)
 	}
 	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
 		t.Errorf("Flags() = %v, want %v", got, test.flags)
@@ -379,7 +379,7 @@ func TestSHA384Encode_Command(t *testing.T) {
 		t.Errorf("Description() = %v, want %v", got, test.description)
 	}
 	if got := p.FilterValue(); got != test.filterValue {
-		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+		t.Errorf("FilterValue() = %v, want %v", got, test.filterValue)
 	}
 	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
 		t.Errorf("Flags() = %v, want %v", got, test.flags)
@@ -460,7 +460,7 @@ func TestSHA512Encode_Command(t *testing.T) {
 		t.Errorf("Description() = %v, want %v", got, test.description)
 	}
 	if got := p.FilterValue(); got != test.filterValue {
-		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+		t.Errorf("FilterValue() = %v, want %v", got, test.filterValue)
 	}
 	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
 		t.Errorf("Flags() = %v, want %v", got, test.flags)
@@ -549,7 +549,7 @@ func TestBcrypt_Command(t *testing.T) {
 		t.Errorf("Description() = %v, want %v", got, test.description)
 	}
 	if got := p.FilterValue(); got != test.filterValue {
-		t.Errorf("Flags() = %v, want %v", got, test.filterValue)
+		t.Errorf("FilterValue() = %v, want %v", got, test.filterValue)
 	}
 	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
 		t.Errorf("Flags() = %v, want %v", got, test.flags)
