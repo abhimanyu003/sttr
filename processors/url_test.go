@@ -116,6 +116,85 @@ func TestURLDecode_Command(t *testing.T) {
 	}
 }
 
+func TestExtractURL_Command(t *testing.T) {
+	test := struct {
+		alias       []string
+		description string
+		filterValue string
+		flags       []Flag
+		name        string
+		title       string
+	}{
+		alias:       []string{"url-ext", "extract-urls", "ext-url"},
+		description: "Extract URLs from text",
+		filterValue: "Extract URLs (extract-url)",
+		flags:       nil,
+		name:        "extract-url",
+		title:       "Extract URLs (extract-url)",
+	}
+	p := ExtractURLs{}
+	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
+		t.Errorf("Alias() = %v, want %v", got, test.alias)
+	}
+	if got := p.Description(); got != test.description {
+		t.Errorf("Description() = %v, want %v", got, test.description)
+	}
+	if got := p.FilterValue(); got != test.filterValue {
+		t.Errorf("FilterValue() = %v, want %v", got, test.filterValue)
+	}
+	if got := p.Flags(); !reflect.DeepEqual(got, test.flags) {
+		t.Errorf("Flags() = %v, want %v", got, test.flags)
+	}
+	if got := p.Name(); got != test.name {
+		t.Errorf("Name() = %v, want %v", got, test.name)
+	}
+	if got := p.Title(); got != test.title {
+		t.Errorf("Title() = %v, want %v", got, test.title)
+	}
+}
+
+func TestExtractURL_Transform(t *testing.T) {
+	type args struct {
+		data []byte
+		in1  []Flag
+	}
+	tests := []struct {
+		name    string
+		args    args
+		want    string
+		wantErr bool
+	}{
+		{
+			name: "Should extract http://foo.com/",
+			args: args{data: []byte("must have scheme: http://foo.com/.")},
+			want: "http://foo.com/",
+		},
+		{
+			name: "Should extract foo.com",
+			args: args{data: []byte("must have scheme: foo.com/.")},
+			want: "foo.com/",
+		},
+		{
+			name: "multiple urls foo.com example.com",
+			args: args{data: []byte("multiple urls foo.com example.com")},
+			want: "foo.com\nexample.com",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			p := ExtractURLs{}
+			got, err := p.Transform(tt.args.data, tt.args.in1...)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("Transform() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			if got != tt.want {
+				t.Errorf("Transform() got = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
 func TestURLDecode_Transform(t *testing.T) {
 	type args struct {
 		data []byte

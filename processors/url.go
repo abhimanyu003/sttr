@@ -2,7 +2,9 @@ package processors
 
 import (
 	"fmt"
+	"mvdan.cc/xurls/v2"
 	"net/url"
+	"strings"
 )
 
 // URLEncode encode url string.
@@ -67,5 +69,48 @@ func (p URLDecode) Description() string {
 }
 
 func (p URLDecode) FilterValue() string {
+	return p.Title()
+}
+
+// ExtractURLs decode url string.
+type ExtractURLs struct{}
+
+func (p ExtractURLs) Name() string {
+	return "extract-url"
+}
+
+func (p ExtractURLs) Alias() []string {
+	return []string{"url-ext", "extract-urls", "ext-url"}
+}
+
+func (p ExtractURLs) Transform(data []byte, _ ...Flag) (string, error) {
+	rxRelaxed := xurls.Relaxed()
+	urls := rxRelaxed.FindAllString(string(data), -1)
+
+	var output string
+
+	for _, u := range urls {
+		output = output + u + "\n"
+	}
+
+	output = strings.TrimSuffix(output, "\n")
+
+	return output, nil
+}
+
+func (p ExtractURLs) Flags() []Flag {
+	return nil
+}
+
+func (p ExtractURLs) Title() string {
+	title := "Extract URLs"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
+}
+
+func (p ExtractURLs) Description() string {
+	return "Extract URLs from text"
+}
+
+func (p ExtractURLs) FilterValue() string {
 	return p.Title()
 }

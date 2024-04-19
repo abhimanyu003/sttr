@@ -24,6 +24,7 @@ var List = []list.Item{
 	CountWords{},
 	EscapeQuotes{},
 	ExtractEmails{},
+	ExtractURLs{},
 	ExtractIPs{},
 	FormatJSON{},
 	HexDecode{},
