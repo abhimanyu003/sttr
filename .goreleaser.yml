@@ -37,7 +37,7 @@ brews:
     commit_author:
       name: abhimanyu003
       email: abhimanyusharma003@gmail.com
-    folder: Formula
+    directory: Formula
     install: |-
       bin.install "sttr"
     test: |
