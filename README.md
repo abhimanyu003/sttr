@@ -236,9 +236,11 @@ echo "Hello World" | sttr base64-encode | sttr md5
 
 - [x] **extract-emails** - Extract emails from given text
 - [x] **extract-ip** - Extract IPv4 and IPv6 from your text
+- [x] **extract-urls** - Extract URls your text ( we don't do ping check )
 
 #### Other
 
+- [x] **escape-quotes** - escape single and double quotes from your text
 - [x] **completion** - generate the autocompletion script for the specified shell
 - [x] **interactive** - Use sttr in interactive mode
 - [x] **version** - Print the version of sttr
