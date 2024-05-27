@@ -158,7 +158,7 @@ func (p MorseCodeDecode) Name() string {
 }
 
 func (p MorseCodeDecode) Alias() []string {
-	return []string{"morse-enc", "morse-encode", "morse-code-encode", "morse-code-enc"}
+	return []string{"morse-dec", "morse-decode", "morse-code-decode", "morse-code-dec"}
 }
 
 func (p MorseCodeDecode) Transform(data []byte, _ ...Flag) (string, error) {
