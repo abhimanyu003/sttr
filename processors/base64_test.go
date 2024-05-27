@@ -57,15 +57,18 @@ func TestBase64Encode_Transform(t *testing.T) {
 			name: "String",
 			args: args{data: []byte("the quick brown fox jumps over a lazy dog")},
 			want: "dGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIGEgbGF6eSBkb2c=",
-		}, {
+		},
+		{
 			name: "Emoji",
 			args: args{data: []byte("😃😇🙃🙂😉😌😙😗🇮🇳")},
 			want: "8J+Yg/CfmIfwn5mD8J+ZgvCfmInwn5iM8J+YmfCfmJfwn4eu8J+Hsw==",
-		}, {
+		},
+		{
 			name: "Multi line string",
 			args: args{data: []byte("123345\nabcd\n456\n123\nabc\n567\n7890")},
 			want: "MTIzMzQ1CmFiY2QKNDU2CjEyMwphYmMKNTY3Cjc4OTA=",
-		}, {
+		},
+		{
 			name: "Test For baser64 standard Encoding",
 			args: args{data: []byte("�")},
 			want: "77+9",
@@ -74,15 +77,18 @@ func TestBase64Encode_Transform(t *testing.T) {
 			name: "String",
 			args: args{data: []byte("the quick brown fox jumps over a lazy dog"), in1: []Flag{{Short: "r", Value: true}}},
 			want: "dGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIGEgbGF6eSBkb2c",
-		}, {
+		},
+		{
 			name: "Emoji",
 			args: args{data: []byte("😃😇🙃🙂😉😌😙😗🇮🇳"), in1: []Flag{{Short: "r", Value: true}}},
 			want: "8J+Yg/CfmIfwn5mD8J+ZgvCfmInwn5iM8J+YmfCfmJfwn4eu8J+Hsw",
-		}, {
+		},
+		{
 			name: "Multi line string",
 			args: args{data: []byte("123345\nabcd\n456\n123\nabc\n567\n7890"), in1: []Flag{{Short: "r", Value: true}}},
 			want: "MTIzMzQ1CmFiY2QKNDU2CjEyMwphYmMKNTY3Cjc4OTA",
-		}, {
+		},
+		{
 			name: "Test For baser64 standard Encoding",
 			args: args{data: []byte("�"), in1: []Flag{{Short: "r", Value: true}}},
 			want: "77+9",
@@ -113,7 +119,7 @@ func TestBase64Decode_Command(t *testing.T) {
 		title       string
 	}{
 		alias:       []string{"b64-dec", "b64-decode"},
-		description: "Decode your base64 text",
+		description: "Decode your Base64 text",
 		filterValue: "Base64 Decode (base64-decode)",
 		flags:       []Flag{base64RawFlag},
 		name:        "base64-decode",
@@ -155,11 +161,13 @@ func TestBase64Decode_Transform(t *testing.T) {
 			name: "String",
 			args: args{data: []byte("dGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIGEgbGF6eSBkb2c=")},
 			want: "the quick brown fox jumps over a lazy dog",
-		}, {
+		},
+		{
 			name: "Emoji",
 			args: args{data: []byte("8J+Yg/CfmIfwn5mD8J+ZgvCfmInwn5iM8J+YmfCfmJfwn4eu8J+Hsw==")},
 			want: "😃😇🙃🙂😉😌😙😗🇮🇳",
-		}, {
+		},
+		{
 			name: "Multi line string",
 			args: args{data: []byte("MTIzMzQ1CmFiY2QKNDU2CjEyMwphYmMKNTY3Cjc4OTA=")},
 			want: "123345\nabcd\n456\n123\nabc\n567\n7890",
@@ -173,11 +181,13 @@ func TestBase64Decode_Transform(t *testing.T) {
 			name: "String",
 			args: args{data: []byte("dGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIGEgbGF6eSBkb2c"), in1: []Flag{{Short: "r", Value: true}}},
 			want: "the quick brown fox jumps over a lazy dog",
-		}, {
+		},
+		{
 			name: "Emoji",
 			args: args{data: []byte("8J+Yg/CfmIfwn5mD8J+ZgvCfmInwn5iM8J+YmfCfmJfwn4eu8J+Hsw"), in1: []Flag{{Short: "r", Value: true}}},
 			want: "😃😇🙃🙂😉😌😙😗🇮🇳",
-		}, {
+		},
+		{
 			name: "Multi line string",
 			args: args{data: []byte("MTIzMzQ1CmFiY2QKNDU2CjEyMwphYmMKNTY3Cjc4OTA"), in1: []Flag{{Short: "r", Value: true}}},
 			want: "123345\nabcd\n456\n123\nabc\n567\n7890",

@@ -5,6 +5,7 @@ import (
 	"html"
 )
 
+// HTMLEncode escapes string to HTML
 type HTMLEncode struct{}
 
 func (p HTMLEncode) Name() string {
@@ -36,6 +37,7 @@ func (p HTMLEncode) FilterValue() string {
 	return p.Title()
 }
 
+// HTMLEncode unescapes HTML to string
 type HTMLDecode struct{}
 
 func (p HTMLDecode) Name() string {

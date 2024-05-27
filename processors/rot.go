@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-// ROT13Encode convert string to ROT13 encoding.
+// ROT13Encode converts string to ROT13 encoding.
 type ROT13Encode struct{}
 
 func (p ROT13Encode) Name() string {

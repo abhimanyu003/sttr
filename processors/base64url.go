@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-// Base64URLEncode encode string to base64.
+// Base64URLEncode encodes plain text to Base64 URL string.
 type Base64URLEncode struct{}
 
 func (p Base64URLEncode) Name() string {
@@ -40,7 +40,7 @@ func (p Base64URLEncode) FilterValue() string {
 	return p.Title()
 }
 
-// Base64URLDecode decode string from base64 to plain text.
+// Base64URLDecode decodes Base64 URL string to plain text.
 type Base64URLDecode struct{}
 
 func (p Base64URLDecode) Name() string {
@@ -72,7 +72,7 @@ func (p Base64URLDecode) Title() string {
 }
 
 func (p Base64URLDecode) Description() string {
-	return "Decode your base64 text with URL Safe"
+	return "Decode your Base64 text with URL Safe"
 }
 
 func (p Base64URLDecode) FilterValue() string {

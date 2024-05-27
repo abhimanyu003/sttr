@@ -26,7 +26,7 @@ func checkBase64RawFlag(f []Flag) bool {
 	return raw
 }
 
-// Base64Encode encode string to base64.
+// Base64Encode encodes plain text to Base64 string.
 type Base64Encode struct{}
 
 func (p Base64Encode) Name() string {
@@ -61,7 +61,7 @@ func (p Base64Encode) FilterValue() string {
 	return p.Title()
 }
 
-// Base64Decode decode string from base64 to plain text.
+// Base64Decode decodes string from Base64 string to plain text.
 type Base64Decode struct{}
 
 func (p Base64Decode) Name() string {
@@ -93,7 +93,7 @@ func (p Base64Decode) Title() string {
 }
 
 func (p Base64Decode) Description() string {
-	return "Decode your base64 text"
+	return "Decode your Base64 text"
 }
 
 func (p Base64Decode) FilterValue() string {

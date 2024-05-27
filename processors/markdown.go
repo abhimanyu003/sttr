@@ -7,7 +7,7 @@ import (
 	"github.com/yuin/goldmark"
 )
 
-// Markdown convert markdown to HTML.
+// Markdown converts Markdown to HTML.
 type Markdown struct{}
 
 func (p Markdown) Name() string {

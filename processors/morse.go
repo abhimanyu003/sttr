@@ -95,7 +95,7 @@ var moreCodeMap = map[string]string{
 	"ๆ": "10111", "ฯ": "11010",
 }
 
-// Base62Encoding encode string to base64.
+// MorseCodeEncode encodes string to Morse Code.
 type MorseCodeEncode struct{}
 
 func (p MorseCodeEncode) Name() string {
@@ -150,6 +150,7 @@ func (p MorseCodeEncode) FilterValue() string {
 	return p.Title()
 }
 
+// MorseCodeDecode decodes Morse Code to string
 type MorseCodeDecode struct{}
 
 func (p MorseCodeDecode) Name() string {

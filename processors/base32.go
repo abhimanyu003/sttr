@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-// Base32Encoding encode string to base64.
+// Base32Encoding encodes plain text to Base32 string.
 type Base32Encoding struct{}
 
 func (p Base32Encoding) Name() string {
@@ -37,7 +37,7 @@ func (p Base32Encoding) FilterValue() string {
 	return p.Title()
 }
 
-// Base32Decode decode string from base64 to plain text.
+// Base32Decode decodes string from Base32 string to plain text.
 type Base32Decode struct{}
 
 func (p Base32Decode) Name() string {

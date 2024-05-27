@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-// CountLines count number of words in string.
+// CountLines counts number of words in string.
 // Example: "line 1\n line 2" = 2.
 type CountLines struct{}
 
@@ -47,7 +47,7 @@ func (p CountLines) FilterValue() string {
 	return p.Title()
 }
 
-// SortLines sort given lines, it's not a natural sort.
+// SortLines sorts given lines, it's not a natural sort.
 // Example: 2\n 1\n -> 1\n 2\n.
 type SortLines struct{}
 
@@ -82,7 +82,7 @@ func (p SortLines) FilterValue() string {
 	return p.Title()
 }
 
-// ShuffleLines sort given lines, in random order.
+// ShuffleLines sorts given lines, in random order.
 type ShuffleLines struct{}
 
 func (p ShuffleLines) Name() string {
@@ -124,7 +124,7 @@ func (p ShuffleLines) FilterValue() string {
 	return p.Title()
 }
 
-// UniqueLines sort given lines, in random order.
+// UniqueLines sorts given lines, in random order.
 type UniqueLines struct{}
 
 func (p UniqueLines) Name() string {
@@ -186,7 +186,7 @@ func (p UniqueLines) FilterValue() string {
 	return p.Title()
 }
 
-// ReverseLines sort given lines, in random order.
+// ReverseLines sorts given lines, in random order.
 type ReverseLines struct{}
 
 func (p ReverseLines) Name() string {

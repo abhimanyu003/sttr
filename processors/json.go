@@ -11,7 +11,7 @@ import (
 	"gitlab.com/abhimanyusharma003/go-ordered-json"
 )
 
-// FormatJSON format given string to a JSON with Indent.
+// FormatJSON formats given string to a JSON with Indent.
 type FormatJSON struct{}
 
 func (p FormatJSON) Name() string {
@@ -82,7 +82,7 @@ func (p FormatJSON) FilterValue() string {
 	return p.Title()
 }
 
-// JSONToYAML convert JSON to YAML string.
+// JSONToYAML converts JSON to YAML string.
 type JSONToYAML struct{}
 
 func (p JSONToYAML) Name() string {
@@ -106,7 +106,7 @@ func (p JSONToYAML) Flags() []Flag {
 }
 
 func (p JSONToYAML) Title() string {
-	title := "JSON To YAML"
+	title := "JSON to YAML"
 	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
@@ -118,7 +118,7 @@ func (p JSONToYAML) FilterValue() string {
 	return p.Title()
 }
 
-// JSONToMSGPACK convert JSON to MSGPACK string.
+// JSONToMSGPACK converts JSON to MSGPACK string.
 type JSONToMSGPACK struct{}
 
 func (p JSONToMSGPACK) Name() string {
@@ -162,7 +162,7 @@ func (p JSONToMSGPACK) FilterValue() string {
 	return p.Title()
 }
 
-// MSGPACKToJSON convert MSGPACK to JSON string.
+// MSGPACKToJSON converts MSGPACK to JSON string.
 type MSGPACKToJSON struct{}
 
 func (p MSGPACKToJSON) Name() string {
@@ -194,7 +194,7 @@ func (p MSGPACKToJSON) Flags() []Flag {
 }
 
 func (p MSGPACKToJSON) Title() string {
-	title := "MSGPACK To JSON"
+	title := "MSGPACK to JSON"
 	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
@@ -206,7 +206,7 @@ func (p MSGPACKToJSON) FilterValue() string {
 	return p.Title()
 }
 
-// YAMLToJSON convert YAML to JSON string with formatted output.
+// YAMLToJSON converts YAML to JSON string with formatted output.
 type YAMLToJSON struct{}
 
 func (p YAMLToJSON) Name() string {
@@ -245,7 +245,7 @@ func (p YAMLToJSON) FilterValue() string {
 	return p.Title()
 }
 
-// JSONUnescape unescape given string to a JSON with Indent.
+// JSONUnescape unescapes given string to a JSON with Indent.
 type JSONUnescape struct{}
 
 func (p JSONUnescape) Name() string {
@@ -303,7 +303,7 @@ func (p JSONUnescape) FilterValue() string {
 	return p.Title()
 }
 
-// JSONEscape unescape given string to a JSON with Indent.
+// JSONEscape escape given string to a JSON with Indent.
 type JSONEscape struct{}
 
 func (p JSONEscape) Name() string {
