@@ -247,6 +247,15 @@ echo "Hello World" | sttr base64-encode | sttr md5
 - [x] **zeropad** - Pad a number with zeros
 - [x] **and adding more....**
 
+# Featured On
+
+These are the few places where `sttr` got featured, many thanks to everyone. 
+If you have talked about `sttr` in  your blog/video feel to add that to the list.
+
+* [Youtube: The Giants of Open Source - DevOps Paradox](https://youtu.be/4nFRKbY_HVE?t=2529?ref=abhimanyu003/sttr)
+* [Terminal Trove - Tool of the Week](https://terminaltrove.com/sttr/?ref=abhimanyu003/sttr)
+* [nixCraft](https://www.cyberciti.biz/open-source/sttr-awesome-linux-unix-command-tool-for-transformation-string/?ref=abhimanyu003/sttr)
+
 # Contribution
 
 This project welcomes your PR and issues. For example, refactoring, adding features, correcting English, etc.
