@@ -412,7 +412,7 @@ func TestJSONUnescape_Transform(t *testing.T) {
 		},
 		{
 			name:    "Should return error on invalid JSON",
-			args:    args{data: []byte(`{\n  \"name\: \"name is mising quote\"\n}`)},
+			args:    args{data: []byte(`{\n  \"name\: \"name is missing quote\"\n}`)},
 			want:    ``,
 			wantErr: true,
 		},
@@ -529,7 +529,7 @@ func TestJSONEscape_Transform(t *testing.T) {
 		},
 		{
 			name:    "Should return error on invalid JSON",
-			args:    args{data: []byte(`{\n  \"name\: \"name is mising quote\"\n}`)},
+			args:    args{data: []byte(`{\n  \"name\: \"name is missing quote\"\n}`)},
 			want:    ``,
 			wantErr: true,
 		},
