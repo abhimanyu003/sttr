@@ -10,7 +10,7 @@
 
 `sttr` is command line software that allows you to quickly run various transformation operations on the string.
 
-```go
+```shell
 // With input prompt
 sttr
 
@@ -40,20 +40,21 @@ sttr yaml-json file.yaml > file-output.json
 You can run the below `curl` to install it somewhere in your PATH for easy use. Ideally it will be installed at `./bin`
 folder
 
-```sh
+```shell
 curl -sfL https://raw.githubusercontent.com/abhimanyu003/sttr/main/install.sh | sh
 ```
 
 #### Webi
 
 **macOS / Linux**
-```
+
+```shell
 curl -sS https://webi.sh/sttr | sh
 ```
 
 **Windows**
 
-```
+```shell
 curl.exe https://webi.ms/sttr | powershell
 ```
 
@@ -63,20 +64,20 @@ See [here](https://webinstall.dev/sttr/)
 
 If you are on macOS and using Homebrew, you can install `sttr` with the following:
 
-```go
+```shell
 brew tap abhimanyu003/sttr
 brew install sttr
 ```
 
 #### Snap
 
-```
+```shell
 sudo snap install sttr
 ```
 
 #### Arch Linux
 
-```
+```shell
 yay -S sttr-bin
 ```
 
@@ -89,7 +90,7 @@ scoop install sttr
 
 #### Go
 
-```go
+```shell
 go install github.com/abhimanyu003/sttr@latest
 ```
 
@@ -102,7 +103,7 @@ to the desired location.
 
 * After installation simply run `sttr` command.
 
-```go
+```shell
 // For interactive menu
 sttr
 // Provide your input
@@ -113,7 +114,7 @@ sttr
 
 * Working with help.
 
-```go
+```shell
 sttr -h
 
 // Example
@@ -123,7 +124,7 @@ sttr md5 -h
 
 * Working with files input.
 
-```go
+```shell
 sttr {command-name} {filename}
 
 sttr base64-encode image.jpg
@@ -133,19 +134,19 @@ sttr md-html Readme.md
 
 * Writing output to file.
 
-```go
+```shell
 sttr yaml-json file.yaml > file-output.json
 ```
 
 * Taking input from other command.
 
-```go
+```shell
 curl https: //jsonplaceholder.typicode.com/users | sttr json-yaml
 ```
 
 * Chaining the different processor.
 
-```go
+```shell
 sttr md5 hello | sttr base64-encode
 
 echo "Hello World" | sttr base64-encode | sttr md5

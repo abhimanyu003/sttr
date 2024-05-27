@@ -4,7 +4,7 @@
 
 `sttr` is command line software that allows you to quickly run various transformation operations on the string.
 
-```go
+```shell
 // With input prompt
 sttr
 
@@ -35,7 +35,7 @@ sttr yaml-json file.yaml > file-output.json
 You can run the below `curl` to install it somewhere in your PATH for easy use.
 Ideally it will be installed at `./bin` folder
 
-```go
+```shell
 curl -sfL https://raw.githubusercontent.com/abhimanyu003/sttr/main/install.sh | sh
 ```
 
@@ -43,14 +43,14 @@ curl -sfL https://raw.githubusercontent.com/abhimanyu003/sttr/main/install.sh | 
 
 If you are on macOS and using Homebrew, you can install `sttr` with the following:
 
-```go
+```shell
 brew tap abhimanyu003/sttr
 brew install sttr
 ```
 
-#### Go 
+#### Go
 
-```go
+```shell
 go install github.com/abhimanyu003/sttr@latest
 ```
 
@@ -62,9 +62,9 @@ Download the pre-compiled binaries from the [Release!](https://github.com/abhima
 
 * After installation simply run `sttr` command.
 
-```go
+```shell
 // For interactive menu
-sttr 
+sttr
 // Provide your input
 // Press two enter to open operation menu
 // Press `/` to filter various operations.
@@ -73,7 +73,7 @@ sttr
 
 * Working with help.
 
-```go
+```shell
 sttr -h
 
 // Example
@@ -83,7 +83,7 @@ sttr md5 -h
 
 * Working with files input.
 
-```go
+```shell
 sttr {command-name} {filename}
 
 sttr base64-encode image.jpg
@@ -93,19 +93,19 @@ sttr md-html Readme.md
 
 * Writing output to file.
 
-```go
+```shell
 sttr yaml-json file.yaml > file-output.json
 ```
 
 * Taking input from other command.
 
-```go
+```shell
 curl https://jsonplaceholder.typicode.com/users | sttr json-yaml
 ```
 
 * Chaining the different processor.
 
-```go
+```shell
 sttr md5 hello | sttr base64-encode
 
 echo "Hello World" | sttr base64-encode | sttr md5
