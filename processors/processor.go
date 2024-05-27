@@ -119,8 +119,8 @@ type Flag struct {
 // Zeropad is an Example processor to show how to add text processors,
 // it checks if the data is a number and pads it with zeros
 // Example implements 'Item' and 'DefaultItem' from package 'github.com/charmbracelet/bubbles/list'
-// to work with the ui, and `Processor` from this package to do the text transformation and generation
-// of the cli commands
+// to work with the UI, and `Processor` from this package to do the text transformation and generation
+// of the CLI commands
 // After implementing add the struct to List.
 type Zeropad struct{}
 
