@@ -4,7 +4,7 @@
 
 `sttr` is command line software that allows you to quickly run various transformation operations on the string.
 
-```go
+```shell
 // With input prompt
 sttr
 
@@ -35,7 +35,7 @@ sttr yaml-json file.yaml > file-output.json
 You can run the below `curl` to install it somewhere in your PATH for easy use.
 Ideally it will be installed at `./bin` folder
 
-```go
+```shell
 curl -sfL https://raw.githubusercontent.com/abhimanyu003/sttr/main/install.sh | sh
 ```
 
@@ -43,14 +43,14 @@ curl -sfL https://raw.githubusercontent.com/abhimanyu003/sttr/main/install.sh | 
 
 If you are on macOS and using Homebrew, you can install `sttr` with the following:
 
-```go
+```shell
 brew tap abhimanyu003/sttr
 brew install sttr
 ```
 
-#### Go 
+#### Go
 
-```go
+```shell
 go install github.com/abhimanyu003/sttr@latest
 ```
 
@@ -62,9 +62,9 @@ Download the pre-compiled binaries from the [Release!](https://github.com/abhima
 
 * After installation simply run `sttr` command.
 
-```go
+```shell
 // For interactive menu
-sttr 
+sttr
 // Provide your input
 // Press two enter to open operation menu
 // Press `/` to filter various operations.
@@ -73,7 +73,7 @@ sttr
 
 * Working with help.
 
-```go
+```shell
 sttr -h
 
 // Example
@@ -83,7 +83,7 @@ sttr md5 -h
 
 * Working with files input.
 
-```go
+```shell
 sttr {command-name} {filename}
 
 sttr base64-encode image.jpg
@@ -93,19 +93,19 @@ sttr md-html Readme.md
 
 * Writing output to file.
 
-```go
+```shell
 sttr yaml-json file.yaml > file-output.json
 ```
 
 * Taking input from other command.
 
-```go
+```shell
 curl https://jsonplaceholder.typicode.com/users | sttr json-yaml
 ```
 
 * Chaining the different processor.
 
-```go
+```shell
 sttr md5 hello | sttr base64-encode
 
 echo "Hello World" | sttr base64-encode | sttr md5
@@ -114,11 +114,11 @@ echo "Hello World" | sttr base64-encode | sttr md5
 
 # 💥 Supported Operations
 
-* [sttr base32-decode]({{< relref "sttr_base32-decode.md" >}})	 - Decode your base32 text
+* [sttr base32-decode]({{< relref "sttr_base32-decode.md" >}})	 - Decode your Base32 text
 * [sttr base32-encode]({{< relref "sttr_base32-encode.md" >}})	 - Encode your text to Base32
-* [sttr base64-decode]({{< relref "sttr_base64-decode.md" >}})	 - Decode your base64 text
+* [sttr base64-decode]({{< relref "sttr_base64-decode.md" >}})	 - Decode your Base64 text
 * [sttr base64-encode]({{< relref "sttr_base64-encode.md" >}})	 - Encode your text to Base64
-* [sttr bcrypt]({{< relref "sttr_bcrypt.md" >}})	 - Get the Bcrypt hash of your text
+* [sttr bcrypt]({{< relref "sttr_bcrypt.md" >}})	 - Get the bcrypt hash of your text
 * [sttr camel]({{< relref "sttr_camel.md" >}})	 - Transform your text to CamelCase
 * [sttr completion]({{< relref "sttr_completion.md" >}})	 - generate the autocompletion script for the specified shell
 * [sttr count-chars]({{< relref "sttr_count-chars.md" >}})	 - Find the length of your text (including spaces)
@@ -138,9 +138,9 @@ echo "Hello World" | sttr base64-encode | sttr md5
 * [sttr md5]({{< relref "sttr_md5.md" >}})	 - Get the MD5 checksum of your text
 * [sttr reverse]({{< relref "sttr_reverse.md" >}})	 - Reverse Text ( txeT esreveR )
 * [sttr rot13-encode]({{< relref "sttr_rot13-encode.md" >}})	 - Encode your text to ROT13
-* [sttr sha1]({{< relref "sttr_sha1.md" >}})	 - Get the SHA1 checksum of your text
-* [sttr sha256]({{< relref "sttr_sha256.md" >}})	 - Get the SHA256 checksum of your text
-* [sttr sha512]({{< relref "sttr_sha512.md" >}})	 - Get the SHA512 checksum of your text
+* [sttr sha1]({{< relref "sttr_sha1.md" >}})	 - Get the SHA-1 checksum of your text
+* [sttr sha256]({{< relref "sttr_sha256.md" >}})	 - Get the SHA-256 checksum of your text
+* [sttr sha512]({{< relref "sttr_sha512.md" >}})	 - Get the SHA-512 checksum of your text
 * [sttr slug]({{< relref "sttr_slug.md" >}})	 - Transform your text to slug-case
 * [sttr snake]({{< relref "sttr_snake.md" >}})	 - Transform your text to snake_case
 * [sttr sort-lines]({{< relref "sttr_sort-lines.md" >}})	 - Sort lines alphabetically

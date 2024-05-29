@@ -5,6 +5,7 @@ import (
 	"fmt"
 )
 
+// HexEncode encodes string to hexadecimal
 type HexEncode struct{}
 
 func (p HexEncode) Name() string {
@@ -36,6 +37,7 @@ func (p HexEncode) FilterValue() string {
 	return p.Title()
 }
 
+// HexEncode decodes hexadecimal to string
 type HexDecode struct{}
 
 func (p HexDecode) Name() string {

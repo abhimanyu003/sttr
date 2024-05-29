@@ -7,7 +7,7 @@ import (
 	"io"
 )
 
-// ASCII85Encoding encode string to base64.
+// ASCII85Encoding encodes plain text to Ascii85 (aka Base85)
 type ASCII85Encoding struct{}
 
 func (p ASCII85Encoding) Name() string {
@@ -49,7 +49,7 @@ func (p ASCII85Encoding) FilterValue() string {
 	return p.Title()
 }
 
-// ASCII85Decoding encode string to Ascii aka base85.
+// ASCII85Decoding decodes Ascii85 (aka Base85) to plain text.
 type ASCII85Decoding struct{}
 
 func (p ASCII85Decoding) Name() string {

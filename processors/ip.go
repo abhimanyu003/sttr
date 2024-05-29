@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// ExtractIPs encode string to base64.
+// ExtractIPs extracts ipv4 and ipv6 from string.
 type ExtractIPs struct{}
 
 func (p ExtractIPs) FilterValue() string {

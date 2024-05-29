@@ -195,8 +195,10 @@ func TestJSONToMSGPACK_Transform(t *testing.T) {
 		{
 			"List",
 			"{\"data\":[\"1\", \"2\", \"3\"]}",
-			[]byte{223, 0, 0, 0, 1, 164, 100, 97, 116, 97, 221, 0, 0, 0, 3, 161, 49, 161, 50, 161,
-				51},
+			[]byte{
+				223, 0, 0, 0, 1, 164, 100, 97, 116, 97, 221, 0, 0, 0, 3, 161, 49, 161, 50, 161,
+				51,
+			},
 		},
 	}
 
@@ -222,7 +224,6 @@ func TestJSONToMSGPACK_Transform(t *testing.T) {
 					t.Errorf("Transform() got = %v, want %v", resultInterface, wantInterface)
 				}
 			}
-
 		})
 	}
 }
@@ -238,10 +239,10 @@ func TestMSGPACKToJSON_Command(t *testing.T) {
 	}{
 		alias:       []string{},
 		description: "Convert MSGPACK to JSON text",
-		filterValue: "MSGPACK To JSON (msgpack-json)",
+		filterValue: "MSGPACK to JSON (msgpack-json)",
 		flags:       nil,
 		name:        "msgpack-json",
-		title:       "MSGPACK To JSON (msgpack-json)",
+		title:       "MSGPACK to JSON (msgpack-json)",
 	}
 	p := MSGPACKToJSON{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
@@ -283,8 +284,10 @@ func TestMSGPACKToJSON_Transform(t *testing.T) {
 		{
 			"List",
 			"{\"data\":[\"1\", \"2\", \"3\"]}",
-			[]byte{223, 0, 0, 0, 1, 164, 100, 97, 116, 97, 221, 0, 0, 0, 3, 161, 49, 161, 50, 161,
-				51},
+			[]byte{
+				223, 0, 0, 0, 1, 164, 100, 97, 116, 97, 221, 0, 0, 0, 3, 161, 49, 161, 50, 161,
+				51,
+			},
 		},
 	}
 	for _, tt := range tests {
@@ -310,7 +313,6 @@ func TestMSGPACKToJSON_Transform(t *testing.T) {
 					t.Errorf("Transform() got = %v, want %v", resultInterface, wantInterface)
 				}
 			}
-
 		})
 	}
 }
@@ -403,16 +405,14 @@ func TestJSONUnescape_Transform(t *testing.T) {
 			wantErr: false,
 		},
 		{
-
 			name:    "Should return error on invalid input",
 			args:    args{data: []byte(`Invalid Input`)},
 			want:    ``,
 			wantErr: true,
 		},
 		{
-
 			name:    "Should return error on invalid JSON",
-			args:    args{data: []byte(`{\n  \"name\: \"name is mising quote\"\n}`)},
+			args:    args{data: []byte(`{\n  \"name\: \"name is missing quote\"\n}`)},
 			want:    ``,
 			wantErr: true,
 		},
@@ -522,16 +522,14 @@ func TestJSONEscape_Transform(t *testing.T) {
 			wantErr: false,
 		},
 		{
-
 			name:    "Should return error on invalid input",
 			args:    args{data: []byte(`Invalid Input`)},
 			want:    ``,
 			wantErr: true,
 		},
 		{
-
 			name:    "Should return error on invalid JSON",
-			args:    args{data: []byte(`{\n  \"name\: \"name is mising quote\"\n}`)},
+			args:    args{data: []byte(`{\n  \"name\: \"name is missing quote\"\n}`)},
 			want:    ``,
 			wantErr: true,
 		},

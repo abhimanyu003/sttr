@@ -244,7 +244,7 @@ func (p Slug) FilterValue() string {
 	return p.Title()
 }
 
-// CountCharacters count number of Characters including spaces.
+// CountCharacters count number of characters including spaces.
 type CountCharacters struct{}
 
 func (p CountCharacters) Name() string {
@@ -276,7 +276,7 @@ func (p CountCharacters) FilterValue() string {
 	return p.Title()
 }
 
-// CountWords count number of words in string.
+// CountWords counts number of words in string.
 // Example: "hello world" = 2.
 type CountWords struct{}
 
@@ -309,7 +309,7 @@ func (p CountWords) FilterValue() string {
 	return p.Title()
 }
 
-// Reverse reverse a given string
+// Reverse reverses a given string
 // Example: "test" to "tset".
 type Reverse struct{}
 
@@ -346,8 +346,8 @@ func (p Reverse) FilterValue() string {
 	return p.Title()
 }
 
-// EscapeQuotes escape quotes from a given string
-// Example: "test" to \"tset\".
+// EscapeQuotes escapes quotes from a given string
+// Example: "test" to \"test\".
 type EscapeQuotes struct{}
 
 func (p EscapeQuotes) Name() string {

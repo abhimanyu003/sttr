@@ -6,7 +6,7 @@ import (
 	"github.com/lucasb-eyer/go-colorful"
 )
 
-// HexToRGB convert hex color code to R, G, B codes
+// HexToRGB converts hex color code to R, G, B codes
 // here we are using data library helper.
 type HexToRGB struct{}
 

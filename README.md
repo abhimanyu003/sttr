@@ -10,7 +10,7 @@
 
 `sttr` is command line software that allows you to quickly run various transformation operations on the string.
 
-```go
+```shell
 // With input prompt
 sttr
 
@@ -40,20 +40,21 @@ sttr yaml-json file.yaml > file-output.json
 You can run the below `curl` to install it somewhere in your PATH for easy use. Ideally it will be installed at `./bin`
 folder
 
-```sh
+```shell
 curl -sfL https://raw.githubusercontent.com/abhimanyu003/sttr/main/install.sh | sh
 ```
 
 #### Webi
 
-**MacOS / Linux**
-```
+**macOS / Linux**
+
+```shell
 curl -sS https://webi.sh/sttr | sh
 ```
 
 **Windows**
 
-```
+```shell
 curl.exe https://webi.ms/sttr | powershell
 ```
 
@@ -63,20 +64,20 @@ See [here](https://webinstall.dev/sttr/)
 
 If you are on macOS and using Homebrew, you can install `sttr` with the following:
 
-```go
+```shell
 brew tap abhimanyu003/sttr
 brew install sttr
 ```
 
 #### Snap
 
-```
+```shell
 sudo snap install sttr
 ```
 
 #### Arch Linux
 
-```
+```shell
 yay -S sttr-bin
 ```
 
@@ -89,7 +90,7 @@ scoop install sttr
 
 #### Go
 
-```go
+```shell
 go install github.com/abhimanyu003/sttr@latest
 ```
 
@@ -102,7 +103,7 @@ to the desired location.
 
 * After installation simply run `sttr` command.
 
-```go
+```shell
 // For interactive menu
 sttr
 // Provide your input
@@ -113,7 +114,7 @@ sttr
 
 * Working with help.
 
-```go
+```shell
 sttr -h
 
 // Example
@@ -123,7 +124,7 @@ sttr md5 -h
 
 * Working with files input.
 
-```go
+```shell
 sttr {command-name} {filename}
 
 sttr base64-encode image.jpg
@@ -133,19 +134,19 @@ sttr md-html Readme.md
 
 * Writing output to file.
 
-```go
+```shell
 sttr yaml-json file.yaml > file-output.json
 ```
 
 * Taking input from other command.
 
-```go
+```shell
 curl https: //jsonplaceholder.typicode.com/users | sttr json-yaml
 ```
 
 * Chaining the different processor.
 
-```go
+```shell
 sttr md5 hello | sttr base64-encode
 
 echo "Hello World" | sttr base64-encode | sttr md5
@@ -155,16 +156,16 @@ echo "Hello World" | sttr base64-encode | sttr md5
 
 #### Encode/Decode
 
-- [x] **ascii85-encode** - Encode your text to ascii85
-- [x] **ascii85-decode** - Decode your ascii85 text
-- [x] **base32-decode** - Decode your base32 text
-- [x] **base32-encode** - Encode your text to base32
-- [x] **base64-decode** - Decode your base64 text
-- [x] **base64-encode** - Encode your text to base64
-- [x] **base85-encode** - Encode your text to base85
-- [x] **base85-decode** - Decode your base85 text
-- [x] **base64url-decode** - Decode your base64 url
-- [x] **base64url-encode** - Encode your text to url
+- [x] **ascii85-encode** - Encode your text to Ascii85
+- [x] **ascii85-decode** - Decode your Ascii85 text
+- [x] **base32-decode** - Decode your Base32 text
+- [x] **base32-encode** - Encode your text to Base32
+- [x] **base64-decode** - Decode your Base64 text
+- [x] **base64-encode** - Encode your text to Base64
+- [x] **base85-encode** - Encode your text to Base85
+- [x] **base85-decode** - Decode your Base85 text
+- [x] **base64url-decode** - Decode your Base64 URL
+- [x] **base64url-encode** - Encode your text to URL
 - [x] **html-decode** - Unescape your HTML
 - [x] **html-encode** - Escape your HTML
 - [x] **rot13-encode** - Encode your text to ROT13
@@ -173,7 +174,7 @@ echo "Hello World" | sttr base64-encode | sttr md5
 
 #### Hash
 
-- [x] **bcrypt** - Get the Bcrypt hash of your text
+- [x] **bcrypt** - Get the bcrypt hash of your text
 - [x] **md5** - Get the MD5 checksum of your text
 - [x] **sha1** - Get the SHA1 checksum of your text
 - [x] **sha256** - Get the SHA256 checksum of your text
@@ -236,7 +237,7 @@ echo "Hello World" | sttr base64-encode | sttr md5
 
 - [x] **extract-emails** - Extract emails from given text
 - [x] **extract-ip** - Extract IPv4 and IPv6 from your text
-- [x] **extract-urls** - Extract URls your text ( we don't do ping check )
+- [x] **extract-urls** - Extract URLs your text ( we don't do ping check )
 
 #### Other
 
@@ -245,14 +246,14 @@ echo "Hello World" | sttr base64-encode | sttr md5
 - [x] **interactive** - Use sttr in interactive mode
 - [x] **version** - Print the version of sttr
 - [x] **zeropad** - Pad a number with zeros
-- [x] **and adding more....**
+- [x] **and adding more...**
 
 # Featured On
 
-These are the few locations where `sttr` was highlighted, many thanks to all of you. 
-Please feel free to add any blogs/videos you may have made that discuss `sttr` to the list.
+These are the few places where `sttr` got featured, many thanks to everyone.
+If you have talked about `sttr` in your blog/video feel to add that to the list.
 
-* [Youtube: The Giants of Open Source - DevOps Paradox](https://youtu.be/4nFRKbY_HVE?t=2529?ref=abhimanyu003/sttr)
+* [YouTube: The Giants of Open Source - DevOps Paradox](https://youtu.be/4nFRKbY_HVE?t=2529?ref=abhimanyu003/sttr)
 * [Terminal Trove - Tool of the Week](https://terminaltrove.com/sttr/?ref=abhimanyu003/sttr)
 * [nixCraft](https://www.cyberciti.biz/open-source/sttr-awesome-linux-unix-command-tool-for-transformation-string/?ref=abhimanyu003/sttr)
 
