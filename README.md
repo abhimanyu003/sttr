@@ -250,8 +250,8 @@ echo "Hello World" | sttr base64-encode | sttr md5
 
 # Featured On
 
-These are the few places where `sttr` got featured, many thanks to everyone.
-If you have talked about `sttr` in your blog/video feel to add that to the list.
+These are the few locations where `sttr` was highlighted, many thanks to all of you. 
+Please feel free to add any blogs/videos you may have made that discuss `sttr` to the list.
 
 * [YouTube: The Giants of Open Source - DevOps Paradox](https://youtu.be/4nFRKbY_HVE?t=2529?ref=abhimanyu003/sttr)
 * [Terminal Trove - Tool of the Week](https://terminaltrove.com/sttr/?ref=abhimanyu003/sttr)
