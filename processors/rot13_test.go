@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestROT13Encode_Transform(t *testing.T) {
+func TestROT13_Transform(t *testing.T) {
 	type args struct {
 		data []byte
 		in1  []Flag
@@ -36,7 +36,7 @@ func TestROT13Encode_Transform(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			p := ROT13Encode{}
+			p := ROT13{}
 			got, err := p.Transform(tt.args.data, tt.args.in1...)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Transform() error = %v, wantErr %v", err, tt.wantErr)
@@ -49,7 +49,7 @@ func TestROT13Encode_Transform(t *testing.T) {
 	}
 }
 
-func TestROT13Encode_Command(t *testing.T) {
+func TestROT13_Command(t *testing.T) {
 	test := struct {
 		alias       []string
 		description string
@@ -58,14 +58,14 @@ func TestROT13Encode_Command(t *testing.T) {
 		name        string
 		title       string
 	}{
-		alias:       []string{"rot13", "rot13-enc"},
-		description: "Encode your text to ROT13",
-		filterValue: "ROT13 Encode (rot13-encode)",
+		alias:       []string{"rot13-encode", "rot13-enc"},
+		description: "Cipher/Decipher your text with ROT13 letter substitution",
+		filterValue: "ROT13 Letter Substitution (rot13)",
 		flags:       nil,
-		name:        "rot13-encode",
-		title:       "ROT13 Encode (rot13-encode)",
+		name:        "rot13",
+		title:       "ROT13 Letter Substitution (rot13)",
 	}
-	p := ROT13Encode{}
+	p := ROT13{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
 		t.Errorf("Alias() = %v, want %v", got, test.alias)
 	}

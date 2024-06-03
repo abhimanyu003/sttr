@@ -12,13 +12,13 @@ import (
 )
 
 func init() {
-	rootCmd.AddCommand(rot13EncodeCmd)
+	rootCmd.AddCommand(rot13Cmd)
 }
 
-var rot13EncodeCmd = &cobra.Command{
-	Use:     "rot13-encode [string]",
-	Short:   "Encode your text to ROT13",
-	Aliases: []string{"rot13", "rot13-enc"},
+var rot13Cmd = &cobra.Command{
+	Use:     "rot13 [string]",
+	Short:   "Cipher/Decipher your text with ROT13 letter substitution",
+	Aliases: []string{"rot13-encode", "rot13-enc"},
 	Args:    cobra.MaximumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
@@ -40,7 +40,7 @@ var rot13EncodeCmd = &cobra.Command{
 		}
 
 		flags := make([]processors.Flag, 0)
-		p := processors.ROT13Encode{}
+		p := processors.ROT13{}
 
 		out, err = p.Transform(in, flags...)
 		if err != nil {
