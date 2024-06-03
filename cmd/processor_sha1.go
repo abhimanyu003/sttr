@@ -17,7 +17,7 @@ func init() {
 
 var sha1Cmd = &cobra.Command{
 	Use:     "sha1 [string]",
-	Short:   "Get the SHA1 checksum of your text",
+	Short:   "Get the SHA-1 checksum of your text",
 	Aliases: []string{"sha1-sum"},
 	Args:    cobra.MaximumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {

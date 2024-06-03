@@ -20,7 +20,7 @@ func init() {
 
 var base64DecodeCmd = &cobra.Command{
 	Use:     "base64-decode [string]",
-	Short:   "Decode your base64 text",
+	Short:   "Decode your Base64 text",
 	Aliases: []string{"b64-dec", "b64-decode"},
 	Args:    cobra.MaximumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {

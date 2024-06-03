@@ -17,7 +17,7 @@ func init() {
 
 var sha512Cmd = &cobra.Command{
 	Use:     "sha512 [string]",
-	Short:   "Get the SHA512 checksum of your text",
+	Short:   "Get the SHA-512 checksum of your text",
 	Aliases: []string{"sha512-sum"},
 	Args:    cobra.MaximumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {

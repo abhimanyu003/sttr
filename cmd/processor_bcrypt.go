@@ -20,7 +20,7 @@ func init() {
 
 var bcryptCmd = &cobra.Command{
 	Use:     "bcrypt [string]",
-	Short:   "Get the Bcrypt hash of your text",
+	Short:   "Get the bcrypt hash of your text",
 	Aliases: []string{"bcrypt-hash"},
 	Args:    cobra.MaximumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
