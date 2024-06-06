@@ -18,7 +18,7 @@ func init() {
 var morseEncodeCmd = &cobra.Command{
 	Use:     "morse-encode [string]",
 	Short:   "Decode Morse Code to text",
-	Aliases: []string{"morse-enc", "morse-encode", "morse-code-encode", "morse-code-enc"},
+	Aliases: []string{"morse-dec", "morse-decode", "morse-code-decode", "morse-code-dec"},
 	Args:    cobra.MaximumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error

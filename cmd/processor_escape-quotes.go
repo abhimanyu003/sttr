@@ -11,13 +11,13 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var (
-	escapeQuotes_flag_d bool
+var (		
+	escapeQuotes_flag_d bool		
 	escapeQuotes_flag_s bool
 )
 
-func init() {
-	escapeQuotesCmd.Flags().BoolVarP(&escapeQuotes_flag_d, "double-quote", "d", true, "Escape double quote")
+func init() {	
+	escapeQuotesCmd.Flags().BoolVarP(&escapeQuotes_flag_d, "double-quote", "d", true, "Escape double quote")	
 	escapeQuotesCmd.Flags().BoolVarP(&escapeQuotes_flag_s, "single-quote", "s", true, "Escape single quote")
 	rootCmd.AddCommand(escapeQuotesCmd)
 }
