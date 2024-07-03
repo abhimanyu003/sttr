@@ -1,5 +1,5 @@
 project_name: "sttr"
-
+version: 2
 # before are hooks that will be run before any builds are done, so good to put install scripts and stuff that your builds need here
 before:
   hooks:

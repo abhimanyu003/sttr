@@ -31,7 +31,8 @@ jobs:
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v6
         with:
-          version: latest
+          distribution: goreleaser
+          version: "~> v2"
           args: release --clean
         env:
           AUR_KEY: ${{ secrets.AUR_SSH_KEY }}
