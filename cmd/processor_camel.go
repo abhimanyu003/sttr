@@ -17,7 +17,7 @@ func init() {
 
 var camelCmd = &cobra.Command{
 	Use:     "camel [string]",
-	Short:   "Transform your text to CamelCase",
+	Short:   "Transform your text to camelCase",
 	Aliases: []string{},
 	Args:    cobra.MaximumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {

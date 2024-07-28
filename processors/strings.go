@@ -176,8 +176,8 @@ func (p Kebab) FilterValue() string {
 	return p.Title()
 }
 
-// Camel convert string to CamelCase.
-// Example: "this is string" to "ThisIsString".
+// Camel convert string to camelCase.
+// Example: "this is string" to "thisIsString".
 type Camel struct{}
 
 func (p Camel) Name() string {
@@ -190,7 +190,7 @@ func (p Camel) Alias() []string {
 
 func (p Camel) Transform(data []byte, _ ...Flag) (string, error) {
 	str := regexp.MustCompile(`\s+`).ReplaceAllString(string(data), " ")
-	return strcase.ToCamel(str), nil
+	return strcase.ToLowerCamel(str), nil
 }
 
 func (p Camel) Flags() []Flag {
@@ -203,7 +203,7 @@ func (p Camel) Title() string {
 }
 
 func (p Camel) Description() string {
-	return "Transform your text to CamelCase"
+	return "Transform your text to camelCase"
 }
 
 func (p Camel) FilterValue() string {

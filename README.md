@@ -182,7 +182,7 @@ echo "Hello World" | sttr base64-encode | sttr md5
 
 #### String
 
-- [x] **camel** - Transform your text to CamelCase
+- [x] **camel** - Transform your text to camelCase
 - [x] **kebab** - Transform your text to kebab-case
 - [x] **lower** - Transform your text to lower case
 - [x] **reverse** - Reverse Text ( txeT esreveR )

@@ -119,7 +119,7 @@ echo "Hello World" | sttr base64-encode | sttr md5
 * [sttr base64-decode]({{< relref "sttr_base64-decode.md" >}})	 - Decode your Base64 text
 * [sttr base64-encode]({{< relref "sttr_base64-encode.md" >}})	 - Encode your text to Base64
 * [sttr bcrypt]({{< relref "sttr_bcrypt.md" >}})	 - Get the bcrypt hash of your text
-* [sttr camel]({{< relref "sttr_camel.md" >}})	 - Transform your text to CamelCase
+* [sttr camel]({{< relref "sttr_camel.md" >}})	 - Transform your text to camelCase
 * [sttr completion]({{< relref "sttr_completion.md" >}})	 - generate the autocompletion script for the specified shell
 * [sttr count-chars]({{< relref "sttr_count-chars.md" >}})	 - Find the length of your text (including spaces)
 * [sttr count-lines]({{< relref "sttr_count-lines.md" >}})	 - Count the number of lines in your text

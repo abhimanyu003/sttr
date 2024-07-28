@@ -201,11 +201,13 @@ func TestCountCharacters_Transform(t *testing.T) {
 			name: "Normal String",
 			args: args{data: []byte("the quick brown fox jumps over a lazy dog")},
 			want: "41",
-		}, {
+		},
+		{
 			name: "Emoji",
 			args: args{data: []byte("😃😇🙃🙂😉😌😙😗🇮🇳")},
 			want: "10",
-		}, {
+		},
+		{
 			name: "Multi line string",
 			args: args{data: []byte("123345\nabcd\n456\n123\nabc\n567\n7890")},
 			want: "32",
@@ -393,7 +395,7 @@ func TestKebab_Command(t *testing.T) {
 		name        string
 		title       string
 	}{
-		//alias:       []string{"b64-enc", "b64-encode"},
+		// alias:       []string{"b64-enc", "b64-encode"},
 		description: "Transform your text to kebab-case",
 		filterValue: "To Kebab case (kebab)",
 		flags:       nil,
@@ -710,7 +712,7 @@ func TestCamel_Command(t *testing.T) {
 		title       string
 	}{
 		alias:       nil,
-		description: "Transform your text to CamelCase",
+		description: "Transform your text to camelCase",
 		filterValue: "To Camel case (camel)",
 		flags:       nil,
 		name:        "camel",
@@ -751,26 +753,32 @@ func TestStringToCamel(t *testing.T) {
 		{
 			name: "Normal String",
 			args: args{data: []byte("the quick brown fox jumps over a lazy dog")},
-			want: "TheQuickBrownFoxJumpsOverALazyDog",
-		}, {
+			want: "theQuickBrownFoxJumpsOverALazyDog",
+		},
+		{
 			name: "String Uppercase",
 			args: args{data: []byte("THE QUICK BROWN FOX JUMPS OVER A LAZY DOG")},
-			want: "TheQuickBrownFoxJumpsOverALazyDog",
+			want: "theQuickBrownFoxJumpsOverALazyDog",
 		},
 		{
 			name: "Camel Case Text",
 			args: args{data: []byte("camelCaseText")},
-			want: "CamelCaseText",
+			want: "camelCaseText", // stable
+		},
+		{
+			name: "Pascal Case Text",
+			args: args{data: []byte("PascalCaseText")},
+			want: "pascalCaseText",
 		},
 		{
 			name: "Underscore text lowercase",
 			args: args{data: []byte("underscore_text")},
-			want: "UnderscoreText",
+			want: "underscoreText",
 		},
 		{
 			name: "Underscore text uppercase",
 			args: args{data: []byte("UNDERSCORE_TEXT_UPPER_CASE")},
-			want: "UnderscoreTextUpperCase",
+			want: "underscoreTextUpperCase",
 		},
 	}
 	for _, tt := range tests {
