@@ -210,6 +210,40 @@ func (p Camel) FilterValue() string {
 	return p.Title()
 }
 
+// Pascal convert string to CamelCase.
+// Example: "this is string" to "ThisIsString".
+type Pascal struct{}
+
+func (p Pascal) Name() string {
+	return "pascal"
+}
+
+func (p Pascal) Alias() []string {
+	return nil
+}
+
+func (p Pascal) Transform(data []byte, _ ...Flag) (string, error) {
+	str := regexp.MustCompile(`\s+`).ReplaceAllString(string(data), " ")
+	return strcase.ToCamel(str), nil
+}
+
+func (p Pascal) Flags() []Flag {
+	return nil
+}
+
+func (p Pascal) Title() string {
+	title := "To Pascal case"
+	return fmt.Sprintf("%s (%s)", title, p.Name())
+}
+
+func (p Pascal) Description() string {
+	return "Transform your text to PascalCase"
+}
+
+func (p Pascal) FilterValue() string {
+	return p.Title()
+}
+
 // Slug convert string to StringToSlug. It's similar to Kebab case but URL Friendly.
 // Example: "this is string" to "this-is-string".
 type Slug struct{}

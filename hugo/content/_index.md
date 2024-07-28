@@ -136,6 +136,7 @@ echo "Hello World" | sttr base64-encode | sttr md5
 * [sttr lower]({{< relref "sttr_lower.md" >}})	 - Transform your text to lower case
 * [sttr markdown-html]({{< relref "sttr_markdown-html.md" >}})	 - Convert Markdown to HTML
 * [sttr md5]({{< relref "sttr_md5.md" >}})	 - Get the MD5 checksum of your text
+* [sttr pascal]({{< relref "sttr_pascal.md" >}})	 - Transform your text to PascalCase
 * [sttr reverse]({{< relref "sttr_reverse.md" >}})	 - Reverse Text ( txeT esreveR )
 * [sttr rot13-encode]({{< relref "sttr_rot13-encode.md" >}})	 - Encode your text to ROT13
 * [sttr sha1]({{< relref "sttr_sha1.md" >}})	 - Get the SHA-1 checksum of your text
