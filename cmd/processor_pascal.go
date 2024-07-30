@@ -12,12 +12,12 @@ import (
 )
 
 func init() {
-	rootCmd.AddCommand(camelCmd)
+	rootCmd.AddCommand(pascalCmd)
 }
 
-var camelCmd = &cobra.Command{
-	Use:     "camel [string]",
-	Short:   "Transform your text to camelCase",
+var pascalCmd = &cobra.Command{
+	Use:     "pascal [string]",
+	Short:   "Transform your text to PascalCase",
 	Aliases: []string{},
 	Args:    cobra.MaximumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
@@ -40,7 +40,7 @@ var camelCmd = &cobra.Command{
 		}
 
 		flags := make([]processors.Flag, 0)
-		p := processors.Camel{}
+		p := processors.Pascal{}
 
 		out, err = p.Transform(in, flags...)
 		if err != nil {
