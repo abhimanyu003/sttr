@@ -120,3 +120,58 @@ chocolateys:
 
 sboms:
   - artifacts: archive
+
+dockers:
+  - skip_push: false
+    use: buildx
+    dockerfile: .goreleaser.Dockerfile
+    image_templates:
+      - ghcr.io/abhimanyu003/{{ .ProjectName }}:{{ .Version }}-amd64
+      - docker.io/abhimanyu003/{{ .ProjectName }}:{{ .Version }}-amd64
+    build_flag_templates:
+      - --platform=linux/amd64
+      - --label=org.opencontainers.image.version={{ .Version }}
+      - --label=org.opencontainers.image.revision={{ .Commit }}
+      - --label=org.opencontainers.image.title={{ .ProjectName }}
+      - --label=org.opencontainers.image.created={{ .Date }}
+      - --label=org.opencontainers.image.description=a cross-platform, cli app to perform various operations on string
+      - --label=org.opencontainers.image.vendor=abhimanyu003
+      - --label=org.opencontainers.image.licenses=MIT
+      - --label=org.opencontainers.image.source=https://github.com/abhimanyu003/sttr
+      - --label=org.opencontainers.image.authors=Abhimanyu Sharma <abhimanyusharma003@gmail.com>
+
+  - skip_push: false
+    goarch: arm64
+    use: buildx
+    dockerfile: .goreleaser.Dockerfile
+    image_templates:
+      - ghcr.io/abhimanyu003/{{ .ProjectName }}:{{ .Version }}-arm64
+      - docker.io/abhimanyu003/{{ .ProjectName }}:{{ .Version }}-arm64
+    build_flag_templates:
+      - --platform=linux/arm64
+      - --label=org.opencontainers.image.version={{ .Version }}
+      - --label=org.opencontainers.image.revision={{ .Commit }}
+      - --label=org.opencontainers.image.title={{ .ProjectName }}
+      - --label=org.opencontainers.image.created={{ .Date }}
+      - --label=org.opencontainers.image.description=a cross-platform, cli app to perform various operations on string
+      - --label=org.opencontainers.image.vendor=abhimanyu003
+      - --label=org.opencontainers.image.licenses=MIT
+      - --label=org.opencontainers.image.source=https://github.com/abhimanyu003/sttr
+      - --label=org.opencontainers.image.authors=Abhimanyu Sharma <abhimanyusharma003@gmail.com>
+docker_manifests:
+  - name_template: ghcr.io/abhimanyu003/{{ .ProjectName }}:{{ .Version }}
+    image_templates:
+      - ghcr.io/abhimanyu003/{{ .ProjectName }}:{{ .Version }}-amd64
+      - ghcr.io/abhimanyu003/{{ .ProjectName }}:{{ .Version }}-arm64
+  - name_template: ghcr.io/abhimanyu003/{{ .ProjectName }}:latest
+    image_templates:
+      - ghcr.io/abhimanyu003/{{ .ProjectName }}:{{ .Version }}-amd64
+      - ghcr.io/abhimanyu003/{{ .ProjectName }}:{{ .Version }}-arm64
+  - name_template: docker.io/abhimanyu003/{{ .ProjectName }}:{{ .Version }}
+    image_templates:
+      - docker.io/abhimanyu003/{{ .ProjectName }}:{{ .Version }}-amd64
+      - docker.io/abhimanyu003/{{ .ProjectName }}:{{ .Version }}-arm64
+  - name_template: docker.io/abhimanyu003/{{ .ProjectName }}:latest
+    image_templates:
+      - docker.io/abhimanyu003/{{ .ProjectName }}:{{ .Version }}-amd64
+      - docker.io/abhimanyu003/{{ .ProjectName }}:{{ .Version }}-arm64
