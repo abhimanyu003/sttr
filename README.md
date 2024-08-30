@@ -44,29 +44,12 @@ folder
 curl -sfL https://raw.githubusercontent.com/abhimanyu003/sttr/main/install.sh | sh
 ```
 
-#### Webi
-
-**macOS / Linux**
-
-```shell
-curl -sS https://webi.sh/sttr | sh
-```
-
-**Windows**
-
-```shell
-curl.exe https://webi.ms/sttr | powershell
-```
-
-See [here](https://webinstall.dev/sttr/)
-
 #### Homebrew
 
 If you are on macOS and using Homebrew, you can install `sttr` with the following:
 
 ```shell
-brew tap abhimanyu003/sttr
-brew install sttr
+brew install abhimanyu003/sttr/sttr
 ```
 
 #### Snap
@@ -83,10 +66,26 @@ yay -S sttr-bin
 
 #### Scoop
 
-```
+```shell
 scoop bucket add sttr https://github.com/abhimanyu003/scoop-bucket.git
 scoop install sttr
 ```
+
+#### Webi
+
+**macOS / Linux**
+
+```shell
+curl -sS https://webi.sh/sttr | sh
+```
+
+**Windows**
+
+```shell
+curl.exe https://webi.ms/sttr | powershell
+```
+
+See [here](https://webinstall.dev/sttr/)
 
 #### Go
 
