@@ -64,6 +64,20 @@ sudo snap install sttr
 yay -S sttr-bin
 ```
 
+#### Docker
+
+```shell
+docker run -it --rm -e TERM=xterm-256color ghcr.io/abhimanyu003/sttr:latest 
+```
+> You can use docker image in your project from `ghcr.io/abhimanyu003/sttr:latest`
+
+
+#### Winget
+
+```shell
+winget install -e --id abhimanyu003.sttr
+```
+
 #### Scoop
 
 ```shell
@@ -92,6 +106,18 @@ See [here](https://webinstall.dev/sttr/)
 ```shell
 go install github.com/abhimanyu003/sttr@latest
 ```
+
+#### Binary
+
+**MacOS**
+[Binary](https://github.com/abhimanyu003/sttr/releases/latest/download/sttr_0.2.24_darwin_all.tar.gz) ( Multi-Architecture )
+
+**Linux (Binaries)**
+[amd64](https://github.com/abhimanyu003/sttr/releases/latest/download/sttr_0.2.24_linux_amd64.tar.gz) | [arm64](https://github.com/abhimanyu003/sttr/releases/latest/download/sttr_0.2.24_linux_arm64.tar.gz) | [i386](https://github.com/abhimanyu003/sttr/releases/latest/download/sttr_0.2.24_linux_386.tar.gz)
+
+**Windows (Exe)**
+[amd64](https://github.com/abhimanyu003/sttr/releases/latest/download/sttr_0.2.24_windows_amd64.zip) | [arm64](https://github.com/abhimanyu003/sttr/releases/latest/download/sttr_0.2.24_windows_arm64.zip) | [i386](https://github.com/abhimanyu003/sttr/releases/latest/download/sttr_0.2.24_windows_386.zip)
+
 
 #### Manually
 
