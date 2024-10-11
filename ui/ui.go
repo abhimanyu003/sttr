@@ -2,9 +2,10 @@ package ui
 
 import (
 	"fmt"
-	"golang.org/x/term"
 	"log"
 	"os"
+
+	"golang.org/x/term"
 
 	"github.com/abhimanyu003/sttr/processors"
 
@@ -40,12 +41,12 @@ func (u *UI) Render() {
 		termWidth = maxWidth
 	}
 	if u.input == "" {
-		divider := lipgloss.NewStyle().Padding(0, 1).Foreground(borderStyle).Render("•")
+		divider := lipgloss.NewStyle().Margin(0, 1).Foreground(borderStyle).Render("•")
 		info := lipgloss.NewStyle().Foreground(specialStyle).Render("[ Enter 2 empty lines to process ]")
 
 		title := lipgloss.NewStyle().
 			MaxWidth(termWidth).
-			BorderStyle(lipgloss.DoubleBorder()).
+			BorderStyle(lipgloss.NormalBorder()).
 			BorderTop(true).
 			BorderBottom(true).
 			BorderForeground(borderStyle).
@@ -58,7 +59,7 @@ func (u *UI) Render() {
 	u.list = list.New(processors.List, list.NewDefaultDelegate(), 0, 0)
 	u.list.Title = "Select transformation"
 
-	if _, err := tea.NewProgram(u).Run(); err != nil {
+	if _, err := tea.NewProgram(u, tea.WithAltScreen()).Run(); err != nil {
 		log.Fatalf("error running ui: %v", err)
 	}
 
@@ -71,7 +72,7 @@ func (u *UI) Render() {
 		border := lipgloss.NewStyle().
 			Width(termWidth).
 			BorderTop(true).
-			BorderStyle(lipgloss.DoubleBorder()).
+			BorderStyle(lipgloss.NormalBorder()).
 			BorderForeground(borderStyle).String()
 
 		fmt.Println(border)
@@ -88,7 +89,7 @@ func (u *UI) View() string {
 		return ""
 	}
 
-	return appStyle.Margin(1, 1).Render(u.list.View())
+	return appStyle.Render(u.list.View())
 }
 
 func (u *UI) Update(msg tea.Msg) (tea.Model, tea.Cmd) {

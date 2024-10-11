@@ -10,8 +10,10 @@ before:
 builds:
   - main: ./main.go
     binary: sttr
-    goos: ["linux", "darwin", "windows"]
+    goos: ["linux", "darwin", "windows", "freebsd"]
     goarch: ["386", "amd64", "arm64"]
+    flags:
+      - -trimpath
     ldflags:
       - -s -w -X "main.version={{.Version}}"
     env:
@@ -64,6 +66,7 @@ nfpms:
     formats:
       - deb
       - rpm
+      - archlinux
       - termux.deb
     bindir: /usr/bin
 
@@ -77,7 +80,6 @@ snapcrafts:
     confinement: strict
     license: MIT
     base: core20
-
     apps:
       sttr:
         plugs: ["home", "network"]
@@ -201,7 +203,16 @@ docker_signs:
       - --yes
 
 archives:
-  - id: default
+  - format: tar.gz
+    # this name template makes the OS and Arch compatible with the results of `uname`.
+    name_template: >-
+      {{ .ProjectName }}_
+      {{- title .Os }}_
+      {{- if eq .Arch "amd64" }}x86_64
+      {{- else if eq .Arch "386" }}i386
+      {{- else }}{{ .Arch }}{{ end }}
+      {{- if .Arm }}v{{ .Arm }}{{ end }}
+    # use zip for windows archives
     format_overrides:
       - goos: windows
         format: zip
@@ -218,7 +229,7 @@ winget:
     homepage: https://github.com/abhimanyu003/sttr
     license_url: https://github.com/abhimanyu003/sttr/blob/master/LICENSE
     copyright: Copyright (c) 2021-{{ .Now.Format "2006" }} Abhimanyu Sharma
-    release_notes: '{{ .Changelog }}'
+    release_notes: "{{ .Changelog }}"
     release_notes_url: https://github.com/abhimanyu003/sttr/releases/tag/{{ .Tag }}
     tags:
       - cli
@@ -234,7 +245,7 @@ winget:
       owner: abhimanyu003
       name: winget-pkgs
       branch: sttr-{{ .Version }}
-      token: '{{ .Env.GITHUB_TOKEN }}'
+      token: "{{ .Env.GITHUB_TOKEN }}"
       pull_request:
         enabled: true
         base:
