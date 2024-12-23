@@ -166,7 +166,7 @@ sttr yaml-json file.yaml > file-output.json
 * Taking input from other command.
 
 ```shell
-curl https: //jsonplaceholder.typicode.com/users | sttr json-yaml
+curl https://jsonplaceholder.typicode.com/users | sttr json-yaml
 ```
 
 * Chaining the different processor.
