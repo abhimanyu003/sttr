@@ -48,7 +48,6 @@ var List = []list.Item{
 	RemoveSpaces{},
 	Reverse{},
 	ReverseLines{},
-	ReverseLines{},
 	ROT13{},
 	SHA1{},
 	SHA224{},
