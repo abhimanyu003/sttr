@@ -154,7 +154,7 @@ func (p MorseCodeEncode) FilterValue() string {
 type MorseCodeDecode struct{}
 
 func (p MorseCodeDecode) Name() string {
-	return "morse-encode"
+	return "morse-decode"
 }
 
 func (p MorseCodeDecode) Alias() []string {
