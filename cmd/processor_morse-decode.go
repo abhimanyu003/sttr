@@ -12,13 +12,13 @@ import (
 )
 
 func init() {
-	rootCmd.AddCommand(morseEncodeCmd)
+	rootCmd.AddCommand(morseDecodeCmd)
 }
 
-var morseEncodeCmd = &cobra.Command{
-	Use:     "morse-encode [string]",
-	Short:   "Encode your text to Morse Code",
-	Aliases: []string{"morse-enc", "morse-encode", "morse-code-encode", "morse-code-enc"},
+var morseDecodeCmd = &cobra.Command{
+	Use:     "morse-decode [string]",
+	Short:   "Decode Morse Code to text",
+	Aliases: []string{"morse-dec", "morse-decode", "morse-code-decode", "morse-code-dec"},
 	Args:    cobra.MaximumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
@@ -40,7 +40,7 @@ var morseEncodeCmd = &cobra.Command{
 		}
 
 		flags := make([]processors.Flag, 0)
-		p := processors.MorseCodeEncode{}
+		p := processors.MorseCodeDecode{}
 
 		out, err = p.Transform(in, flags...)
 		if err != nil {

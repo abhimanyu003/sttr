@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-var moreCodeMap = map[string]string{
+var morseCodeMap = map[string]string{
 	// Latin => https://en.wikipedia.org/wiki/Morse_code
 	"A": "01", "B": "1000", "C": "1010", "D": "100", "E": "0", "F": "0010",
 	"G": "110", "H": "0000", "I": "00", "J": "0111", "K": "101", "L": "0100",
@@ -123,8 +123,8 @@ func (p MorseCodeEncode) Transform(data []byte, _ ...Flag) (string, error) {
 			if space != "" {
 				res += space + letterSeparator
 			}
-		} else if moreCodeMap[p] != "" {
-			res += moreCodeMap[p] + letterSeparator
+		} else if morseCodeMap[p] != "" {
+			res += morseCodeMap[p] + letterSeparator
 		}
 	}
 	res = strings.TrimSpace(res)
@@ -165,9 +165,11 @@ func (p MorseCodeDecode) Transform(data []byte, _ ...Flag) (string, error) {
 	res := ""
 	wordSeparator := "/"
 	letterSeparator := " "
-	for _, part := range strings.Split(string(data), letterSeparator) {
+	str := strings.ReplaceAll(string(data), ".", "0") // To match the morse code map
+	str = strings.ReplaceAll(str, "-", "1")
+	for _, part := range strings.Split(str, letterSeparator) {
 		found := false
-		for key, val := range moreCodeMap {
+		for key, val := range morseCodeMap {
 			if val == part {
 				res += key
 				found = true
