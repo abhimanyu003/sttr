@@ -196,6 +196,8 @@ echo "Hello World" | sttr base64-encode | sttr md5
 - [x] **rot13-encode** - Encode your text to ROT13
 - [x] **url-decode** - Decode URL entities
 - [x] **url-encode** - Encode URL entities
+- [x] **morse-decode** - Decode your Morse code
+- [x] **morse-encode** - Encode your text to Morse code
 
 #### Hash
 
