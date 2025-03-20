@@ -11,7 +11,10 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var morseDecode_flag_l string
+
 func init() {
+	morseDecodeCmd.Flags().StringVarP(&morseDecode_flag_l, "lang", "l", "la", "Morse code set to decode [la(Latin), ru(Cyrillic), gr(Greek), he(Hebrew), ar(Arabic), ja(Japanese), kr(Korean), th(Thai)]")
 	rootCmd.AddCommand(morseDecodeCmd)
 }
 
@@ -41,6 +44,7 @@ var morseDecodeCmd = &cobra.Command{
 
 		flags := make([]processors.Flag, 0)
 		p := processors.MorseCodeDecode{}
+		flags = append(flags, processors.Flag{Short: "l", Value: morseDecode_flag_l})
 
 		out, err = p.Transform(in, flags...)
 		if err != nil {
