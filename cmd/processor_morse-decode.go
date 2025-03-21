@@ -11,14 +11,17 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var morseDecode_flag_l string
+
 func init() {
-	rootCmd.AddCommand(morseEncodeCmd)
+	morseDecodeCmd.Flags().StringVarP(&morseDecode_flag_l, "lang", "l", "la", "Morse code set to decode [la(Latin), ru(Cyrillic), gr(Greek), he(Hebrew), ar(Arabic), ja(Japanese), kr(Korean), th(Thai)]")
+	rootCmd.AddCommand(morseDecodeCmd)
 }
 
-var morseEncodeCmd = &cobra.Command{
-	Use:     "morse-encode [string]",
-	Short:   "Encode your text to Morse Code",
-	Aliases: []string{"morse-enc", "morse-encode", "morse-code-encode", "morse-code-enc"},
+var morseDecodeCmd = &cobra.Command{
+	Use:     "morse-decode [string]",
+	Short:   "Decode Morse Code to text",
+	Aliases: []string{"morse-dec", "morse-decode", "morse-code-decode", "morse-code-dec"},
 	Args:    cobra.MaximumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
@@ -40,7 +43,8 @@ var morseEncodeCmd = &cobra.Command{
 		}
 
 		flags := make([]processors.Flag, 0)
-		p := processors.MorseCodeEncode{}
+		p := processors.MorseCodeDecode{}
+		flags = append(flags, processors.Flag{Short: "l", Value: morseDecode_flag_l})
 
 		out, err = p.Transform(in, flags...)
 		if err != nil {
