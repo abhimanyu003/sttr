@@ -97,29 +97,6 @@ aurs:
       name: Abhimanyu Sharma
       email: abhimanyusharma003@gmail.com
 
-chocolateys:
-  - name: sttr
-    title: sttr - A cross-platform, cli app to perform various operations on string.
-    authors: Abhimanyu Sharma
-    project_url: https://github.com/abhimanyu003/sttr
-    url_template: "https://github.com/abhimanyu003/sttr/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
-    icon_url: https://cdn.jsdelivr.net/gh/abhimanyu003/sttr@main/media/logo.png
-    copyright: 2023 Abhimanyu Sharma
-    license_url: https://github.com/abhimanyu003/sttr/blob/main/LICENSE
-    require_license_acceptance: false
-    project_source_url: https://github.com/abhimanyu003/sttr
-    docs_url: https://github.com/abhimanyu003/sttr/blob/main/README.md
-    bug_tracker_url: https://github.com/abhimanyu003/sttr/issues
-    tags: "productivity encoding terminal string decoding tui developer-tools transform cli-app encrypt encryption-decryption count-lines devutils tui-app count-words zeropad"
-    summary: A cross-platform, cli app to perform various operations on string.
-    description: |
-      sttr installer package.
-      A cross-platform, cli app to perform various operations on string.
-    release_notes: "https://github.com/abhimanyu003/sttr/releases/tag/v{{ .Version }}"
-    api_key: "{{ .Env.CHOCOLATEY_API_KEY }}"
-    source_repo: "https://push.chocolatey.org/"
-    skip_publish: true
-
 sboms:
   - artifacts: archive
 
