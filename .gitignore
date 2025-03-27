@@ -20,6 +20,9 @@ vendor/
 .vsscode/*
 .vscode/
 
+# goreleaser dist folder
+dist/
+
 # IntelliJ
 .idea
 *.iml
