@@ -110,14 +110,16 @@ go install github.com/abhimanyu003/sttr@latest
 #### Binary
 
 **MacOS**
-[Binary](https://github.com/abhimanyu003/sttr/releases/latest/download/sttr_0.2.24_darwin_all.tar.gz) ( Multi-Architecture )
+[Binary](https://github.com/abhimanyu003/sttr/releases/latest/download/sttr_Darwin_all.tar.gz) ( Multi-Architecture )
 
 **Linux (Binaries)**
-[amd64](https://github.com/abhimanyu003/sttr/releases/latest/download/sttr_0.2.24_linux_amd64.tar.gz) | [arm64](https://github.com/abhimanyu003/sttr/releases/latest/download/sttr_0.2.24_linux_arm64.tar.gz) | [i386](https://github.com/abhimanyu003/sttr/releases/latest/download/sttr_0.2.24_linux_386.tar.gz)
+[amd64](https://github.com/abhimanyu003/sttr/releases/latest/download/sttr_Linux_x86_64.tar.gz) | [arm64](https://github.com/abhimanyu003/sttr/releases/latest/download/sttr_Linux_arm64.tar.gz) | [i386](https://github.com/abhimanyu003/sttr/releases/latest/download/sttr_Linux_i386.tar.gz)
 
 **Windows (Exe)**
-[amd64](https://github.com/abhimanyu003/sttr/releases/latest/download/sttr_0.2.24_windows_amd64.zip) | [arm64](https://github.com/abhimanyu003/sttr/releases/latest/download/sttr_0.2.24_windows_arm64.zip) | [i386](https://github.com/abhimanyu003/sttr/releases/latest/download/sttr_0.2.24_windows_386.zip)
+[amd64](https://github.com/abhimanyu003/sttr/releases/latest/download/sttr_Windows_x86_64.zip) | [arm64](https://github.com/abhimanyu003/sttr/releases/latest/download/sttr_Windows_arm64.zip) | [i386](https://github.com/abhimanyu003/sttr/releases/latest/download/sttr_Windows_i386.zip)
 
+**FreeBSD (Binaries)**
+[amd64](https://github.com/abhimanyu003/sttr/releases/latest/download/sttr_Freebsd_x86_64.tar.gz) | [arm64](https://github.com/abhimanyu003/sttr/releases/latest/download/sttr_Freebsd_arm64.tar.gz) | [i386](https://github.com/abhimanyu003/sttr/releases/latest/download/sttr_Freebsd_i386.tar.gz)
 
 #### Manually
 
