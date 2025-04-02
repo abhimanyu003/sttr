@@ -80,6 +80,8 @@ snapcrafts:
     confinement: strict
     license: MIT
     base: core20
+    channel_templates:
+      - stable
     apps:
       sttr:
         plugs: ["home", "network"]
