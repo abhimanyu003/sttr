@@ -85,6 +85,14 @@ scoop bucket add sttr https://github.com/abhimanyu003/scoop-bucket.git
 scoop install sttr
 ```
 
+#### X-CMD
+
+If you are a user of [x-cmd](https://x-cmd.com), you can run:
+
+```shell
+x install sttr
+```
+
 #### Webi
 
 **macOS / Linux**
