@@ -61,6 +61,10 @@ func (p SortLines) Alias() []string {
 
 func (p SortLines) Transform(data []byte, _ ...Flag) (string, error) {
 	sorted := strings.Split(string(data), "\n")
+	// remove the trailing new-line
+	if len(sorted) > 0 && sorted[len(sorted)-1] == "" {
+		sorted = sorted[:len(sorted)-1]
+	}
 	sort.Strings(sorted)
 	return strings.Join(sorted, "\n"), nil
 }
