@@ -313,3 +313,5 @@ Thanks to all the people who already contributed!
 # License
 
 [MIT](./LICENSE)
+
+<!-- GitAds-Verify: 1L2K42WZSL98PJ8ZJ9H357E19QNY4KX3 -->
