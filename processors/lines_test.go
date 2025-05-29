@@ -223,6 +223,21 @@ func TestSortLines_Transform(t *testing.T) {
 			args: args{data: []byte("3\n1\n6\n5\n9\n10\n4\n8\n7\n2")},
 			want: "1\n10\n2\n3\n4\n5\n6\n7\n8\n9",
 		},
+		{
+			name: "Numbers with trailing new-line",
+			args: args{data: []byte("3\n1\n6\n5\n9\n10\n4\n8\n7\n2\n")},
+			want: "1\n10\n2\n3\n4\n5\n6\n7\n8\n9",
+		},
+		{
+			name: "Numbers and an empty line with trailing new-line",
+			args: args{data: []byte("3\n1\n6\n5\n9\n10\n4\n8\n7\n2\n\n")},
+			want: "\n1\n10\n2\n3\n4\n5\n6\n7\n8\n9",
+		},
+		{
+			name: "Trailing new-line only",
+			args: args{data: []byte("\n")},
+			want: "",
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
