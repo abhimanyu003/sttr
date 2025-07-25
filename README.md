@@ -310,9 +310,6 @@ Thanks to all the people who already contributed!
   <img src="https://contributors-img.web.app/image?repo=abhimanyu003/sttr" />
 </a>
 
-## GitAds Sponsored
-[![Sponsored by GitAds](https://gitads.dev/v1/ad-serve?source=abhimanyu003/sttr@github)](https://gitads.dev/v1/ad-track?source=abhimanyu003/sttr@github)
-
 # License
 
 [MIT](./LICENSE)
