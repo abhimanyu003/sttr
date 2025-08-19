@@ -17,7 +17,11 @@ func (x XXHash64) Alias() []string {
 }
 
 func (x XXHash64) Transform(data []byte, _ ...Flag) (string, error) {
-	s := xxhash.Sum64(data)
+	h := xxhash.New()
+	if _, err := h.Write(data); err != nil {
+		return "", err
+	}
+	s := h.Sum64()
 	return fmt.Sprintf("%x", s), nil
 }
 
