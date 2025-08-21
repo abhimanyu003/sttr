@@ -55,37 +55,25 @@ func TestXXHash64_Transform(t *testing.T) {
 		wantErr bool
 	}{
 		{
-			name: "String", // test values form https://asecuritysite.com/encryption/xxhash
+			name: "String", // test values form https://asecuritysite.com/encryption/xxhash test with zero seed value
 			args: args{data: []byte("Roger federar is not a tennis player")},
 			want: "ef544ce741b215c2",
 		}, {
-			name: "empty string", // test values form https://asecuritysite.com/encryption/xxhash
+			name: "empty string", // test values form https://asecuritysite.com/encryption/xxhash test with zero seed value
 			args: args{data: []byte("")},
 			want: "ef46db3751d8e999",
 		}, {
-			name: "a rfc1321", // test values from https://datatracker.ietf.org/doc/html/rfc1321
+			name: "Short string - single character", // test values form https://asecuritysite.com/encryption/xxhash test with zero seed value
 			args: args{data: []byte("a")},
-			want: "0cc175b9c0f1b6a831c399e269772661",
+			want: "d24ec4f1a98c6e5b", // expected hash
 		}, {
-			name: "abc rfc1321", // test values from https://datatracker.ietf.org/doc/html/rfc1321
-			args: args{data: []byte("abc")},
-			want: "900150983cd24fb0d6963f7d28e17f72",
+			name: "Numeric string",
+			args: args{data: []byte("1234567890")}, // test values form https://asecuritysite.com/encryption/xxhash test with zero seed value
+			want: "07a28110e9f626da",
 		}, {
-			name: "message digest rfc1321", // test values from https://datatracker.ietf.org/doc/html/rfc1321
-			args: args{data: []byte("message digest")},
-			want: "f96b697d7cb7938d525a2f31aaf161d0",
-		}, {
-			name: "abcdefghijklmnopqrstuvwxyz rfc1321", // test values from https://datatracker.ietf.org/doc/html/rfc1321
-			args: args{data: []byte("abcdefghijklmnopqrstuvwxyz")},
-			want: "c3fcd3d76192e4007dfb496cca67e13b",
-		}, {
-			name: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 rfc1321", // test values from https://datatracker.ietf.org/doc/html/rfc1321
-			args: args{data: []byte("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789")},
-			want: "d174ab98d277d9f5a5611c2c9f419d9f",
-		}, {
-			name: "12345678901234567890123456789012345678901234567890123456789012345678901234567890 rfc1321", // test values from https://datatracker.ietf.org/doc/html/rfc1321
-			args: args{data: []byte("12345678901234567890123456789012345678901234567890123456789012345678901234567890")},
-			want: "57edf4a22be3c955ac49da2e2107b67a",
+			name: "Special characters",
+			args: args{data: []byte("!@#$%^&*()_+")}, // test values form https://asecuritysite.com/encryption/xxhash test with zero seed value
+			want: "e5df6e8db4dfb011",
 		},
 	}
 	for _, tt := range tests {
