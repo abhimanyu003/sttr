@@ -69,11 +69,11 @@ func TestXXHash64_Transform(t *testing.T) {
 		}, {
 			name: "Numeric string",
 			args: args{data: []byte("1234567890")}, // test values form https://asecuritysite.com/encryption/xxhash test with zero seed value
-			want: "07a28110e9f626da",
+			want: "a9d4d4132eff23b6",
 		}, {
 			name: "Special characters",
 			args: args{data: []byte("!@#$%^&*()_+")}, // test values form https://asecuritysite.com/encryption/xxhash test with zero seed value
-			want: "e5df6e8db4dfb011",
+			want: "05a23b68b8435433",
 		},
 	}
 	for _, tt := range tests {

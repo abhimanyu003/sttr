@@ -22,7 +22,7 @@ func (x XXHash64) Transform(data []byte, _ ...Flag) (string, error) {
 		return "", err
 	}
 	s := h.Sum64()
-	return fmt.Sprintf("%x", s), nil
+	return fmt.Sprintf("%016x", s), nil
 }
 
 func (x XXHash64) Flags() []Flag {
