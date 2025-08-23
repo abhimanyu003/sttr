@@ -6,17 +6,17 @@ import (
 	"github.com/cespare/xxhash/v2"
 )
 
-type XXHash64 struct{}
+type XXH64 struct{}
 
-func (x XXHash64) Name() string {
-	return "xxhash-64"
+func (x XXH64) Name() string {
+	return "xxh-64"
 }
 
-func (x XXHash64) Alias() []string {
-	return []string{"xxhash-64"}
+func (x XXH64) Alias() []string {
+	return []string{""}
 }
 
-func (x XXHash64) Transform(data []byte, _ ...Flag) (string, error) {
+func (x XXH64) Transform(data []byte, _ ...Flag) (string, error) {
 	h := xxhash.New()
 	if _, err := h.Write(data); err != nil {
 		return "", err
@@ -25,19 +25,19 @@ func (x XXHash64) Transform(data []byte, _ ...Flag) (string, error) {
 	return fmt.Sprintf("%016x", s), nil
 }
 
-func (x XXHash64) Flags() []Flag {
+func (x XXH64) Flags() []Flag {
 	return nil
 }
 
-func (x XXHash64) Title() string {
-	title := "XXhash - 64"
+func (x XXH64) Title() string {
+	title := "xxHash - XXH64"
 	return fmt.Sprintf("%s (%s)", title, x.Name())
 }
 
-func (x XXHash64) Description() string {
-	return "Get the XXHash64 checksum of your text"
+func (x XXH64) Description() string {
+	return "Get the XXH64 checksum of your text"
 }
 
-func (x XXHash64) FilterValue() string {
+func (x XXH64) FilterValue() string {
 	return x.Title()
 }

@@ -14,15 +14,15 @@ func TestXXHash64_Command(t *testing.T) {
 		name        string
 		title       string
 	}{
-		alias:       []string{"xxhash-64"},
-		description: "Get the XXHash64 checksum of your text",
-		filterValue: "XXhash - 64 (xxhash-64)",
+		alias:       []string{""},
+		description: "Get the XXH64 checksum of your text",
+		filterValue: "xxHash - XXH64 (xxh-64)",
 		flags:       nil,
-		name:        "xxhash-64",
-		title:       "XXhash - 64 (xxhash-64)",
+		name:        "xxh-64",
+		title:       "xxHash - XXH64 (xxh-64)",
 	}
 
-	p := XXHash64{}
+	p := XXH64{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
 		t.Errorf("Alias() = %v, want %v", got, test.alias)
 	}
@@ -78,7 +78,7 @@ func TestXXHash64_Transform(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			p := XXHash64{}
+			p := XXH64{}
 			got, err := p.Transform(tt.args.data, tt.args.in1...)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Transform() error = %v, wantErr %v", err, tt.wantErr)

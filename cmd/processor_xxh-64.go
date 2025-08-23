@@ -12,13 +12,13 @@ import (
 )
 
 func init() {
-	rootCmd.AddCommand(xxhash64Cmd)
+	rootCmd.AddCommand(xxh64Cmd)
 }
 
-var xxhash64Cmd = &cobra.Command{
-	Use:     "xxhash-64 [string]",
-	Short:   "Get the XXHash64 checksum of your text",
-	Aliases: []string{"xxhash-64"},
+var xxh64Cmd = &cobra.Command{
+	Use:     "xxh-64 [string]",
+	Short:   "Get the XXH64 checksum of your text",
+	Aliases: []string{""},
 	Args:    cobra.MaximumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
@@ -40,7 +40,7 @@ var xxhash64Cmd = &cobra.Command{
 		}
 
 		flags := make([]processors.Flag, 0)
-		p := processors.XXHash64{}
+		p := processors.XXH64{}
 
 		out, err = p.Transform(in, flags...)
 		if err != nil {
