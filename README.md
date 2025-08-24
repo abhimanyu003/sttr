@@ -216,6 +216,7 @@ echo "Hello World" | sttr base64-encode | sttr md5
 - [x] **sha1** - Get the SHA1 checksum of your text
 - [x] **sha256** - Get the SHA256 checksum of your text
 - [x] **sha512** - Get the SHA512 checksum of your text
+- [x] **xxh64** - Get the XXH64 checksum of your text
 
 #### String
 
