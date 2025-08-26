@@ -13,7 +13,7 @@ func (x XXH64) Name() string {
 }
 
 func (x XXH64) Alias() []string {
-	return []string{""}
+	return []string{"xxh64", "xxhash64", "xxhash-64"}
 }
 
 func (x XXH64) Transform(data []byte, _ ...Flag) (string, error) {

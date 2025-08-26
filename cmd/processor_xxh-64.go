@@ -18,7 +18,7 @@ func init() {
 var xxh64Cmd = &cobra.Command{
 	Use:     "xxh-64 [string]",
 	Short:   "Get the XXH64 checksum of your text",
-	Aliases: []string{""},
+	Aliases: []string{"xxh64", "xxhash64", "xxhash-64"},
 	Args:    cobra.MaximumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
