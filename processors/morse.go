@@ -235,7 +235,7 @@ func (p MorseCodeDecode) Transform(data []byte, f ...Flag) (string, error) {
 			found = true
 		}
 		if !found {
-			return res, fmt.Errorf("unknown character <" + part + "> in " + codeLang)
+			return res, fmt.Errorf("unknown character < %s > in + %s", part, codeLang)
 		}
 	}
 

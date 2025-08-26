@@ -14,7 +14,7 @@ func TestXXHash64_Command(t *testing.T) {
 		name        string
 		title       string
 	}{
-		alias:       []string{""},
+		alias:       []string{"xxh64", "xxhash64", "xxhash-64"},
 		description: "Get the XXH64 checksum of your text",
 		filterValue: "xxHash - XXH64 (xxh-64)",
 		flags:       nil,
