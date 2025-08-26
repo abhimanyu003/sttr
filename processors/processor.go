@@ -64,6 +64,7 @@ var List = []list.Item{
 	URLDecode{},
 	URLEncode{},
 	YAMLToJSON{},
+	XXH64{},
 	Zeropad{},
 }
 
