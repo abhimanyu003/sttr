@@ -71,6 +71,14 @@ func TestLineNumberer_Transform(t *testing.T) {
 			args: args{data: []byte("Hello\nfoo\nbar\nfoo\nf00\n%*&^*&^&\n***")},
 			want: "1. Hello\n2. foo\n3. bar\n4. foo\n5. f00\n6. %*&^*&^&\n7. ***",
 		}, {
+			name: "Multi line string ending with \\n",
+			args: args{data: []byte("Hello\nfoo\nbar\n")},
+			want: "1. Hello\n2. foo\n3. bar\n",
+		}, {
+			name: "Multi line string with padding",
+			args: args{data: []byte("Hello\nfoo\nbar\nfoo\nf00\n%*&^*&^&\n***\neight\nnine\nten")},
+			want: " 1. Hello\n 2. foo\n 3. bar\n 4. foo\n 5. f00\n 6. %*&^*&^&\n 7. ***\n 8. eight\n 9. nine\n10. ten",
+		}, {
 			name: "Test multi lingual character",
 			args: args{data: []byte("नमस्ते")},
 			want: "1. नमस्ते",

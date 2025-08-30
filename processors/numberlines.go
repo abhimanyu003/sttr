@@ -2,6 +2,7 @@ package processors
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 )
 
@@ -16,19 +17,31 @@ func (p LineNumberer) Alias() []string {
 	return []string{"nl"}
 }
 
+func nonEmptyCount(strs []string) int {
+	var count = 0
+	for _, s := range strs {
+		if s != "" {
+			count++
+		}
+	}
+	return count
+}
 func (p LineNumberer) Transform(data []byte, _ ...Flag) (string, error) {
 	var s = string(data)
 	var counter = 1
 	var result = ""
-	for line := range strings.Lines(s) {
-		if line == "\n" {
-			result += line
-		} else {
-			result += fmt.Sprintf("%d. %s", counter, line)
+	var lines = strings.Split(s, "\n")
+	var nec = nonEmptyCount(lines)
+	var maxDigits = len(strconv.Itoa(nec))
+	for _, line := range lines {
+		if line != "" {
+			line = fmt.Sprintf("%*d. %s", maxDigits, counter, line)
 			counter++
 		}
+		result += line + "\n"
 
 	}
+	result = strings.TrimSuffix(result, "\n")
 	return result, nil
 }
 
