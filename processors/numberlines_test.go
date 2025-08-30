@@ -14,7 +14,7 @@ func TestLineNumberer_Command(t *testing.T) {
 		name        string
 		title       string
 	}{
-		alias:       []string{"nl", "number-lines"},
+		alias:       []string{"nl"},
 		description: "Prepends consecutive number to each input line",
 		filterValue: "Line numberer",
 		flags:       nil,
