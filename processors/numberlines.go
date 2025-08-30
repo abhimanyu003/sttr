@@ -17,7 +17,7 @@ func (p LineNumberer) Alias() []string {
 }
 
 func (p LineNumberer) Transform(data []byte, _ ...Flag) (string, error) {
-	var s = string(data[:])
+	var s = string(data)
 	var counter = 1
 	var result = ""
 	var err error
