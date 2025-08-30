@@ -20,17 +20,16 @@ func (p LineNumberer) Transform(data []byte, _ ...Flag) (string, error) {
 	var s = string(data)
 	var counter = 1
 	var result = ""
-	var err error
 	for line := range strings.Lines(s) {
 		if line == "\n" {
 			result += line
 		} else {
 			result += fmt.Sprintf("%d. %s", counter, line)
-			counter += 1
+			counter++
 		}
 
 	}
-	return result, err
+	return result, nil
 }
 
 func (p LineNumberer) Flags() []Flag {
