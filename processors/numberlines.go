@@ -13,7 +13,7 @@ func (p LineNumberer) Name() string {
 }
 
 func (p LineNumberer) Alias() []string {
-	return []string{"nl", "number-lines"}
+	return []string{"nl"}
 }
 
 func (p LineNumberer) Transform(data []byte, _ ...Flag) (string, error) {
