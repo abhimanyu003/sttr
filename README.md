@@ -237,6 +237,7 @@ echo "Hello World" | sttr base64-encode | sttr md5
 - [x] **shuffle-lines** - Shuffle lines randomly
 - [x] **sort-lines** - Sort lines alphabetically
 - [x] **unique-lines** - Get unique lines from list
+- [x] **number-lines** -  Prepend consecutive number to each line
 
 #### Spaces
 
