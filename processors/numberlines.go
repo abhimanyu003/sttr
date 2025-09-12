@@ -6,15 +6,15 @@ import (
 	"strings"
 )
 
-// / Prepends consecutive number to each line of input
-type LineNumberer struct{}
+// NumberLines Prepends consecutive number to each line of input
+type NumberLines struct{}
 
-func (p LineNumberer) Name() string {
+func (p NumberLines) Name() string {
 	return "number-lines"
 }
 
-func (p LineNumberer) Alias() []string {
-	return []string{"nl"}
+func (p NumberLines) Alias() []string {
+	return []string{"nl", "line-numbers", "line-number", "number-line", "numberlines", "numberline"}
 }
 
 func nonEmptyCount(strs []string) int {
@@ -26,7 +26,7 @@ func nonEmptyCount(strs []string) int {
 	}
 	return count
 }
-func (p LineNumberer) Transform(data []byte, _ ...Flag) (string, error) {
+func (p NumberLines) Transform(data []byte, _ ...Flag) (string, error) {
 	var s = string(data)
 	var counter = 1
 	var result = ""
@@ -39,24 +39,23 @@ func (p LineNumberer) Transform(data []byte, _ ...Flag) (string, error) {
 			counter++
 		}
 		result += line + "\n"
-
 	}
 	result = strings.TrimSuffix(result, "\n")
 	return result, nil
 }
 
-func (p LineNumberer) Flags() []Flag {
+func (p NumberLines) Flags() []Flag {
 	return nil
 }
 
-func (p LineNumberer) Title() string {
+func (p NumberLines) Title() string {
 	return "Line numberer"
 }
 
-func (p LineNumberer) Description() string {
+func (p NumberLines) Description() string {
 	return "Prepends consecutive number to each input line"
 }
 
-func (p LineNumberer) FilterValue() string {
+func (p NumberLines) FilterValue() string {
 	return p.Title()
 }
