@@ -43,7 +43,7 @@ var List = []list.Item{
 	MorseCodeDecode{},
 	MD5{},
 	MSGPACKToJSON{},
-	LineNumberer{},
+	NumberLines{},
 	Pascal{},
 	RemoveNewLines{},
 	RemoveSpaces{},

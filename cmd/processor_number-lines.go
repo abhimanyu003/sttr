@@ -18,7 +18,7 @@ func init() {
 var numberLinesCmd = &cobra.Command{
 	Use:     "number-lines [string]",
 	Short:   "Prepends consecutive number to each input line",
-	Aliases: []string{"nl"},
+	Aliases: []string{"nl", "line-numbers", "line-number", "number-line", "numberlines", "numberline"},
 	Args:    cobra.MaximumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
@@ -40,7 +40,7 @@ var numberLinesCmd = &cobra.Command{
 		}
 
 		flags := make([]processors.Flag, 0)
-		p := processors.LineNumberer{}
+		p := processors.NumberLines{}
 
 		out, err = p.Transform(in, flags...)
 		if err != nil {
