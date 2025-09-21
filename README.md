@@ -220,7 +220,6 @@ echo "Hello World" | sttr base64-encode | sttr md5
 - [x] **xxh64** - Get the XXH64 checksum of your text
 - [x] **xxh128** - Get the XXH128 checksum of your text
 
-
 #### String
 
 - [x] **camel** - Transform your text to camelCase
