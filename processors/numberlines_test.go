@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestLineNumberer_Command(t *testing.T) {
+func TestNumberLines_Command(t *testing.T) {
 	test := struct {
 		alias       []string
 		description string
@@ -14,14 +14,14 @@ func TestLineNumberer_Command(t *testing.T) {
 		name        string
 		title       string
 	}{
-		alias:       []string{"nl"},
+		alias:       []string{"nl", "line-numbers", "line-number", "number-line", "numberlines", "numberline"},
 		description: "Prepends consecutive number to each input line",
 		filterValue: "Line numberer",
 		flags:       nil,
 		name:        "number-lines",
 		title:       "Line numberer",
 	}
-	p := LineNumberer{}
+	p := NumberLines{}
 	if got := p.Alias(); !reflect.DeepEqual(got, test.alias) {
 		t.Errorf("Alias() = %v, want %v", got, test.alias)
 	}
@@ -42,7 +42,7 @@ func TestLineNumberer_Command(t *testing.T) {
 	}
 }
 
-func TestLineNumberer_Transform(t *testing.T) {
+func TestNumberLines_Transform(t *testing.T) {
 	type args struct {
 		data []byte
 		in1  []Flag
@@ -101,7 +101,7 @@ func TestLineNumberer_Transform(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			p := LineNumberer{}
+			p := NumberLines{}
 			got, err := p.Transform(tt.args.data, tt.args.in1...)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Transform() error = %v, wantErr %v", err, tt.wantErr)
