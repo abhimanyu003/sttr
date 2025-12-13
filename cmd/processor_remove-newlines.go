@@ -4,6 +4,7 @@ package cmd
 
 import (
 	"fmt"
+	"io"
 	"os"
 
 	"github.com/abhimanyu003/sttr/processors"
@@ -25,30 +26,59 @@ var removeNewlinesCmd = &cobra.Command{
 	Args:    cobra.MaximumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var err error
-		var in []byte
 		var out string
-
-		if len(args) == 0 {
-			in = []byte(utils.ReadMultilineInput())
-		} else {
-			if fi, err := os.Stat(args[0]); err == nil && !fi.IsDir() {
-				d, err := os.ReadFile(args[0])
-				if err != nil {
-					return err
-				}
-				in = d
-			} else {
-				in = []byte(args[0])
-			}
-		}
 
 		flags := make([]processors.Flag, 0)
 		p := processors.RemoveNewLines{}
 		flags = append(flags, processors.Flag{Short: "s", Value: removeNewlines_flag_s})
 
-		out, err = p.Transform(in, flags...)
-		if err != nil {
-			return err
+		if len(args) == 0 {
+			// Handle stdin/interactive input
+			in := []byte(utils.ReadMultilineInput())
+			out, err = p.Transform(in, flags...)
+			if err != nil {
+				return err
+			}
+		} else {
+			// Check if it's a file
+			if fi, err := os.Stat(args[0]); err == nil && !fi.IsDir() {
+				// It's a file - check if we should use streaming
+				const largeFileThreshold = 10 * 1024 * 1024 // 10MB
+				
+				// Check if processor supports streaming
+				if streamingProc, ok := interface{}(p).(interface {
+					CanStream() bool
+					PreferStream() bool
+					TransformStream(io.Reader, io.Writer, ...processors.Flag) error
+				}); ok && streamingProc.CanStream() && (fi.Size() > largeFileThreshold || streamingProc.PreferStream()) {
+					
+					// Use streaming
+					file, err := os.Open(args[0])
+					if err != nil {
+						return err
+					}
+					defer file.Close()
+					
+					err = streamingProc.TransformStream(file, os.Stdout, flags...)
+					return err
+				} else {
+					// Use traditional method
+					d, err := os.ReadFile(args[0])
+					if err != nil {
+						return err
+					}
+					out, err = p.Transform(d, flags...)
+					if err != nil {
+						return err
+					}
+				}
+			} else {
+				// Not a file, treat as string input
+				out, err = p.Transform([]byte(args[0]), flags...)
+				if err != nil {
+					return err
+				}
+			}
 		}
 
 		_, err = fmt.Fprint(os.Stdout, out)

@@ -3,6 +3,7 @@ package processors
 import (
 	"encoding/hex"
 	"fmt"
+	"io"
 
 	"golang.org/x/crypto/blake2b"
 	"golang.org/x/crypto/blake2s"
@@ -10,6 +11,44 @@ import (
 
 // BLAKE2b generates BLAKE2b hash
 type BLAKE2b struct{}
+
+// Implement StreamingProcessor interface
+func (p BLAKE2b) CanStream() bool {
+	return true
+}
+
+func (p BLAKE2b) PreferStream() bool {
+	return true
+}
+
+func (p BLAKE2b) TransformStream(reader io.Reader, writer io.Writer, opts ...Flag) error {
+	var size uint = 64 // Default BLAKE2b size
+	for _, flag := range opts {
+		if flag.Short == "s" {
+			if s, ok := flag.Value.(uint); ok {
+				size = s
+			}
+		}
+	}
+
+	if size < 1 || size > 64 {
+		return fmt.Errorf("BLAKE2b size must be between 1 and 64 bytes")
+	}
+
+	hasher, err := blake2b.New(int(size), nil)
+	if err != nil {
+		return err
+	}
+
+	_, err = io.Copy(hasher, reader)
+	if err != nil {
+		return err
+	}
+
+	result := hex.EncodeToString(hasher.Sum(nil))
+	_, err = writer.Write([]byte(result))
+	return err
+}
 
 func (p BLAKE2b) Name() string {
 	return "blake2b"
@@ -68,6 +107,31 @@ func (p BLAKE2b) FilterValue() string {
 
 // BLAKE2s generates BLAKE2s hash
 type BLAKE2s struct{}
+
+// Implement StreamingProcessor interface
+func (p BLAKE2s) CanStream() bool {
+	return true
+}
+
+func (p BLAKE2s) PreferStream() bool {
+	return true
+}
+
+func (p BLAKE2s) TransformStream(reader io.Reader, writer io.Writer, opts ...Flag) error {
+	hasher, err := blake2s.New256(nil)
+	if err != nil {
+		return err
+	}
+
+	_, err = io.Copy(hasher, reader)
+	if err != nil {
+		return err
+	}
+
+	result := hex.EncodeToString(hasher.Sum(nil))
+	_, err = writer.Write([]byte(result))
+	return err
+}
 
 func (p BLAKE2s) Name() string {
 	return "blake2s"
