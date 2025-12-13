@@ -1,7 +1,9 @@
 package processors
 
 import (
+	"bufio"
 	"fmt"
+	"io"
 	"strconv"
 	"strings"
 
@@ -99,6 +101,24 @@ type Processor interface {
 	Flags() []Flag
 }
 
+// StreamingConfig defines how a processor should handle streaming
+type StreamingConfig struct {
+	// ChunkSize defines the size of chunks to read from input (default: 64KB)
+	ChunkSize int
+	// BufferOutput whether to buffer output before writing (useful for processors that need full input)
+	BufferOutput bool
+	// LineByLine whether to process input line by line (useful for line-based processors)
+	LineByLine bool
+}
+
+// ConfigurableStreamingProcessor is an optional interface that processors can implement
+// to customize their streaming behavior
+type ConfigurableStreamingProcessor interface {
+	Processor
+	// GetStreamingConfig returns the streaming configuration for this processor
+	GetStreamingConfig() StreamingConfig
+}
+
 type FlagType string
 
 func (f FlagType) String() string {
@@ -130,6 +150,130 @@ type Flag struct {
 
 	// Value - optional default value of the flag
 	Value any
+}
+
+// DefaultStreamingConfig provides sensible defaults for streaming
+var DefaultStreamingConfig = StreamingConfig{
+	ChunkSize:    64 * 1024, // 64KB
+	BufferOutput: false,
+	LineByLine:   false,
+}
+
+// TransformStream provides a central streaming function that works with any processor
+// It uses the processor's existing Transform method to handle streaming data
+func TransformStream(processor Processor, reader io.Reader, writer io.Writer, opts ...Flag) error {
+	// Get streaming configuration
+	config := DefaultStreamingConfig
+	if sp, ok := processor.(ConfigurableStreamingProcessor); ok {
+		config = sp.GetStreamingConfig()
+	}
+
+	if config.LineByLine {
+		return transformStreamLineByLine(processor, reader, writer, opts...)
+	}
+
+	if config.BufferOutput {
+		return transformStreamBuffered(processor, reader, writer, opts...)
+	}
+
+	return transformStreamChunked(processor, reader, writer, config.ChunkSize, opts...)
+}
+
+// transformStreamLineByLine processes input line by line
+func transformStreamLineByLine(processor Processor, reader io.Reader, writer io.Writer, opts ...Flag) error {
+	scanner := bufio.NewScanner(reader)
+	for scanner.Scan() {
+		line := scanner.Bytes()
+		result, err := processor.Transform(line, opts...)
+		if err != nil {
+			return err
+		}
+		if _, err := writer.Write([]byte(result + "\n")); err != nil {
+			return err
+		}
+	}
+	return scanner.Err()
+}
+
+// transformStreamBuffered reads all input, processes it, then writes output
+func transformStreamBuffered(processor Processor, reader io.Reader, writer io.Writer, opts ...Flag) error {
+	data, err := io.ReadAll(reader)
+	if err != nil {
+		return err
+	}
+
+	result, err := processor.Transform(data, opts...)
+	if err != nil {
+		return err
+	}
+
+	_, err = writer.Write([]byte(result))
+	return err
+}
+
+// transformStreamChunked processes input in chunks (for processors that can handle partial data)
+func transformStreamChunked(processor Processor, reader io.Reader, writer io.Writer, chunkSize int, opts ...Flag) error {
+	buffer := make([]byte, chunkSize)
+
+	for {
+		n, err := reader.Read(buffer)
+		if n > 0 {
+			result, transformErr := processor.Transform(buffer[:n], opts...)
+			if transformErr != nil {
+				return transformErr
+			}
+			if _, writeErr := writer.Write([]byte(result)); writeErr != nil {
+				return writeErr
+			}
+		}
+
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
+// CanStream returns true if a processor can handle streaming
+// All processors can stream using the central TransformStream function
+func CanStream(processor Processor) bool {
+	return true
+}
+
+// PreferStream returns true if a processor benefits from streaming
+// This is useful for large files or processors that don't need full input
+func PreferStream(processor Processor) bool {
+	// Check if processor implements ConfigurableStreamingProcessor interface
+	if sp, ok := processor.(ConfigurableStreamingProcessor); ok {
+		config := sp.GetStreamingConfig()
+		// Prefer streaming for chunked processors or those that explicitly buffer
+		return !config.BufferOutput || config.LineByLine
+	}
+
+	// Check if processor implements the old StreamingProcessor interface
+	if sp, ok := processor.(StreamingProcessor); ok {
+		return sp.PreferStream()
+	}
+
+	// Default: prefer streaming for hash functions and encoders
+	name := processor.Name()
+	streamingFriendly := []string{
+		"md5", "sha1", "sha224", "sha256", "sha384", "sha512",
+		"hex-encode", "hex-decode", "base64-encode", "base64-decode",
+		"base32-encode", "base32-decode", "upper", "lower",
+	}
+
+	for _, friendly := range streamingFriendly {
+		if name == friendly {
+			return true
+		}
+	}
+
+	return false
 }
 
 // Zeropad is an Example processor to show how to add text processors,

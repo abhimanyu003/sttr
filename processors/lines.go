@@ -14,6 +14,15 @@ import (
 // Example: "line 1\n line 2" = 2.
 type CountLines struct{}
 
+// Implement ConfigurableStreamingProcessor interface for line counting
+func (p CountLines) GetStreamingConfig() StreamingConfig {
+	return StreamingConfig{
+		ChunkSize:    64 * 1024, // 64KB chunks
+		BufferOutput: true,      // Need full input to count lines accurately
+		LineByLine:   false,
+	}
+}
+
 func (p CountLines) Name() string {
 	return "count-lines"
 }
@@ -23,10 +32,18 @@ func (p CountLines) Alias() []string {
 }
 
 func (p CountLines) Transform(data []byte, _ ...Flag) (string, error) {
-	var lines int
-	if len(data) > 0 {
-		lines = strings.Count(string(data), "\n") + 1
+	if len(data) == 0 {
+		return "0", nil
 	}
+
+	text := string(data)
+	lines := strings.Count(text, "\n")
+
+	// If the text doesn't end with a newline, it still counts as a line
+	if !strings.HasSuffix(text, "\n") {
+		lines++
+	}
+
 	return fmt.Sprintf("%d", lines), nil
 }
 
@@ -50,6 +67,15 @@ func (p CountLines) FilterValue() string {
 // SortLines sorts given lines, it's not a natural sort.
 // Example: 2\n 1\n -> 1\n 2\n.
 type SortLines struct{}
+
+// Implement ConfigurableStreamingProcessor interface for line processing
+func (p SortLines) GetStreamingConfig() StreamingConfig {
+	return StreamingConfig{
+		ChunkSize:    64 * 1024, // 64KB chunks
+		BufferOutput: true,      // Need all lines to sort
+		LineByLine:   false,
+	}
+}
 
 func (p SortLines) Name() string {
 	return "sort-lines"
@@ -131,6 +157,15 @@ func (p ShuffleLines) FilterValue() string {
 // UniqueLines sorts given lines, in random order.
 type UniqueLines struct{}
 
+// Implement ConfigurableStreamingProcessor interface for line processing
+func (p UniqueLines) GetStreamingConfig() StreamingConfig {
+	return StreamingConfig{
+		ChunkSize:    64 * 1024, // 64KB chunks
+		BufferOutput: true,      // Need all lines to find unique ones
+		LineByLine:   false,
+	}
+}
+
 func (p UniqueLines) Name() string {
 	return "unique-lines"
 }
@@ -192,6 +227,15 @@ func (p UniqueLines) FilterValue() string {
 
 // ReverseLines sorts given lines, in random order.
 type ReverseLines struct{}
+
+// Implement ConfigurableStreamingProcessor interface for line processing
+func (p ReverseLines) GetStreamingConfig() StreamingConfig {
+	return StreamingConfig{
+		ChunkSize:    64 * 1024, // 64KB chunks
+		BufferOutput: true,      // Need all lines to reverse order
+		LineByLine:   false,
+	}
+}
 
 func (p ReverseLines) Name() string {
 	return "reverse-lines"

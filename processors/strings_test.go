@@ -691,6 +691,21 @@ func TestCountWords_Transform(t *testing.T) {
 			args: args{data: []byte("word1, word2, word3")},
 			want: "3",
 		},
+		{
+			name: "empty string",
+			args: args{data: []byte("")},
+			want: "0",
+		},
+		{
+			name: "only spaces",
+			args: args{data: []byte("   ")},
+			want: "0",
+		},
+		{
+			name: "single word",
+			args: args{data: []byte("word")},
+			want: "1",
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -699,6 +714,67 @@ func TestCountWords_Transform(t *testing.T) {
 				t.Errorf("CountWords() = %v, want %v", got, tt.want)
 			}
 		})
+	}
+}
+
+// Test streaming configuration for count processors
+func TestCountWords_StreamingConfig(t *testing.T) {
+	p := CountWords{}
+	config := p.GetStreamingConfig()
+
+	if config.ChunkSize != 64*1024 {
+		t.Errorf("ChunkSize = %v, want %v", config.ChunkSize, 64*1024)
+	}
+	if !config.BufferOutput {
+		t.Errorf("BufferOutput = %v, want %v", config.BufferOutput, true)
+	}
+	if config.LineByLine {
+		t.Errorf("LineByLine = %v, want %v", config.LineByLine, false)
+	}
+}
+
+func TestCountCharacters_StreamingConfig(t *testing.T) {
+	p := CountCharacters{}
+	config := p.GetStreamingConfig()
+
+	if config.ChunkSize != 64*1024 {
+		t.Errorf("ChunkSize = %v, want %v", config.ChunkSize, 64*1024)
+	}
+	if !config.BufferOutput {
+		t.Errorf("BufferOutput = %v, want %v", config.BufferOutput, true)
+	}
+	if config.LineByLine {
+		t.Errorf("LineByLine = %v, want %v", config.LineByLine, false)
+	}
+}
+
+func TestUpper_StreamingConfig(t *testing.T) {
+	p := Upper{}
+	config := p.GetStreamingConfig()
+
+	if config.ChunkSize != 64*1024 {
+		t.Errorf("ChunkSize = %v, want %v", config.ChunkSize, 64*1024)
+	}
+	if config.BufferOutput {
+		t.Errorf("BufferOutput = %v, want %v", config.BufferOutput, false)
+	}
+	if config.LineByLine {
+		t.Errorf("LineByLine = %v, want %v", config.LineByLine, false)
+	}
+}
+
+func TestLower_StreamingConfig(t *testing.T) {
+	p := Lower{}
+	config := p.GetStreamingConfig()
+
+	if config.ChunkSize != 64*1024 {
+		t.Errorf("ChunkSize = %v, want %v", config.ChunkSize, 64*1024)
+	}
+	if config.BufferOutput {
+		t.Errorf("BufferOutput = %v, want %v", config.BufferOutput, false)
+	}
+	if config.LineByLine {
+		t.Errorf("LineByLine = %v, want %v", config.LineByLine, false)
 	}
 }
 

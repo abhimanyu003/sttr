@@ -7,7 +7,6 @@ import (
 	"crypto/sha512"
 	"encoding/hex"
 	"fmt"
-	"io"
 
 	"golang.org/x/crypto/bcrypt"
 )
@@ -15,25 +14,13 @@ import (
 // MD5 encodes string to MD5.
 type MD5 struct{}
 
-// Implement StreamingProcessor interface
-func (p MD5) CanStream() bool {
-	return true
-}
-
-func (p MD5) PreferStream() bool {
-	return true // Hash functions benefit greatly from streaming
-}
-
-func (p MD5) TransformStream(reader io.Reader, writer io.Writer, opts ...Flag) error {
-	hasher := md5.New()
-	_, err := io.Copy(hasher, reader)
-	if err != nil {
-		return err
+// Implement ConfigurableStreamingProcessor interface for optimized streaming
+func (p MD5) GetStreamingConfig() StreamingConfig {
+	return StreamingConfig{
+		ChunkSize:    64 * 1024, // 64KB chunks
+		BufferOutput: true,      // Hash functions need full input
+		LineByLine:   false,
 	}
-
-	result := hex.EncodeToString(hasher.Sum(nil))
-	_, err = writer.Write([]byte(result))
-	return err
 }
 
 func (p MD5) Name() string {
@@ -71,25 +58,13 @@ func (p MD5) FilterValue() string {
 // SHA1 encodes string to SHA-1.
 type SHA1 struct{}
 
-// Implement StreamingProcessor interface
-func (p SHA1) CanStream() bool {
-	return true
-}
-
-func (p SHA1) PreferStream() bool {
-	return true
-}
-
-func (p SHA1) TransformStream(reader io.Reader, writer io.Writer, opts ...Flag) error {
-	hasher := sha1.New()
-	_, err := io.Copy(hasher, reader)
-	if err != nil {
-		return err
+// Implement ConfigurableStreamingProcessor interface for optimized streaming
+func (p SHA1) GetStreamingConfig() StreamingConfig {
+	return StreamingConfig{
+		ChunkSize:    64 * 1024, // 64KB chunks
+		BufferOutput: true,      // Hash functions need full input
+		LineByLine:   false,
 	}
-
-	result := fmt.Sprintf("%x", hasher.Sum(nil))
-	_, err = writer.Write([]byte(result))
-	return err
 }
 
 func (p SHA1) Name() string {
@@ -128,25 +103,13 @@ func (p SHA1) FilterValue() string {
 // SHA256 encodes string to SHA-256.
 type SHA256 struct{}
 
-// Implement StreamingProcessor interface
-func (p SHA256) CanStream() bool {
-	return true
-}
-
-func (p SHA256) PreferStream() bool {
-	return true
-}
-
-func (p SHA256) TransformStream(reader io.Reader, writer io.Writer, opts ...Flag) error {
-	hasher := sha256.New()
-	_, err := io.Copy(hasher, reader)
-	if err != nil {
-		return err
+// Implement ConfigurableStreamingProcessor interface for optimized streaming
+func (p SHA256) GetStreamingConfig() StreamingConfig {
+	return StreamingConfig{
+		ChunkSize:    64 * 1024, // 64KB chunks
+		BufferOutput: true,      // Hash functions need full input
+		LineByLine:   false,
 	}
-
-	result := fmt.Sprintf("%x", hasher.Sum(nil))
-	_, err = writer.Write([]byte(result))
-	return err
 }
 
 func (p SHA256) Name() string {
@@ -185,25 +148,13 @@ func (p SHA256) FilterValue() string {
 // SHA512 encodes string to SHA-512.
 type SHA512 struct{}
 
-// Implement StreamingProcessor interface
-func (p SHA512) CanStream() bool {
-	return true
-}
-
-func (p SHA512) PreferStream() bool {
-	return true
-}
-
-func (p SHA512) TransformStream(reader io.Reader, writer io.Writer, opts ...Flag) error {
-	hasher := sha512.New()
-	_, err := io.Copy(hasher, reader)
-	if err != nil {
-		return err
+// Implement ConfigurableStreamingProcessor interface for optimized streaming
+func (p SHA512) GetStreamingConfig() StreamingConfig {
+	return StreamingConfig{
+		ChunkSize:    64 * 1024, // 64KB chunks
+		BufferOutput: true,      // Hash functions need full input
+		LineByLine:   false,
 	}
-
-	result := fmt.Sprintf("%x", hasher.Sum(nil))
-	_, err = writer.Write([]byte(result))
-	return err
 }
 
 func (p SHA512) Name() string {
@@ -242,25 +193,13 @@ func (p SHA512) FilterValue() string {
 // SHA224 encode string to SHA-224.
 type SHA224 struct{}
 
-// Implement StreamingProcessor interface
-func (p SHA224) CanStream() bool {
-	return true
-}
-
-func (p SHA224) PreferStream() bool {
-	return true
-}
-
-func (p SHA224) TransformStream(reader io.Reader, writer io.Writer, opts ...Flag) error {
-	hasher := sha256.New224()
-	_, err := io.Copy(hasher, reader)
-	if err != nil {
-		return err
+// Implement ConfigurableStreamingProcessor interface for optimized streaming
+func (p SHA224) GetStreamingConfig() StreamingConfig {
+	return StreamingConfig{
+		ChunkSize:    64 * 1024, // 64KB chunks
+		BufferOutput: true,      // Hash functions need full input
+		LineByLine:   false,
 	}
-
-	result := fmt.Sprintf("%x", hasher.Sum(nil))
-	_, err = writer.Write([]byte(result))
-	return err
 }
 
 func (p SHA224) Name() string {
@@ -297,25 +236,13 @@ func (p SHA224) FilterValue() string {
 // SHA384 encodes string to SHA-384.
 type SHA384 struct{}
 
-// Implement StreamingProcessor interface
-func (p SHA384) CanStream() bool {
-	return true
-}
-
-func (p SHA384) PreferStream() bool {
-	return true
-}
-
-func (p SHA384) TransformStream(reader io.Reader, writer io.Writer, opts ...Flag) error {
-	hasher := sha512.New384()
-	_, err := io.Copy(hasher, reader)
-	if err != nil {
-		return err
+// Implement ConfigurableStreamingProcessor interface for optimized streaming
+func (p SHA384) GetStreamingConfig() StreamingConfig {
+	return StreamingConfig{
+		ChunkSize:    64 * 1024, // 64KB chunks
+		BufferOutput: true,      // Hash functions need full input
+		LineByLine:   false,
 	}
-
-	result := fmt.Sprintf("%x", hasher.Sum(nil))
-	_, err = writer.Write([]byte(result))
-	return err
 }
 
 func (p SHA384) Name() string {

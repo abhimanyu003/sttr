@@ -4,7 +4,6 @@ package cmd
 
 import (
 	"fmt"
-	"io"
 	"os"
 
 	"github.com/abhimanyu003/sttr/processors"
@@ -45,13 +44,8 @@ var removeSpacesCmd = &cobra.Command{
 				// It's a file - check if we should use streaming
 				const largeFileThreshold = 10 * 1024 * 1024 // 10MB
 				
-				// Check if processor supports streaming
-				if streamingProc, ok := interface{}(p).(interface {
-					CanStream() bool
-					PreferStream() bool
-					TransformStream(io.Reader, io.Writer, ...processors.Flag) error
-				}); ok && streamingProc.CanStream() && (fi.Size() > largeFileThreshold || streamingProc.PreferStream()) {
-					
+				// Use central streaming function for all processors
+				if processors.CanStream(p) && (fi.Size() > largeFileThreshold || processors.PreferStream(p)) {
 					// Use streaming
 					file, err := os.Open(args[0])
 					if err != nil {
@@ -59,10 +53,10 @@ var removeSpacesCmd = &cobra.Command{
 					}
 					defer file.Close()
 					
-					err = streamingProc.TransformStream(file, os.Stdout, flags...)
+					err = processors.TransformStream(p, file, os.Stdout, flags...)
 					return err
 				} else {
-					// Use traditional method
+					// Use traditional method for small files
 					d, err := os.ReadFile(args[0])
 					if err != nil {
 						return err

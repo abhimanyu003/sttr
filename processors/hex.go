@@ -8,6 +8,15 @@ import (
 // HexEncode encodes string to hexadecimal
 type HexEncode struct{}
 
+// Implement ConfigurableStreamingProcessor interface for chunked processing
+func (p HexEncode) GetStreamingConfig() StreamingConfig {
+	return StreamingConfig{
+		ChunkSize:    64 * 1024, // 64KB chunks
+		BufferOutput: false,     // Can encode chunks directly
+		LineByLine:   false,
+	}
+}
+
 func (p HexEncode) Name() string {
 	return "hex-encode"
 }
@@ -37,8 +46,17 @@ func (p HexEncode) FilterValue() string {
 	return p.Title()
 }
 
-// HexEncode decodes hexadecimal to string
+// HexDecode decodes hexadecimal to string
 type HexDecode struct{}
+
+// Implement ConfigurableStreamingProcessor interface for buffered processing
+func (p HexDecode) GetStreamingConfig() StreamingConfig {
+	return StreamingConfig{
+		ChunkSize:    64 * 1024, // 64KB chunks
+		BufferOutput: true,      // Hex decoding needs complete input
+		LineByLine:   false,
+	}
+}
 
 func (p HexDecode) Name() string {
 	return "hex-decode"

@@ -56,31 +56,58 @@ func TestCountLines_Transform(t *testing.T) {
 	}{
 		{
 			name: "Count empty",
-			args: args{data: []byte(nil)},
+			args: args{data: []byte("")},
 			want: "0",
 		},
 		{
-			name: "Count one line",
+			name: "Count nil",
+			args: args{data: nil},
+			want: "0",
+		},
+		{
+			name: "Count one line without newline",
 			args: args{data: []byte("one line")},
 			want: "1",
 		},
 		{
-			name: "Count two line",
-			args: args{data: []byte("1st line\n 2nd line")},
+			name: "Count one line with newline",
+			args: args{data: []byte("one line\n")},
+			want: "1",
+		},
+		{
+			name: "Count two lines without trailing newline",
+			args: args{data: []byte("1st line\n2nd line")},
 			want: "2",
 		},
 		{
-			name: "Count empty line",
+			name: "Count two lines with trailing newline",
+			args: args{data: []byte("1st line\n2nd line\n")},
+			want: "2",
+		},
+		{
+			name: "Count three empty lines",
 			args: args{data: []byte("\n\n\n")},
+			want: "3",
+		},
+		{
+			name: "Count mixed content",
+			args: args{data: []byte("1\n2\n3\n ")},
 			want: "4",
 		},
 		{
-			name: "Count empty + text line",
-			args: args{data: []byte(`1
-2
-3
- `)},
-			want: "4",
+			name: "Count single newline",
+			args: args{data: []byte("\n")},
+			want: "1",
+		},
+		{
+			name: "Count multiple 'a' lines (like user's 500MB file)",
+			args: args{data: []byte("a\na\na\na\na\n")},
+			want: "5",
+		},
+		{
+			name: "Count multiple 'a' lines without trailing newline",
+			args: args{data: []byte("a\na\na\na\na")},
+			want: "5",
 		},
 	}
 	for _, tt := range tests {

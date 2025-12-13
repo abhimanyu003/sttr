@@ -9,6 +9,15 @@ import (
 // NumberLines Prepends consecutive number to each line of input
 type NumberLines struct{}
 
+// Implement ConfigurableStreamingProcessor interface for line-by-line processing
+func (p NumberLines) GetStreamingConfig() StreamingConfig {
+	return StreamingConfig{
+		ChunkSize:    64 * 1024, // 64KB chunks
+		BufferOutput: true,      // Need to count lines first
+		LineByLine:   false,     // Need full input to calculate max digits
+	}
+}
+
 func (p NumberLines) Name() string {
 	return "number-lines"
 }

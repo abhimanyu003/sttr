@@ -16,6 +16,15 @@ import (
 // Example: "THIS IS STRING" to "this is string".
 type Lower struct{}
 
+// Implement ConfigurableStreamingProcessor interface for chunked processing
+func (p Lower) GetStreamingConfig() StreamingConfig {
+	return StreamingConfig{
+		ChunkSize:    64 * 1024, // 64KB chunks
+		BufferOutput: false,     // Can process chunks directly
+		LineByLine:   false,
+	}
+}
+
 func (p Lower) Name() string {
 	return "lower"
 }
@@ -48,6 +57,15 @@ func (p Lower) FilterValue() string {
 // Upper convert string to upper case.
 // Example: "this is string" to "THIS IS STRING".
 type Upper struct{}
+
+// Implement ConfigurableStreamingProcessor interface for chunked processing
+func (p Upper) GetStreamingConfig() StreamingConfig {
+	return StreamingConfig{
+		ChunkSize:    64 * 1024, // 64KB chunks
+		BufferOutput: false,     // Can process chunks directly
+		LineByLine:   false,
+	}
+}
 
 func (p Upper) Name() string {
 	return "upper"
@@ -283,6 +301,15 @@ func (p Slug) FilterValue() string {
 // CountCharacters count number of characters including spaces.
 type CountCharacters struct{}
 
+// Implement ConfigurableStreamingProcessor interface for character counting
+func (p CountCharacters) GetStreamingConfig() StreamingConfig {
+	return StreamingConfig{
+		ChunkSize:    64 * 1024, // 64KB chunks
+		BufferOutput: true,      // Need full input to count characters accurately
+		LineByLine:   false,
+	}
+}
+
 func (p CountCharacters) Name() string {
 	return "count-chars"
 }
@@ -315,6 +342,15 @@ func (p CountCharacters) FilterValue() string {
 // CountWords counts number of words in string.
 // Example: "hello world" = 2.
 type CountWords struct{}
+
+// Implement ConfigurableStreamingProcessor interface for word counting
+func (p CountWords) GetStreamingConfig() StreamingConfig {
+	return StreamingConfig{
+		ChunkSize:    64 * 1024, // 64KB chunks
+		BufferOutput: true,      // Need full input to count words accurately
+		LineByLine:   false,
+	}
+}
 
 func (p CountWords) Name() string {
 	return "count-words"
