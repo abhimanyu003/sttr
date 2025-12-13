@@ -32,7 +32,7 @@ func TestTransformStream(t *testing.T) {
 			name:      "MD5 hash streaming",
 			processor: MD5{},
 			input:     "hello world",
-			want:      "5d41402abc4b2a76b9719d911017c592",
+			want:      "5eb63bbbe01eeed093cb22bb8f5acdc3",
 		},
 		{
 			name:      "Count lines streaming",

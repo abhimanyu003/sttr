@@ -247,11 +247,27 @@ func CanStream(processor Processor) bool {
 // PreferStream returns true if a processor benefits from streaming
 // This is useful for large files or processors that don't need full input
 func PreferStream(processor Processor) bool {
-	// Check if processor implements ConfigurableStreamingProcessor interface
 	if sp, ok := processor.(ConfigurableStreamingProcessor); ok {
 		config := sp.GetStreamingConfig()
-		// Prefer streaming for chunked processors or those that explicitly buffer
-		return !config.BufferOutput || config.LineByLine
+
+		name := processor.Name()
+
+		hashFunctions := []string{"md5", "sha1", "sha224", "sha256", "sha384", "sha512"}
+		for _, hash := range hashFunctions {
+			if name == hash {
+				return true
+			}
+		}
+
+		if !config.BufferOutput {
+			return true
+		}
+
+		if config.LineByLine {
+			return true
+		}
+
+		return false
 	}
 
 	// Check if processor implements the old StreamingProcessor interface
