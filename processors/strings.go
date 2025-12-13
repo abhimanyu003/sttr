@@ -6,6 +6,8 @@ import (
 	"strings"
 
 	"github.com/abhimanyu003/sttr/utils"
+	"golang.org/x/text/cases"
+	"golang.org/x/text/language"
 
 	"github.com/iancoleman/strcase"
 )
@@ -89,7 +91,7 @@ func (p Title) Alias() []string {
 }
 
 func (p Title) Transform(data []byte, _ ...Flag) (string, error) {
-	return strings.Title(string(data)), nil
+	return cases.Title(language.Und, cases.NoLower).String(string(data)), nil
 }
 
 func (p Title) Flags() []Flag {

@@ -6,6 +6,8 @@ import (
 	"strings"
 
 	"github.com/charmbracelet/bubbles/list"
+	"golang.org/x/text/cases"
+	"golang.org/x/text/language"
 )
 
 var List = []list.Item{
@@ -196,7 +198,7 @@ func (p Zeropad) Flags() []Flag {
 }
 
 func (p Zeropad) Title() string {
-	title := strings.Title(p.Name())
+	title := cases.Title(language.Und, cases.NoLower).String(p.Name())
 	return fmt.Sprintf("%s (%s)", title, p.Name())
 }
 
