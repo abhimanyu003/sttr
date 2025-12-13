@@ -72,7 +72,7 @@ jobs:
         with:
           distribution: goreleaser
           version: "~> v2"
-          args: release check
+          args: check
         env:
           AUR_KEY: ${{ secrets.AUR_SSH_KEY }}
           GITHUB_TOKEN: ${{ secrets.GORELEASER_TOKEN }}
