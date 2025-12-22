@@ -353,7 +353,7 @@ func TestUniqueLines_Transform(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			// We are going run test 100 to make sure that list order is preserved.
-			for i := 0; i < 100; i++ {
+			for range 100 {
 				p := UniqueLines{}
 				if got, _ := p.Transform(tt.args.data, tt.args.opts...); got != tt.want {
 					t.Errorf("UniqueLines() = %v, want %v", got, tt.want)
@@ -440,7 +440,7 @@ func TestReverseLines_Transform(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			// We are going run test 100 to make sure that list order is preserved.
-			for i := 0; i < 100; i++ {
+			for range 100 {
 				p := ReverseLines{}
 				if got, _ := p.Transform(tt.args.data, tt.args.opts...); got != tt.want {
 					t.Errorf("ReverseLines() = %v, want %v", got, tt.want)

@@ -431,31 +431,31 @@ func (p EscapeQuotes) Alias() []string {
 }
 
 func (p EscapeQuotes) Transform(data []byte, f ...Flag) (string, error) {
-	result := ""
+	var result strings.Builder
 	for _, v := range data {
 		for _, flag := range f {
 			switch flag.Short {
 			case "d":
 				if v == '"' {
-					result += "\\"
+					result.WriteString("\\")
 				}
 			case "s":
 				if v == '\'' {
-					result += "\\"
+					result.WriteString("\\")
 				}
 			}
 		}
 		if len(f) == 0 {
 			if v == '"' {
-				result += "\\"
+				result.WriteString("\\")
 			}
 			if v == '\'' {
-				result += "\\"
+				result.WriteString("\\")
 			}
 		}
-		result += string(v)
+		result.WriteString(string(v))
 	}
-	return result, nil
+	return result.String(), nil
 }
 
 func (p EscapeQuotes) Flags() []Flag {

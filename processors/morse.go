@@ -3,6 +3,7 @@ package processors
 
 import (
 	"fmt"
+	"slices"
 	"strings"
 )
 
@@ -137,11 +138,8 @@ func checkDecodeLangFlag(f []Flag) string {
 		if flag.Short == "l" {
 			l, ok := flag.Value.(string)
 			if ok {
-				for _, ml := range morseLangs {
-					if ml == l {
-						lang = l
-						break
-					}
+				if slices.Contains(morseLangs, l) {
+					lang = l
 				}
 			}
 		}
@@ -221,7 +219,7 @@ func (p MorseCodeDecode) Transform(data []byte, f ...Flag) (string, error) {
 	wordSeparator := "/"
 	letterSeparator := " "
 	codeLang := checkDecodeLangFlag(f)
-	for _, part := range strings.Split(string(data), letterSeparator) {
+	for part := range strings.SplitSeq(string(data), letterSeparator) {
 		found := false
 		for key, val := range morseCodeMap[codeLang] {
 			if val == part {
