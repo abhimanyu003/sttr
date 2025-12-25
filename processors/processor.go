@@ -59,6 +59,7 @@ var List = []list.Item{
 	MSGPACKToJSON{},
 	NumberLines{},
 	Pascal{},
+	QRCode{},
 	RemoveNewLines{},
 	RemoveSpaces{},
 	Reverse{},
