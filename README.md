@@ -271,6 +271,11 @@ echo "Hello World" | sttr base64-encode | sttr md5
 
 - [x] **yaml-json** - Convert YAML to JSON text
 
+#### Time
+
+- [x] **epoch-date** - Convert a Unix timestamp to a human-readable date
+- [x] **date-epoch** - Convert a human-readable date to a Unix timestamp
+
 #### Markdown
 
 - [x] **markdown-html** - Convert Markdown to HTML
