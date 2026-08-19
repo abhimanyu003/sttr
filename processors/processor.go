@@ -36,6 +36,8 @@ var List = []list.Item{
 	CRC32{},
 	CrockfordBase32Decode{},
 	CrockfordBase32Encode{},
+	DateToEpoch{},
+	EpochToDate{},
 	EscapeQuotes{},
 	ExtractEmails{},
 	ExtractURLs{},
