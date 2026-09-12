@@ -212,3 +212,36 @@ func TestBase64Decode_Transform(t *testing.T) {
 		})
 	}
 }
+
+func TestBase64Decode_UnpaddedWithoutRawFlag(t *testing.T) {
+	// Regression for #71: default decode should accept missing padding like `base64 -d`.
+	unpadded := "eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0"
+	want := `{"sub":"1234567890","name":"John Doe","admin":true,"iat":1516239022}`
+	p := Base64Decode{}
+	got, err := p.Transform([]byte(unpadded))
+	if err != nil {
+		t.Fatalf("Transform() unexpected error: %v", err)
+	}
+	if got != want {
+		t.Fatalf("Transform() got = %q, want %q", got, want)
+	}
+
+	// Padded input must still work.
+	padded := unpadded + "="
+	got, err = p.Transform([]byte(padded))
+	if err != nil {
+		t.Fatalf("Transform(padded) unexpected error: %v", err)
+	}
+	if got != want {
+		t.Fatalf("Transform(padded) got = %q, want %q", got, want)
+	}
+
+	// --raw remains a distinct path and still accepts unpadded input.
+	got, err = p.Transform([]byte(unpadded), Flag{Short: "r", Value: true})
+	if err != nil {
+		t.Fatalf("Transform(--raw) unexpected error: %v", err)
+	}
+	if got != want {
+		t.Fatalf("Transform(--raw) got = %q, want %q", got, want)
+	}
+}

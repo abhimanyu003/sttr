@@ -3,6 +3,7 @@ package processors
 import (
 	"encoding/base64"
 	"fmt"
+	"strings"
 )
 
 var base64RawFlag = Flag{
@@ -78,7 +79,14 @@ func (p Base64Decode) Transform(data []byte, f ...Flag) (string, error) {
 	if checkBase64RawFlag(f) {
 		decodedString, err = base64.RawStdEncoding.DecodeString(string(data))
 	} else {
-		decodedString, err = base64.StdEncoding.DecodeString(string(data))
+		// Tolerate missing padding the way `base64 -d` does (issue #71).
+		// --raw stays a distinct path (RawStdEncoding); default uses StdEncoding
+		// after adding any missing '=' padding.
+		s := string(data)
+		if m := len(s) % 4; m != 0 {
+			s += strings.Repeat("=", 4-m)
+		}
+		decodedString, err = base64.StdEncoding.DecodeString(s)
 	}
 	return string(decodedString), err
 }
