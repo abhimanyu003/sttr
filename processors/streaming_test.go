@@ -79,6 +79,56 @@ func TestTransformStream(t *testing.T) {
 	}
 }
 
+func TestTransformStreamPreservesUTF8AcrossChunkBoundaries(t *testing.T) {
+	const chunkSize = 64 * 1024
+	tests := []struct {
+		name      string
+		processor Processor
+		prefix    string
+		multibyte string
+		suffix    string
+		want      string
+	}{
+		{
+			name:      "Upper case",
+			processor: Upper{},
+			prefix:    strings.Repeat("a", chunkSize-1),
+			multibyte: "é",
+			suffix:    "b",
+			want:      strings.Repeat("A", chunkSize-1) + "ÉB",
+		},
+		{
+			name:      "Lower case",
+			processor: Lower{},
+			prefix:    strings.Repeat("A", chunkSize-1),
+			multibyte: "Ä",
+			suffix:    "B",
+			want:      strings.Repeat("a", chunkSize-1) + "äb",
+		},
+		{
+			name:      "Upper case with four-byte rune",
+			processor: Upper{},
+			prefix:    strings.Repeat("a", chunkSize-1),
+			multibyte: "😀",
+			suffix:    "b",
+			want:      strings.Repeat("A", chunkSize-1) + "😀B",
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			input := tt.prefix + tt.multibyte + tt.suffix
+			var writer bytes.Buffer
+			if err := TransformStream(tt.processor, strings.NewReader(input), &writer); err != nil {
+				t.Fatalf("TransformStream() error = %v", err)
+			}
+			if got := writer.String(); got != tt.want {
+				t.Errorf("TransformStream() output differs at UTF-8 chunk boundary")
+			}
+		})
+	}
+}
+
 func TestStreamingConfig(t *testing.T) {
 	tests := []struct {
 		name      string
@@ -104,6 +154,7 @@ func TestStreamingConfig(t *testing.T) {
 				ChunkSize:    64 * 1024,
 				BufferOutput: false,
 				LineByLine:   false,
+				UTF8Chunking: true,
 			},
 		},
 		{
@@ -139,6 +190,9 @@ func TestStreamingConfig(t *testing.T) {
 				}
 				if config.LineByLine != tt.config.LineByLine {
 					t.Errorf("LineByLine = %v, want %v", config.LineByLine, tt.config.LineByLine)
+				}
+				if config.UTF8Chunking != tt.config.UTF8Chunking {
+					t.Errorf("UTF8Chunking = %v, want %v", config.UTF8Chunking, tt.config.UTF8Chunking)
 				}
 			} else if tt.hasConfig {
 				t.Errorf("Expected processor to have config, but it doesn't")
