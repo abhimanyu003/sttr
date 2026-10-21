@@ -6,6 +6,7 @@ import (
 	"io"
 	"strconv"
 	"strings"
+	"unicode/utf8"
 
 	"github.com/charmbracelet/bubbles/list"
 	"golang.org/x/text/cases"
@@ -110,6 +111,8 @@ type StreamingConfig struct {
 	BufferOutput bool
 	// LineByLine whether to process input line by line (useful for line-based processors)
 	LineByLine bool
+	// UTF8Chunking preserves rune boundaries when processing UTF-8 text in chunks.
+	UTF8Chunking bool
 }
 
 // ConfigurableStreamingProcessor is an optional interface that processors can implement
@@ -177,6 +180,10 @@ func TransformStream(processor Processor, reader io.Reader, writer io.Writer, op
 		return transformStreamBuffered(processor, reader, writer, opts...)
 	}
 
+	if config.UTF8Chunking {
+		return transformStreamUTF8Chunked(processor, reader, writer, config.ChunkSize, opts...)
+	}
+
 	return transformStreamChunked(processor, reader, writer, config.ChunkSize, opts...)
 }
 
@@ -210,6 +217,61 @@ func transformStreamBuffered(processor Processor, reader io.Reader, writer io.Wr
 
 	_, err = writer.Write([]byte(result))
 	return err
+}
+
+// transformStreamUTF8Chunked keeps a possibly incomplete UTF-8 rune for the next read.
+func transformStreamUTF8Chunked(processor Processor, reader io.Reader, writer io.Writer, chunkSize int, opts ...Flag) error {
+	buffer := make([]byte, chunkSize+utf8.UTFMax)
+	pending := 0
+
+	for {
+		n, err := reader.Read(buffer[pending : pending+chunkSize])
+		total := pending + n
+
+		if err != nil {
+			if total > 0 {
+				result, transformErr := processor.Transform(buffer[:total], opts...)
+				if transformErr != nil {
+					return transformErr
+				}
+				if _, writeErr := writer.Write([]byte(result)); writeErr != nil {
+					return writeErr
+				}
+			}
+			if err == io.EOF {
+				return nil
+			}
+			return err
+		}
+
+		complete := utf8CompletePrefix(buffer[:total])
+		if complete > 0 {
+			result, transformErr := processor.Transform(buffer[:complete], opts...)
+			if transformErr != nil {
+				return transformErr
+			}
+			if _, writeErr := writer.Write([]byte(result)); writeErr != nil {
+				return writeErr
+			}
+		}
+
+		pending = total - complete
+		copy(buffer[:pending], buffer[complete:total])
+	}
+}
+
+func utf8CompletePrefix(data []byte) int {
+	start := len(data) - utf8.UTFMax + 1
+	if start < 0 {
+		start = 0
+	}
+
+	for i := start; i < len(data); i++ {
+		if !utf8.FullRune(data[i:]) {
+			return i
+		}
+	}
+	return len(data)
 }
 
 // transformStreamChunked processes input in chunks (for processors that can handle partial data)

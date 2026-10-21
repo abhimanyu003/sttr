@@ -22,6 +22,7 @@ func (p Lower) GetStreamingConfig() StreamingConfig {
 		ChunkSize:    64 * 1024, // 64KB chunks
 		BufferOutput: false,     // Can process chunks directly
 		LineByLine:   false,
+		UTF8Chunking: true,
 	}
 }
 
@@ -64,6 +65,7 @@ func (p Upper) GetStreamingConfig() StreamingConfig {
 		ChunkSize:    64 * 1024, // 64KB chunks
 		BufferOutput: false,     // Can process chunks directly
 		LineByLine:   false,
+		UTF8Chunking: true,
 	}
 }
 
